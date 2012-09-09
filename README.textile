@@ -1,0 +1,140 @@
+h1. Common-Units
+
+p. This project contains common units. Currently only storage units according to "ISO IEC 80000-13:2008":http://en.wikipedia.org/wiki/ISO/IEC_80000 are implemented.
+
+h2. Available Units
+
+p. Binary-based units:
+
+|_. Name |_. Symbol |_. Exponential |_. Absolute |
+| Kibibyte | KiB | 2 ^10^ Byte | 1 024 Byte |
+| Mebibyte | MiB | 2 ^20^ Byte | 1 048 576 Byte |
+| Gibibyte | GiB | 2 ^30^ Byte | 1 073 741 824 Byte |
+| Tebibyte | TiB | 2 ^40^ Byte | 1 099 511 627 776 Byte |
+| Pebibyte | PiB | 2 ^50^ Byte | 1 125 899 906 842 624 Byte |
+| Exbibyte | EiB | 2 ^60^ Byte | 1 152 921 504 606 846 976 Byte |
+| Zebibyte | ZiB | 2 ^70^ Byte | 1 180 591 620 717 411 303 424 Byte |
+| Yobibyte | YiB | 2 ^80^ Byte | 1 208 925 819 614 629 174 706 176 Byte |
+
+p. Metric-based units:
+
+|_. Name |_. Symbol |_. Exponential |_. Absolute |
+| Kilobyte | kB | 10 ^3^ Byte | 1 000 Byte |
+| Megabyte | MB | 10 ^6^ Byte | 1 000 000 Byte |
+| Gigabyte | GB | 10 ^9^ Byte | 1 000 000 000 Byte |
+| Terabyte | TB | 10 ^12^ Byte | 1 000 000 000 000 Byte |
+| Petabyte | PB | 10 ^15^ Byte | 1 000 000 000 000 000 Byte |
+| Exabyte | EB | 10 ^18^ Byte | 1 000 000 000 000 000 000 Byte |
+| Zettabyte | ZB | 10 ^21^ Byte | 1 000 000 000 000 000 000 000 Byte |
+| Yottabyte | YB | 10 ^24^ Byte | 1 000 000 000 000 000 000 000 000 Byte |
+
+h2. Available Operations
+
+h3. Factories
+
+Each unit implements a Byte-based static factory method (@valueOf(long)@) that can be used to represent a given number of bytes in a specific unit.
+
+bc. 
+  Kilobyte unit = Kilobyte.valueOf(2500)    // 2 500 Byte or "2.50 kB"
+  Kibibyte unit = Kibibyte.valueOf(512)     // 512 Byte or "0.50 KiB"
+  Megabyte unit = Megabyte.valueOf(1000000) // 1 000 000 Byte or "1.00 MB"
+
+p. The @StorageUnits@ class offers two factory methods that automatically pick the best-matching unit for a given number of bytes.
+
+bc. 
+  StorageUnit<?> unit = StorageUnits.binaryValueOf(256)       // Kibibyte (0.25 KiB)
+  StorageUnit<?> unit = StorageUnits.binaryValueOf(1048576)   // Mebibyte (1.00 MiB)
+
+bc. 
+  StorageUnit<?> unit = StorageUnits.metricValueOf(120000)    // Kilobyte (120.00 kB)
+  StorageUnit<?> unit = StorageUnits.metricValueOf(1000000)   // Megabyte (1.00 MB)
+
+p. Additionally high-level factory methods are also available in the @StorageUnits@ class.
+
+bc. 
+  Megabyte unit = StorageUnits.megabyte(1) // 1 000 000 Byte
+  Kibibyte unit = StorageUnits.kibibyte(8) // 8 192 Byte
+  Gigabyte unit = StorageUnits.gigabyte(2) // 2 000 000 000 Byte
+
+h3. Add, Subtract, Multiply, Divide
+
+p. Each unit implements the basic four math operations.
+
+bc. 
+  kilobyte(4).add(kilobyte(8))        // 4 Kilobyte + 8 Kilobyte = 12 Kilobyte = 12 000 Byte
+  kibibyte(1).add(1024)               // 1 Kibibyte + 1 024 Byte = 2 Kibibyte = 2 048 Byte
+  kibibyte(1).subtract(24)            // 1 024 Byte - 24 Byte = 1 000 Byte
+  megabyte(5).subtract(kilobyte(500)) // 5 Megabyte - 500 Kilobyte = 4.5 Megabyte = 4 500 Kilobyte = 4 500 000 Byte
+  gigabyte(1).multiply(5)             // 1 Gigabyte times 5 = 5 Gigabyte
+  terabyte(1).divide(5)               // 1 Terabyte divided by 5 = 0.2 Terabyte = 200 Gigabyte
+
+h3. compareTo
+
+p. Each unit is comparable to each other unit.
+
+bc. 
+  kibibyte(1024).compareTo(mebibyte(1)) == 0 // true
+  kibibyte(1000).compareTo(mebibyte(1)) == 0 // false
+  petabyte(3).compareTo(terabyte(3000)) == 0 // true
+
+h3. equals
+
+p. Each unit can be checked against each other unit.
+
+bc. 
+  megabyte(1000).equals(gigabyte(1)) // true
+  megabyte(1024).equals(gigabyte(1)) // false
+  terabyte(12).equals(tebibyte(10))  // false
+
+h3. toString
+
+p. Each unit prints a human-readable string, representing the amount of bytes in the given unit using the symbol specified in ISO IEC 80000-13:2008.
+
+bc. 
+  terabyte(2).toString()                         // "2.00 TB"
+  gigabyte(1).add(megabyte(200)).toString()      // "1.20 GB"
+  petabyte(1).subtract(terabyte(250)).toString() // "0.75 PB"
+
+h3. Conversions
+
+p. Each unit can be converted to each other unit.
+
+bc. 
+  Megabyte unit = kilobyte(1000).asMegabyte() // "1.00 MB"
+  Kilobyte unit = gigabyte(12).asKilobyte()   // "12000000.00 kB"
+  Gigabyte unit = terabyte(1).asGigabyte()    // "1000.00 GB"
+
+p. Each unit can be expressed as each other unit.
+
+bc. 
+  BigDecimal kilobytes = megabyte(1).inKilobyte() // 1 000
+  BigDecimal bytes = kibibyte(2).inByte()         // 2 048
+  BigDecimal amount = gigabyte(15).inTerabyte()   // 0.015
+
+
+h2. Integration
+
+h3. Maven
+
+bc. 
+  <dependencies>
+    <dependency>
+      <groupId>com.github.sebhoss.units</groupId>
+      <artifactId>common-units</artifactId>
+      <version>1.0.0-SNAPSHOT</version>
+    </dependency>
+  </dependencies>
+
+h2. Development
+
+h3. License
+
+p. This program is free software. It comes without any warranty, to the extent permitted by applicable law. You can redistribute it and/or modify it under the terms of the Do What The Fuck You Want To Public License, Version 2, as published by Sam Hocevar. See "http://sam.zoy.org/wtfpl/COPYING":http://sam.zoy.org/wtfpl/COPYING for more details.
+
+h3. Setup
+
+p. This project is using "Maven":http://maven.apache.org/, "Eclipse":http://eclipse.org/ and "Git":http://git-scm.com/ as the main development tools. To build the project yourself just download & install at least Maven 3.0 and call *mvn install* inside the project folder. Maven should then proceed to clean, build, package and install this module.
+
+h3. Versioning
+
+p. This project follows the "semantic versioning":http://semver.org/ guidelines.
