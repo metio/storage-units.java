@@ -34,8 +34,27 @@
   <version>1.0.0-SNAPSHOT</version>
   <packaging>jar</packaging>
   <inceptionYear>2012</inceptionYear>
+  <url>${github.url}</url>
   <name>Common Units</name>
   <description>Collection of common units.</description>
+  
+  <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+  <!--                                  SOURCE                                 -->
+  <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+  <scm>
+    <connection>${scm.connection}</connection>
+    <developerConnection>${scm.developerConnection}</developerConnection>
+    <tag>master</tag>
+    <url>${scm.url}</url>
+  </scm>
+
+  <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+  <!--                                  ISSUES                                 -->
+  <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+  <issueManagement>
+    <system>GitHub</system>
+    <url>${issueManagement.url}</url>
+  </issueManagement>
 
   <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
   <!--                               DEPENDENCIES                              -->
