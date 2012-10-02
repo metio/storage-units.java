@@ -23,11 +23,11 @@ public final class StorageUnits {
         if (bytes >= StorageUnit.BYTES_IN_A_MEBIBYTE.longValue() && bytes < StorageUnit.BYTES_IN_A_GIBIBYTE.longValue()) {
             unit = unit.asMebibyte();
         } else if (bytes >= StorageUnit.BYTES_IN_A_GIBIBYTE.longValue()
-                && bytes < StorageUnit.BYTES_IN_A_TIBIBYTE.longValue()) {
+                && bytes < StorageUnit.BYTES_IN_A_TEBIBYTE.longValue()) {
             unit = unit.asGibibyte();
-        } else if (bytes >= StorageUnit.BYTES_IN_A_TIBIBYTE.longValue()
+        } else if (bytes >= StorageUnit.BYTES_IN_A_TEBIBYTE.longValue()
                 && bytes < StorageUnit.BYTES_IN_A_PEBIBYTE.longValue()) {
-            unit = unit.asTibibyte();
+            unit = unit.asTebibyte();
         } else if (bytes >= StorageUnit.BYTES_IN_A_PEBIBYTE.longValue()
                 && bytes < StorageUnit.BYTES_IN_A_EXBIBYTE.longValue()) {
             unit = unit.asPebibyte();
@@ -51,7 +51,7 @@ public final class StorageUnits {
      */
     public static final StorageUnit<?> metricValueOf(final long bytes) {
         StorageUnit<?> unit = Kilobyte.valueOf(bytes);
-    
+
         if (bytes >= StorageUnit.BYTES_IN_A_MEGABYTE.longValue() && bytes < StorageUnit.BYTES_IN_A_GIGABYTE.longValue()) {
             unit = unit.asMegabyte();
         } else if (bytes >= StorageUnit.BYTES_IN_A_GIGABYTE.longValue()
@@ -72,7 +72,7 @@ public final class StorageUnits {
         } else if (bytes >= StorageUnit.BYTES_IN_A_YOTTABYTE.longValue()) {
             unit = unit.asYottabyte();
         }
-    
+
         return unit;
     }
 
@@ -105,11 +105,11 @@ public final class StorageUnits {
 
     /**
      * @param amount
-     *            The amount of tibibytes to create.
-     * @return A new Tibibyte unit with the given value.
+     *            The amount of tebibytes to create.
+     * @return A new Tebibyte unit with the given value.
      */
-    public static final Tibibyte tibibyte(final long amount) {
-        return new Tibibyte(StorageUnit.BYTES_IN_A_TIBIBYTE.multiply(BigInteger.valueOf(amount)));
+    public static final Tebibyte tebibyte(final long amount) {
+        return new Tebibyte(StorageUnit.BYTES_IN_A_TEBIBYTE.multiply(BigInteger.valueOf(amount)));
     }
 
     /**

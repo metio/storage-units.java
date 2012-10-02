@@ -33,10 +33,10 @@ public abstract class StorageUnit<T extends StorageUnit<T>> extends Number imple
     static final BigInteger    BYTES_IN_A_GIBIBYTE  = StorageUnit.BYTES_IN_A_MEBIBYTE
                                                             .multiply(StorageUnit.BINARY_UNIT_BASE);
 
-    static final BigInteger    BYTES_IN_A_TIBIBYTE  = StorageUnit.BYTES_IN_A_GIBIBYTE
+    static final BigInteger    BYTES_IN_A_TEBIBYTE  = StorageUnit.BYTES_IN_A_GIBIBYTE
                                                             .multiply(StorageUnit.BINARY_UNIT_BASE);
 
-    static final BigInteger    BYTES_IN_A_PEBIBYTE  = StorageUnit.BYTES_IN_A_TIBIBYTE
+    static final BigInteger    BYTES_IN_A_PEBIBYTE  = StorageUnit.BYTES_IN_A_TEBIBYTE
                                                             .multiply(StorageUnit.BINARY_UNIT_BASE);
 
     static final BigInteger    BYTES_IN_A_EXBIBYTE  = StorageUnit.BYTES_IN_A_PEBIBYTE
@@ -102,10 +102,10 @@ public abstract class StorageUnit<T extends StorageUnit<T>> extends Number imple
     }
 
     /**
-     * @return This storage unit as a tibibyte.
+     * @return This storage unit as a tebibyte.
      */
-    public final Tibibyte asTibibyte() {
-        return new Tibibyte(this.bytes);
+    public final Tebibyte asTebibyte() {
+        return new Tebibyte(this.bytes);
     }
 
     /**
@@ -221,10 +221,10 @@ public abstract class StorageUnit<T extends StorageUnit<T>> extends Number imple
     }
 
     /**
-     * @return This storage unit quantified as tibibyte.
+     * @return This storage unit quantified as tebibyte.
      */
-    public final BigDecimal inTibibyte() {
-        return this.calculate(StorageUnit.BYTES_IN_A_TIBIBYTE);
+    public final BigDecimal inTebibyte() {
+        return this.calculate(StorageUnit.BYTES_IN_A_TEBIBYTE);
     }
 
     /**
