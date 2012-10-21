@@ -2,7 +2,7 @@ h1. Common-Units
 
 p. This project contains common units. Currently only storage units according to "ISO IEC 80000-13:2008":http://en.wikipedia.org/wiki/ISO/IEC_80000 are implemented.
 
-h2. Available Units
+h2. Storage Units
 
 p. Binary-based units:
 
@@ -27,8 +27,6 @@ p. Metric-based units:
 | Exabyte | EB | 10 ^18^ Byte | 1 000 000 000 000 000 000 Byte |
 | Zettabyte | ZB | 10 ^21^ Byte | 1 000 000 000 000 000 000 000 Byte |
 | Yottabyte | YB | 10 ^24^ Byte | 1 000 000 000 000 000 000 000 000 Byte |
-
-h2. Available Operations
 
 h3. Factories
 
@@ -124,6 +122,37 @@ bc.
       <version>1.0.0-SNAPSHOT</version>
     </dependency>
   </dependencies>
+  
+h3. Gradle
+
+bc. 
+  dependencies {
+    compile 'com.github.sebhoss.units:common-units:1.0.0-SNAPSHOT'
+  }
+  
+h3. Buildr
+
+bc. 
+  compile.with 'com.github.sebhoss.units:common-units:jar:1.0.0-SNAPSHOT'
+
+h3. Ivy
+
+bc. 
+  <dependencies>
+    <dependency org="com.github.sebhoss.units" name="common-units" rev="1.0.0-SNAPSHOT"/>
+  </dependencies>
+
+h3. sbt
+
+bc. 
+  libraryDependencies ++= Seq(
+    "com.github.sebhoss.units" % "common-units" % "1.0.0-SNAPSHOT"
+  )
+
+h3. Grape
+
+bc. 
+  @Grab(group='com.github.sebhoss.units', module='common-units', version='1.0.0-SNAPSHOT')
 
 h2. Development
 
@@ -133,7 +162,9 @@ p. This program is free software. It comes without any warranty, to the extent p
 
 h3. Setup
 
-p. This project is using "Maven":http://maven.apache.org/, "Eclipse":http://eclipse.org/ and "Git":http://git-scm.com/ as the main development tools. To build the project yourself just download & install at least Maven 3.0 and call *mvn install* inside the project folder. Maven should then proceed to clean, build, package and install this module.
+p. This project is using "Java":http://www.oracle.com/technetwork/java/javase/downloads/index.html, "Maven":http://maven.apache.org/, "Eclipse":http://eclipse.org/ and "Git":http://git-scm.com/ as the main development tools. To build the project yourself just download & install at least Java 7 & Maven 3.0 and call *mvn install* inside the project folder. Maven should then proceed to clean, build, test, package and install this project.
+
+p. Use the project import wizard from Eclipse to import this project. The integrated m2e-plugin will automatically setup the needed configuration files for Eclipse. If you are using an old version of Eclipse run *mvn eclipse:eclipse* first and then import this project into Eclipse.
 
 h3. Versioning
 
