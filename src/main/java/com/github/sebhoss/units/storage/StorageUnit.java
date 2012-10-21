@@ -331,9 +331,9 @@ public abstract class StorageUnit<T extends StorageUnit<T>> extends Number imple
     @Override
     public boolean equals(final Object other) {
         if (other instanceof StorageUnit<?>) {
-            final StorageUnit<?> unit = (StorageUnit<?>) other;
+            final StorageUnit<?> that = (StorageUnit<?>) other;
 
-            return this.bytes.equals(unit.bytes);
+            return this.bytes.equals(that.bytes);
         }
 
         return false;
