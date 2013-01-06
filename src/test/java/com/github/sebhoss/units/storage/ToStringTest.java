@@ -5,8 +5,7 @@
  * http://sam.zoy.org/wtfpl/COPYING for more details. */
 package com.github.sebhoss.units.storage;
 
-import junit.framework.Assert;
-
+import org.junit.Assert;
 import org.junit.Test;
 
 /**

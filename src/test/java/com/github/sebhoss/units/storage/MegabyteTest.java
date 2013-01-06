@@ -7,8 +7,7 @@ package com.github.sebhoss.units.storage;
 
 import java.math.BigInteger;
 
-import junit.framework.Assert;
-
+import org.junit.Assert;
 import org.junit.Test;
 
 /**
