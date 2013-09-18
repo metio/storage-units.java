@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright © 2012 Sebastian Hoß <mail@shoss.de>
+    This work is free. You can redistribute it and/or modify it under the
+    terms of the Do What The Fuck You Want To Public License, Version 2,
+    as published by Sam Hocevar. See http://www.wtfpl.net/ for more details.
+
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+  <!--                                 PARENT                                  -->
+  <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+  <parent>
+    <groupId>com.github.sebhoss.units</groupId>
+    <artifactId>common-units</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+  </parent>
+  <artifactId>weight-units</artifactId>
+</project>

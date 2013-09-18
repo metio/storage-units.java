@@ -25,7 +25,7 @@
   <groupId>com.github.sebhoss.units</groupId>
   <artifactId>common-units</artifactId>
   <version>1.0.0-SNAPSHOT</version>
-  <packaging>jar</packaging>
+  <packaging>pom</packaging>
   <inceptionYear>2012</inceptionYear>
   <url>https://github.com/sebhoss/common-units</url>
   <name>Common Units</name>
@@ -68,4 +68,8 @@
     </dependency>
   </dependencies>
 
+  <modules>
+    <module>storage-units</module>
+    <module>weight-units</module>
+  </modules>
 </project>
