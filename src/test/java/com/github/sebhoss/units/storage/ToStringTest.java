@@ -6,13 +6,15 @@
  */
 package com.github.sebhoss.units.storage;
 
+import com.github.sebhoss.common.annotation.CompilerWarnings;
+
 import org.junit.Assert;
 import org.junit.Test;
 
 /**
  * Test for toString() implementations of the storage units.
  */
-@SuppressWarnings({ "nls", "static-method" })
+@SuppressWarnings({ CompilerWarnings.NLS, CompilerWarnings.STATIC_METHOD })
 public class ToStringTest {
 
     /**
