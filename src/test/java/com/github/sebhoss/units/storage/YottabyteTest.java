@@ -8,15 +8,16 @@ package com.github.sebhoss.units.storage;
 
 import java.math.BigInteger;
 
+import com.github.sebhoss.common.annotation.CompilerWarnings;
+import com.github.sebhoss.common.annotation.Nullsafe;
+
 import org.junit.Assert;
 import org.junit.Test;
-
-import com.github.sebhoss.common.annotation.CompilerWarnings;
 
 /**
  * Tests for Yottabytes.
  */
-@SuppressWarnings({ CompilerWarnings.NLS, CompilerWarnings.NULL, CompilerWarnings.STATIC_METHOD })
+@SuppressWarnings({ CompilerWarnings.NLS, CompilerWarnings.STATIC_METHOD })
 public class YottabyteTest {
 
     /**
@@ -28,7 +29,7 @@ public class YottabyteTest {
         Yottabyte unit;
 
         // When
-        unit = new Yottabyte(BigInteger.valueOf(1000));
+        unit = new Yottabyte(Nullsafe.nullsafe(BigInteger.valueOf(1000)));
 
         // Then
         Assert.assertNotNull(unit);
