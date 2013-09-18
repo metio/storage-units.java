@@ -6,4 +6,5 @@
 /**
  * Collection of units.
  */
+@com.github.sebhoss.common.annotation.NotNullByDefault
 package com.github.sebhoss.units;

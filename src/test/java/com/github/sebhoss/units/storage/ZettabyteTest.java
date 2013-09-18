@@ -10,10 +10,12 @@ import java.math.BigInteger;
 import org.junit.Assert;
 import org.junit.Test;
 
+import com.github.sebhoss.common.annotation.CompilerWarnings;
+
 /**
  * Tests for Zettabytes.
  */
-@SuppressWarnings({ "static-method", "nls" })
+@SuppressWarnings({ CompilerWarnings.NLS, CompilerWarnings.NULL, CompilerWarnings.STATIC_METHOD })
 public class ZettabyteTest {
 
     /**

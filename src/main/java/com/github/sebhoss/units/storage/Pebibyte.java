@@ -7,6 +7,8 @@ package com.github.sebhoss.units.storage;
 
 import java.math.BigInteger;
 
+import com.github.sebhoss.common.annotation.Nullsafe;
+
 /**
  * Pebibyte as specified in ISO IEC 80000-13:2008.
  */
@@ -20,7 +22,7 @@ public final class Pebibyte extends StorageUnit<Pebibyte> {
      * @return A new Pebibyte unit with the given value.
      */
     public static Pebibyte valueOf(final long numberOfBytes) {
-        return new Pebibyte(BigInteger.valueOf(numberOfBytes));
+        return new Pebibyte(Nullsafe.nullsafe(BigInteger.valueOf(numberOfBytes)));
     }
 
     Pebibyte(final BigInteger bytes) {
@@ -29,32 +31,32 @@ public final class Pebibyte extends StorageUnit<Pebibyte> {
 
     @Override
     public Pebibyte add(final long bytesToAdd) {
-        return new Pebibyte(this.bytes.add(BigInteger.valueOf(bytesToAdd)));
+        return new Pebibyte(Nullsafe.nullsafe(bytes.add(BigInteger.valueOf(bytesToAdd))));
     }
 
     @Override
     public Pebibyte add(final StorageUnit<?> storageAmount) {
-        return new Pebibyte(this.bytes.add(storageAmount.bytes));
+        return new Pebibyte(Nullsafe.nullsafe(bytes.add(storageAmount.bytes)));
     }
 
     @Override
     public Pebibyte divide(final long divisor) {
-        return new Pebibyte(this.bytes.divide(BigInteger.valueOf(divisor)));
+        return new Pebibyte(Nullsafe.nullsafe(bytes.divide(BigInteger.valueOf(divisor))));
     }
 
     @Override
     public Pebibyte multiply(final long factor) {
-        return new Pebibyte(this.bytes.multiply(BigInteger.valueOf(factor)));
+        return new Pebibyte(Nullsafe.nullsafe(bytes.multiply(BigInteger.valueOf(factor))));
     }
 
     @Override
     public Pebibyte subtract(final long bytesToSubtract) {
-        return new Pebibyte(this.bytes.subtract(BigInteger.valueOf(bytesToSubtract)));
+        return new Pebibyte(Nullsafe.nullsafe(bytes.subtract(BigInteger.valueOf(bytesToSubtract))));
     }
 
     @Override
     public Pebibyte subtract(final StorageUnit<?> storageAmount) {
-        return new Pebibyte(this.bytes.subtract(storageAmount.bytes));
+        return new Pebibyte(Nullsafe.nullsafe(bytes.subtract(storageAmount.bytes)));
     }
 
     @Override

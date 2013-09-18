@@ -7,6 +7,8 @@ package com.github.sebhoss.units.storage;
 
 import java.math.BigInteger;
 
+import com.github.sebhoss.common.annotation.Nullsafe;
+
 /**
  * Terabyte as specified in ISO IEC 80000-13:2008.
  */
@@ -20,7 +22,7 @@ public class Terabyte extends StorageUnit<Terabyte> {
      * @return A new Terabyte unit with the given value.
      */
     public static Terabyte valueOf(final long numberOfBytes) {
-        return new Terabyte(BigInteger.valueOf(numberOfBytes));
+        return new Terabyte(Nullsafe.nullsafe(BigInteger.valueOf(numberOfBytes)));
     }
 
     Terabyte(final BigInteger bytes) {
@@ -29,32 +31,32 @@ public class Terabyte extends StorageUnit<Terabyte> {
 
     @Override
     public Terabyte add(final long bytesToAdd) {
-        return new Terabyte(this.bytes.add(BigInteger.valueOf(bytesToAdd)));
+        return new Terabyte(Nullsafe.nullsafe(bytes.add(BigInteger.valueOf(bytesToAdd))));
     }
 
     @Override
     public Terabyte add(final StorageUnit<?> storageAmount) {
-        return new Terabyte(this.bytes.add(storageAmount.bytes));
+        return new Terabyte(Nullsafe.nullsafe(bytes.add(storageAmount.bytes)));
     }
 
     @Override
     public Terabyte divide(final long divisor) {
-        return new Terabyte(this.bytes.divide(BigInteger.valueOf(divisor)));
+        return new Terabyte(Nullsafe.nullsafe(bytes.divide(BigInteger.valueOf(divisor))));
     }
 
     @Override
     public Terabyte multiply(final long factor) {
-        return new Terabyte(this.bytes.multiply(BigInteger.valueOf(factor)));
+        return new Terabyte(Nullsafe.nullsafe(bytes.multiply(BigInteger.valueOf(factor))));
     }
 
     @Override
     public Terabyte subtract(final long bytesToSubtract) {
-        return new Terabyte(this.bytes.subtract(BigInteger.valueOf(bytesToSubtract)));
+        return new Terabyte(Nullsafe.nullsafe(bytes.subtract(BigInteger.valueOf(bytesToSubtract))));
     }
 
     @Override
     public Terabyte subtract(final StorageUnit<?> storageAmount) {
-        return new Terabyte(this.bytes.subtract(storageAmount.bytes));
+        return new Terabyte(Nullsafe.nullsafe(bytes.subtract(storageAmount.bytes)));
     }
 
     @Override

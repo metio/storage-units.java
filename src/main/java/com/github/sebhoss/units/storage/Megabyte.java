@@ -7,6 +7,8 @@ package com.github.sebhoss.units.storage;
 
 import java.math.BigInteger;
 
+import com.github.sebhoss.common.annotation.Nullsafe;
+
 /**
  * Megabyte as specified in ISO IEC 80000-13:2008.
  */
@@ -20,7 +22,7 @@ public class Megabyte extends StorageUnit<Megabyte> {
      * @return A new Megabyte unit with the given value.
      */
     public static Megabyte valueOf(final long numberOfBytes) {
-        return new Megabyte(BigInteger.valueOf(numberOfBytes));
+        return new Megabyte(Nullsafe.nullsafe(BigInteger.valueOf(numberOfBytes)));
     }
 
     Megabyte(final BigInteger bytes) {
@@ -29,32 +31,32 @@ public class Megabyte extends StorageUnit<Megabyte> {
 
     @Override
     public Megabyte add(final long bytesToAdd) {
-        return new Megabyte(this.bytes.add(BigInteger.valueOf(bytesToAdd)));
+        return new Megabyte(Nullsafe.nullsafe(bytes.add(BigInteger.valueOf(bytesToAdd))));
     }
 
     @Override
     public Megabyte add(final StorageUnit<?> storageAmount) {
-        return new Megabyte(this.bytes.add(storageAmount.bytes));
+        return new Megabyte(Nullsafe.nullsafe(bytes.add(storageAmount.bytes)));
     }
 
     @Override
     public Megabyte divide(final long divisor) {
-        return new Megabyte(this.bytes.divide(BigInteger.valueOf(divisor)));
+        return new Megabyte(Nullsafe.nullsafe(bytes.divide(BigInteger.valueOf(divisor))));
     }
 
     @Override
     public Megabyte multiply(final long factor) {
-        return new Megabyte(this.bytes.multiply(BigInteger.valueOf(factor)));
+        return new Megabyte(Nullsafe.nullsafe(bytes.multiply(BigInteger.valueOf(factor))));
     }
 
     @Override
     public Megabyte subtract(final long bytesToSubtract) {
-        return new Megabyte(this.bytes.subtract(BigInteger.valueOf(bytesToSubtract)));
+        return new Megabyte(Nullsafe.nullsafe(bytes.subtract(BigInteger.valueOf(bytesToSubtract))));
     }
 
     @Override
     public Megabyte subtract(final StorageUnit<?> storageAmount) {
-        return new Megabyte(this.bytes.subtract(storageAmount.bytes));
+        return new Megabyte(Nullsafe.nullsafe(bytes.subtract(storageAmount.bytes)));
     }
 
     @Override

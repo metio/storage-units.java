@@ -7,6 +7,8 @@ package com.github.sebhoss.units.storage;
 
 import java.math.BigInteger;
 
+import com.github.sebhoss.common.annotation.Nullsafe;
+
 /**
  * Zebibyte as specified in ISO IEC 80000-13:2008.
  */
@@ -20,7 +22,7 @@ public final class Zebibyte extends StorageUnit<Zebibyte> {
      * @return A new Zebibyte unit with the given value.
      */
     public static Zebibyte valueOf(final long numberOfBytes) {
-        return new Zebibyte(BigInteger.valueOf(numberOfBytes));
+        return new Zebibyte(Nullsafe.nullsafe(BigInteger.valueOf(numberOfBytes)));
     }
 
     Zebibyte(final BigInteger bytes) {
@@ -29,32 +31,32 @@ public final class Zebibyte extends StorageUnit<Zebibyte> {
 
     @Override
     public Zebibyte add(final long bytesToAdd) {
-        return new Zebibyte(this.bytes.add(BigInteger.valueOf(bytesToAdd)));
+        return new Zebibyte(Nullsafe.nullsafe(bytes.add(BigInteger.valueOf(bytesToAdd))));
     }
 
     @Override
     public Zebibyte add(final StorageUnit<?> storageAmount) {
-        return new Zebibyte(this.bytes.add(storageAmount.bytes));
+        return new Zebibyte(Nullsafe.nullsafe(bytes.add(storageAmount.bytes)));
     }
 
     @Override
     public Zebibyte divide(final long divisor) {
-        return new Zebibyte(this.bytes.divide(BigInteger.valueOf(divisor)));
+        return new Zebibyte(Nullsafe.nullsafe(bytes.divide(BigInteger.valueOf(divisor))));
     }
 
     @Override
     public Zebibyte multiply(final long factor) {
-        return new Zebibyte(this.bytes.multiply(BigInteger.valueOf(factor)));
+        return new Zebibyte(Nullsafe.nullsafe(bytes.multiply(BigInteger.valueOf(factor))));
     }
 
     @Override
     public Zebibyte subtract(final long bytesToSubtract) {
-        return new Zebibyte(this.bytes.subtract(BigInteger.valueOf(bytesToSubtract)));
+        return new Zebibyte(Nullsafe.nullsafe(bytes.subtract(BigInteger.valueOf(bytesToSubtract))));
     }
 
     @Override
     public Zebibyte subtract(final StorageUnit<?> storageAmount) {
-        return new Zebibyte(this.bytes.subtract(storageAmount.bytes));
+        return new Zebibyte(Nullsafe.nullsafe(bytes.subtract(storageAmount.bytes)));
     }
 
     @Override

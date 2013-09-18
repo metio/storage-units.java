@@ -7,6 +7,8 @@ package com.github.sebhoss.units.storage;
 
 import java.math.BigInteger;
 
+import com.github.sebhoss.common.annotation.Nullsafe;
+
 /**
  * Yobibyte as specified in ISO IEC 80000-13:2008.
  */
@@ -21,7 +23,7 @@ public final class Yobibyte extends StorageUnit<Yobibyte> {
      * @return A new Yobibyte unit with the given value.
      */
     public static Yobibyte valueOf(final long numberOfBytes) {
-        return new Yobibyte(BigInteger.valueOf(numberOfBytes));
+        return new Yobibyte(Nullsafe.nullsafe(BigInteger.valueOf(numberOfBytes)));
     }
 
     Yobibyte(final BigInteger bytes) {
@@ -30,32 +32,32 @@ public final class Yobibyte extends StorageUnit<Yobibyte> {
 
     @Override
     public Yobibyte add(final long bytesToAdd) {
-        return new Yobibyte(this.bytes.add(BigInteger.valueOf(bytesToAdd)));
+        return new Yobibyte(Nullsafe.nullsafe(bytes.add(BigInteger.valueOf(bytesToAdd))));
     }
 
     @Override
     public Yobibyte add(final StorageUnit<?> storageAmount) {
-        return new Yobibyte(this.bytes.add(storageAmount.bytes));
+        return new Yobibyte(Nullsafe.nullsafe(bytes.add(storageAmount.bytes)));
     }
 
     @Override
     public Yobibyte divide(final long divisor) {
-        return new Yobibyte(this.bytes.divide(BigInteger.valueOf(divisor)));
+        return new Yobibyte(Nullsafe.nullsafe(bytes.divide(BigInteger.valueOf(divisor))));
     }
 
     @Override
     public Yobibyte multiply(final long factor) {
-        return new Yobibyte(this.bytes.multiply(BigInteger.valueOf(factor)));
+        return new Yobibyte(Nullsafe.nullsafe(bytes.multiply(BigInteger.valueOf(factor))));
     }
 
     @Override
     public Yobibyte subtract(final long bytesToSubtract) {
-        return new Yobibyte(this.bytes.subtract(BigInteger.valueOf(bytesToSubtract)));
+        return new Yobibyte(Nullsafe.nullsafe(bytes.subtract(BigInteger.valueOf(bytesToSubtract))));
     }
 
     @Override
     public Yobibyte subtract(final StorageUnit<?> storageAmount) {
-        return new Yobibyte(this.bytes.subtract(storageAmount.bytes));
+        return new Yobibyte(Nullsafe.nullsafe(bytes.subtract(storageAmount.bytes)));
     }
 
     @Override

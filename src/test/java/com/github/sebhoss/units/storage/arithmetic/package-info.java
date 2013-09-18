@@ -6,4 +6,5 @@
 /**
  * Tests for arithmetic operations between different storage units.
  */
+@com.github.sebhoss.common.annotation.NotNullByDefault
 package com.github.sebhoss.units.storage.arithmetic;
