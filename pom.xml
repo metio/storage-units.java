@@ -32,6 +32,14 @@
   <description>Collection of common units.</description>
 
   <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+  <!--                                 MODULES                                 -->
+  <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+  <modules>
+    <module>storage-units</module>
+    <module>weight-units</module>
+  </modules>
+
+  <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
   <!--                                  SOURCE                                 -->
   <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
   <scm>
@@ -67,9 +75,4 @@
       <scope>test</scope>
     </dependency>
   </dependencies>
-
-  <modules>
-    <module>storage-units</module>
-    <module>weight-units</module>
-  </modules>
 </project>
