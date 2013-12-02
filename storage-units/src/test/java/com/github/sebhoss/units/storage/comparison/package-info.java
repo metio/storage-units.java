@@ -7,5 +7,5 @@
 /**
  * Tests for comparison between different storage units.
  */
-@com.github.sebhoss.common.annotation.NotNullByDefault
+@com.github.sebhoss.nullanalysis.NotNullByDefault
 package com.github.sebhoss.units.storage.comparison;

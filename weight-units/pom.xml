@@ -14,7 +14,7 @@
   <!--                                 PARENT                                  -->
   <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
   <parent>
-    <groupId>com.github.sebhoss.units</groupId>
+    <groupId>com.github.sebhoss</groupId>
     <artifactId>common-units</artifactId>
     <version>1.0.0-SNAPSHOT</version>
   </parent>

@@ -8,7 +8,7 @@ package com.github.sebhoss.units.storage;
 
 import java.math.BigInteger;
 
-import com.github.sebhoss.common.annotation.Nullsafe;
+import com.github.sebhoss.nullanalysis.Nullsafe;
 
 /**
  * Mebibyte as specified in ISO IEC 80000-13:2008.

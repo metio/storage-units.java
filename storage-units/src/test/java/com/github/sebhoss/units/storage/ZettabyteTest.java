@@ -8,8 +8,8 @@ package com.github.sebhoss.units.storage;
 
 import java.math.BigInteger;
 
-import com.github.sebhoss.common.annotation.CompilerWarnings;
-import com.github.sebhoss.common.annotation.Nullsafe;
+import com.github.sebhoss.nullanalysis.Nullsafe;
+import com.github.sebhoss.warnings.CompilerWarnings;
 
 import org.junit.Assert;
 import org.junit.Test;

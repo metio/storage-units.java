@@ -12,7 +12,7 @@ import java.math.RoundingMode;
 
 import javax.annotation.Nullable;
 
-import com.github.sebhoss.common.annotation.Nullsafe;
+import com.github.sebhoss.nullanalysis.Nullsafe;
 
 /**
  * Abstract base class for all storage units. Provides common functionality for unit conversion, hashCode(), equals(),
