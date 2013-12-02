@@ -79,7 +79,11 @@
   <dependencies>
     <dependency>
       <groupId>com.github.sebhoss</groupId>
-      <artifactId>common-annotations</artifactId>
+      <artifactId>null-analysis</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.github.sebhoss</groupId>
+      <artifactId>suppress-warnings</artifactId>
     </dependency>
     <dependency>
       <groupId>junit</groupId>
