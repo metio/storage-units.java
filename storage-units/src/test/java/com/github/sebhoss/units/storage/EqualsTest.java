@@ -8,29 +8,22 @@ package com.github.sebhoss.units.storage;
 
 import com.github.sebhoss.warnings.CompilerWarnings;
 
-import org.junit.Assert;
+import nl.jqno.equalsverifier.EqualsVerifier;
+
 import org.junit.Test;
 
 /**
- * Test for toString() implementations of the storage units.
+ * Test for equals() implementations of the storage units.
  */
-@SuppressWarnings({ CompilerWarnings.NLS, CompilerWarnings.STATIC_METHOD })
+@SuppressWarnings({ CompilerWarnings.STATIC_METHOD })
 public class EqualsTest {
 
     /**
-     * Checks that {@link Kilobyte} and {@link Megabyte} can be compared to each other using the equals() method.
+     * Checks that storage units implement equals() correctly.
      */
     @Test
-    public void shouldEqualsKiloAndMegabyte() {
-        // Given
-        final Kilobyte kilo = Kilobyte.valueOf(50);
-        final Megabyte mega = Megabyte.valueOf(50);
-
-        // When
-        final boolean equals = kilo.equals(mega);
-
-        // Then
-        Assert.assertTrue("50 Bytes should always be equal to 50 Bytes, no matter the representation.", equals);
+    public void shouldImplementEqualsContract() {
+        EqualsVerifier.forExamples(Exabyte.valueOf(0), Exabyte.valueOf(1)).verify();
     }
 
 }

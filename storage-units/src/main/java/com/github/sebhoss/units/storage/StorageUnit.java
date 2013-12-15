@@ -9,6 +9,7 @@ package com.github.sebhoss.units.storage;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.math.RoundingMode;
+import java.util.Objects;
 
 import javax.annotation.Nullable;
 
@@ -335,16 +336,16 @@ public abstract class StorageUnit<T extends StorageUnit<T>> extends Number imple
     }
 
     @Override
-    public int hashCode() {
-        return this.bytes.hashCode();
+    public final int hashCode() {
+        return Objects.hashCode(this.bytes);
     }
 
     @Override
-    public boolean equals(final @Nullable Object other) {
+    public final boolean equals(final @Nullable Object other) {
         if (other instanceof StorageUnit<?>) {
             final StorageUnit<?> that = (StorageUnit<?>) other;
 
-            return this.bytes.equals(that.bytes);
+            return Objects.equals(this.bytes, that.bytes);
         }
 
         return false;
