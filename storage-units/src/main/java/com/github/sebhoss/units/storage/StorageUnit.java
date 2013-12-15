@@ -24,12 +24,8 @@ import com.github.sebhoss.nullanalysis.Nullsafe;
  */
 public abstract class StorageUnit<T extends StorageUnit<T>> extends Number implements Comparable<StorageUnit<?>> {
 
-    // TODO: FindBugs regression due to http://sourceforge.net/p/findbugs/bugs/1099/ and
-    // https://jira.codehaus.org/browse/MFINDBUGS-175
     private static final long  serialVersionUID     = -7344790980741118949L;
 
-    // TODO: FindBugs regression due to http://sourceforge.net/p/findbugs/bugs/1099/ and
-    // https://jira.codehaus.org/browse/MFINDBUGS-175
     private static final int   DEFAULT_SCALE        = 24;
 
     /** The storage unit base for binary numbers. Each step between the units dimensions is done with this base value. */
