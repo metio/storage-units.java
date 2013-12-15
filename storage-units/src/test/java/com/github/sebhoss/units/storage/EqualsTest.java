@@ -24,6 +24,21 @@ public class EqualsTest {
     @Test
     public void shouldImplementEqualsContract() {
         EqualsVerifier.forExamples(Exabyte.valueOf(0), Exabyte.valueOf(1)).verify();
+        EqualsVerifier.forExamples(Exbibyte.valueOf(0), Exbibyte.valueOf(1)).verify();
+        EqualsVerifier.forExamples(Gibibyte.valueOf(0), Gibibyte.valueOf(1)).verify();
+        EqualsVerifier.forExamples(Gigabyte.valueOf(0), Gigabyte.valueOf(1)).verify();
+        EqualsVerifier.forExamples(Kibibyte.valueOf(0), Kibibyte.valueOf(1)).verify();
+        EqualsVerifier.forExamples(Kilobyte.valueOf(0), Kilobyte.valueOf(1)).verify();
+        EqualsVerifier.forExamples(Mebibyte.valueOf(0), Mebibyte.valueOf(1)).verify();
+        EqualsVerifier.forExamples(Megabyte.valueOf(0), Megabyte.valueOf(1)).verify();
+        EqualsVerifier.forExamples(Pebibyte.valueOf(0), Pebibyte.valueOf(1)).verify();
+        EqualsVerifier.forExamples(Petabyte.valueOf(0), Petabyte.valueOf(1)).verify();
+        EqualsVerifier.forExamples(Tebibyte.valueOf(0), Tebibyte.valueOf(1)).verify();
+        EqualsVerifier.forExamples(Terabyte.valueOf(0), Terabyte.valueOf(1)).verify();
+        EqualsVerifier.forExamples(Yobibyte.valueOf(0), Yobibyte.valueOf(1)).verify();
+        EqualsVerifier.forExamples(Yottabyte.valueOf(0), Yottabyte.valueOf(1)).verify();
+        EqualsVerifier.forExamples(Zebibyte.valueOf(0), Zebibyte.valueOf(1)).verify();
+        EqualsVerifier.forExamples(Zettabyte.valueOf(0), Zettabyte.valueOf(1)).verify();
     }
 
 }
