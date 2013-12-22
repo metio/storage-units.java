@@ -22,28 +22,19 @@
   <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
   <!--                               INFORMATIONS                              -->
   <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
-  <artifactId>common-units</artifactId>
+  <artifactId>storage-units</artifactId>
   <version>1.0.0-SNAPSHOT</version>
-  <packaging>pom</packaging>
   <inceptionYear>2012</inceptionYear>
-  <url>https://github.com/sebhoss/common-units</url>
-  <name>Common Units</name>
-  <description>Collection of common units.</description>
-
-  <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
-  <!--                                 MODULES                                 -->
-  <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
-  <modules>
-    <module>storage-units</module>
-    <module>weight-units</module>
-  </modules>
+  <url>https://github.com/sebhoss/storage-units</url>
+  <name>Storage Units</name>
+  <description>Collection of storage units.</description>
 
   <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
   <!--                                  SOURCE                                 -->
   <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
   <scm>
-    <connection>scm:git:git://github.com/sebhoss/common-units.git</connection>
-    <developerConnection>scm:git:git@github.com:sebhoss/common-units.git</developerConnection>
+    <connection>scm:git:git://github.com/sebhoss/storage-units.git</connection>
+    <developerConnection>scm:git:git@github.com:sebhoss/storage-units.git</developerConnection>
     <tag>master</tag>
     <url>${project.url}</url>
   </scm>
@@ -60,6 +51,13 @@
   <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
   <dependencyManagement>
     <dependencies>
+      <dependency>
+        <groupId>com.github.sebhoss</groupId>
+        <artifactId>java-bom</artifactId>
+        <version>${version.bom}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
       <dependency>
         <groupId>com.github.sebhoss</groupId>
         <artifactId>sebhoss-bom</artifactId>
@@ -82,6 +80,10 @@
       <artifactId>null-analysis</artifactId>
     </dependency>
     <dependency>
+      <groupId>com.google.code.findbugs</groupId>
+      <artifactId>jsr305</artifactId>
+    </dependency>
+    <dependency>
       <groupId>com.github.sebhoss</groupId>
       <artifactId>suppress-warnings</artifactId>
     </dependency>
@@ -90,5 +92,33 @@
       <artifactId>junit</artifactId>
       <scope>test</scope>
     </dependency>
+    <dependency>
+      <groupId>nl.jqno.equalsverifier</groupId>
+      <artifactId>equalsverifier</artifactId>
+      <version>1.3.1</version>
+      <scope>test</scope>
+    </dependency>
   </dependencies>
+
+  <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+  <!--                                   BUILD                                 -->
+  <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-dependency-plugin</artifactId>
+        <version>2.8</version>
+        <configuration>
+          <!--
+            Ignore common annotations because @SuppressWarnings is not retained
+            in byte code. There the plugin detects a false positive.
+           -->
+          <usedDependencies>
+            <usedDependency>com.github.sebhoss:suppress-warnings</usedDependency>
+          </usedDependencies>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
 </project>
