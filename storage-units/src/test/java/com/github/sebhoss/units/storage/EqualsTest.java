@@ -10,6 +10,7 @@ import com.github.sebhoss.warnings.CompilerWarnings;
 
 import nl.jqno.equalsverifier.EqualsVerifier;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 /**
@@ -39,6 +40,16 @@ public class EqualsTest {
         EqualsVerifier.forExamples(Yottabyte.valueOf(0), Yottabyte.valueOf(1)).verify();
         EqualsVerifier.forExamples(Zebibyte.valueOf(0), Zebibyte.valueOf(1)).verify();
         EqualsVerifier.forExamples(Zettabyte.valueOf(0), Zettabyte.valueOf(1)).verify();
+    }
+
+    /**
+     * Checks that subclasses are equals.
+     */
+    @Test
+    @Ignore
+    public void shouldBeEqualsToOtherSubclasses() {
+        EqualsVerifier.forExamples(Exabyte.valueOf(0), Exbibyte.valueOf(0))
+                .verify();
     }
 
 }
