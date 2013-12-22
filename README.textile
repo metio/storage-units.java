@@ -1,8 +1,8 @@
-h1. Common-Units
+h1. Storage-Units
 
-p. This project contains common units. Currently only storage units according to "ISO IEC 80000-13:2008":http://en.wikipedia.org/wiki/ISO/IEC_80000 are implemented.
+p. Implementation of storage units according to "ISO IEC 80000-13:2008":http://en.wikipedia.org/wiki/ISO/IEC_80000.
 
-h2. Storage Units
+h2. Available Units
 
 p. Binary-based units:
 
