@@ -10,7 +10,6 @@ import com.github.sebhoss.warnings.CompilerWarnings;
 
 import nl.jqno.equalsverifier.EqualsVerifier;
 
-import org.junit.Ignore;
 import org.junit.Test;
 
 /**
@@ -24,32 +23,23 @@ public class EqualsTest {
      */
     @Test
     public void shouldImplementEqualsContract() {
-        EqualsVerifier.forExamples(Exabyte.valueOf(0), Exabyte.valueOf(1)).verify();
-        EqualsVerifier.forExamples(Exbibyte.valueOf(0), Exbibyte.valueOf(1)).verify();
-        EqualsVerifier.forExamples(Gibibyte.valueOf(0), Gibibyte.valueOf(1)).verify();
-        EqualsVerifier.forExamples(Gigabyte.valueOf(0), Gigabyte.valueOf(1)).verify();
-        EqualsVerifier.forExamples(Kibibyte.valueOf(0), Kibibyte.valueOf(1)).verify();
-        EqualsVerifier.forExamples(Kilobyte.valueOf(0), Kilobyte.valueOf(1)).verify();
-        EqualsVerifier.forExamples(Mebibyte.valueOf(0), Mebibyte.valueOf(1)).verify();
-        EqualsVerifier.forExamples(Megabyte.valueOf(0), Megabyte.valueOf(1)).verify();
-        EqualsVerifier.forExamples(Pebibyte.valueOf(0), Pebibyte.valueOf(1)).verify();
-        EqualsVerifier.forExamples(Petabyte.valueOf(0), Petabyte.valueOf(1)).verify();
-        EqualsVerifier.forExamples(Tebibyte.valueOf(0), Tebibyte.valueOf(1)).verify();
-        EqualsVerifier.forExamples(Terabyte.valueOf(0), Terabyte.valueOf(1)).verify();
-        EqualsVerifier.forExamples(Yobibyte.valueOf(0), Yobibyte.valueOf(1)).verify();
-        EqualsVerifier.forExamples(Yottabyte.valueOf(0), Yottabyte.valueOf(1)).verify();
-        EqualsVerifier.forExamples(Zebibyte.valueOf(0), Zebibyte.valueOf(1)).verify();
-        EqualsVerifier.forExamples(Zettabyte.valueOf(0), Zettabyte.valueOf(1)).verify();
-    }
-
-    /**
-     * Checks that subclasses are equals.
-     */
-    @Test
-    @Ignore
-    public void shouldBeEqualsToOtherSubclasses() {
-        EqualsVerifier.forExamples(Exabyte.valueOf(0), Exbibyte.valueOf(0))
-                .verify();
+        EqualsVerifier.forClass(StorageUnit.class).verify();
+        EqualsVerifier.forClass(Exabyte.class).verify();
+        EqualsVerifier.forClass(Exbibyte.class).verify();
+        EqualsVerifier.forClass(Gibibyte.class).verify();
+        EqualsVerifier.forClass(Gigabyte.class).verify();
+        EqualsVerifier.forClass(Kibibyte.class).verify();
+        EqualsVerifier.forClass(Kilobyte.class).verify();
+        EqualsVerifier.forClass(Mebibyte.class).verify();
+        EqualsVerifier.forClass(Megabyte.class).verify();
+        EqualsVerifier.forClass(Pebibyte.class).verify();
+        EqualsVerifier.forClass(Petabyte.class).verify();
+        EqualsVerifier.forClass(Tebibyte.class).verify();
+        EqualsVerifier.forClass(Terabyte.class).verify();
+        EqualsVerifier.forClass(Yobibyte.class).verify();
+        EqualsVerifier.forClass(Yottabyte.class).verify();
+        EqualsVerifier.forClass(Zebibyte.class).verify();
+        EqualsVerifier.forClass(Zettabyte.class).verify();
     }
 
 }
