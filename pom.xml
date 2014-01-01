@@ -16,14 +16,14 @@
   <parent>
     <groupId>com.github.sebhoss</groupId>
     <artifactId>java-parent</artifactId>
-    <version>1.0.9-SNAPSHOT</version>
+    <version>1.0.9</version>
   </parent>
 
   <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
   <!--                               INFORMATIONS                              -->
   <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
   <artifactId>storage-units</artifactId>
-  <version>1.0.0-SNAPSHOT</version>
+  <version>1.0.0</version>
   <inceptionYear>2012</inceptionYear>
   <url>https://github.com/sebhoss/storage-units</url>
   <name>Storage Units</name>
