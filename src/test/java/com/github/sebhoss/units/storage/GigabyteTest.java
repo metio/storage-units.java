@@ -39,7 +39,7 @@ public class GigabyteTest {
      * Checks that {@link Gigabyte#valueOf(long)} does not return <code>null</code>.
      */
     @Test
-    public void shouldCreateMegabyte() {
+    public void shouldCreateGigabyte() {
         // Given
         final StorageUnit<?> unit;
 
