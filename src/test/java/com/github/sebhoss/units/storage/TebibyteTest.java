@@ -15,43 +15,43 @@ import org.junit.Assert;
 import org.junit.Test;
 
 /**
- * Tests for Terabytes.
+ * Tests for Tebibytes.
  */
 @SuppressWarnings({ CompilerWarnings.NLS, CompilerWarnings.STATIC_METHOD })
-public class TerabyteTest {
+public class TebibyteTest {
 
     /**
-     * Checks that a new {@link Terabyte} instance must be created with a BigInteger.
+     * Checks that a new {@link Tebibyte} instance must be created with a BigInteger.
      */
     @Test
     public void shouldConstructWithBigInteger() {
         // Given
-        Terabyte unit;
+        Tebibyte unit;
 
         // When
-        unit = new Terabyte(Nullsafe.nullsafe(BigInteger.valueOf(1000)));
+        unit = new Tebibyte(Nullsafe.nullsafe(BigInteger.valueOf(1024)));
 
         // Then
         Assert.assertNotNull(unit);
     }
 
     /**
-     * Checks that {@link Terabyte#valueOf(long)} does not return <code>null</code>.
+     * Checks that {@link Tebibyte#valueOf(long)} does not return <code>null</code>.
      */
     @Test
-    public void shouldCreateTerabyte() {
+    public void shouldCreateTebibyte() {
         // Given
         final StorageUnit<?> unit;
 
         // When
-        unit = Terabyte.valueOf(1000);
+        unit = Tebibyte.valueOf(1024);
 
         // Then
         Assert.assertNotNull("The created unit should never be NULL.", unit);
     }
 
     /**
-     * Checks that {@link Terabyte#toString()} shows the correct symbol.
+     * Checks that {@link Tebibyte#toString()} shows the correct symbol.
      */
     @Test
     public void shouldShowCorrectSymbol() {
@@ -59,14 +59,14 @@ public class TerabyteTest {
         final StorageUnit<?> unit;
 
         // When
-        unit = StorageUnits.terabyte(1);
+        unit = StorageUnits.tebibyte(1);
 
         // Then
-        Assert.assertTrue("The symbol for terabyte should be 'TB'.", unit.toString().endsWith("TB"));
+        Assert.assertTrue("The symbol for tebibyte should be 'TiB'.", unit.toString().endsWith("TiB"));
     }
 
     /**
-     * Checks that {@link Terabyte#toString()} shows the correct value.
+     * Checks that {@link Tebibyte#toString()} shows the correct value.
      */
     @Test
     public void shouldShowCorrectValue() {
@@ -74,10 +74,10 @@ public class TerabyteTest {
         final StorageUnit<?> unit;
 
         // When
-        unit = StorageUnits.terabyte(1);
+        unit = StorageUnits.tebibyte(1);
 
         // Then
-        Assert.assertTrue("One terabyte should be interpreted as '1.00' terabytes.", unit.toString().startsWith("1.00"));
+        Assert.assertTrue("One tebibyte should be interpreted as '1.00' tebibytes.", unit.toString().startsWith("1.00"));
     }
 
 }
