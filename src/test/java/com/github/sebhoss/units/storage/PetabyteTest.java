@@ -39,7 +39,7 @@ public class PetabyteTest {
      * Checks that {@link Petabyte#valueOf(long)} does not return <code>null</code>.
      */
     @Test
-    public void shouldCreateMegabyte() {
+    public void shouldCreatePetabyte() {
         // Given
         final StorageUnit<?> unit;
 
