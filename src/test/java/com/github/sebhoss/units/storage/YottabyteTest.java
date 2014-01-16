@@ -39,7 +39,7 @@ public class YottabyteTest {
      * Checks that {@link Yottabyte#valueOf(long)} does not return <code>null</code>.
      */
     @Test
-    public void shouldCreateMegabyte() {
+    public void shouldCreateYottabyte() {
         // Given
         final StorageUnit<?> unit;
 
