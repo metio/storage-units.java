@@ -39,7 +39,7 @@ public class ZettabyteTest {
      * Checks that {@link Zettabyte#valueOf(long)} does not return <code>null</code>.
      */
     @Test
-    public void shouldCreateMegabyte() {
+    public void shouldCreateZettybyte() {
         // Given
         final StorageUnit<?> unit;
 
