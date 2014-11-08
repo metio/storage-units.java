@@ -8,17 +8,17 @@ package com.github.sebhoss.units.storage.arithmetic;
 
 import java.math.BigInteger;
 
-import org.junit.Assert;
-import org.junit.Test;
-
 import com.github.sebhoss.units.storage.StorageUnit;
 import com.github.sebhoss.units.storage.StorageUnits;
 import com.github.sebhoss.units.storage.Yottabyte;
 
+import org.junit.Assert;
+import org.junit.Test;
+
 /**
  * Tests for arithmetic operations with {@link Yottabyte}s.
  */
-@SuppressWarnings({ "static-method", "nls" })
+@SuppressWarnings({ "static-method", "nls", "null" })
 public class YottabyteArithmeticTest {
 
     /**

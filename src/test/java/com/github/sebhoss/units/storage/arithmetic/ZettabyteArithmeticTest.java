@@ -6,17 +6,17 @@
  */
 package com.github.sebhoss.units.storage.arithmetic;
 
-import org.junit.Assert;
-import org.junit.Test;
-
 import com.github.sebhoss.units.storage.StorageUnit;
 import com.github.sebhoss.units.storage.StorageUnits;
 import com.github.sebhoss.units.storage.Zettabyte;
 
+import org.junit.Assert;
+import org.junit.Test;
+
 /**
  * Tests for arithmetic operations with {@link Zettabyte}s.
  */
-@SuppressWarnings({ "static-method", "nls" })
+@SuppressWarnings({ "static-method", "nls", "null" })
 public class ZettabyteArithmeticTest {
 
     /**

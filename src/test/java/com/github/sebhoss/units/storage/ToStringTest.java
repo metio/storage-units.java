@@ -14,11 +14,11 @@ import org.junit.Test;
 /**
  * Test for toString() implementations of the storage units.
  */
-@SuppressWarnings({ CompilerWarnings.NLS, CompilerWarnings.STATIC_METHOD })
+@SuppressWarnings({ CompilerWarnings.NLS, CompilerWarnings.STATIC_METHOD, CompilerWarnings.NULL })
 public class ToStringTest {
 
     /**
-     * 
+     *
      */
     @Test
     public void shouldPrintTerabyte() {
@@ -33,7 +33,7 @@ public class ToStringTest {
     }
 
     /**
-     * 
+     *
      */
     @Test
     public void shouldPrintGigabyte() {
@@ -48,7 +48,7 @@ public class ToStringTest {
     }
 
     /**
-     * 
+     *
      */
     @Test
     public void shouldPrintPetabyte() {

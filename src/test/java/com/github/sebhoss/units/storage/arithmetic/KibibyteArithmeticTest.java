@@ -15,7 +15,7 @@ import org.junit.Test;
 /**
  * Tests for arithmetic operations with {@link Kibibyte}s.
  */
-@SuppressWarnings({ "static-method", "nls" })
+@SuppressWarnings({ "static-method", "nls", "null" })
 public class KibibyteArithmeticTest {
 
     /**

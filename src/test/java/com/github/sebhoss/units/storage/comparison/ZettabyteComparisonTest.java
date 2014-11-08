@@ -6,9 +6,6 @@
  */
 package com.github.sebhoss.units.storage.comparison;
 
-import org.junit.Assert;
-import org.junit.Test;
-
 import com.github.sebhoss.units.storage.Exabyte;
 import com.github.sebhoss.units.storage.Exbibyte;
 import com.github.sebhoss.units.storage.Gibibyte;
@@ -26,10 +23,13 @@ import com.github.sebhoss.units.storage.Yottabyte;
 import com.github.sebhoss.units.storage.Zebibyte;
 import com.github.sebhoss.units.storage.Zettabyte;
 
+import org.junit.Assert;
+import org.junit.Test;
+
 /**
  * Test for compareTo() implementations of the storage unit {@link Zettabyte}.
  */
-@SuppressWarnings({ "nls", "static-method" })
+@SuppressWarnings({ "nls", "static-method", "null" })
 public class ZettabyteComparisonTest {
 
     /**

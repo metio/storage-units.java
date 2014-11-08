@@ -7,5 +7,8 @@
 /**
  * Tests for arithmetic operations between different storage units.
  */
-@com.github.sebhoss.nullanalysis.NotNullByDefault
+@NonNullByDefault
 package com.github.sebhoss.units.storage.arithmetic;
+
+import org.eclipse.jdt.annotation.NonNullByDefault;
+

@@ -9,5 +9,8 @@
  *
  * @see <a href="https://github.com/sebhoss/common-units/README.textile">README</a>
  */
-@com.github.sebhoss.nullanalysis.NotNullByDefault
+@NonNullByDefault
 package com.github.sebhoss.units.storage;
+
+import org.eclipse.jdt.annotation.NonNullByDefault;
+

@@ -11,14 +11,14 @@ import java.math.BigInteger;
 import java.math.RoundingMode;
 import java.util.Objects;
 
-import javax.annotation.Nullable;
-
 import com.github.sebhoss.nullanalysis.Nullsafe;
+
+import org.eclipse.jdt.annotation.Nullable;
 
 /**
  * Abstract base class for all storage units. Provides common functionality for unit conversion, hashCode(), equals(),
  * compareTo(), toString(), doubleValue(), floatValue(), intValue() and longValue().
- * 
+ *
  * @param <T>
  *            The type of this storage unit.
  */
@@ -32,55 +32,55 @@ public abstract class StorageUnit<T extends StorageUnit<T>> extends Number imple
     static final BigInteger    BINARY_UNIT_BASE     = Nullsafe.nullsafe(BigInteger.valueOf(1024));
 
     static final BigInteger    BYTES_IN_A_KIBIBYTE  = Nullsafe.nullsafe(BigInteger.ONE
-                                                            .multiply(StorageUnit.BINARY_UNIT_BASE));
+            .multiply(StorageUnit.BINARY_UNIT_BASE));
 
     static final BigInteger    BYTES_IN_A_MEBIBYTE  = Nullsafe.nullsafe(StorageUnit.BYTES_IN_A_KIBIBYTE
-                                                            .multiply(StorageUnit.BINARY_UNIT_BASE));
+            .multiply(StorageUnit.BINARY_UNIT_BASE));
 
     static final BigInteger    BYTES_IN_A_GIBIBYTE  = Nullsafe.nullsafe(StorageUnit.BYTES_IN_A_MEBIBYTE
-                                                            .multiply(StorageUnit.BINARY_UNIT_BASE));
+            .multiply(StorageUnit.BINARY_UNIT_BASE));
 
     static final BigInteger    BYTES_IN_A_TEBIBYTE  = Nullsafe.nullsafe(StorageUnit.BYTES_IN_A_GIBIBYTE
-                                                            .multiply(StorageUnit.BINARY_UNIT_BASE));
+            .multiply(StorageUnit.BINARY_UNIT_BASE));
 
     static final BigInteger    BYTES_IN_A_PEBIBYTE  = Nullsafe.nullsafe(StorageUnit.BYTES_IN_A_TEBIBYTE
-                                                            .multiply(StorageUnit.BINARY_UNIT_BASE));
+            .multiply(StorageUnit.BINARY_UNIT_BASE));
 
     static final BigInteger    BYTES_IN_A_EXBIBYTE  = Nullsafe.nullsafe(StorageUnit.BYTES_IN_A_PEBIBYTE
-                                                            .multiply(StorageUnit.BINARY_UNIT_BASE));
+            .multiply(StorageUnit.BINARY_UNIT_BASE));
 
     static final BigInteger    BYTES_IN_A_ZEBIBYTE  = Nullsafe.nullsafe(StorageUnit.BYTES_IN_A_EXBIBYTE
-                                                            .multiply(StorageUnit.BINARY_UNIT_BASE));
+            .multiply(StorageUnit.BINARY_UNIT_BASE));
 
     static final BigInteger    BYTES_IN_A_YOBIBYTE  = Nullsafe.nullsafe(StorageUnit.BYTES_IN_A_ZEBIBYTE
-                                                            .multiply(StorageUnit.BINARY_UNIT_BASE));
+            .multiply(StorageUnit.BINARY_UNIT_BASE));
 
     /** The storage unit base for metric numbers. Each step between the units dimensions is done with this base value. */
     static final BigInteger    METRIC_UNIT_BASE     = Nullsafe.nullsafe(BigInteger.valueOf(1000));
 
     static final BigInteger    BYTES_IN_A_KILOBYTE  = Nullsafe.nullsafe(BigInteger.ONE
-                                                            .multiply(StorageUnit.METRIC_UNIT_BASE));
+            .multiply(StorageUnit.METRIC_UNIT_BASE));
 
     static final BigInteger    BYTES_IN_A_MEGABYTE  = Nullsafe.nullsafe(StorageUnit.BYTES_IN_A_KILOBYTE
-                                                            .multiply(StorageUnit.METRIC_UNIT_BASE));
+            .multiply(StorageUnit.METRIC_UNIT_BASE));
 
     static final BigInteger    BYTES_IN_A_GIGABYTE  = Nullsafe.nullsafe(StorageUnit.BYTES_IN_A_MEGABYTE
-                                                            .multiply(StorageUnit.METRIC_UNIT_BASE));
+            .multiply(StorageUnit.METRIC_UNIT_BASE));
 
     static final BigInteger    BYTES_IN_A_TERABYTE  = Nullsafe.nullsafe(StorageUnit.BYTES_IN_A_GIGABYTE
-                                                            .multiply(StorageUnit.METRIC_UNIT_BASE));
+            .multiply(StorageUnit.METRIC_UNIT_BASE));
 
     static final BigInteger    BYTES_IN_A_PETABYTE  = Nullsafe.nullsafe(StorageUnit.BYTES_IN_A_TERABYTE
-                                                            .multiply(StorageUnit.METRIC_UNIT_BASE));
+            .multiply(StorageUnit.METRIC_UNIT_BASE));
 
     static final BigInteger    BYTES_IN_A_EXABYTE   = Nullsafe.nullsafe(StorageUnit.BYTES_IN_A_PETABYTE
-                                                            .multiply(StorageUnit.METRIC_UNIT_BASE));
+            .multiply(StorageUnit.METRIC_UNIT_BASE));
 
     static final BigInteger    BYTES_IN_A_ZETTABYTE = Nullsafe.nullsafe(StorageUnit.BYTES_IN_A_EXABYTE
-                                                            .multiply(StorageUnit.METRIC_UNIT_BASE));
+            .multiply(StorageUnit.METRIC_UNIT_BASE));
 
     static final BigInteger    BYTES_IN_A_YOTTABYTE = Nullsafe.nullsafe(StorageUnit.BYTES_IN_A_ZETTABYTE
-                                                            .multiply(StorageUnit.METRIC_UNIT_BASE));
+            .multiply(StorageUnit.METRIC_UNIT_BASE));
 
     protected final BigInteger bytes;
 
@@ -348,8 +348,12 @@ public abstract class StorageUnit<T extends StorageUnit<T>> extends Number imple
     }
 
     @Override
-    public final int compareTo(final StorageUnit<?> that) {
-        return this.bytes.compareTo(that.bytes);
+    public final int compareTo(final @Nullable StorageUnit<?> that) {
+        if (that != null) {
+            return this.bytes.compareTo(that.bytes);
+        }
+
+        throw new NullPointerException("Can't compare against NULL object"); //$NON-NLS-1$
     }
 
     @Override
