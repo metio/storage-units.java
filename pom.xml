@@ -110,7 +110,7 @@
         <configuration>
           <!--
             Ignore common annotations because @SuppressWarnings is not retained
-            in byte code. There the plugin detects a false positive.
+            in byte code. Therefore the plugin detects a false positive.
            -->
           <usedDependencies>
             <usedDependency>com.github.sebhoss:suppress-warnings</usedDependency>
