@@ -7,8 +7,5 @@
 /**
  * Tests for comparison between different storage units.
  */
-@NonNullByDefault
 package com.github.sebhoss.units.storage.comparison;
-
-import org.eclipse.jdt.annotation.NonNullByDefault;
 

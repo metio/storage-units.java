@@ -43,7 +43,7 @@
   <!--                                PROPERTIES                               -->
   <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
   <properties>
-    <version.bom>3.0.0</version.bom>
+    <version.bom>3.0.1</version.bom>
   </properties>
 
   <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
@@ -78,10 +78,6 @@
     <dependency>
       <groupId>com.github.sebhoss</groupId>
       <artifactId>null-analysis</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.eclipse.jdt</groupId>
-      <artifactId>org.eclipse.jdt.annotation</artifactId>
     </dependency>
     <dependency>
       <groupId>com.github.sebhoss</groupId>

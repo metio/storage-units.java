@@ -29,7 +29,7 @@ import org.junit.Test;
 /**
  * Test for compareTo() implementations of the storage unit {@link Petabyte}.
  */
-@SuppressWarnings({ "nls", "static-method", "null" })
+@SuppressWarnings({ "nls", "static-method" })
 public class PetabyteComparisonTest {
 
     /**

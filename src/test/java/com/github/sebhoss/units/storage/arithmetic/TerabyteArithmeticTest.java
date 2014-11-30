@@ -16,7 +16,7 @@ import org.junit.Test;
 /**
  * Tests for arithmetic operations with {@link Terabyte}s.
  */
-@SuppressWarnings({ "static-method", "nls", "null" })
+@SuppressWarnings({ "static-method", "nls" })
 public class TerabyteArithmeticTest {
 
     /**

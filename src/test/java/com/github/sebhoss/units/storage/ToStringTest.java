@@ -14,7 +14,7 @@ import org.junit.Test;
 /**
  * Test for toString() implementations of the storage units.
  */
-@SuppressWarnings({ CompilerWarnings.NLS, CompilerWarnings.STATIC_METHOD, CompilerWarnings.NULL })
+@SuppressWarnings({ CompilerWarnings.NLS, CompilerWarnings.STATIC_METHOD })
 public class ToStringTest {
 
     /**
