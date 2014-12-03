@@ -1,4 +1,4 @@
-h1. Storage-Units !https://travis-ci.org/sebhoss/storage-units.png?branch=master!:https://travis-ci.org/sebhoss/storage-units "!https://www.ohloh.net/p/storage-units/widgets/project_thin_badge.gif!":https://www.ohloh.net/p/storage-units
+h1. Storage-Units !https://travis-ci.org/sebhoss/storage-units.png?branch=master!:https://travis-ci.org/sebhoss/storage-units "!https://www.ohloh.net/p/storage-units/widgets/project_thin_badge.gif!":https://www.ohloh.net/p/storage-units "!https://scan.coverity.com/projects/2658/badge.svg!":https://scan.coverity.com/projects/2658
 
 p. Implementation of storage units according to "ISO IEC 80000-13:2008":http://en.wikipedia.org/wiki/ISO/IEC_80000.
 
