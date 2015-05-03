@@ -43,7 +43,7 @@
   <!--                                PROPERTIES                               -->
   <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
   <properties>
-    <version.bom>3.0.1</version.bom>
+    <version.bom>3.0.4</version.bom>
 
     <coverage>0.25</coverage>
   </properties>
