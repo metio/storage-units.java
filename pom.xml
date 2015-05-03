@@ -16,7 +16,7 @@
   <parent>
     <groupId>com.github.sebhoss</groupId>
     <artifactId>java-parent</artifactId>
-    <version>1.0.10</version>
+    <version>1.0.11</version>
   </parent>
 
   <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
@@ -44,6 +44,8 @@
   <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
   <properties>
     <version.bom>3.0.1</version.bom>
+
+    <coverage>0.25</coverage>
   </properties>
 
   <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
