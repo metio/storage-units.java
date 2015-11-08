@@ -27,7 +27,7 @@
   <inceptionYear>2012</inceptionYear>
   <url>https://github.com/sebhoss/storage-units</url>
   <name>Storage Units</name>
-  <description>Collection of storage units.</description>
+  <description>Implementation of storage units according to ISO IEC 80000-13:2008.</description>
 
   <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
   <!--                                  SOURCE                                 -->
