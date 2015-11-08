@@ -28,8 +28,6 @@ package com.github.sebhoss.units.storage;
 
 import java.math.BigInteger;
 
-import com.github.sebhoss.nullanalysis.Nullsafe;
-
 /**
  * Gibibyte as specified in ISO IEC 80000-13:2008.
  */
@@ -43,7 +41,7 @@ public final class Gibibyte extends StorageUnit<Gibibyte> {
      * @return A new Gibibyte unit with the given value.
      */
     public static Gibibyte valueOf(final long numberOfBytes) {
-        return new Gibibyte(Nullsafe.nullsafe(BigInteger.valueOf(numberOfBytes)));
+        return new Gibibyte(BigInteger.valueOf(numberOfBytes));
     }
 
     Gibibyte(final BigInteger bytes) {
@@ -52,32 +50,32 @@ public final class Gibibyte extends StorageUnit<Gibibyte> {
 
     @Override
     public Gibibyte add(final long bytesToAdd) {
-        return new Gibibyte(Nullsafe.nullsafe(bytes.add(BigInteger.valueOf(bytesToAdd))));
+        return new Gibibyte(bytes.add(BigInteger.valueOf(bytesToAdd)));
     }
 
     @Override
     public Gibibyte add(final StorageUnit<?> storageAmount) {
-        return new Gibibyte(Nullsafe.nullsafe(bytes.add(storageAmount.bytes)));
+        return new Gibibyte(bytes.add(storageAmount.bytes));
     }
 
     @Override
     public Gibibyte divide(final long divisor) {
-        return new Gibibyte(Nullsafe.nullsafe(bytes.divide(BigInteger.valueOf(divisor))));
+        return new Gibibyte(bytes.divide(BigInteger.valueOf(divisor)));
     }
 
     @Override
     public Gibibyte multiply(final long factor) {
-        return new Gibibyte(Nullsafe.nullsafe(bytes.multiply(BigInteger.valueOf(factor))));
+        return new Gibibyte(bytes.multiply(BigInteger.valueOf(factor)));
     }
 
     @Override
     public Gibibyte subtract(final long bytesToSubtract) {
-        return new Gibibyte(Nullsafe.nullsafe(bytes.subtract(BigInteger.valueOf(bytesToSubtract))));
+        return new Gibibyte(bytes.subtract(BigInteger.valueOf(bytesToSubtract)));
     }
 
     @Override
     public Gibibyte subtract(final StorageUnit<?> storageAmount) {
-        return new Gibibyte(Nullsafe.nullsafe(bytes.subtract(storageAmount.bytes)));
+        return new Gibibyte(bytes.subtract(storageAmount.bytes));
     }
 
     @Override

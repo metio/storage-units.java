@@ -28,8 +28,6 @@ package com.github.sebhoss.units.storage;
 
 import java.math.BigInteger;
 
-import com.github.sebhoss.nullanalysis.Nullsafe;
-
 /**
  * Kibibyte as specified in ISO IEC 80000-13:2008.
  */
@@ -43,7 +41,7 @@ public final class Kibibyte extends StorageUnit<Kibibyte> {
      * @return A new Kibibyte unit with the given value.
      */
     public static Kibibyte valueOf(final long numberOfBytes) {
-        return new Kibibyte(Nullsafe.nullsafe(BigInteger.valueOf(numberOfBytes)));
+        return new Kibibyte(BigInteger.valueOf(numberOfBytes));
     }
 
     Kibibyte(final BigInteger bytes) {
@@ -52,32 +50,32 @@ public final class Kibibyte extends StorageUnit<Kibibyte> {
 
     @Override
     public Kibibyte add(final long bytesToAdd) {
-        return new Kibibyte(Nullsafe.nullsafe(bytes.add(BigInteger.valueOf(bytesToAdd))));
+        return new Kibibyte(bytes.add(BigInteger.valueOf(bytesToAdd)));
     }
 
     @Override
     public Kibibyte add(final StorageUnit<?> storageAmount) {
-        return new Kibibyte(Nullsafe.nullsafe(bytes.add(storageAmount.bytes)));
+        return new Kibibyte(bytes.add(storageAmount.bytes));
     }
 
     @Override
     public Kibibyte divide(final long divisor) {
-        return new Kibibyte(Nullsafe.nullsafe(bytes.divide(BigInteger.valueOf(divisor))));
+        return new Kibibyte(bytes.divide(BigInteger.valueOf(divisor)));
     }
 
     @Override
     public Kibibyte multiply(final long factor) {
-        return new Kibibyte(Nullsafe.nullsafe(bytes.multiply(BigInteger.valueOf(factor))));
+        return new Kibibyte(bytes.multiply(BigInteger.valueOf(factor)));
     }
 
     @Override
     public Kibibyte subtract(final long bytesToSubtract) {
-        return new Kibibyte(Nullsafe.nullsafe(bytes.subtract(BigInteger.valueOf(bytesToSubtract))));
+        return new Kibibyte(bytes.subtract(BigInteger.valueOf(bytesToSubtract)));
     }
 
     @Override
     public Kibibyte subtract(final StorageUnit<?> storageAmount) {
-        return new Kibibyte(Nullsafe.nullsafe(bytes.subtract(storageAmount.bytes)));
+        return new Kibibyte(bytes.subtract(storageAmount.bytes));
     }
 
     @Override

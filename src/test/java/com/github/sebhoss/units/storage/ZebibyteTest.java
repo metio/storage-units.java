@@ -28,7 +28,6 @@ package com.github.sebhoss.units.storage;
 
 import java.math.BigInteger;
 
-import com.github.sebhoss.nullanalysis.Nullsafe;
 import com.github.sebhoss.warnings.CompilerWarnings;
 
 import org.junit.Assert;
@@ -49,10 +48,10 @@ public class ZebibyteTest {
         Zebibyte unit;
 
         // When
-        unit = new Zebibyte(Nullsafe.nullsafe(BigInteger.valueOf(1024)));
+        unit = new Zebibyte(BigInteger.valueOf(1024));
 
         // Then
-        Assert.assertNotNull(unit);
+        Assert.assertNotNull("The created unit should never be NULL.", unit);
     }
 
     /**

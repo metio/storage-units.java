@@ -28,8 +28,6 @@ package com.github.sebhoss.units.storage;
 
 import java.math.BigInteger;
 
-import com.github.sebhoss.nullanalysis.Nullsafe;
-
 /**
  * Kilobyte as specified in ISO IEC 80000-13:2008.
  */
@@ -43,7 +41,7 @@ public class Kilobyte extends StorageUnit<Kilobyte> {
      * @return A new Kilobyte unit with the given value.
      */
     public static Kilobyte valueOf(final long numberOfBytes) {
-        return new Kilobyte(Nullsafe.nullsafe(BigInteger.valueOf(numberOfBytes)));
+        return new Kilobyte(BigInteger.valueOf(numberOfBytes));
     }
 
     Kilobyte(final BigInteger numberOfBytes) {
@@ -52,32 +50,32 @@ public class Kilobyte extends StorageUnit<Kilobyte> {
 
     @Override
     public Kilobyte add(final long bytesToAdd) {
-        return new Kilobyte(Nullsafe.nullsafe(bytes.add(BigInteger.valueOf(bytesToAdd))));
+        return new Kilobyte(bytes.add(BigInteger.valueOf(bytesToAdd)));
     }
 
     @Override
     public Kilobyte add(final StorageUnit<?> storageAmount) {
-        return new Kilobyte(Nullsafe.nullsafe(bytes.add(storageAmount.bytes)));
+        return new Kilobyte(bytes.add(storageAmount.bytes));
     }
 
     @Override
     public Kilobyte divide(final long divisor) {
-        return new Kilobyte(Nullsafe.nullsafe(bytes.divide(BigInteger.valueOf(divisor))));
+        return new Kilobyte(bytes.divide(BigInteger.valueOf(divisor)));
     }
 
     @Override
     public Kilobyte multiply(final long factor) {
-        return new Kilobyte(Nullsafe.nullsafe(bytes.multiply(BigInteger.valueOf(factor))));
+        return new Kilobyte(bytes.multiply(BigInteger.valueOf(factor)));
     }
 
     @Override
     public Kilobyte subtract(final long bytesToSubtract) {
-        return new Kilobyte(Nullsafe.nullsafe(bytes.subtract(BigInteger.valueOf(bytesToSubtract))));
+        return new Kilobyte(bytes.subtract(BigInteger.valueOf(bytesToSubtract)));
     }
 
     @Override
     public Kilobyte subtract(final StorageUnit<?> storageAmount) {
-        return new Kilobyte(Nullsafe.nullsafe(bytes.subtract(storageAmount.bytes)));
+        return new Kilobyte(bytes.subtract(storageAmount.bytes));
     }
 
     @Override

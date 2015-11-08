@@ -28,8 +28,6 @@ package com.github.sebhoss.units.storage;
 
 import java.math.BigInteger;
 
-import com.github.sebhoss.nullanalysis.Nullsafe;
-
 /**
  * Zettabyte as specified in ISO IEC 80000-13:2008.
  */
@@ -43,7 +41,7 @@ public class Zettabyte extends StorageUnit<Zettabyte> {
      * @return A new Zettabyte unit with the given value.
      */
     public static Zettabyte valueOf(final long numberOfBytes) {
-        return new Zettabyte(Nullsafe.nullsafe(BigInteger.valueOf(numberOfBytes)));
+        return new Zettabyte(BigInteger.valueOf(numberOfBytes));
     }
 
     Zettabyte(final BigInteger bytes) {
@@ -52,32 +50,32 @@ public class Zettabyte extends StorageUnit<Zettabyte> {
 
     @Override
     public Zettabyte add(final long bytesToAdd) {
-        return new Zettabyte(Nullsafe.nullsafe(bytes.add(BigInteger.valueOf(bytesToAdd))));
+        return new Zettabyte(bytes.add(BigInteger.valueOf(bytesToAdd)));
     }
 
     @Override
     public Zettabyte add(final StorageUnit<?> storageAmount) {
-        return new Zettabyte(Nullsafe.nullsafe(bytes.add(storageAmount.bytes)));
+        return new Zettabyte(bytes.add(storageAmount.bytes));
     }
 
     @Override
     public Zettabyte divide(final long divisor) {
-        return new Zettabyte(Nullsafe.nullsafe(bytes.divide(BigInteger.valueOf(divisor))));
+        return new Zettabyte(bytes.divide(BigInteger.valueOf(divisor)));
     }
 
     @Override
     public Zettabyte multiply(final long factor) {
-        return new Zettabyte(Nullsafe.nullsafe(bytes.multiply(BigInteger.valueOf(factor))));
+        return new Zettabyte(bytes.multiply(BigInteger.valueOf(factor)));
     }
 
     @Override
     public Zettabyte subtract(final long bytesToSubtract) {
-        return new Zettabyte(Nullsafe.nullsafe(bytes.subtract(BigInteger.valueOf(bytesToSubtract))));
+        return new Zettabyte(bytes.subtract(BigInteger.valueOf(bytesToSubtract)));
     }
 
     @Override
     public Zettabyte subtract(final StorageUnit<?> storageAmount) {
-        return new Zettabyte(Nullsafe.nullsafe(bytes.subtract(storageAmount.bytes)));
+        return new Zettabyte(bytes.subtract(storageAmount.bytes));
     }
 
     @Override

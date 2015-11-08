@@ -28,8 +28,6 @@ package com.github.sebhoss.units.storage;
 
 import java.math.BigInteger;
 
-import com.github.sebhoss.nullanalysis.Nullsafe;
-
 /**
  * Exbibyte as specified in ISO IEC 80000-13:2008.
  */
@@ -43,7 +41,7 @@ public final class Exbibyte extends StorageUnit<Exbibyte> {
      * @return A new Exbibyte unit with the given value.
      */
     public static Exbibyte valueOf(final long numberOfBytes) {
-        return new Exbibyte(Nullsafe.nullsafe(BigInteger.valueOf(numberOfBytes)));
+        return new Exbibyte(BigInteger.valueOf(numberOfBytes));
     }
 
     Exbibyte(final BigInteger bytes) {
@@ -52,32 +50,32 @@ public final class Exbibyte extends StorageUnit<Exbibyte> {
 
     @Override
     public Exbibyte add(final long bytesToAdd) {
-        return new Exbibyte(Nullsafe.nullsafe(bytes.add(BigInteger.valueOf(bytesToAdd))));
+        return new Exbibyte(bytes.add(BigInteger.valueOf(bytesToAdd)));
     }
 
     @Override
     public Exbibyte add(final StorageUnit<?> storageAmount) {
-        return new Exbibyte(Nullsafe.nullsafe(bytes.add(storageAmount.bytes)));
+        return new Exbibyte(bytes.add(storageAmount.bytes));
     }
 
     @Override
     public Exbibyte divide(final long divisor) {
-        return new Exbibyte(Nullsafe.nullsafe(bytes.divide(BigInteger.valueOf(divisor))));
+        return new Exbibyte(bytes.divide(BigInteger.valueOf(divisor)));
     }
 
     @Override
     public Exbibyte multiply(final long factor) {
-        return new Exbibyte(Nullsafe.nullsafe(bytes.multiply(BigInteger.valueOf(factor))));
+        return new Exbibyte(bytes.multiply(BigInteger.valueOf(factor)));
     }
 
     @Override
     public Exbibyte subtract(final long bytesToSubtract) {
-        return new Exbibyte(Nullsafe.nullsafe(bytes.subtract(BigInteger.valueOf(bytesToSubtract))));
+        return new Exbibyte(bytes.subtract(BigInteger.valueOf(bytesToSubtract)));
     }
 
     @Override
     public Exbibyte subtract(final StorageUnit<?> storageAmount) {
-        return new Exbibyte(Nullsafe.nullsafe(bytes.subtract(storageAmount.bytes)));
+        return new Exbibyte(bytes.subtract(storageAmount.bytes));
     }
 
     @Override

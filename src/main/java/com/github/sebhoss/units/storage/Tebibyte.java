@@ -28,8 +28,6 @@ package com.github.sebhoss.units.storage;
 
 import java.math.BigInteger;
 
-import com.github.sebhoss.nullanalysis.Nullsafe;
-
 /**
  * Tebibyte as specified in ISO IEC 80000-13:2008.
  */
@@ -44,7 +42,7 @@ public final class Tebibyte extends StorageUnit<Tebibyte> {
      * @return A new Tebibyte unit with the given value.
      */
     public static Tebibyte valueOf(final long numberOfBytes) {
-        return new Tebibyte(Nullsafe.nullsafe(BigInteger.valueOf(numberOfBytes)));
+        return new Tebibyte(BigInteger.valueOf(numberOfBytes));
     }
 
     Tebibyte(final BigInteger bytes) {
@@ -53,32 +51,32 @@ public final class Tebibyte extends StorageUnit<Tebibyte> {
 
     @Override
     public Tebibyte add(final long bytesToAdd) {
-        return new Tebibyte(Nullsafe.nullsafe(bytes.add(BigInteger.valueOf(bytesToAdd))));
+        return new Tebibyte(bytes.add(BigInteger.valueOf(bytesToAdd)));
     }
 
     @Override
     public Tebibyte add(final StorageUnit<?> storageAmount) {
-        return new Tebibyte(Nullsafe.nullsafe(bytes.add(storageAmount.bytes)));
+        return new Tebibyte(bytes.add(storageAmount.bytes));
     }
 
     @Override
     public Tebibyte divide(final long divisor) {
-        return new Tebibyte(Nullsafe.nullsafe(bytes.divide(BigInteger.valueOf(divisor))));
+        return new Tebibyte(bytes.divide(BigInteger.valueOf(divisor)));
     }
 
     @Override
     public Tebibyte multiply(final long factor) {
-        return new Tebibyte(Nullsafe.nullsafe(bytes.multiply(BigInteger.valueOf(factor))));
+        return new Tebibyte(bytes.multiply(BigInteger.valueOf(factor)));
     }
 
     @Override
     public Tebibyte subtract(final long bytesToSubtract) {
-        return new Tebibyte(Nullsafe.nullsafe(bytes.subtract(BigInteger.valueOf(bytesToSubtract))));
+        return new Tebibyte(bytes.subtract(BigInteger.valueOf(bytesToSubtract)));
     }
 
     @Override
     public Tebibyte subtract(final StorageUnit<?> storageAmount) {
-        return new Tebibyte(Nullsafe.nullsafe(bytes.subtract(storageAmount.bytes)));
+        return new Tebibyte(bytes.subtract(storageAmount.bytes));
     }
 
     @Override

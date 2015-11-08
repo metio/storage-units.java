@@ -28,8 +28,6 @@ package com.github.sebhoss.units.storage;
 
 import java.math.BigInteger;
 
-import com.github.sebhoss.nullanalysis.Nullsafe;
-
 /**
  *
  */
@@ -43,7 +41,8 @@ public final class StorageUnits {
     public static StorageUnit<?> binaryValueOf(final long bytes) {
         StorageUnit<?> unit = Kibibyte.valueOf(bytes);
 
-        if (bytes >= StorageUnit.BYTES_IN_A_MEBIBYTE.longValue() && bytes < StorageUnit.BYTES_IN_A_GIBIBYTE.longValue()) {
+        if (bytes >= StorageUnit.BYTES_IN_A_MEBIBYTE.longValue()
+                && bytes < StorageUnit.BYTES_IN_A_GIBIBYTE.longValue()) {
             unit = unit.asMebibyte();
         } else if (bytes >= StorageUnit.BYTES_IN_A_GIBIBYTE.longValue()
                 && bytes < StorageUnit.BYTES_IN_A_TEBIBYTE.longValue()) {
@@ -75,7 +74,8 @@ public final class StorageUnits {
     public static StorageUnit<?> metricValueOf(final long bytes) {
         StorageUnit<?> unit = Kilobyte.valueOf(bytes);
 
-        if (bytes >= StorageUnit.BYTES_IN_A_MEGABYTE.longValue() && bytes < StorageUnit.BYTES_IN_A_GIGABYTE.longValue()) {
+        if (bytes >= StorageUnit.BYTES_IN_A_MEGABYTE.longValue()
+                && bytes < StorageUnit.BYTES_IN_A_GIGABYTE.longValue()) {
             unit = unit.asMegabyte();
         } else if (bytes >= StorageUnit.BYTES_IN_A_GIGABYTE.longValue()
                 && bytes < StorageUnit.BYTES_IN_A_TERABYTE.longValue()) {
@@ -105,7 +105,7 @@ public final class StorageUnits {
      * @return A new Kibibyte unit with the given value.
      */
     public static Kibibyte kibibyte(final long amount) {
-        return new Kibibyte(Nullsafe.nullsafe(StorageUnit.BYTES_IN_A_KIBIBYTE.multiply(BigInteger.valueOf(amount))));
+        return new Kibibyte(StorageUnit.BYTES_IN_A_KIBIBYTE.multiply(BigInteger.valueOf(amount)));
     }
 
     /**
@@ -114,7 +114,7 @@ public final class StorageUnits {
      * @return A new Mebibyte unit with the given value.
      */
     public static Mebibyte mebibyte(final long amount) {
-        return new Mebibyte(Nullsafe.nullsafe(StorageUnit.BYTES_IN_A_MEBIBYTE.multiply(BigInteger.valueOf(amount))));
+        return new Mebibyte(StorageUnit.BYTES_IN_A_MEBIBYTE.multiply(BigInteger.valueOf(amount)));
     }
 
     /**
@@ -123,7 +123,7 @@ public final class StorageUnits {
      * @return A new Gibibyte unit with the given value.
      */
     public static Gibibyte gibibyte(final long amount) {
-        return new Gibibyte(Nullsafe.nullsafe(StorageUnit.BYTES_IN_A_GIBIBYTE.multiply(BigInteger.valueOf(amount))));
+        return new Gibibyte(StorageUnit.BYTES_IN_A_GIBIBYTE.multiply(BigInteger.valueOf(amount)));
     }
 
     /**
@@ -132,7 +132,7 @@ public final class StorageUnits {
      * @return A new Tebibyte unit with the given value.
      */
     public static Tebibyte tebibyte(final long amount) {
-        return new Tebibyte(Nullsafe.nullsafe(StorageUnit.BYTES_IN_A_TEBIBYTE.multiply(BigInteger.valueOf(amount))));
+        return new Tebibyte(StorageUnit.BYTES_IN_A_TEBIBYTE.multiply(BigInteger.valueOf(amount)));
     }
 
     /**
@@ -141,7 +141,7 @@ public final class StorageUnits {
      * @return A new Pebibyte unit with the given value.
      */
     public static Pebibyte pebibyte(final long amount) {
-        return new Pebibyte(Nullsafe.nullsafe(StorageUnit.BYTES_IN_A_PEBIBYTE.multiply(BigInteger.valueOf(amount))));
+        return new Pebibyte(StorageUnit.BYTES_IN_A_PEBIBYTE.multiply(BigInteger.valueOf(amount)));
     }
 
     /**
@@ -150,7 +150,7 @@ public final class StorageUnits {
      * @return A new Exbibyte unit with the given value.
      */
     public static Exbibyte exbibyte(final long amount) {
-        return new Exbibyte(Nullsafe.nullsafe(StorageUnit.BYTES_IN_A_EXBIBYTE.multiply(BigInteger.valueOf(amount))));
+        return new Exbibyte(StorageUnit.BYTES_IN_A_EXBIBYTE.multiply(BigInteger.valueOf(amount)));
     }
 
     /**
@@ -159,7 +159,7 @@ public final class StorageUnits {
      * @return A new Zebibyte unit with the given value.
      */
     public static Zebibyte zebibyte(final long amount) {
-        return new Zebibyte(Nullsafe.nullsafe(StorageUnit.BYTES_IN_A_ZEBIBYTE.multiply(BigInteger.valueOf(amount))));
+        return new Zebibyte(StorageUnit.BYTES_IN_A_ZEBIBYTE.multiply(BigInteger.valueOf(amount)));
     }
 
     /**
@@ -168,7 +168,7 @@ public final class StorageUnits {
      * @return A new Yobibyte unit with the given value.
      */
     public static Yobibyte yobibyte(final long amount) {
-        return new Yobibyte(Nullsafe.nullsafe(StorageUnit.BYTES_IN_A_YOBIBYTE.multiply(BigInteger.valueOf(amount))));
+        return new Yobibyte(StorageUnit.BYTES_IN_A_YOBIBYTE.multiply(BigInteger.valueOf(amount)));
     }
 
     /**
@@ -177,7 +177,7 @@ public final class StorageUnits {
      * @return A new Kilobyte unit with the given value.
      */
     public static Kilobyte kilobyte(final long amount) {
-        return new Kilobyte(Nullsafe.nullsafe(StorageUnit.BYTES_IN_A_KILOBYTE.multiply(BigInteger.valueOf(amount))));
+        return new Kilobyte(StorageUnit.BYTES_IN_A_KILOBYTE.multiply(BigInteger.valueOf(amount)));
     }
 
     /**
@@ -186,7 +186,7 @@ public final class StorageUnits {
      * @return A new Megabyte unit with the given value.
      */
     public static Megabyte megabyte(final long amount) {
-        return new Megabyte(Nullsafe.nullsafe(StorageUnit.BYTES_IN_A_MEGABYTE.multiply(BigInteger.valueOf(amount))));
+        return new Megabyte(StorageUnit.BYTES_IN_A_MEGABYTE.multiply(BigInteger.valueOf(amount)));
     }
 
     /**
@@ -195,7 +195,7 @@ public final class StorageUnits {
      * @return A new Gigabyte unit with the given value.
      */
     public static Gigabyte gigabyte(final long amount) {
-        return new Gigabyte(Nullsafe.nullsafe(StorageUnit.BYTES_IN_A_GIGABYTE.multiply(BigInteger.valueOf(amount))));
+        return new Gigabyte(StorageUnit.BYTES_IN_A_GIGABYTE.multiply(BigInteger.valueOf(amount)));
     }
 
     /**
@@ -204,7 +204,7 @@ public final class StorageUnits {
      * @return A new Terabyte unit with the given value.
      */
     public static Terabyte terabyte(final long amount) {
-        return new Terabyte(Nullsafe.nullsafe(StorageUnit.BYTES_IN_A_TERABYTE.multiply(BigInteger.valueOf(amount))));
+        return new Terabyte(StorageUnit.BYTES_IN_A_TERABYTE.multiply(BigInteger.valueOf(amount)));
     }
 
     /**
@@ -213,7 +213,7 @@ public final class StorageUnits {
      * @return A new Petabyte unit with the given value.
      */
     public static Petabyte petabyte(final long amount) {
-        return new Petabyte(Nullsafe.nullsafe(StorageUnit.BYTES_IN_A_PETABYTE.multiply(BigInteger.valueOf(amount))));
+        return new Petabyte(StorageUnit.BYTES_IN_A_PETABYTE.multiply(BigInteger.valueOf(amount)));
     }
 
     /**
@@ -222,7 +222,7 @@ public final class StorageUnits {
      * @return A new Exabyte unit with the given value.
      */
     public static Exabyte exabyte(final long amount) {
-        return new Exabyte(Nullsafe.nullsafe(StorageUnit.BYTES_IN_A_EXABYTE.multiply(BigInteger.valueOf(amount))));
+        return new Exabyte(StorageUnit.BYTES_IN_A_EXABYTE.multiply(BigInteger.valueOf(amount)));
     }
 
     /**
@@ -231,7 +231,7 @@ public final class StorageUnits {
      * @return A new Zettabyte unit with the given value.
      */
     public static Zettabyte zettabyte(final long amount) {
-        return new Zettabyte(Nullsafe.nullsafe(StorageUnit.BYTES_IN_A_ZETTABYTE.multiply(BigInteger.valueOf(amount))));
+        return new Zettabyte(StorageUnit.BYTES_IN_A_ZETTABYTE.multiply(BigInteger.valueOf(amount)));
     }
 
     /**
@@ -240,7 +240,7 @@ public final class StorageUnits {
      * @return A new Yottabyte unit with the given value.
      */
     public static Yottabyte yottabyte(final long amount) {
-        return new Yottabyte(Nullsafe.nullsafe(StorageUnit.BYTES_IN_A_YOTTABYTE.multiply(BigInteger.valueOf(amount))));
+        return new Yottabyte(StorageUnit.BYTES_IN_A_YOTTABYTE.multiply(BigInteger.valueOf(amount)));
     }
 
     private StorageUnits() {

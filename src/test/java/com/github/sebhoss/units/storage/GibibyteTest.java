@@ -28,7 +28,6 @@ package com.github.sebhoss.units.storage;
 
 import java.math.BigInteger;
 
-import com.github.sebhoss.nullanalysis.Nullsafe;
 import com.github.sebhoss.warnings.CompilerWarnings;
 
 import org.junit.Assert;
@@ -49,10 +48,10 @@ public class GibibyteTest {
         Gibibyte unit;
 
         // When
-        unit = new Gibibyte(Nullsafe.nullsafe(BigInteger.valueOf(1024)));
+        unit = new Gibibyte(BigInteger.valueOf(1024));
 
         // Then
-        Assert.assertNotNull(unit);
+        Assert.assertNotNull("The created unit should never be NULL.", unit);
     }
 
     /**
@@ -97,7 +96,8 @@ public class GibibyteTest {
         unit = StorageUnits.gibibyte(1);
 
         // Then
-        Assert.assertTrue("One gibibyte should be interpreted as '1.00' gibibytes.", unit.toString().startsWith("1.00"));
+        Assert.assertTrue("One gibibyte should be interpreted as '1.00' gibibytes.",
+                unit.toString().startsWith("1.00"));
     }
 
 }

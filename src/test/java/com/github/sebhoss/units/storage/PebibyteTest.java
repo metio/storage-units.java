@@ -28,7 +28,6 @@ package com.github.sebhoss.units.storage;
 
 import java.math.BigInteger;
 
-import com.github.sebhoss.nullanalysis.Nullsafe;
 import com.github.sebhoss.warnings.CompilerWarnings;
 
 import org.junit.Assert;
@@ -49,10 +48,10 @@ public class PebibyteTest {
         Pebibyte unit;
 
         // When
-        unit = new Pebibyte(Nullsafe.nullsafe(BigInteger.valueOf(1000)));
+        unit = new Pebibyte(BigInteger.valueOf(1000));
 
         // Then
-        Assert.assertNotNull(unit);
+        Assert.assertNotNull("The created unit should never be NULL.", unit);
     }
 
     /**
@@ -97,7 +96,8 @@ public class PebibyteTest {
         unit = StorageUnits.pebibyte(1);
 
         // Then
-        Assert.assertTrue("One pebibyte should be interpreted as '1.00' pebibytes.", unit.toString().startsWith("1.00"));
+        Assert.assertTrue("One pebibyte should be interpreted as '1.00' pebibytes.",
+                unit.toString().startsWith("1.00"));
     }
 
 }

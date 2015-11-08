@@ -28,8 +28,6 @@ package com.github.sebhoss.units.storage;
 
 import java.math.BigInteger;
 
-import com.github.sebhoss.nullanalysis.Nullsafe;
-
 /**
  * Yottabyte as specified in ISO IEC 80000-13:2008.
  */
@@ -43,7 +41,7 @@ public class Yottabyte extends StorageUnit<Yottabyte> {
      * @return A new Yottabyte unit with the given value.
      */
     public static Yottabyte valueOf(final long numberOfBytes) {
-        return new Yottabyte(Nullsafe.nullsafe(BigInteger.valueOf(numberOfBytes)));
+        return new Yottabyte(BigInteger.valueOf(numberOfBytes));
     }
 
     Yottabyte(final BigInteger bytes) {
@@ -52,32 +50,32 @@ public class Yottabyte extends StorageUnit<Yottabyte> {
 
     @Override
     public Yottabyte add(final long bytesToAdd) {
-        return new Yottabyte(Nullsafe.nullsafe(bytes.add(BigInteger.valueOf(bytesToAdd))));
+        return new Yottabyte(bytes.add(BigInteger.valueOf(bytesToAdd)));
     }
 
     @Override
     public Yottabyte add(final StorageUnit<?> storageAmount) {
-        return new Yottabyte(Nullsafe.nullsafe(bytes.add(storageAmount.bytes)));
+        return new Yottabyte(bytes.add(storageAmount.bytes));
     }
 
     @Override
     public Yottabyte divide(final long divisor) {
-        return new Yottabyte(Nullsafe.nullsafe(bytes.divide(BigInteger.valueOf(divisor))));
+        return new Yottabyte(bytes.divide(BigInteger.valueOf(divisor)));
     }
 
     @Override
     public Yottabyte multiply(final long factor) {
-        return new Yottabyte(Nullsafe.nullsafe(bytes.multiply(BigInteger.valueOf(factor))));
+        return new Yottabyte(bytes.multiply(BigInteger.valueOf(factor)));
     }
 
     @Override
     public Yottabyte subtract(final long bytesToSubtract) {
-        return new Yottabyte(Nullsafe.nullsafe(bytes.subtract(BigInteger.valueOf(bytesToSubtract))));
+        return new Yottabyte(bytes.subtract(BigInteger.valueOf(bytesToSubtract)));
     }
 
     @Override
     public Yottabyte subtract(final StorageUnit<?> storageAmount) {
-        return new Yottabyte(Nullsafe.nullsafe(bytes.subtract(storageAmount.bytes)));
+        return new Yottabyte(bytes.subtract(storageAmount.bytes));
     }
 
     @Override

@@ -28,7 +28,6 @@ package com.github.sebhoss.units.storage;
 
 import java.math.BigInteger;
 
-import com.github.sebhoss.nullanalysis.Nullsafe;
 import com.github.sebhoss.warnings.CompilerWarnings;
 
 import org.junit.Assert;
@@ -49,10 +48,10 @@ public class TebibyteTest {
         Tebibyte unit;
 
         // When
-        unit = new Tebibyte(Nullsafe.nullsafe(BigInteger.valueOf(1024)));
+        unit = new Tebibyte(BigInteger.valueOf(1024));
 
         // Then
-        Assert.assertNotNull(unit);
+        Assert.assertNotNull("The created unit should never be NULL.", unit);
     }
 
     /**
@@ -97,7 +96,8 @@ public class TebibyteTest {
         unit = StorageUnits.tebibyte(1);
 
         // Then
-        Assert.assertTrue("One tebibyte should be interpreted as '1.00' tebibytes.", unit.toString().startsWith("1.00"));
+        Assert.assertTrue("One tebibyte should be interpreted as '1.00' tebibytes.",
+                unit.toString().startsWith("1.00"));
     }
 
 }

@@ -49,7 +49,7 @@ public class ToStringTest {
         final String representation = unit.toString();
 
         // Then
-        Assert.assertEquals("2.00 TB", representation);
+        Assert.assertEquals("Terabytes are not printed correctly", "2.00 TB", representation);
     }
 
     /**
@@ -64,7 +64,7 @@ public class ToStringTest {
         final String representation = unit.toString();
 
         // Then
-        Assert.assertEquals("1.20 GB", representation);
+        Assert.assertEquals("Gigabytes are not printed correctly", "1.20 GB", representation);
     }
 
     /**
@@ -79,7 +79,7 @@ public class ToStringTest {
         final String representation = unit.toString();
 
         // Then
-        Assert.assertEquals("0.75 PB", representation);
+        Assert.assertEquals("Petabytes are not printed correctly", "0.75 PB", representation);
     }
 
 }
