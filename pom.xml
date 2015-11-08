@@ -75,21 +75,7 @@
     <dependencies>
       <dependency>
         <groupId>com.github.sebhoss.bom</groupId>
-        <artifactId>java-bom</artifactId>
-        <version>${version.bom}</version>
-        <type>pom</type>
-        <scope>import</scope>
-      </dependency>
-      <dependency>
-        <groupId>com.github.sebhoss.bom</groupId>
-        <artifactId>sebhoss-bom</artifactId>
-        <version>${version.bom}</version>
-        <type>pom</type>
-        <scope>import</scope>
-      </dependency>
-      <dependency>
-        <groupId>com.github.sebhoss.bom</groupId>
-        <artifactId>testing-bom</artifactId>
+        <artifactId>auto-managed</artifactId>
         <version>${version.bom}</version>
         <type>pom</type>
         <scope>import</scope>
