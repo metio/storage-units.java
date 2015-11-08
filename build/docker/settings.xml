@@ -33,7 +33,7 @@
     <mirror>
       <mirrorOf>*</mirrorOf>
       <name>remote-repos</name>
-      <url>http://localhost:60000/content/groups/public/</url>
+      <url>http://nexus:8081/content/groups/public/</url>
       <id>remote-repos</id>
     </mirror>
   </mirrors>
