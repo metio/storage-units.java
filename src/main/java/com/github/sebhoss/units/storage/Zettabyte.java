@@ -35,6 +35,10 @@ public class Zettabyte extends StorageUnit<Zettabyte> {
 
     private static final long serialVersionUID = 8849006574018911826L;
 
+    Zettabyte(final BigInteger bytes) {
+        super(bytes);
+    }
+
     /**
      * @param numberOfBytes
      *            The amount of bytes the zettabytes contains.
@@ -44,8 +48,13 @@ public class Zettabyte extends StorageUnit<Zettabyte> {
         return new Zettabyte(BigInteger.valueOf(numberOfBytes));
     }
 
-    Zettabyte(final BigInteger bytes) {
-        super(bytes);
+    /**
+     * @param numberOfBytes
+     *            The amount of bytes the zettabytes contains.
+     * @return A new Zettabyte unit with the given value.
+     */
+    public static Zettabyte valueOf(final Long numberOfBytes) {
+        return valueOf(numberOfBytes.longValue());
     }
 
     @Override

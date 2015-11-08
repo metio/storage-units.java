@@ -29,9 +29,13 @@ package com.github.sebhoss.units.storage;
 import java.math.BigInteger;
 
 /**
- *
+ * Factory for storage units.
  */
 public final class StorageUnits {
+
+    private StorageUnits() {
+        // Hidden constructor.
+    }
 
     /**
      * @param bytes
@@ -39,27 +43,30 @@ public final class StorageUnits {
      * @return The appropriate binary-prefixed unit for the given amount of bytes.
      */
     public static StorageUnit<?> binaryValueOf(final long bytes) {
+        return binaryValueOf(BigInteger.valueOf(bytes));
+    }
+
+    /**
+     * @param bytes
+     *            The amount to bytes to represent.
+     * @return The appropriate binary-prefixed unit for the given amount of bytes.
+     */
+    public static StorageUnit<?> binaryValueOf(final BigInteger bytes) {
         StorageUnit<?> unit = Kibibyte.valueOf(bytes);
 
-        if (bytes >= StorageUnit.BYTES_IN_A_MEBIBYTE.longValue()
-                && bytes < StorageUnit.BYTES_IN_A_GIBIBYTE.longValue()) {
+        if (inbetween(StorageUnit.BYTES_IN_A_MEBIBYTE, bytes, StorageUnit.BYTES_IN_A_GIBIBYTE)) {
             unit = unit.asMebibyte();
-        } else if (bytes >= StorageUnit.BYTES_IN_A_GIBIBYTE.longValue()
-                && bytes < StorageUnit.BYTES_IN_A_TEBIBYTE.longValue()) {
+        } else if (inbetween(StorageUnit.BYTES_IN_A_GIBIBYTE, bytes, StorageUnit.BYTES_IN_A_TEBIBYTE)) {
             unit = unit.asGibibyte();
-        } else if (bytes >= StorageUnit.BYTES_IN_A_TEBIBYTE.longValue()
-                && bytes < StorageUnit.BYTES_IN_A_PEBIBYTE.longValue()) {
+        } else if (inbetween(StorageUnit.BYTES_IN_A_TEBIBYTE, bytes, StorageUnit.BYTES_IN_A_PEBIBYTE)) {
             unit = unit.asTebibyte();
-        } else if (bytes >= StorageUnit.BYTES_IN_A_PEBIBYTE.longValue()
-                && bytes < StorageUnit.BYTES_IN_A_EXBIBYTE.longValue()) {
+        } else if (inbetween(StorageUnit.BYTES_IN_A_PEBIBYTE, bytes, StorageUnit.BYTES_IN_A_EXBIBYTE)) {
             unit = unit.asPebibyte();
-        } else if (bytes >= StorageUnit.BYTES_IN_A_EXBIBYTE.longValue()
-                && bytes < StorageUnit.BYTES_IN_A_ZEBIBYTE.longValue()) {
+        } else if (inbetween(StorageUnit.BYTES_IN_A_EXBIBYTE, bytes, StorageUnit.BYTES_IN_A_ZEBIBYTE)) {
             unit = unit.asExbibyte();
-        } else if (bytes >= StorageUnit.BYTES_IN_A_ZEBIBYTE.longValue()
-                && bytes < StorageUnit.BYTES_IN_A_YOBIBYTE.longValue()) {
+        } else if (inbetween(StorageUnit.BYTES_IN_A_ZEBIBYTE, bytes, StorageUnit.BYTES_IN_A_YOBIBYTE)) {
             unit = unit.asZebibyte();
-        } else if (bytes >= StorageUnit.BYTES_IN_A_YOBIBYTE.longValue()) {
+        } else if (greaterThanEquals(bytes, StorageUnit.BYTES_IN_A_YOBIBYTE)) {
             unit = unit.asYobibyte();
         }
 
@@ -72,31 +79,51 @@ public final class StorageUnits {
      * @return The appropriate metric-prefixed unit for the given amount of bytes.
      */
     public static StorageUnit<?> metricValueOf(final long bytes) {
+        return metricValueOf(BigInteger.valueOf(bytes));
+    }
+
+    /**
+     * @param bytes
+     *            The amount of bytes to represent.
+     * @return The appropriate metric-prefixed unit for the given amount of bytes.
+     */
+    public static StorageUnit<?> metricValueOf(final BigInteger bytes) {
         StorageUnit<?> unit = Kilobyte.valueOf(bytes);
 
-        if (bytes >= StorageUnit.BYTES_IN_A_MEGABYTE.longValue()
-                && bytes < StorageUnit.BYTES_IN_A_GIGABYTE.longValue()) {
+        if (inbetween(StorageUnit.BYTES_IN_A_MEGABYTE, bytes, StorageUnit.BYTES_IN_A_GIGABYTE)) {
             unit = unit.asMegabyte();
-        } else if (bytes >= StorageUnit.BYTES_IN_A_GIGABYTE.longValue()
-                && bytes < StorageUnit.BYTES_IN_A_TERABYTE.longValue()) {
+        } else if (inbetween(StorageUnit.BYTES_IN_A_GIGABYTE, bytes, StorageUnit.BYTES_IN_A_TERABYTE)) {
             unit = unit.asGigabyte();
-        } else if (bytes >= StorageUnit.BYTES_IN_A_TERABYTE.longValue()
-                && bytes < StorageUnit.BYTES_IN_A_PETABYTE.longValue()) {
+        } else if (inbetween(StorageUnit.BYTES_IN_A_TERABYTE, bytes, StorageUnit.BYTES_IN_A_PETABYTE)) {
             unit = unit.asTerabyte();
-        } else if (bytes >= StorageUnit.BYTES_IN_A_PETABYTE.longValue()
-                && bytes < StorageUnit.BYTES_IN_A_EXABYTE.longValue()) {
+        } else if (inbetween(StorageUnit.BYTES_IN_A_PETABYTE, bytes, StorageUnit.BYTES_IN_A_EXABYTE)) {
             unit = unit.asPetabyte();
-        } else if (bytes >= StorageUnit.BYTES_IN_A_EXABYTE.longValue()
-                && bytes < StorageUnit.BYTES_IN_A_ZETTABYTE.longValue()) {
+        } else if (inbetween(StorageUnit.BYTES_IN_A_EXABYTE, bytes, StorageUnit.BYTES_IN_A_ZETTABYTE)) {
             unit = unit.asExabyte();
-        } else if (bytes >= StorageUnit.BYTES_IN_A_ZETTABYTE.longValue()
-                && bytes < StorageUnit.BYTES_IN_A_YOTTABYTE.longValue()) {
+        } else if (inbetween(StorageUnit.BYTES_IN_A_ZETTABYTE, bytes, StorageUnit.BYTES_IN_A_YOTTABYTE)) {
             unit = unit.asZettabyte();
-        } else if (bytes >= StorageUnit.BYTES_IN_A_YOTTABYTE.longValue()) {
+        } else if (greaterThanEquals(bytes, StorageUnit.BYTES_IN_A_YOTTABYTE)) {
             unit = unit.asYottabyte();
         }
 
         return unit;
+    }
+
+    private static boolean inbetween(final BigInteger start, final BigInteger value, final BigInteger endExclusive) {
+        return greaterThanEquals(value, start) && value.compareTo(endExclusive) < 0;
+    }
+
+    private static boolean greaterThanEquals(final BigInteger value, final BigInteger comparison) {
+        return value.compareTo(comparison) > 0 || value.compareTo(comparison) == 0;
+    }
+
+    /**
+     * @param amount
+     *            The amount of kibibytes to create.
+     * @return A new Kibibyte unit with the given value.
+     */
+    public static Kibibyte kibibyte(final Long amount) {
+        return kibibyte(amount.longValue());
     }
 
     /**
@@ -105,7 +132,25 @@ public final class StorageUnits {
      * @return A new Kibibyte unit with the given value.
      */
     public static Kibibyte kibibyte(final long amount) {
-        return new Kibibyte(StorageUnit.BYTES_IN_A_KIBIBYTE.multiply(BigInteger.valueOf(amount)));
+        return kibibyte(BigInteger.valueOf(amount));
+    }
+
+    /**
+     * @param amount
+     *            The amount of kibibytes to create.
+     * @return A new Kibibyte unit with the given value.
+     */
+    public static Kibibyte kibibyte(final BigInteger amount) {
+        return new Kibibyte(StorageUnit.BYTES_IN_A_KIBIBYTE.multiply(amount));
+    }
+
+    /**
+     * @param amount
+     *            The amount of mebibytes to create.
+     * @return A new Mebibyte unit with the given value.
+     */
+    public static Mebibyte mebibyte(final Long amount) {
+        return mebibyte(amount.longValue());
     }
 
     /**
@@ -114,7 +159,25 @@ public final class StorageUnits {
      * @return A new Mebibyte unit with the given value.
      */
     public static Mebibyte mebibyte(final long amount) {
-        return new Mebibyte(StorageUnit.BYTES_IN_A_MEBIBYTE.multiply(BigInteger.valueOf(amount)));
+        return mebibyte(BigInteger.valueOf(amount));
+    }
+
+    /**
+     * @param amount
+     *            The amount of mebibytes to create.
+     * @return A new Mebibyte unit with the given value.
+     */
+    public static Mebibyte mebibyte(final BigInteger amount) {
+        return new Mebibyte(StorageUnit.BYTES_IN_A_MEBIBYTE.multiply(amount));
+    }
+
+    /**
+     * @param amount
+     *            The amount of gibibytes to create.
+     * @return A new Gibibyte unit with the given value.
+     */
+    public static Gibibyte gibibyte(final Long amount) {
+        return gibibyte(amount.longValue());
     }
 
     /**
@@ -123,7 +186,25 @@ public final class StorageUnits {
      * @return A new Gibibyte unit with the given value.
      */
     public static Gibibyte gibibyte(final long amount) {
-        return new Gibibyte(StorageUnit.BYTES_IN_A_GIBIBYTE.multiply(BigInteger.valueOf(amount)));
+        return gibibyte(BigInteger.valueOf(amount));
+    }
+
+    /**
+     * @param amount
+     *            The amount of gibibytes to create.
+     * @return A new Gibibyte unit with the given value.
+     */
+    public static Gibibyte gibibyte(final BigInteger amount) {
+        return new Gibibyte(StorageUnit.BYTES_IN_A_GIBIBYTE.multiply(amount));
+    }
+
+    /**
+     * @param amount
+     *            The amount of tebibytes to create.
+     * @return A new Tebibyte unit with the given value.
+     */
+    public static Tebibyte tebibyte(final Long amount) {
+        return tebibyte(amount.longValue());
     }
 
     /**
@@ -132,7 +213,25 @@ public final class StorageUnits {
      * @return A new Tebibyte unit with the given value.
      */
     public static Tebibyte tebibyte(final long amount) {
-        return new Tebibyte(StorageUnit.BYTES_IN_A_TEBIBYTE.multiply(BigInteger.valueOf(amount)));
+        return tebibyte(BigInteger.valueOf(amount));
+    }
+
+    /**
+     * @param amount
+     *            The amount of tebibytes to create.
+     * @return A new Tebibyte unit with the given value.
+     */
+    public static Tebibyte tebibyte(final BigInteger amount) {
+        return new Tebibyte(StorageUnit.BYTES_IN_A_TEBIBYTE.multiply(amount));
+    }
+
+    /**
+     * @param amount
+     *            The amount of pebibytes to create.
+     * @return A new Pebibyte unit with the given value.
+     */
+    public static Pebibyte pebibyte(final Long amount) {
+        return pebibyte(amount.longValue());
     }
 
     /**
@@ -141,7 +240,25 @@ public final class StorageUnits {
      * @return A new Pebibyte unit with the given value.
      */
     public static Pebibyte pebibyte(final long amount) {
-        return new Pebibyte(StorageUnit.BYTES_IN_A_PEBIBYTE.multiply(BigInteger.valueOf(amount)));
+        return pebibyte(BigInteger.valueOf(amount));
+    }
+
+    /**
+     * @param amount
+     *            The amount of pebibytes to create.
+     * @return A new Pebibyte unit with the given value.
+     */
+    public static Pebibyte pebibyte(final BigInteger amount) {
+        return new Pebibyte(StorageUnit.BYTES_IN_A_PEBIBYTE.multiply(amount));
+    }
+
+    /**
+     * @param amount
+     *            The amount of exbibytes to create.
+     * @return A new Exbibyte unit with the given value.
+     */
+    public static Exbibyte exbibyte(final Long amount) {
+        return exbibyte(amount.longValue());
     }
 
     /**
@@ -150,7 +267,25 @@ public final class StorageUnits {
      * @return A new Exbibyte unit with the given value.
      */
     public static Exbibyte exbibyte(final long amount) {
-        return new Exbibyte(StorageUnit.BYTES_IN_A_EXBIBYTE.multiply(BigInteger.valueOf(amount)));
+        return exbibyte(BigInteger.valueOf(amount));
+    }
+
+    /**
+     * @param amount
+     *            The amount of exbibytes to create.
+     * @return A new Exbibyte unit with the given value.
+     */
+    public static Exbibyte exbibyte(final BigInteger amount) {
+        return new Exbibyte(StorageUnit.BYTES_IN_A_EXBIBYTE.multiply(amount));
+    }
+
+    /**
+     * @param amount
+     *            The amount of zebibytes to create.
+     * @return A new Zebibyte unit with the given value.
+     */
+    public static Zebibyte zebibyte(final Long amount) {
+        return zebibyte(amount.longValue());
     }
 
     /**
@@ -159,7 +294,25 @@ public final class StorageUnits {
      * @return A new Zebibyte unit with the given value.
      */
     public static Zebibyte zebibyte(final long amount) {
-        return new Zebibyte(StorageUnit.BYTES_IN_A_ZEBIBYTE.multiply(BigInteger.valueOf(amount)));
+        return zebibyte(BigInteger.valueOf(amount));
+    }
+
+    /**
+     * @param amount
+     *            The amount of zebibytes to create.
+     * @return A new Zebibyte unit with the given value.
+     */
+    public static Zebibyte zebibyte(final BigInteger amount) {
+        return new Zebibyte(StorageUnit.BYTES_IN_A_ZEBIBYTE.multiply(amount));
+    }
+
+    /**
+     * @param amount
+     *            The amount of yobibytes to create.
+     * @return A new Yobibyte unit with the given value.
+     */
+    public static Yobibyte yobibyte(final Long amount) {
+        return yobibyte(amount.longValue());
     }
 
     /**
@@ -168,7 +321,16 @@ public final class StorageUnits {
      * @return A new Yobibyte unit with the given value.
      */
     public static Yobibyte yobibyte(final long amount) {
-        return new Yobibyte(StorageUnit.BYTES_IN_A_YOBIBYTE.multiply(BigInteger.valueOf(amount)));
+        return yobibyte(BigInteger.valueOf(amount));
+    }
+
+    /**
+     * @param amount
+     *            The amount of yobibytes to create.
+     * @return A new Yobibyte unit with the given value.
+     */
+    public static Yobibyte yobibyte(final BigInteger amount) {
+        return new Yobibyte(StorageUnit.BYTES_IN_A_YOBIBYTE.multiply(amount));
     }
 
     /**
@@ -241,10 +403,6 @@ public final class StorageUnits {
      */
     public static Yottabyte yottabyte(final long amount) {
         return new Yottabyte(StorageUnit.BYTES_IN_A_YOTTABYTE.multiply(BigInteger.valueOf(amount)));
-    }
-
-    private StorageUnits() {
-        // Hidden constructor.
     }
 
 }

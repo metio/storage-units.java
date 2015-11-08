@@ -35,6 +35,10 @@ public final class Zebibyte extends StorageUnit<Zebibyte> {
 
     private static final long serialVersionUID = 2192254824473341887L;
 
+    Zebibyte(final BigInteger bytes) {
+        super(bytes);
+    }
+
     /**
      * @param numberOfBytes
      *            The amount of bytes the zebibytes contains.
@@ -44,8 +48,13 @@ public final class Zebibyte extends StorageUnit<Zebibyte> {
         return new Zebibyte(BigInteger.valueOf(numberOfBytes));
     }
 
-    Zebibyte(final BigInteger bytes) {
-        super(bytes);
+    /**
+     * @param numberOfBytes
+     *            The amount of bytes the zebibytes contains.
+     * @return A new Zebibyte unit with the given value.
+     */
+    public static Zebibyte valueOf(final Long numberOfBytes) {
+        return valueOf(numberOfBytes.longValue());
     }
 
     @Override

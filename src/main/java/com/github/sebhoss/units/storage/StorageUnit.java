@@ -42,6 +42,8 @@ import org.eclipse.jdt.annotation.Nullable;
  */
 public abstract class StorageUnit<T extends StorageUnit<T>> extends Number implements Comparable<StorageUnit<?>> {
 
+    private static final int NUMBER_OF_DECIMAL_PLACES = 2;
+
     private static final long serialVersionUID = -7344790980741118949L;
 
     private static final int DEFAULT_SCALE = 24;
@@ -344,7 +346,9 @@ public abstract class StorageUnit<T extends StorageUnit<T>> extends Number imple
     public final String toString() {
         final BigDecimal amount = this.calculate(this.getNumberOfBytesPerUnit());
 
-        return amount.setScale(2, RoundingMode.HALF_UP).toPlainString() + " " + this.getSymbol(); //$NON-NLS-1$
+        return amount
+                .setScale(NUMBER_OF_DECIMAL_PLACES, RoundingMode.HALF_UP)
+                .toPlainString() + " " + this.getSymbol(); //$NON-NLS-1$
     }
 
     private final BigDecimal calculate(final BigInteger base) {
@@ -358,7 +362,7 @@ public abstract class StorageUnit<T extends StorageUnit<T>> extends Number imple
     }
 
     @Override
-    public final boolean equals(final @Nullable Object other) {
+    public final boolean equals(@Nullable final Object other) {
         if (other instanceof StorageUnit<?>) {
             final StorageUnit<?> that = (StorageUnit<?>) other;
 
@@ -369,7 +373,7 @@ public abstract class StorageUnit<T extends StorageUnit<T>> extends Number imple
     }
 
     @Override
-    public final int compareTo(final @Nullable StorageUnit<?> that) {
+    public final int compareTo(@Nullable final StorageUnit<?> that) {
         if (that != null) {
             return this.bytes.compareTo(that.bytes);
         }

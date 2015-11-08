@@ -35,6 +35,10 @@ public class Megabyte extends StorageUnit<Megabyte> {
 
     private static final long serialVersionUID = 5901923092058760111L;
 
+    Megabyte(final BigInteger bytes) {
+        super(bytes);
+    }
+
     /**
      * @param numberOfBytes
      *            The amount of bytes the megabytes contains.
@@ -44,8 +48,13 @@ public class Megabyte extends StorageUnit<Megabyte> {
         return new Megabyte(BigInteger.valueOf(numberOfBytes));
     }
 
-    Megabyte(final BigInteger bytes) {
-        super(bytes);
+    /**
+     * @param numberOfBytes
+     *            The amount of bytes the megabytes contains.
+     * @return A new Megabyte unit with the given value.
+     */
+    public static Megabyte valueOf(final Long numberOfBytes) {
+        return valueOf(numberOfBytes.longValue());
     }
 
     @Override

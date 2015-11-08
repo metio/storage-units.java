@@ -36,6 +36,10 @@ public final class Yobibyte extends StorageUnit<Yobibyte> {
     /** Generated */
     private static final long serialVersionUID = -5606322878020884194L;
 
+    Yobibyte(final BigInteger bytes) {
+        super(bytes);
+    }
+
     /**
      * @param numberOfBytes
      *            The amount of bytes the yobibytes contains.
@@ -45,8 +49,13 @@ public final class Yobibyte extends StorageUnit<Yobibyte> {
         return new Yobibyte(BigInteger.valueOf(numberOfBytes));
     }
 
-    Yobibyte(final BigInteger bytes) {
-        super(bytes);
+    /**
+     * @param numberOfBytes
+     *            The amount of bytes the yobibytes contains.
+     * @return A new Yobibyte unit with the given value.
+     */
+    public static Yobibyte valueOf(final Long numberOfBytes) {
+        return valueOf(numberOfBytes.longValue());
     }
 
     @Override

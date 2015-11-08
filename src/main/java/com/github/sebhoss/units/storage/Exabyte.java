@@ -35,6 +35,10 @@ public class Exabyte extends StorageUnit<Exabyte> {
 
     private static final long serialVersionUID = 6846441733771841250L;
 
+    Exabyte(final BigInteger bytes) {
+        super(bytes);
+    }
+
     /**
      * @param numberOfBytes
      *            The amount of bytes the exabytes contains.
@@ -44,8 +48,13 @@ public class Exabyte extends StorageUnit<Exabyte> {
         return new Exabyte(BigInteger.valueOf(numberOfBytes));
     }
 
-    Exabyte(final BigInteger bytes) {
-        super(bytes);
+    /**
+     * @param numberOfBytes
+     *            The amount of bytes the exabytes contains.
+     * @return A new Exabyte unit with the given value.
+     */
+    public static Exabyte valueOf(final Long numberOfBytes) {
+        return valueOf(numberOfBytes.longValue());
     }
 
     @Override

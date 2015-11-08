@@ -35,17 +35,35 @@ public final class Kibibyte extends StorageUnit<Kibibyte> {
 
     private static final long serialVersionUID = 3798828851496657978L;
 
+    Kibibyte(final BigInteger bytes) {
+        super(bytes);
+    }
+
+    /**
+     * @param numberOfBytes
+     *            The amount of bytes the kibibytes contains.
+     * @return A new Kibibyte unit with the given value.
+     */
+    public static Kibibyte valueOf(final BigInteger numberOfBytes) {
+        return new Kibibyte(numberOfBytes);
+    }
+
     /**
      * @param numberOfBytes
      *            The amount of bytes the kibibytes contains.
      * @return A new Kibibyte unit with the given value.
      */
     public static Kibibyte valueOf(final long numberOfBytes) {
-        return new Kibibyte(BigInteger.valueOf(numberOfBytes));
+        return valueOf(BigInteger.valueOf(numberOfBytes));
     }
 
-    Kibibyte(final BigInteger bytes) {
-        super(bytes);
+    /**
+     * @param numberOfBytes
+     *            The amount of bytes the kibibytes contains.
+     * @return A new Kibibyte unit with the given value.
+     */
+    public static Kibibyte valueOf(final Long numberOfBytes) {
+        return valueOf(numberOfBytes.longValue());
     }
 
     @Override

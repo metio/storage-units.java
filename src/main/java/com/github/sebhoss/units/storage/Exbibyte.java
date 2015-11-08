@@ -35,6 +35,10 @@ public final class Exbibyte extends StorageUnit<Exbibyte> {
 
     private static final long serialVersionUID = 5993490571003918471L;
 
+    Exbibyte(final BigInteger bytes) {
+        super(bytes);
+    }
+
     /**
      * @param numberOfBytes
      *            The amount of bytes the exbibytes contains.
@@ -44,8 +48,13 @@ public final class Exbibyte extends StorageUnit<Exbibyte> {
         return new Exbibyte(BigInteger.valueOf(numberOfBytes));
     }
 
-    Exbibyte(final BigInteger bytes) {
-        super(bytes);
+    /**
+     * @param numberOfBytes
+     *            The amount of bytes the exbibytes contains.
+     * @return A new Exbibyte unit with the given value.
+     */
+    public static Exbibyte valueOf(final Long numberOfBytes) {
+        return valueOf(numberOfBytes.longValue());
     }
 
     @Override

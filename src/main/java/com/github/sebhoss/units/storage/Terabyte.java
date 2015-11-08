@@ -35,6 +35,10 @@ public class Terabyte extends StorageUnit<Terabyte> {
 
     private static final long serialVersionUID = 2160488069631638952L;
 
+    Terabyte(final BigInteger bytes) {
+        super(bytes);
+    }
+
     /**
      * @param numberOfBytes
      *            The amount of bytes the terabytes contains.
@@ -44,8 +48,13 @@ public class Terabyte extends StorageUnit<Terabyte> {
         return new Terabyte(BigInteger.valueOf(numberOfBytes));
     }
 
-    Terabyte(final BigInteger bytes) {
-        super(bytes);
+    /**
+     * @param numberOfBytes
+     *            The amount of bytes the terabytes contains.
+     * @return A new Terabyte unit with the given value.
+     */
+    public static Terabyte valueOf(final Long numberOfBytes) {
+        return valueOf(numberOfBytes.longValue());
     }
 
     @Override

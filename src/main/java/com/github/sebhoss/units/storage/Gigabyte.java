@@ -35,6 +35,10 @@ public class Gigabyte extends StorageUnit<Gigabyte> {
 
     private static final long serialVersionUID = 7581075190529125530L;
 
+    Gigabyte(final BigInteger bytes) {
+        super(bytes);
+    }
+
     /**
      * @param numberOfBytes
      *            The amount of bytes the gigabytes contains.
@@ -44,8 +48,13 @@ public class Gigabyte extends StorageUnit<Gigabyte> {
         return new Gigabyte(BigInteger.valueOf(numberOfBytes));
     }
 
-    Gigabyte(final BigInteger bytes) {
-        super(bytes);
+    /**
+     * @param numberOfBytes
+     *            The amount of bytes the gigabytes contains.
+     * @return A new Gigabyte unit with the given value.
+     */
+    public static Gigabyte valueOf(final Long numberOfBytes) {
+        return valueOf(numberOfBytes.longValue());
     }
 
     @Override

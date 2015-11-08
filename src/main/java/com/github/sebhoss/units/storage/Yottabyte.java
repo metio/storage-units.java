@@ -35,6 +35,10 @@ public class Yottabyte extends StorageUnit<Yottabyte> {
 
     private static final long serialVersionUID = 2482152459842042316L;
 
+    Yottabyte(final BigInteger bytes) {
+        super(bytes);
+    }
+
     /**
      * @param numberOfBytes
      *            The amount of bytes the yottabytes contains.
@@ -44,8 +48,13 @@ public class Yottabyte extends StorageUnit<Yottabyte> {
         return new Yottabyte(BigInteger.valueOf(numberOfBytes));
     }
 
-    Yottabyte(final BigInteger bytes) {
-        super(bytes);
+    /**
+     * @param numberOfBytes
+     *            The amount of bytes the yottabytes contains.
+     * @return A new Yottabyte unit with the given value.
+     */
+    public static Yottabyte valueOf(final Long numberOfBytes) {
+        return valueOf(numberOfBytes.longValue());
     }
 
     @Override

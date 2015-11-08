@@ -35,6 +35,10 @@ public final class Gibibyte extends StorageUnit<Gibibyte> {
 
     private static final long serialVersionUID = -1104749948510944566L;
 
+    Gibibyte(final BigInteger bytes) {
+        super(bytes);
+    }
+
     /**
      * @param numberOfBytes
      *            The amount of bytes the gibibytes contains.
@@ -44,8 +48,13 @@ public final class Gibibyte extends StorageUnit<Gibibyte> {
         return new Gibibyte(BigInteger.valueOf(numberOfBytes));
     }
 
-    Gibibyte(final BigInteger bytes) {
-        super(bytes);
+    /**
+     * @param numberOfBytes
+     *            The amount of bytes the gibibytes contains.
+     * @return A new Gibibyte unit with the given value.
+     */
+    public static Gibibyte valueOf(final Long numberOfBytes) {
+        return valueOf(numberOfBytes.longValue());
     }
 
     @Override

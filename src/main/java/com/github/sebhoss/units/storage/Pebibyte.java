@@ -35,6 +35,10 @@ public final class Pebibyte extends StorageUnit<Pebibyte> {
 
     private static final long serialVersionUID = -6112472064345339882L;
 
+    Pebibyte(final BigInteger bytes) {
+        super(bytes);
+    }
+
     /**
      * @param numberOfBytes
      *            The amount of bytes the pebibytes contains.
@@ -44,8 +48,13 @@ public final class Pebibyte extends StorageUnit<Pebibyte> {
         return new Pebibyte(BigInteger.valueOf(numberOfBytes));
     }
 
-    Pebibyte(final BigInteger bytes) {
-        super(bytes);
+    /**
+     * @param numberOfBytes
+     *            The amount of bytes the pebibytes contains.
+     * @return A new Pebibyte unit with the given value.
+     */
+    public static Pebibyte valueOf(final Long numberOfBytes) {
+        return valueOf(numberOfBytes.longValue());
     }
 
     @Override

@@ -67,4 +67,34 @@ public class ConversionTest {
         Assert.assertNotNull("The converted megabyte should never be NULL.", megabyte);
     }
 
+    /**
+     * Checks that {@link StorageUnit#asKilobyte} converts a megabyte into a kilobyte.
+     */
+    @Test
+    public void shouldConvertMegabyteToKilobyte() {
+        // Given
+        final Megabyte mega = Megabyte.valueOf(1);
+
+        // When
+        final Kilobyte kilo = mega.asKilobyte();
+
+        // Then
+        Assert.assertEquals("Both units should represent the same amount of storage.", mega.inByte(), kilo.inByte());
+    }
+
+    /**
+     * Checks that {@link StorageUnit#asKibibyte} converts a megabyte into a kibibyte.
+     */
+    @Test
+    public void shouldConvertMegabyteToKibibyte() {
+        // Given
+        final Megabyte mega = Megabyte.valueOf(1);
+
+        // When
+        final Kibibyte kibi = mega.asKibibyte();
+
+        // Then
+        Assert.assertEquals("Both units should represent the same amount of storage.", mega.inByte(), kibi.inByte());
+    }
+
 }

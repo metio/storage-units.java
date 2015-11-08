@@ -36,6 +36,10 @@ public final class Mebibyte extends StorageUnit<Mebibyte> {
     /** Generated */
     private static final long serialVersionUID = 7697583678146919524L;
 
+    Mebibyte(final BigInteger bytes) {
+        super(bytes);
+    }
+
     /**
      * @param numberOfBytes
      *            The amount of bytes the mebibytes contains.
@@ -45,8 +49,13 @@ public final class Mebibyte extends StorageUnit<Mebibyte> {
         return new Mebibyte(BigInteger.valueOf(numberOfBytes));
     }
 
-    Mebibyte(final BigInteger bytes) {
-        super(bytes);
+    /**
+     * @param numberOfBytes
+     *            The amount of bytes the mebibytes contains.
+     * @return A new Mebibyte unit with the given value.
+     */
+    public static Mebibyte valueOf(final Long numberOfBytes) {
+        return valueOf(numberOfBytes.longValue());
     }
 
     @Override

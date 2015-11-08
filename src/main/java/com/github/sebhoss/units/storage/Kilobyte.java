@@ -35,17 +35,35 @@ public class Kilobyte extends StorageUnit<Kilobyte> {
 
     private static final long serialVersionUID = 6952239416014811456L;
 
+    Kilobyte(final BigInteger numberOfBytes) {
+        super(numberOfBytes);
+    }
+
+    /**
+     * @param numberOfBytes
+     *            The amount of bytes the kilobytes contains.
+     * @return A new Kilobyte unit with the given value.
+     */
+    public static Kilobyte valueOf(final BigInteger numberOfBytes) {
+        return new Kilobyte(numberOfBytes);
+    }
+
     /**
      * @param numberOfBytes
      *            The amount of bytes the kilobytes contains.
      * @return A new Kilobyte unit with the given value.
      */
     public static Kilobyte valueOf(final long numberOfBytes) {
-        return new Kilobyte(BigInteger.valueOf(numberOfBytes));
+        return valueOf(BigInteger.valueOf(numberOfBytes));
     }
 
-    Kilobyte(final BigInteger numberOfBytes) {
-        super(numberOfBytes);
+    /**
+     * @param numberOfBytes
+     *            The amount of bytes the kilobytes contains.
+     * @return A new Kilobyte unit with the given value.
+     */
+    public static Kilobyte valueOf(final Long numberOfBytes) {
+        return valueOf(numberOfBytes.longValue());
     }
 
     @Override

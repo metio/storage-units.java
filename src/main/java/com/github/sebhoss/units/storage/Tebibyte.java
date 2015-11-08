@@ -36,6 +36,10 @@ public final class Tebibyte extends StorageUnit<Tebibyte> {
     /** Generated */
     private static final long serialVersionUID = 3614537130129620881L;
 
+    Tebibyte(final BigInteger bytes) {
+        super(bytes);
+    }
+
     /**
      * @param numberOfBytes
      *            The amount of bytes the tebibytes contains.
@@ -45,8 +49,13 @@ public final class Tebibyte extends StorageUnit<Tebibyte> {
         return new Tebibyte(BigInteger.valueOf(numberOfBytes));
     }
 
-    Tebibyte(final BigInteger bytes) {
-        super(bytes);
+    /**
+     * @param numberOfBytes
+     *            The amount of bytes the tebibytes contains.
+     * @return A new Tebibyte unit with the given value.
+     */
+    public static Tebibyte valueOf(final Long numberOfBytes) {
+        return valueOf(numberOfBytes.longValue());
     }
 
     @Override

@@ -35,6 +35,10 @@ public class Petabyte extends StorageUnit<Petabyte> {
 
     private static final long serialVersionUID = 5889808368085688387L;
 
+    Petabyte(final BigInteger bytes) {
+        super(bytes);
+    }
+
     /**
      * @param numberOfBytes
      *            The amount of bytes the petabytes contains.
@@ -44,8 +48,13 @@ public class Petabyte extends StorageUnit<Petabyte> {
         return new Petabyte(BigInteger.valueOf(numberOfBytes));
     }
 
-    Petabyte(final BigInteger bytes) {
-        super(bytes);
+    /**
+     * @param numberOfBytes
+     *            The amount of bytes the petabytes contains.
+     * @return A new Petabyte unit with the given value.
+     */
+    public static Petabyte valueOf(final Long numberOfBytes) {
+        return valueOf(numberOfBytes.longValue());
     }
 
     @Override
