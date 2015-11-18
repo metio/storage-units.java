@@ -140,7 +140,7 @@ StorageUnit<?> unit = StorageUnits.metricValueOf(120000)    // Kilobyte (120.00 
 StorageUnit<?> unit = StorageUnits.metricValueOf(1000000)   // Megabyte (1.00 MB)
 ----
 
-Additionally high-level factory methods are also available in the @StorageUnits@ class.
+Additionally high-level factory methods are also available in the `StorageUnits` class.
 
 [source,java]
 ----
@@ -218,7 +218,7 @@ BigDecimal amount = gigabyte(15).inTerabyte()   // 0.015
 
 === Caveats
 
-Be wary of integer overflow when working with `long`s. To be safe, always use `BigInteger`.
+Be wary of integer overflow when working with `long`. To be safe, always use `BigInteger`.
 
 === Integration
 
