@@ -1,7 +1,7 @@
 = Storage-Units 
 
 image:https://img.shields.io/maven-central/v/com.github.sebhoss/storage-units.svg?style=flat-square["Maven Central", link="https://maven-badges.herokuapp.com/maven-central/com.github.sebhoss/storage-units"]
-image:https://travis-ci.org/sebhoss/storage-units.png?branch=master["Build Status", link="https://travis-ci.org/sebhoss/storage-units"]
+image:https://img.shields.io/travis/sebhoss/storage-units/master.svg?style=flat-square["Build Status", link="https://travis-ci.org/sebhoss/storage-units"]
 image:https://www.ohloh.net/p/storage-units/widgets/project_thin_badge.gif["Open Hub statistics", link="https://www.ohloh.net/p/storage-units"]
 image:https://scan.coverity.com/projects/2658/badge.svg["Coverity Scan Result", link="https://scan.coverity.com/projects/2658"]
 
