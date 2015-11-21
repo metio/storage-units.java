@@ -104,10 +104,10 @@
         <artifactId>pitest-maven</artifactId>
         <configuration>
           <targetClasses>
-            <param>com.github.sebhoss.units.storage*</param>
+            <param>com.github.sebhoss*</param>
           </targetClasses>
           <targetTests>
-            <param>com.github.sebhoss.units.storage*</param>
+            <param>com.github.sebhoss*</param>
           </targetTests>
         </configuration>
       </plugin>
