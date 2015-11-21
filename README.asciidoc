@@ -124,25 +124,41 @@ All units according to ISO IEC 80000-13:2008 are implemented. This project is in
 
 === Factories
 
-Each unit implements a Byte-based static factory method (`valueOf(long)`) that can be used to represent a given number of bytes in a specific unit.
+Each unit implements a Byte-based static factory method (`valueOf(BigInteger)` or `valueOf(long)`) that can be used to represent a given number of bytes in a specific unit.
 
 [source,java]
 ----
+// 'long' based
 Kilobyte unit = Kilobyte.valueOf(2500)    // 2 500 Byte or "2.50 kB"
 Kibibyte unit = Kibibyte.valueOf(512)     // 512 Byte or "0.50 KiB"
 Megabyte unit = Megabyte.valueOf(1000000) // 1 000 000 Byte or "1.00 MB"
+
+// 'BigInteger' based
+Kilobyte unit = Kilobyte.valueOf(BigInteger.valueOf(2500))    // 2 500 Byte or "2.50 kB"
+Kibibyte unit = Kibibyte.valueOf(BigInteger.valueOf(512))     // 512 Byte or "0.50 KiB"
+Megabyte unit = Megabyte.valueOf(BigInteger.valueOf(1000000)) // 1 000 000 Byte or "1.00 MB"
 ----
 
 The `StorageUnits` class offers two factory methods that automatically pick the best-matching unit for a given number of bytes.
 
 [source,java]
 ----
+// 'long' based
 StorageUnit<?> unit = StorageUnits.binaryValueOf(256)       // Kibibyte (0.25 KiB)
 StorageUnit<?> unit = StorageUnits.binaryValueOf(1048576)   // Mebibyte (1.00 MiB)
+
+// 'BigInteger' based
+StorageUnit<?> unit = StorageUnits.binaryValueOf(BigInteger.valueOf(256))     // Kibibyte (1.00 MiB)
+StorageUnit<?> unit = StorageUnits.binaryValueOf(BigInteger.valueOf(1048576)) // Mebibyte (1.00 MiB)
 ----
 
 [source,java]
 ----
+// 'long' based
+StorageUnit<?> unit = StorageUnits.metricValueOf(120000)    // Kilobyte (120.00 kB)
+StorageUnit<?> unit = StorageUnits.metricValueOf(1000000)   // Megabyte (1.00 MB)
+
+// 'BigInteger' based
 StorageUnit<?> unit = StorageUnits.metricValueOf(120000)    // Kilobyte (120.00 kB)
 StorageUnit<?> unit = StorageUnits.metricValueOf(1000000)   // Megabyte (1.00 MB)
 ----
