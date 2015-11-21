@@ -57,6 +57,7 @@ public class BigMetricStorageUnitsTest {
             { MULTIPLIER.pow(6), Exabyte.class },
             { MULTIPLIER.pow(7), Zettabyte.class },
             { MULTIPLIER.pow(8), Yottabyte.class },
+            { MULTIPLIER.pow(9), Yottabyte.class },
     };
 
     /**

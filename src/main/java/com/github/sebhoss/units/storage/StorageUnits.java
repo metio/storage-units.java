@@ -114,7 +114,7 @@ public final class StorageUnits {
     }
 
     private static boolean greaterThanEquals(final BigInteger value, final BigInteger comparison) {
-        return value.compareTo(comparison) > 0 || value.compareTo(comparison) == 0;
+        return value.compareTo(comparison) >= 0;
     }
 
     /**

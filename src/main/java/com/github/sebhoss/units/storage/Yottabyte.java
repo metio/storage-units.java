@@ -41,6 +41,15 @@ public class Yottabyte extends StorageUnit<Yottabyte> {
 
     /**
      * @param numberOfBytes
+     *            The amount of bytes the yottabyte contains.
+     * @return A new Yottabyte unit with the given value.
+     */
+    public static Yottabyte valueOf(final BigInteger numberOfBytes) {
+        return new Yottabyte(numberOfBytes);
+    }
+
+    /**
+     * @param numberOfBytes
      *            The amount of bytes the yottabytes contains.
      * @return A new Yottabyte unit with the given value.
      */

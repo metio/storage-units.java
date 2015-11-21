@@ -41,6 +41,15 @@ public class Terabyte extends StorageUnit<Terabyte> {
 
     /**
      * @param numberOfBytes
+     *            The amount of bytes the terabyte contains.
+     * @return A new Kilobyte unit with the given value.
+     */
+    public static Terabyte valueOf(final BigInteger numberOfBytes) {
+        return new Terabyte(numberOfBytes);
+    }
+
+    /**
+     * @param numberOfBytes
      *            The amount of bytes the terabytes contains.
      * @return A new Terabyte unit with the given value.
      */

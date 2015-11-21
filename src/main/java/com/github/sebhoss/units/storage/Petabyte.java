@@ -41,6 +41,15 @@ public class Petabyte extends StorageUnit<Petabyte> {
 
     /**
      * @param numberOfBytes
+     *            The amount of bytes the petabyte contains.
+     * @return A new Petabyte unit with the given value.
+     */
+    public static Petabyte valueOf(final BigInteger numberOfBytes) {
+        return new Petabyte(numberOfBytes);
+    }
+
+    /**
+     * @param numberOfBytes
      *            The amount of bytes the petabytes contains.
      * @return A new Petabyte unit with the given value.
      */

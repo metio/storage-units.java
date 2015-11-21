@@ -41,6 +41,15 @@ public class Exabyte extends StorageUnit<Exabyte> {
 
     /**
      * @param numberOfBytes
+     *            The amount of bytes the exabyte contains.
+     * @return A new Exabyte unit with the given value.
+     */
+    public static Exabyte valueOf(final BigInteger numberOfBytes) {
+        return new Exabyte(numberOfBytes);
+    }
+
+    /**
+     * @param numberOfBytes
      *            The amount of bytes the exabytes contains.
      * @return A new Exabyte unit with the given value.
      */

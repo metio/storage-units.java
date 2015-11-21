@@ -42,6 +42,15 @@ public final class Yobibyte extends StorageUnit<Yobibyte> {
 
     /**
      * @param numberOfBytes
+     *            The amount of bytes the yobibyte contains.
+     * @return A new Yobibyte unit with the given value.
+     */
+    public static Yobibyte valueOf(final BigInteger numberOfBytes) {
+        return new Yobibyte(numberOfBytes);
+    }
+
+    /**
+     * @param numberOfBytes
      *            The amount of bytes the yobibytes contains.
      * @return A new Yobibyte unit with the given value.
      */

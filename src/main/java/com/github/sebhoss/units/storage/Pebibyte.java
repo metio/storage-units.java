@@ -41,6 +41,15 @@ public final class Pebibyte extends StorageUnit<Pebibyte> {
 
     /**
      * @param numberOfBytes
+     *            The amount of bytes the pebibyte contains.
+     * @return A new Pebibyte unit with the given value.
+     */
+    public static Pebibyte valueOf(final BigInteger numberOfBytes) {
+        return new Pebibyte(numberOfBytes);
+    }
+
+    /**
+     * @param numberOfBytes
      *            The amount of bytes the pebibytes contains.
      * @return A new Pebibyte unit with the given value.
      */

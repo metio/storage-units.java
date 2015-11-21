@@ -41,6 +41,15 @@ public final class Exbibyte extends StorageUnit<Exbibyte> {
 
     /**
      * @param numberOfBytes
+     *            The amount of bytes the exbibyte contains.
+     * @return A new Exbibyte unit with the given value.
+     */
+    public static Exbibyte valueOf(final BigInteger numberOfBytes) {
+        return new Exbibyte(numberOfBytes);
+    }
+
+    /**
+     * @param numberOfBytes
      *            The amount of bytes the exbibytes contains.
      * @return A new Exbibyte unit with the given value.
      */

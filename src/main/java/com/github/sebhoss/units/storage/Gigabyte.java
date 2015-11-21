@@ -41,6 +41,15 @@ public class Gigabyte extends StorageUnit<Gigabyte> {
 
     /**
      * @param numberOfBytes
+     *            The amount of bytes the gigabyte contains.
+     * @return A new Gigabyte unit with the given value.
+     */
+    public static Gigabyte valueOf(final BigInteger numberOfBytes) {
+        return new Gigabyte(numberOfBytes);
+    }
+
+    /**
+     * @param numberOfBytes
      *            The amount of bytes the gigabytes contains.
      * @return A new Gigabyte unit with the given value.
      */

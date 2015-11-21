@@ -41,6 +41,15 @@ public final class Gibibyte extends StorageUnit<Gibibyte> {
 
     /**
      * @param numberOfBytes
+     *            The amount of bytes the gibibyte contains.
+     * @return A new Gibibyte unit with the given value.
+     */
+    public static Gibibyte valueOf(final BigInteger numberOfBytes) {
+        return new Gibibyte(numberOfBytes);
+    }
+
+    /**
+     * @param numberOfBytes
      *            The amount of bytes the gibibytes contains.
      * @return A new Gibibyte unit with the given value.
      */

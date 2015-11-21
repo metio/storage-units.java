@@ -41,6 +41,15 @@ public final class Zebibyte extends StorageUnit<Zebibyte> {
 
     /**
      * @param numberOfBytes
+     *            The amount of bytes the zebibyte contains.
+     * @return A new Zebibyte unit with the given value.
+     */
+    public static Zebibyte valueOf(final BigInteger numberOfBytes) {
+        return new Zebibyte(numberOfBytes);
+    }
+
+    /**
+     * @param numberOfBytes
      *            The amount of bytes the zebibytes contains.
      * @return A new Zebibyte unit with the given value.
      */

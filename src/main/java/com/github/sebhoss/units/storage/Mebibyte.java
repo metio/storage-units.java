@@ -42,6 +42,15 @@ public final class Mebibyte extends StorageUnit<Mebibyte> {
 
     /**
      * @param numberOfBytes
+     *            The amount of bytes the mebibyte contains.
+     * @return A new Mebibyte unit with the given value.
+     */
+    public static Mebibyte valueOf(final BigInteger numberOfBytes) {
+        return new Mebibyte(numberOfBytes);
+    }
+
+    /**
+     * @param numberOfBytes
      *            The amount of bytes the mebibytes contains.
      * @return A new Mebibyte unit with the given value.
      */

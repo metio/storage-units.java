@@ -61,7 +61,7 @@ import org.junit.runner.RunWith;
  */
 @RunWith(Theories.class)
 @SuppressWarnings({ "static-method", "nls" })
-public class ArithmeticTest {
+public class LongArithmeticTest {
 
     /**
      *
@@ -223,6 +223,72 @@ public class ArithmeticTest {
 
         // Then
         Assert.assertEquals(unit.getClass().getSimpleName() + "cannot subtract '1' and '" + bytes + "'.",
+                expectedResult, calculatedResult.inByte());
+    }
+
+    /**
+     * @param bytes
+     *            The number of bytes to add.
+     * @param createUnit
+     *            The creating function for the storage unit under test.
+     */
+    @Theory
+    public void shouldSubtractLong(
+            final long bytes,
+            final Function<Long, StorageUnit<?>> createUnit) {
+        // Given
+        final StorageUnit<?> unit = createUnit.apply(Long.valueOf(bytes));
+
+        // When
+        final StorageUnit<?> calculatedResult = unit.subtract(1);
+        final BigInteger expectedResult = BigInteger.valueOf(bytes - 1);
+
+        // Then
+        Assert.assertEquals(unit.getClass().getSimpleName() + "cannot subtract '1' and '" + bytes + "'.",
+                expectedResult, calculatedResult.inByte());
+    }
+
+    /**
+     * @param bytes
+     *            The number of bytes to add.
+     * @param createUnit
+     *            The creating function for the storage unit under test.
+     */
+    @Theory
+    public void shouldDivideLong(
+            final long bytes,
+            final Function<Long, StorageUnit<?>> createUnit) {
+        // Given
+        final StorageUnit<?> unit = createUnit.apply(Long.valueOf(bytes));
+
+        // When
+        final StorageUnit<?> calculatedResult = unit.divide(1);
+        final BigInteger expectedResult = BigInteger.valueOf(bytes);
+
+        // Then
+        Assert.assertEquals(unit.getClass().getSimpleName() + "cannot divide '" + bytes + "' by '1'.",
+                expectedResult, calculatedResult.inByte());
+    }
+
+    /**
+     * @param bytes
+     *            The number of bytes to add.
+     * @param createUnit
+     *            The creating function for the storage unit under test.
+     */
+    @Theory
+    public void shouldMultiplyLong(
+            final long bytes,
+            final Function<Long, StorageUnit<?>> createUnit) {
+        // Given
+        final StorageUnit<?> unit = createUnit.apply(Long.valueOf(bytes));
+
+        // When
+        final StorageUnit<?> calculatedResult = unit.multiply(1);
+        final BigInteger expectedResult = BigInteger.valueOf(bytes);
+
+        // Then
+        Assert.assertEquals(unit.getClass().getSimpleName() + "cannot multiply '" + bytes + "' by '1'.",
                 expectedResult, calculatedResult.inByte());
     }
 

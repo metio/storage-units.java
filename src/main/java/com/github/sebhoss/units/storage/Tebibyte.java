@@ -42,6 +42,15 @@ public final class Tebibyte extends StorageUnit<Tebibyte> {
 
     /**
      * @param numberOfBytes
+     *            The amount of bytes the tebibyte contains.
+     * @return A new Tebibyte unit with the given value.
+     */
+    public static Tebibyte valueOf(final BigInteger numberOfBytes) {
+        return new Tebibyte(numberOfBytes);
+    }
+
+    /**
+     * @param numberOfBytes
      *            The amount of bytes the tebibytes contains.
      * @return A new Tebibyte unit with the given value.
      */

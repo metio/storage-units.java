@@ -57,6 +57,7 @@ public class BigBinaryStorageUnitsTest {
             { MULTIPLIER.pow(6), Exbibyte.class },
             { MULTIPLIER.pow(7), Zebibyte.class },
             { MULTIPLIER.pow(8), Yobibyte.class },
+            { MULTIPLIER.pow(9), Yobibyte.class },
     };
 
     /**

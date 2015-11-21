@@ -29,6 +29,7 @@ package com.github.sebhoss.units.storage;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Modifier;
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Function;
@@ -45,14 +46,14 @@ import org.junit.runner.RunWith;
  *
  */
 @RunWith(Theories.class)
-public class StorageUnitsTest {
+public class BigIntegerStorageUnitsTest {
 
     /**
      * @return The factory methods to create storage units to test.
      */
     @DataPoints
-    public static List<Function<Long, StorageUnit<?>>> storageUnits() {
-        final List<Function<Long, StorageUnit<?>>> units = new ArrayList<>();
+    public static List<Function<BigInteger, StorageUnit<?>>> longStorageUnits() {
+        final List<Function<BigInteger, StorageUnit<?>>> units = new ArrayList<>();
 
         // binary units
         units.add(StorageUnits::kibibyte);
@@ -65,14 +66,14 @@ public class StorageUnitsTest {
         units.add(StorageUnits::yobibyte);
 
         // metric units
-        units.add(StorageUnits::kilobyte);
-        units.add(StorageUnits::megabyte);
-        units.add(StorageUnits::gigabyte);
-        units.add(StorageUnits::petabyte);
-        units.add(StorageUnits::terabyte);
-        units.add(StorageUnits::exabyte);
-        units.add(StorageUnits::zettabyte);
-        units.add(StorageUnits::yottabyte);
+        // units.add(StorageUnits::kilobyte);
+        // units.add(StorageUnits::megabyte);
+        // units.add(StorageUnits::gigabyte);
+        // units.add(StorageUnits::petabyte);
+        // units.add(StorageUnits::terabyte);
+        // units.add(StorageUnits::exabyte);
+        // units.add(StorageUnits::zettabyte);
+        // units.add(StorageUnits::yottabyte);
 
         return units;
     }
@@ -83,9 +84,9 @@ public class StorageUnitsTest {
      */
     @SuppressWarnings({ "static-method", "nls" })
     @Theory
-    public void shouldCreateNotNullUnitForLong(final Function<Long, StorageUnit<?>> createUnit) {
+    public void shouldCreateNotNullUnitForLong(final Function<BigInteger, StorageUnit<?>> createUnit) {
         // Given
-        final Long bytes = Long.valueOf(1);
+        final BigInteger bytes = BigInteger.valueOf(1);
 
         // When
         final StorageUnit<?> unit = createUnit.apply(bytes);

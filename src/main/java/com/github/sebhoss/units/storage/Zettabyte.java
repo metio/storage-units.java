@@ -41,6 +41,15 @@ public class Zettabyte extends StorageUnit<Zettabyte> {
 
     /**
      * @param numberOfBytes
+     *            The amount of bytes the zettabyte contains.
+     * @return A new Zettabyte unit with the given value.
+     */
+    public static Zettabyte valueOf(final BigInteger numberOfBytes) {
+        return new Zettabyte(numberOfBytes);
+    }
+
+    /**
+     * @param numberOfBytes
      *            The amount of bytes the zettabytes contains.
      * @return A new Zettabyte unit with the given value.
      */

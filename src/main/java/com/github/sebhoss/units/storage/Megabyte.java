@@ -41,6 +41,15 @@ public class Megabyte extends StorageUnit<Megabyte> {
 
     /**
      * @param numberOfBytes
+     *            The amount of bytes the megabyte contains.
+     * @return A new Megabyte unit with the given value.
+     */
+    public static Megabyte valueOf(final BigInteger numberOfBytes) {
+        return new Megabyte(numberOfBytes);
+    }
+
+    /**
+     * @param numberOfBytes
      *            The amount of bytes the megabytes contains.
      * @return A new Megabyte unit with the given value.
      */
