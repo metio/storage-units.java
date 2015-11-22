@@ -27,7 +27,7 @@
 /**
  * Storage units according to ISO IEC 80000-13:2008.
  *
- * @see <a href="https://github.com/sebhoss/common-units/README.textile">README</a>
+ * @see <a href="https://github.com/sebhoss/storage-units/blob/master/README.asciidoc">README</a>
  */
 package com.github.sebhoss.units.storage;
 
