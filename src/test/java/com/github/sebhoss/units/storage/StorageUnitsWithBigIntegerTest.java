@@ -26,6 +26,12 @@
  */
 package com.github.sebhoss.units.storage;
 
+import static com.github.sebhoss.units.storage.ObjectMother.highLevelBinaryBigIntegerBasedConstructors;
+
+import java.math.BigInteger;
+import java.util.List;
+import java.util.function.Function;
+
 import org.junit.Assert;
 import org.junit.experimental.theories.DataPoints;
 import org.junit.experimental.theories.Theories;
@@ -33,47 +39,34 @@ import org.junit.experimental.theories.Theory;
 import org.junit.runner.RunWith;
 
 /**
-*
-*
-*/
+ * Test cases for the {@link StorageUnits} class that work with {@link BigInteger}s.
+ */
 @RunWith(Theories.class)
-@SuppressWarnings("boxing")
-public class SmallBinaryStorageUnitsTest {
+public class StorageUnitsWithBigIntegerTest {
 
-    private static final long MULTIPLIER = 1024;
-
-    /**
-     *
-     */
+    /** The factory methods to create storage units to test. */
     @DataPoints
-    public static Object[][] INPUT_RESULTS = {
-            { 1L, Kibibyte.class },
-            { MULTIPLIER, Kibibyte.class },
-            { MULTIPLIER * MULTIPLIER, Mebibyte.class },
-            { MULTIPLIER * MULTIPLIER * MULTIPLIER, Gibibyte.class },
-            { MULTIPLIER * MULTIPLIER * MULTIPLIER * MULTIPLIER, Tebibyte.class },
-    };
+    public static List<Function<BigInteger, StorageUnit<?>>> UNITS = highLevelBinaryBigIntegerBasedConstructors();
 
     /**
-     * @param input
-     *            The number of bytes to wrap + the expected return class.
+     * Ensures that high-level constructors for all given unit constructors produce a not-null output when fed with a
+     * {@link BigInteger} value.
+     *
+     * @param constructor
+     *            The constructor function for the storage unit under test.
+     * @see StorageUnitsWithLongTest#shouldCreateNotNullUnit(Function)
      */
-    @SuppressWarnings({ "nls", "static-method", "unchecked" })
     @Theory
-    public void shouldCreateCorrectBinaryUnit(
-            final Object[] input) {
+    @SuppressWarnings({ "static-method", "nls" })
+    public void shouldCreateNotNullUnit(final Function<BigInteger, StorageUnit<?>> constructor) {
         // Given
-        final long bytes = (long) input[0];
-        final Class<? extends StorageUnit<?>> expectedClass = (Class<? extends StorageUnit<?>>) input[1];
+        final BigInteger bytes = BigInteger.valueOf(1);
 
         // When
-        final StorageUnit<?> unit = StorageUnits.binaryValueOf(bytes);
+        final StorageUnit<?> unit = constructor.apply(bytes);
 
         // Then
-        Assert.assertEquals(
-                bytes + " should result in " + expectedClass.getSimpleName() + " but got "
-                        + unit.getClass().getSimpleName(),
-                expectedClass, unit.getClass());
+        Assert.assertNotNull("Unit could not be created", unit);
     }
 
 }

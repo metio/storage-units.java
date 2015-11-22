@@ -24,7 +24,7 @@
  *
  * For more information, please refer to <http://unlicense.org>
  */
-package com.github.sebhoss.units.storage.arithmetic;
+package com.github.sebhoss.units.storage;
 
 import java.math.BigInteger;
 import java.util.ArrayList;
@@ -61,7 +61,7 @@ import org.junit.runner.RunWith;
  */
 @RunWith(Theories.class)
 @SuppressWarnings({ "static-method", "nls" })
-public class LongArithmeticTest {
+public class StorageUnitArithmeticLongTest {
 
     /**
      *
@@ -97,15 +97,15 @@ public class LongArithmeticTest {
     /**
      * @param bytes
      *            The number of bytes to add.
-     * @param createUnit
-     *            The creating function for the storage unit under test.
+     * @param constructor
+     *            The constructor function for the storage unit under test.
      */
     @Theory
     public void shouldAddNumberOfBytes(
             final long bytes,
-            final Function<Long, StorageUnit<?>> createUnit) {
+            final Function<Long, StorageUnit<?>> constructor) {
         // Given
-        final StorageUnit<?> unit = createUnit.apply(Long.valueOf(1));
+        final StorageUnit<?> unit = constructor.apply(Long.valueOf(1));
 
         // When
         final StorageUnit<?> calculatedResult = unit.add(bytes);
@@ -119,16 +119,16 @@ public class LongArithmeticTest {
     /**
      * @param bytes
      *            The number of bytes to add.
-     * @param createUnit
-     *            The creating function for the storage unit under test.
+     * @param constructor
+     *            The constructor function for the storage unit under test.
      */
     @Theory
     public void shouldAddStorageUnit(
             final long bytes,
-            final Function<Long, StorageUnit<?>> createUnit) {
+            final Function<Long, StorageUnit<?>> constructor) {
         // Given
-        final StorageUnit<?> unit = createUnit.apply(Long.valueOf(1));
-        final StorageUnit<?> unitToAdd = createUnit.apply(Long.valueOf(bytes));
+        final StorageUnit<?> unit = constructor.apply(Long.valueOf(1));
+        final StorageUnit<?> unitToAdd = constructor.apply(Long.valueOf(bytes));
 
         // When
         final StorageUnit<?> calculatedResult = unit.add(unitToAdd);
@@ -140,13 +140,13 @@ public class LongArithmeticTest {
     }
 
     /**
-     * @param createUnit
-     *            The creating function for the storage unit under test.
+     * @param constructor
+     *            The constructor function for the storage unit under test.
      */
     @Theory
-    public void shouldReturnNewInstanceAfterAddLong(final Function<Long, StorageUnit<?>> createUnit) {
+    public void shouldReturnNewInstanceAfterAddLong(final Function<Long, StorageUnit<?>> constructor) {
         // Given
-        final StorageUnit<?> first = createUnit.apply(Long.valueOf(1));
+        final StorageUnit<?> first = constructor.apply(Long.valueOf(1));
 
         // When
         final StorageUnit<?> second = first.add(1000);
@@ -156,13 +156,13 @@ public class LongArithmeticTest {
     }
 
     /**
-     * @param createUnit
-     *            The creating function for the storage unit under test.
+     * @param constructor
+     *            The constructor function for the storage unit under test.
      */
     @Theory
-    public void shouldReturnNewInstanceAfterDivide(final Function<Long, StorageUnit<?>> createUnit) {
+    public void shouldReturnNewInstanceAfterDivide(final Function<Long, StorageUnit<?>> constructor) {
         // Given
-        final StorageUnit<?> first = createUnit.apply(Long.valueOf(100));
+        final StorageUnit<?> first = constructor.apply(Long.valueOf(100));
 
         // When
         final StorageUnit<?> second = first.divide(5);
@@ -172,13 +172,13 @@ public class LongArithmeticTest {
     }
 
     /**
-     * @param createUnit
-     *            The creating function for the storage unit under test.
+     * @param constructor
+     *            The constructor function for the storage unit under test.
      */
     @Theory
-    public void shouldReturnNewInstanceAfterMultiply(final Function<Long, StorageUnit<?>> createUnit) {
+    public void shouldReturnNewInstanceAfterMultiply(final Function<Long, StorageUnit<?>> constructor) {
         // Given
-        final StorageUnit<?> first = createUnit.apply(Long.valueOf(100));
+        final StorageUnit<?> first = constructor.apply(Long.valueOf(100));
 
         // When
         final StorageUnit<?> second = first.multiply(5);
@@ -188,13 +188,13 @@ public class LongArithmeticTest {
     }
 
     /**
-     * @param createUnit
-     *            The creating function for the storage unit under test.
+     * @param constructor
+     *            The constructor function for the storage unit under test.
      */
     @Theory
-    public void shouldReturnNewInstanceAfterSubtractLong(final Function<Long, StorageUnit<?>> createUnit) {
+    public void shouldReturnNewInstanceAfterSubtractLong(final Function<Long, StorageUnit<?>> constructor) {
         // Given
-        final StorageUnit<?> first = createUnit.apply(Long.valueOf(100));
+        final StorageUnit<?> first = constructor.apply(Long.valueOf(100));
 
         // When
         final StorageUnit<?> second = first.subtract(20);
@@ -206,16 +206,16 @@ public class LongArithmeticTest {
     /**
      * @param bytes
      *            The number of bytes to add.
-     * @param createUnit
-     *            The creating function for the storage unit under test.
+     * @param constructor
+     *            The constructor function for the storage unit under test.
      */
     @Theory
     public void shouldSubtractStorageUnit(
             final long bytes,
-            final Function<Long, StorageUnit<?>> createUnit) {
+            final Function<Long, StorageUnit<?>> constructor) {
         // Given
-        final StorageUnit<?> unit = createUnit.apply(Long.valueOf(bytes));
-        final StorageUnit<?> unitToSubtract = createUnit.apply(Long.valueOf(1));
+        final StorageUnit<?> unit = constructor.apply(Long.valueOf(bytes));
+        final StorageUnit<?> unitToSubtract = constructor.apply(Long.valueOf(1));
 
         // When
         final StorageUnit<?> calculatedResult = unit.subtract(unitToSubtract);
@@ -229,15 +229,15 @@ public class LongArithmeticTest {
     /**
      * @param bytes
      *            The number of bytes to add.
-     * @param createUnit
-     *            The creating function for the storage unit under test.
+     * @param constructor
+     *            The constructor function for the storage unit under test.
      */
     @Theory
     public void shouldSubtractLong(
             final long bytes,
-            final Function<Long, StorageUnit<?>> createUnit) {
+            final Function<Long, StorageUnit<?>> constructor) {
         // Given
-        final StorageUnit<?> unit = createUnit.apply(Long.valueOf(bytes));
+        final StorageUnit<?> unit = constructor.apply(Long.valueOf(bytes));
 
         // When
         final StorageUnit<?> calculatedResult = unit.subtract(1);
@@ -251,15 +251,15 @@ public class LongArithmeticTest {
     /**
      * @param bytes
      *            The number of bytes to add.
-     * @param createUnit
-     *            The creating function for the storage unit under test.
+     * @param constructor
+     *            The constructor function for the storage unit under test.
      */
     @Theory
     public void shouldDivideLong(
             final long bytes,
-            final Function<Long, StorageUnit<?>> createUnit) {
+            final Function<Long, StorageUnit<?>> constructor) {
         // Given
-        final StorageUnit<?> unit = createUnit.apply(Long.valueOf(bytes));
+        final StorageUnit<?> unit = constructor.apply(Long.valueOf(bytes));
 
         // When
         final StorageUnit<?> calculatedResult = unit.divide(1);
@@ -273,15 +273,15 @@ public class LongArithmeticTest {
     /**
      * @param bytes
      *            The number of bytes to add.
-     * @param createUnit
-     *            The creating function for the storage unit under test.
+     * @param constructor
+     *            The constructor function for the storage unit under test.
      */
     @Theory
     public void shouldMultiplyLong(
             final long bytes,
-            final Function<Long, StorageUnit<?>> createUnit) {
+            final Function<Long, StorageUnit<?>> constructor) {
         // Given
-        final StorageUnit<?> unit = createUnit.apply(Long.valueOf(bytes));
+        final StorageUnit<?> unit = constructor.apply(Long.valueOf(bytes));
 
         // When
         final StorageUnit<?> calculatedResult = unit.multiply(1);

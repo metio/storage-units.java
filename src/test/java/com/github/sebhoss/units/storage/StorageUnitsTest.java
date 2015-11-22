@@ -26,60 +26,46 @@
  */
 package com.github.sebhoss.units.storage;
 
-import com.github.sebhoss.warnings.CompilerWarnings;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Modifier;
 
 import org.junit.Assert;
 import org.junit.Test;
 
 /**
- * Test for toString() implementations of the storage units.
+ * General test cases for the {@link StorageUnits} class.
  */
-@SuppressWarnings({ CompilerWarnings.NLS, CompilerWarnings.STATIC_METHOD })
-public class ToStringTest {
+public class StorageUnitsTest {
 
     /**
+     * Ensures that the constructor of the {@link StorageUnits} class is private.
+     * <p>
+     * The class should never be instantiated. Instead use the static factory methods to construct storage units.
      *
+     * @throws NoSuchMethodException
+     *             Should not fail in case the StorageUnits class has a constructor..
+     * @throws IllegalAccessException
+     *             Should not fail in case the StorageUnits class has a constructor..
+     * @throws InvocationTargetException
+     *             Should not fail in case the StorageUnits class has a constructor..
+     * @throws InstantiationException
+     *             Should not fail in case the StorageUnits class has a constructor..
      */
     @Test
-    public void shouldPrintTerabyte() {
+    @SuppressWarnings({ "nls", "static-method" })
+    public void shouldDeclarePrivateConstructor()
+            throws NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
         // Given
-        final Terabyte unit = StorageUnits.terabyte(2);
+        final Constructor<StorageUnits> constructor = StorageUnits.class.getDeclaredConstructor();
 
         // When
-        final String representation = unit.toString();
+        final boolean isPrivate = Modifier.isPrivate(constructor.getModifiers());
 
         // Then
-        Assert.assertEquals("Terabytes are not printed correctly", "2.00 TB", representation);
-    }
-
-    /**
-     *
-     */
-    @Test
-    public void shouldPrintGigabyte() {
-        // Given
-        final Gigabyte unit = StorageUnits.gigabyte(1).add(StorageUnits.megabyte(200));
-
-        // When
-        final String representation = unit.toString();
-
-        // Then
-        Assert.assertEquals("Gigabytes are not printed correctly", "1.20 GB", representation);
-    }
-
-    /**
-     *
-     */
-    @Test
-    public void shouldPrintPetabyte() {
-        // Given
-        final Petabyte unit = StorageUnits.petabyte(1).subtract(StorageUnits.terabyte(250));
-
-        // When
-        final String representation = unit.toString();
-
-        // Then
-        Assert.assertEquals("Petabytes are not printed correctly", "0.75 PB", representation);
+        Assert.assertTrue("Constructor is not private", isPrivate);
+        constructor.setAccessible(true);
+        constructor.newInstance();
     }
 
 }

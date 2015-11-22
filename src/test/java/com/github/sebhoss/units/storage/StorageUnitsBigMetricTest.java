@@ -39,25 +39,25 @@ import org.junit.runner.RunWith;
 *
 */
 @RunWith(Theories.class)
-public class BigBinaryStorageUnitsTest {
+public class StorageUnitsBigMetricTest {
 
-    private static final BigInteger MULTIPLIER = BigInteger.valueOf(1024);
+    private static final BigInteger MULTIPLIER = BigInteger.valueOf(1000);
 
     /**
      *
      */
     @DataPoints
     public static Object[][] INPUT_RESULTS = {
-            { BigInteger.ONE, Kibibyte.class },
-            { MULTIPLIER, Kibibyte.class },
-            { MULTIPLIER.pow(2), Mebibyte.class },
-            { MULTIPLIER.pow(3), Gibibyte.class },
-            { MULTIPLIER.pow(4), Tebibyte.class },
-            { MULTIPLIER.pow(5), Pebibyte.class },
-            { MULTIPLIER.pow(6), Exbibyte.class },
-            { MULTIPLIER.pow(7), Zebibyte.class },
-            { MULTIPLIER.pow(8), Yobibyte.class },
-            { MULTIPLIER.pow(9), Yobibyte.class },
+            { BigInteger.ONE, Kilobyte.class },
+            { MULTIPLIER, Kilobyte.class },
+            { MULTIPLIER.pow(2), Megabyte.class },
+            { MULTIPLIER.pow(3), Gigabyte.class },
+            { MULTIPLIER.pow(4), Terabyte.class },
+            { MULTIPLIER.pow(5), Petabyte.class },
+            { MULTIPLIER.pow(6), Exabyte.class },
+            { MULTIPLIER.pow(7), Zettabyte.class },
+            { MULTIPLIER.pow(8), Yottabyte.class },
+            { MULTIPLIER.pow(9), Yottabyte.class },
     };
 
     /**
@@ -66,14 +66,13 @@ public class BigBinaryStorageUnitsTest {
      */
     @SuppressWarnings({ "nls", "static-method", "unchecked" })
     @Theory
-    public void shouldCreateCorrectBinaryUnit(
-            final Object[] input) {
+    public void shouldCreateCorrectBinaryUnit(final Object[] input) {
         // Given
         final BigInteger bytes = (BigInteger) input[0];
         final Class<? extends StorageUnit<?>> expectedClass = (Class<? extends StorageUnit<?>>) input[1];
 
         // When
-        final StorageUnit<?> unit = StorageUnits.binaryValueOf(bytes);
+        final StorageUnit<?> unit = StorageUnits.metricValueOf(bytes);
 
         // Then
         Assert.assertEquals(

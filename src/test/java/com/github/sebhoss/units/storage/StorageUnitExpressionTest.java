@@ -26,30 +26,38 @@
  */
 package com.github.sebhoss.units.storage;
 
+import static com.github.sebhoss.units.storage.ObjectMother.highLevelLongBasedConstructors;
+
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Function;
 
+import com.github.sebhoss.warnings.CompilerWarnings;
+
 import org.junit.Assert;
 import org.junit.experimental.theories.DataPoints;
+import org.junit.experimental.theories.FromDataPoints;
 import org.junit.experimental.theories.Theories;
 import org.junit.experimental.theories.Theory;
 import org.junit.runner.RunWith;
 
 /**
- *
- *
+ * Test cases for the {@link StorageUnit} class and its behavior towards expressing one unit as the fraction of another.
  */
 @RunWith(Theories.class)
-@SuppressWarnings({ "static-method" })
-public class ExpressionTest {
+@SuppressWarnings({ CompilerWarnings.NLS, CompilerWarnings.STATIC_METHOD })
+public class StorageUnitExpressionTest {
+
+    /** The factory methods to create storage units to test. */
+    @DataPoints("units")
+    public static final List<Function<Long, StorageUnit<?>>> UNITS = highLevelLongBasedConstructors();
 
     /**
-     * @return The factory methods to create storage units to test.
+     * @return The methods to express one unit as the fraction of another.
      */
-    @DataPoints
-    public static List<Function<StorageUnit<?>, BigDecimal>> storageUnits() {
+    @DataPoints("expressions")
+    public static List<Function<StorageUnit<?>, BigDecimal>> expressions() {
         final List<Function<StorageUnit<?>, BigDecimal>> units = new ArrayList<>();
 
         units.add(StorageUnit::inKibibyte);
@@ -74,15 +82,20 @@ public class ExpressionTest {
     }
 
     /**
+     * Ensures that all given units (as per their constructing method) can be expressed as any other given unit.
+     *
+     * @param constructor
+     *            The constructor function for the storage unit under test.
      * @param expression
-     *            The creating function for the storage unit under test.
+     *            The expression method (e.g. 'inGigabyte') to apply.
      */
     @Theory
-    @SuppressWarnings("nls")
-    public void shouldAddNumberOfBytes(
-            final Function<StorageUnit<?>, BigDecimal> expression) {
+    public void shouldExpressUnitAsFractionOfAnotherUnit(
+            @FromDataPoints("units") final Function<Long, StorageUnit<?>> constructor,
+            @FromDataPoints("expressions") final Function<StorageUnit<?>, BigDecimal> expression) {
         // Given
-        final StorageUnit<?> unit = StorageUnits.kilobyte(1);
+        final Long amount = Long.valueOf(1);
+        final StorageUnit<?> unit = constructor.apply(amount);
 
         // When
         final BigDecimal result = expression.apply(unit);

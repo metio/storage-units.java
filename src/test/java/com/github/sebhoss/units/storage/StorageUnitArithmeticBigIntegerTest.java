@@ -24,30 +24,15 @@
  *
  * For more information, please refer to <http://unlicense.org>
  */
-package com.github.sebhoss.units.storage.arithmetic;
+package com.github.sebhoss.units.storage;
+
+import static com.github.sebhoss.units.storage.ObjectMother.bigIntegerBasedConstructors;
 
 import java.math.BigInteger;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Function;
 
-import com.github.sebhoss.units.storage.Exabyte;
-import com.github.sebhoss.units.storage.Exbibyte;
-import com.github.sebhoss.units.storage.Gibibyte;
-import com.github.sebhoss.units.storage.Gigabyte;
-import com.github.sebhoss.units.storage.Kibibyte;
-import com.github.sebhoss.units.storage.Kilobyte;
-import com.github.sebhoss.units.storage.Mebibyte;
-import com.github.sebhoss.units.storage.Megabyte;
-import com.github.sebhoss.units.storage.Pebibyte;
-import com.github.sebhoss.units.storage.Petabyte;
 import com.github.sebhoss.units.storage.StorageUnit;
-import com.github.sebhoss.units.storage.Tebibyte;
-import com.github.sebhoss.units.storage.Terabyte;
-import com.github.sebhoss.units.storage.Yobibyte;
-import com.github.sebhoss.units.storage.Yottabyte;
-import com.github.sebhoss.units.storage.Zebibyte;
-import com.github.sebhoss.units.storage.Zettabyte;
 
 import org.junit.Assert;
 import org.junit.experimental.theories.DataPoints;
@@ -61,7 +46,7 @@ import org.junit.runner.RunWith;
  */
 @RunWith(Theories.class)
 @SuppressWarnings({ "static-method", "nls" })
-public class BigIntegerArithmeticTest {
+public class StorageUnitArithmeticBigIntegerTest {
 
     /**
      *
@@ -69,47 +54,27 @@ public class BigIntegerArithmeticTest {
     @DataPoints
     public static long[] BYTES_TO_ADD = { 1, 2, 3, 5, 8, 13, 100, 500, -500, 123456789 };
 
-    /**
-     * @return The factory methods to create storage units to test.
-     */
+    /** The constructor methods to create storage units to test. */
     @DataPoints
-    public static List<Function<BigInteger, StorageUnit<?>>> storageUnits() {
-        final List<Function<BigInteger, StorageUnit<?>>> units = new ArrayList<>();
-        units.add(Exabyte::valueOf);
-        units.add(Exbibyte::valueOf);
-        units.add(Gibibyte::valueOf);
-        units.add(Gigabyte::valueOf);
-        units.add(Kibibyte::valueOf);
-        units.add(Kilobyte::valueOf);
-        units.add(Mebibyte::valueOf);
-        units.add(Megabyte::valueOf);
-        units.add(Pebibyte::valueOf);
-        units.add(Petabyte::valueOf);
-        units.add(Tebibyte::valueOf);
-        units.add(Terabyte::valueOf);
-        units.add(Yobibyte::valueOf);
-        units.add(Yottabyte::valueOf);
-        units.add(Zebibyte::valueOf);
-        units.add(Zettabyte::valueOf);
-        return units;
-    }
+    public static List<Function<BigInteger, StorageUnit<?>>> UNITS = bigIntegerBasedConstructors();
 
     /**
      * @param bytes
      *            The number of bytes to add.
-     * @param createUnit
-     *            The creating function for the storage unit under test.
+     * @param constructor
+     *            The constructor function for the storage unit under test.
      */
     @Theory
     public void shouldAddNumberOfBytes(
             final long bytes,
-            final Function<BigInteger, StorageUnit<?>> createUnit) {
+            final Function<BigInteger, StorageUnit<?>> constructor) {
         // Given
-        final StorageUnit<?> unit = createUnit.apply(BigInteger.valueOf(1));
+        final BigInteger initialAmount = BigInteger.valueOf(1);
+        final StorageUnit<?> unit = constructor.apply(initialAmount);
 
         // When
         final StorageUnit<?> calculatedResult = unit.add(bytes);
-        final BigInteger expectedResult = BigInteger.valueOf(1 + bytes);
+        final BigInteger expectedResult = initialAmount.add(BigInteger.valueOf(bytes));
 
         // Then
         Assert.assertEquals(unit.getClass().getSimpleName() + "cannot add '1' and '" + bytes + "'.",
@@ -119,20 +84,22 @@ public class BigIntegerArithmeticTest {
     /**
      * @param bytes
      *            The number of bytes to add.
-     * @param createUnit
-     *            The creating function for the storage unit under test.
+     * @param constructor
+     *            The constructor function for the storage unit under test.
      */
     @Theory
     public void shouldAddStorageUnit(
             final long bytes,
-            final Function<BigInteger, StorageUnit<?>> createUnit) {
+            final Function<BigInteger, StorageUnit<?>> constructor) {
         // Given
-        final StorageUnit<?> unit = createUnit.apply(BigInteger.valueOf(1));
-        final StorageUnit<?> unitToAdd = createUnit.apply(BigInteger.valueOf(bytes));
+        final BigInteger initialAmount = BigInteger.valueOf(1);
+        final BigInteger amountToAdd = BigInteger.valueOf(bytes);
+        final StorageUnit<?> unit = constructor.apply(initialAmount);
+        final StorageUnit<?> unitToAdd = constructor.apply(amountToAdd);
 
         // When
         final StorageUnit<?> calculatedResult = unit.add(unitToAdd);
-        final BigInteger expectedResult = BigInteger.valueOf(1 + bytes);
+        final BigInteger expectedResult = initialAmount.add(amountToAdd);
 
         // Then
         Assert.assertEquals(unit.getClass().getSimpleName() + "cannot add '1' and '" + bytes + "'.",
@@ -140,13 +107,14 @@ public class BigIntegerArithmeticTest {
     }
 
     /**
-     * @param createUnit
-     *            The creating function for the storage unit under test.
+     * @param constructor
+     *            The constructor function for the storage unit under test.
      */
     @Theory
-    public void shouldReturnNewInstanceAfterAddLong(final Function<BigInteger, StorageUnit<?>> createUnit) {
+    public void shouldReturnNewInstanceAfterAddLong(final Function<BigInteger, StorageUnit<?>> constructor) {
         // Given
-        final StorageUnit<?> first = createUnit.apply(BigInteger.valueOf(1));
+        final BigInteger initialAmount = BigInteger.valueOf(1);
+        final StorageUnit<?> first = constructor.apply(initialAmount);
 
         // When
         final StorageUnit<?> second = first.add(1000);
@@ -156,13 +124,13 @@ public class BigIntegerArithmeticTest {
     }
 
     /**
-     * @param createUnit
-     *            The creating function for the storage unit under test.
+     * @param constructor
+     *            The constructor function for the storage unit under test.
      */
     @Theory
-    public void shouldReturnNewInstanceAfterDivide(final Function<BigInteger, StorageUnit<?>> createUnit) {
+    public void shouldReturnNewInstanceAfterDivide(final Function<BigInteger, StorageUnit<?>> constructor) {
         // Given
-        final StorageUnit<?> first = createUnit.apply(BigInteger.valueOf(100));
+        final StorageUnit<?> first = constructor.apply(BigInteger.valueOf(100));
 
         // When
         final StorageUnit<?> second = first.divide(5);
@@ -172,13 +140,13 @@ public class BigIntegerArithmeticTest {
     }
 
     /**
-     * @param createUnit
-     *            The creating function for the storage unit under test.
+     * @param constructor
+     *            The constructor function for the storage unit under test.
      */
     @Theory
-    public void shouldReturnNewInstanceAfterMultiply(final Function<BigInteger, StorageUnit<?>> createUnit) {
+    public void shouldReturnNewInstanceAfterMultiply(final Function<BigInteger, StorageUnit<?>> constructor) {
         // Given
-        final StorageUnit<?> first = createUnit.apply(BigInteger.valueOf(100));
+        final StorageUnit<?> first = constructor.apply(BigInteger.valueOf(100));
 
         // When
         final StorageUnit<?> second = first.multiply(5);
@@ -188,13 +156,13 @@ public class BigIntegerArithmeticTest {
     }
 
     /**
-     * @param createUnit
-     *            The creating function for the storage unit under test.
+     * @param constructor
+     *            The constructor function for the storage unit under test.
      */
     @Theory
-    public void shouldReturnNewInstanceAfterSubtractLong(final Function<BigInteger, StorageUnit<?>> createUnit) {
+    public void shouldReturnNewInstanceAfterSubtractLong(final Function<BigInteger, StorageUnit<?>> constructor) {
         // Given
-        final StorageUnit<?> first = createUnit.apply(BigInteger.valueOf(100));
+        final StorageUnit<?> first = constructor.apply(BigInteger.valueOf(100));
 
         // When
         final StorageUnit<?> second = first.subtract(20);
@@ -206,16 +174,16 @@ public class BigIntegerArithmeticTest {
     /**
      * @param bytes
      *            The number of bytes to add.
-     * @param createUnit
-     *            The creating function for the storage unit under test.
+     * @param constructor
+     *            The constructor function for the storage unit under test.
      */
     @Theory
     public void shouldSubtractStorageUnit(
             final long bytes,
-            final Function<BigInteger, StorageUnit<?>> createUnit) {
+            final Function<BigInteger, StorageUnit<?>> constructor) {
         // Given
-        final StorageUnit<?> unit = createUnit.apply(BigInteger.valueOf(bytes));
-        final StorageUnit<?> unitToSubtract = createUnit.apply(BigInteger.valueOf(1));
+        final StorageUnit<?> unit = constructor.apply(BigInteger.valueOf(bytes));
+        final StorageUnit<?> unitToSubtract = constructor.apply(BigInteger.valueOf(1));
 
         // When
         final StorageUnit<?> calculatedResult = unit.subtract(unitToSubtract);

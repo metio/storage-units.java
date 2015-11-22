@@ -26,7 +26,9 @@
  */
 package com.github.sebhoss.units.storage;
 
-import java.math.BigInteger;
+import static com.github.sebhoss.units.storage.ObjectMother.BINARY_MULTIPLIER;
+import static com.github.sebhoss.warnings.CompilerWarnings.NLS;
+import static com.github.sebhoss.warnings.CompilerWarnings.STATIC_METHOD;
 
 import org.junit.Assert;
 import org.junit.experimental.theories.DataPoints;
@@ -35,51 +37,54 @@ import org.junit.experimental.theories.Theory;
 import org.junit.runner.RunWith;
 
 /**
-*
-*
-*/
+ * Test cases for the {@link StorageUnits} class that check the behavior of small binary based units.
+ */
 @RunWith(Theories.class)
-public class BigMetricStorageUnitsTest {
-
-    private static final BigInteger MULTIPLIER = BigInteger.valueOf(1000);
+@SuppressWarnings("boxing")
+public class StorageUnitsSmallBinaryTest {
 
     /**
-     *
+     * Test inputs and their expected result. Since we are working with {@code long}s here, we can't build the really
+     * big storage units because their byte number is greater than {@link Long#MAX_VALUE}.
      */
     @DataPoints
     public static Object[][] INPUT_RESULTS = {
-            { BigInteger.ONE, Kilobyte.class },
-            { MULTIPLIER, Kilobyte.class },
-            { MULTIPLIER.pow(2), Megabyte.class },
-            { MULTIPLIER.pow(3), Gigabyte.class },
-            { MULTIPLIER.pow(4), Terabyte.class },
-            { MULTIPLIER.pow(5), Petabyte.class },
-            { MULTIPLIER.pow(6), Exabyte.class },
-            { MULTIPLIER.pow(7), Zettabyte.class },
-            { MULTIPLIER.pow(8), Yottabyte.class },
-            { MULTIPLIER.pow(9), Yottabyte.class },
+            { 1L, Kibibyte.class },
+            { BINARY_MULTIPLIER, Kibibyte.class },
+            { BINARY_MULTIPLIER * BINARY_MULTIPLIER, Mebibyte.class },
+            { BINARY_MULTIPLIER * BINARY_MULTIPLIER * BINARY_MULTIPLIER, Gibibyte.class },
+            { BINARY_MULTIPLIER * BINARY_MULTIPLIER * BINARY_MULTIPLIER * BINARY_MULTIPLIER, Tebibyte.class },
     };
 
     /**
      * @param input
      *            The number of bytes to wrap + the expected return class.
      */
-    @SuppressWarnings({ "nls", "static-method", "unchecked" })
     @Theory
-    public void shouldCreateCorrectBinaryUnit(
-            final Object[] input) {
+    @SuppressWarnings(STATIC_METHOD)
+    public void shouldCreateCorrectUnit(final Object[] input) {
         // Given
-        final BigInteger bytes = (BigInteger) input[0];
-        final Class<? extends StorageUnit<?>> expectedClass = (Class<? extends StorageUnit<?>>) input[1];
+        final long bytes = (long) input[0];
+        final Class<?> expectedClass = (Class<?>) input[1];
 
         // When
-        final StorageUnit<?> unit = StorageUnits.metricValueOf(bytes);
+        final StorageUnit<?> unit = StorageUnits.binaryValueOf(bytes);
+        final Class<?> unitClass = unit.getClass();
 
         // Then
-        Assert.assertEquals(
-                bytes + " should result in " + expectedClass.getSimpleName() + " but got "
-                        + unit.getClass().getSimpleName(),
-                expectedClass, unit.getClass());
+        Assert.assertEquals(logIncorrectCreation(bytes, expectedClass, unitClass), expectedClass, unitClass);
+    }
+
+    @SuppressWarnings(NLS)
+    private static String logIncorrectCreation(
+            final long bytes,
+            final Class<?> expectedClass,
+            final Class<?> unitClass) {
+        return String.format(
+                "'%s' bytes should result in type [%s] but got [%s].",
+                bytes,
+                expectedClass.getSimpleName(),
+                unitClass.getSimpleName());
     }
 
 }

@@ -93,66 +93,6 @@ public class StorageUnitTest {
     *
     */
     @Test
-    public void shouldReturnDoubleValue() {
-        // Given
-        final StorageUnit<?> unit = StorageUnits.kibibyte(1);
-
-        // When
-        final double result = unit.doubleValue();
-
-        // Then
-        Assert.assertEquals("Conversion was not correct", 1024D, result, 0D);
-    }
-
-    /**
-    *
-    */
-    @Test
-    public void shouldReturnLongValue() {
-        // Given
-        final StorageUnit<?> unit = StorageUnits.kibibyte(1);
-
-        // When
-        final long result = unit.longValue();
-
-        // Then
-        Assert.assertEquals("Conversion was not correct", 1024L, result);
-    }
-
-    /**
-    *
-    */
-    @Test
-    public void shouldReturnFloatValue() {
-        // Given
-        final StorageUnit<?> unit = StorageUnits.kibibyte(1);
-
-        // When
-        final float result = unit.floatValue();
-
-        // Then
-        Assert.assertEquals("Conversion was not correct", 1024F, result, 0F);
-    }
-
-    /**
-    *
-    */
-    @Test
-    public void shouldReturnIntValue() {
-        // Given
-        final StorageUnit<?> unit = StorageUnits.kibibyte(1);
-
-        // When
-        final int result = unit.intValue();
-
-        // Then
-        Assert.assertEquals("Conversion was not correct", 1024, result);
-    }
-
-    /**
-    *
-    */
-    @Test
     public void shouldCalculateHashCode() {
         // Given
         final StorageUnit<?> unit = StorageUnits.kibibyte(1);

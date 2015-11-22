@@ -26,78 +26,75 @@
  */
 package com.github.sebhoss.units.storage;
 
-import java.math.BigInteger;
-
 import com.github.sebhoss.warnings.CompilerWarnings;
 
 import org.junit.Assert;
 import org.junit.Test;
 
 /**
- * Tests for Zebibytes.
+ * Test cases for the {@link StorageUnit} class that check its behavior as a {@link Number}.
  */
 @SuppressWarnings({ CompilerWarnings.NLS, CompilerWarnings.STATIC_METHOD })
-public class ZebibyteTest {
+public class StorageUnitNumberTest {
 
     /**
-     * Checks that a new {@link Zebibyte} instance must be created with a BigInteger.
+     * Ensures that the {@link Number#doubleValue()} method is implemented.
      */
     @Test
-    public void shouldConstructWithBigInteger() {
+    public void shouldReturnDoubleValue() {
         // Given
-        Zebibyte unit;
+        final StorageUnit<?> unit = StorageUnits.kibibyte(1);
 
         // When
-        unit = new Zebibyte(BigInteger.valueOf(1024));
+        final double result = unit.doubleValue();
 
         // Then
-        Assert.assertNotNull("The created unit should never be NULL.", unit);
+        Assert.assertEquals("Conversion was not correct", 1024D, result, 0D);
     }
 
     /**
-     * Checks that {@link Zebibyte#valueOf(long)} does not return <code>null</code>.
+     * Ensures that the {@link Number#longValue()} method is implemented.
      */
     @Test
-    public void shouldCreateZebibyte() {
+    public void shouldReturnLongValue() {
         // Given
-        final StorageUnit<?> unit;
+        final StorageUnit<?> unit = StorageUnits.kibibyte(1);
 
         // When
-        unit = Zebibyte.valueOf(1024);
+        final long result = unit.longValue();
 
         // Then
-        Assert.assertNotNull("The created unit should never be NULL.", unit);
+        Assert.assertEquals("Conversion was not correct", 1024L, result);
     }
 
     /**
-     * Checks that {@link Zebibyte#toString()} shows the correct symbol.
+     * Ensures that the {@link Number#floatValue()} method is implemented.
      */
     @Test
-    public void shouldShowCorrectSymbol() {
+    public void shouldReturnFloatValue() {
         // Given
-        final StorageUnit<?> unit;
+        final StorageUnit<?> unit = StorageUnits.kibibyte(1);
 
         // When
-        unit = StorageUnits.zebibyte(1);
+        final float result = unit.floatValue();
 
         // Then
-        Assert.assertTrue("The symbol for zebibyte should be 'ZiB'.", unit.toString().endsWith("ZiB"));
+        Assert.assertEquals("Conversion was not correct", 1024F, result, 0F);
     }
 
     /**
-     * Checks that {@link Zebibyte#toString()} shows the correct value.
+     * Ensures that the {@link Number#intValue()} method is implemented.
      */
     @Test
-    public void shouldShowCorrectValue() {
+    public void shouldReturnIntValue() {
         // Given
-        final StorageUnit<?> unit;
+        final StorageUnit<?> unit = StorageUnits.kibibyte(1);
 
         // When
-        unit = StorageUnits.zebibyte(1);
+        final int result = unit.intValue();
 
         // Then
-        Assert.assertTrue("One zebibyte should be interpreted as '1.00' zebibytes.",
-                unit.toString().startsWith("1.00"));
+        Assert.assertEquals("Conversion was not correct", 1024, result);
     }
 
 }

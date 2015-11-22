@@ -26,6 +26,11 @@
  */
 package com.github.sebhoss.units.storage;
 
+import static com.github.sebhoss.units.storage.ObjectMother.highLevelLongBasedConstructors;
+
+import java.util.List;
+import java.util.function.Function;
+
 import org.junit.Assert;
 import org.junit.experimental.theories.DataPoints;
 import org.junit.experimental.theories.Theories;
@@ -33,47 +38,34 @@ import org.junit.experimental.theories.Theory;
 import org.junit.runner.RunWith;
 
 /**
-*
-*
-*/
+ * Test cases for the {@link StorageUnits} class that work with {@link Long}s.
+ */
 @RunWith(Theories.class)
-@SuppressWarnings("boxing")
-public class SmallMetricStorageUnitsTest {
+public class StorageUnitsWithLongTest {
 
-    private static final long MULTIPLIER = 1000;
-
-    /**
-     *
-     */
+    /** The factory methods to create storage units to test. */
     @DataPoints
-    public static Object[][] INPUT_RESULTS = {
-            { 1L, Kilobyte.class },
-            { MULTIPLIER, Kilobyte.class },
-            { MULTIPLIER * MULTIPLIER, Megabyte.class },
-            { MULTIPLIER * MULTIPLIER * MULTIPLIER, Gigabyte.class },
-            { MULTIPLIER * MULTIPLIER * MULTIPLIER * MULTIPLIER, Terabyte.class },
-    };
+    public static List<Function<Long, StorageUnit<?>>> UNITS = highLevelLongBasedConstructors();
 
     /**
-     * @param input
-     *            The number of bytes to wrap + the expected return class.
+     * Ensures that high-level constructors for all given unit constructors produce a not-null output when fed with a
+     * {@link Long} value.
+     *
+     * @param constructor
+     *            The constructor function for the storage unit under test.
+     * @see StorageUnitsWithBigIntegerTest#shouldCreateNotNullUnit(Function)
      */
-    @SuppressWarnings({ "nls", "static-method", "unchecked" })
     @Theory
-    public void shouldCreateCorrectBinaryUnit(
-            final Object[] input) {
+    @SuppressWarnings({ "static-method", "nls" })
+    public void shouldCreateNotNullUnit(final Function<Long, StorageUnit<?>> constructor) {
         // Given
-        final long bytes = (long) input[0];
-        final Class<? extends StorageUnit<?>> expectedClass = (Class<? extends StorageUnit<?>>) input[1];
+        final Long bytes = Long.valueOf(1);
 
         // When
-        final StorageUnit<?> unit = StorageUnits.metricValueOf(bytes);
+        final StorageUnit<?> unit = constructor.apply(bytes);
 
         // Then
-        Assert.assertEquals(
-                bytes + " should result in " + expectedClass.getSimpleName() + " but got "
-                        + unit.getClass().getSimpleName(),
-                expectedClass, unit.getClass());
+        Assert.assertNotNull("Unit could not be created", unit);
     }
 
 }
