@@ -29,7 +29,7 @@ package com.github.sebhoss.units.storage;
 import java.math.BigInteger;
 
 /**
- * Zebibyte as specified in ISO IEC 80000-13:2008.
+ * Zebibyte as specified in ISO IEC 80000-13:2008 (1 Zebibyte = 1 180 591 620 717 411 303 424 Byte).
  */
 public final class Zebibyte extends StorageUnit<Zebibyte> {
 

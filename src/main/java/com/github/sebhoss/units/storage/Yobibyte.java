@@ -29,7 +29,7 @@ package com.github.sebhoss.units.storage;
 import java.math.BigInteger;
 
 /**
- * Yobibyte as specified in ISO IEC 80000-13:2008.
+ * Yobibyte as specified in ISO IEC 80000-13:2008 (1 Yobibyte = 1 208 925 819 614 629 174 706 176 Byte).
  */
 public final class Yobibyte extends StorageUnit<Yobibyte> {
 

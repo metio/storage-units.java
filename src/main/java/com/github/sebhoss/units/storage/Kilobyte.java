@@ -29,7 +29,7 @@ package com.github.sebhoss.units.storage;
 import java.math.BigInteger;
 
 /**
- * Kilobyte as specified in ISO IEC 80000-13:2008.
+ * Kilobyte as specified in ISO IEC 80000-13:2008 (1 Kilobyte = 1 000 Byte).
  */
 public class Kilobyte extends StorageUnit<Kilobyte> {
 

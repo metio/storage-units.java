@@ -29,7 +29,7 @@ package com.github.sebhoss.units.storage;
 import java.math.BigInteger;
 
 /**
- * Pebibyte as specified in ISO IEC 80000-13:2008.
+ * Pebibyte as specified in ISO IEC 80000-13:2008 (1 Pebibyte = 1 125 899 906 842 624 Byte).
  */
 public final class Pebibyte extends StorageUnit<Pebibyte> {
 

@@ -29,7 +29,7 @@ package com.github.sebhoss.units.storage;
 import java.math.BigInteger;
 
 /**
- * Tebibyte as specified in ISO IEC 80000-13:2008.
+ * Tebibyte as specified in ISO IEC 80000-13:2008 (1 Tebibyte = 1 099 511 627 776 Byte).
  */
 public final class Tebibyte extends StorageUnit<Tebibyte> {
 

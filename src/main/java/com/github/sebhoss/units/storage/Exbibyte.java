@@ -29,7 +29,7 @@ package com.github.sebhoss.units.storage;
 import java.math.BigInteger;
 
 /**
- * Exbibyte as specified in ISO IEC 80000-13:2008.
+ * Exbibyte as specified in ISO IEC 80000-13:2008 (1 Exbibyte = 1 152 921 504 606 846 976 Byte).
  */
 public final class Exbibyte extends StorageUnit<Exbibyte> {
 

@@ -29,7 +29,7 @@ package com.github.sebhoss.units.storage;
 import java.math.BigInteger;
 
 /**
- * Megabyte as specified in ISO IEC 80000-13:2008.
+ * Megabyte as specified in ISO IEC 80000-13:2008 (1 Megabyte = 1 000 000 Byte).
  */
 public class Megabyte extends StorageUnit<Megabyte> {
 

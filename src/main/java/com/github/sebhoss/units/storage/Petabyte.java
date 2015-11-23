@@ -29,7 +29,7 @@ package com.github.sebhoss.units.storage;
 import java.math.BigInteger;
 
 /**
- * Petabyte as specified in ISO IEC 80000-13:2008.
+ * Petabyte as specified in ISO IEC 80000-13:2008 (1 Petabyte = 1 000 000 000 000 000 Byte).
  */
 public class Petabyte extends StorageUnit<Petabyte> {
 

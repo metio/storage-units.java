@@ -29,7 +29,7 @@ package com.github.sebhoss.units.storage;
 import java.math.BigInteger;
 
 /**
- * Gigabyte as specified in ISO IEC 80000-13:2008.
+ * Gigabyte as specified in ISO IEC 80000-13:2008 (1 Gigabyte = 1 000 000 000 Byte).
  */
 public class Gigabyte extends StorageUnit<Gigabyte> {
 

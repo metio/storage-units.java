@@ -29,7 +29,7 @@ package com.github.sebhoss.units.storage;
 import java.math.BigInteger;
 
 /**
- * Kibibyte as specified in ISO IEC 80000-13:2008.
+ * Kibibyte as specified in ISO IEC 80000-13:2008 (1 Kibibyte = 1 024 Byte).
  */
 public final class Kibibyte extends StorageUnit<Kibibyte> {
 

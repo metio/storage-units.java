@@ -29,7 +29,7 @@ package com.github.sebhoss.units.storage;
 import java.math.BigInteger;
 
 /**
- * Yottabyte as specified in ISO IEC 80000-13:2008.
+ * Yottabyte as specified in ISO IEC 80000-13:2008 (1 Yottabyte = 1 000 000 000 000 000 000 000 000 Byte).
  */
 public class Yottabyte extends StorageUnit<Yottabyte> {
 
