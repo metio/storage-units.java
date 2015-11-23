@@ -13,8 +13,6 @@ image:https://img.shields.io/travis/{github-org}/{project-name}/master.svg?style
 image:https://img.shields.io/coveralls/{github-org}/{project-name}/master.svg?style=flat-square["", link="https://coveralls.io/github/{github-org}/{project-name}"]
 image:https://scan.coverity.com/projects/{coverity-project}/badge.svg["Coverity Scan Result", link="https://scan.coverity.com/projects/{coverity-project}"]
 
-<a href='https://coveralls.io/github/sebhoss/storage-units?branch=master'><img src='https://coveralls.io/repos/sebhoss/storage-units/badge.svg?branch=master&service=github' alt='Coverage Status' /></a>
-
 Implementation of storage units according to link:http://en.wikipedia.org/wiki/ISO/IEC_80000[ISO IEC 80000-13:2008].
 
 === Features
