@@ -19,3 +19,12 @@ env:
   global:
    - secure: "Bm3zHFYJZlWPpUJXYbx8VxGEhMQeu/PUlNFbc10t1C7OEazjgtN9pYyWAxmYM2rAtvhiGF+yy9H+UdfaWd7NrHDoBXWbJjxagKhEsXxi931GtwxfxyxAmhmOuLQXaS9xofKIi7wYCyt8ekPaW8gsXWBWVmN0A1bpqdF93QwV2uU="
 
+addons:
+  coverity_scan:
+    project:
+      name: "sebhoss/storage-units"
+      description: "Build submitted via Travis CI"
+    notification_email: mail@shoss.de
+    build_command_prepend: "mvn clean"
+    build_command:   "mvn -DskipTests=true compile"
+    branch_pattern: master
