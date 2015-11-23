@@ -28,3 +28,12 @@ addons:
     build_command_prepend: "mvn clean"
     build_command:   "mvn -DskipTests=true compile"
     branch_pattern: master
+
+# see http://docs.travis-ci.com/user/notifications/
+notifications:
+  webhooks:
+    urls:
+      - https://webhooks.gitter.im/e/edbcebdb6f3847f7cc19
+    on_success: always  # options: [always|never|change] default: always
+    on_failure: always  # options: [always|never|change] default: always
+    on_start: never     # options: [always|never|change] default: always
