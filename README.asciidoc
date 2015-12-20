@@ -243,7 +243,7 @@ BigDecimal amount = gigabyte(15).inTerabyte()   // 0.015
 
 === Caveats
 
-Be wary of integer overflow when working with `long`. To be safe, always use `BigInteger` as input values.
+Be wary of overflow when working with `long`. To be safe, always use `BigInteger` as input values.
 
 === Integration
 
