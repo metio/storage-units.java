@@ -161,8 +161,8 @@ StorageUnit<?> unit = StorageUnits.metricValueOf(120000)    // Kilobyte (120.00 
 StorageUnit<?> unit = StorageUnits.metricValueOf(1000000)   // Megabyte (1.00 MB)
 
 // 'BigInteger' based
-StorageUnit<?> unit = StorageUnits.metricValueOf(120000)    // Kilobyte (120.00 kB)
-StorageUnit<?> unit = StorageUnits.metricValueOf(1000000)   // Megabyte (1.00 MB)
+StorageUnit<?> unit = StorageUnits.metricValueOf(BigInteger.valueOf(120000))    // Kilobyte (120.00 kB)
+StorageUnit<?> unit = StorageUnits.metricValueOf(BigInteger.valueOf(1000000))   // Megabyte (1.00 MB)
 ----
 
 Additionally high-level factory methods are also available in the `StorageUnits` class.
@@ -207,7 +207,7 @@ Each unit can be checked against each other unit.
 ----
 megabyte(1000).equals(gigabyte(1)) // true
 megabyte(1024).equals(gigabyte(1)) // false
-terabyte(12).equals(tebibyte(10))  // false
+terabyte(12).equals(gigabyte(12000))  // false
 ----
 
 === toString
@@ -232,13 +232,13 @@ Kilobyte unit = gigabyte(12).asKilobyte()   // "12000000.00 kB"
 Gigabyte unit = terabyte(1).asGigabyte()    // "1000.00 GB"
 ----
 
-Each unit can be expressed as each other unit.
+Each unit can be expressed as a fraction of another unit.
 
 [source,java]
 ----
 BigDecimal kilobytes = megabyte(1).inKilobyte() // 1 000
 BigDecimal bytes = kibibyte(2).inByte()         // 2 048
-BigDecimal amount = gigabyte(15).inTerabyte()   // 0.015
+BigDecimal terabytes = gigabyte(15).inTerabyte()   // 0.015
 ----
 
 === Caveats
