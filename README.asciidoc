@@ -275,6 +275,10 @@ This project is compatible with the following Java versions:
 | 
 |===
 
+== Reference
+
+Originally inspired by link:https://github.com/twitter/util#space[Twitters util] package.
+
 == License
 
 This project is licensed under the link:http://unlicense.org/[UNLICENSE]. See the link:UNLICENSE[UNLICENSE file] for more information.
