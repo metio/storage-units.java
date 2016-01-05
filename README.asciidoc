@@ -241,10 +241,6 @@ BigDecimal bytes = kibibyte(2).inByte()         // 2 048
 BigDecimal terabytes = gigabyte(15).inTerabyte()   // 0.015
 ----
 
-=== Caveats
-
-Be wary of overflow when working with `long`. To be safe, always use `BigInteger` as input values.
-
 === Integration
 
 To use this project just declare the following dependency inside your POM:
