@@ -61,15 +61,11 @@
   </scm>
 
   <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
-  <!--                                PROPERTIES                               -->
-  <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
-
-  <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
   <!--                               DEPENDENCIES                              -->
   <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
   <dependencies>
     <dependency>
-      <groupId>com.github.sebhoss</groupId>
+      <groupId>de.xn__ho_hia.utils.jdt</groupId>
       <artifactId>suppress-warnings</artifactId>
     </dependency>
     <dependency>

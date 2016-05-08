@@ -26,9 +26,9 @@
  */
 package de.xn__ho_hia.utils.storage_unit;
 
-import static com.github.sebhoss.warnings.CompilerWarnings.BOXING;
-import static com.github.sebhoss.warnings.CompilerWarnings.NLS;
-import static com.github.sebhoss.warnings.CompilerWarnings.STATIC_METHOD;
+import static de.xn__ho_hia.utils.jdt.CompilerWarnings.BOXING;
+import static de.xn__ho_hia.utils.jdt.CompilerWarnings.NLS;
+import static de.xn__ho_hia.utils.jdt.CompilerWarnings.STATIC_METHOD;
 import static de.xn__ho_hia.utils.storage_unit.ObjectMother.METRIC_MULTIPLIER;
 
 import org.junit.Assert;

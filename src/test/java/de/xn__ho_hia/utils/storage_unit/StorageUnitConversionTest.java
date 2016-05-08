@@ -32,7 +32,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Function;
 
-import com.github.sebhoss.warnings.CompilerWarnings;
+import de.xn__ho_hia.utils.jdt.CompilerWarnings;
 
 import org.junit.Assert;
 import org.junit.experimental.theories.DataPoints;

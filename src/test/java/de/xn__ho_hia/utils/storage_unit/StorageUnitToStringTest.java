@@ -37,7 +37,7 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import com.github.sebhoss.warnings.CompilerWarnings;
+import de.xn__ho_hia.utils.jdt.CompilerWarnings;
 
 import org.junit.Assert;
 import org.junit.experimental.theories.DataPoints;

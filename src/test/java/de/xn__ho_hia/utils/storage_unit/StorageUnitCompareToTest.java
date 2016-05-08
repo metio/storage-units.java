@@ -31,7 +31,7 @@ import static de.xn__ho_hia.utils.storage_unit.ObjectMother.longBasedConstructor
 import java.util.List;
 import java.util.function.Function;
 
-import com.github.sebhoss.warnings.CompilerWarnings;
+import de.xn__ho_hia.utils.jdt.CompilerWarnings;
 
 import org.junit.Assert;
 import org.junit.experimental.theories.DataPoints;
