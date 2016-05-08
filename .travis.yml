@@ -17,6 +17,7 @@ after_success:
 
 env:
   global:
+   # COVERITY_SCAN_TOKEN
    - secure: "Bm3zHFYJZlWPpUJXYbx8VxGEhMQeu/PUlNFbc10t1C7OEazjgtN9pYyWAxmYM2rAtvhiGF+yy9H+UdfaWd7NrHDoBXWbJjxagKhEsXxi931GtwxfxyxAmhmOuLQXaS9xofKIi7wYCyt8ekPaW8gsXWBWVmN0A1bpqdF93QwV2uU="
 
 addons:

@@ -31,8 +31,6 @@ import java.math.BigInteger;
 import java.math.RoundingMode;
 import java.util.Objects;
 
-import org.eclipse.jdt.annotation.Nullable;
-
 /**
  * Abstract base class for all storage units. Provides common functionality for unit conversion, hashCode(), equals(),
  * compareTo(), toString(), doubleValue(), floatValue(), intValue() and longValue().
@@ -42,67 +40,67 @@ import org.eclipse.jdt.annotation.Nullable;
  */
 public abstract class StorageUnit<T extends StorageUnit<T>> extends Number implements Comparable<StorageUnit<?>> {
 
-    private static final int NUMBER_OF_DECIMAL_PLACES = 2;
+    private static final int   NUMBER_OF_DECIMAL_PLACES = 2;
 
-    private static final long serialVersionUID = -7344790980741118949L;
+    private static final long  serialVersionUID         = -7344790980741118949L;
 
-    private static final int DEFAULT_SCALE = 24;
+    private static final int   DEFAULT_SCALE            = 24;
 
     /**
      * The storage unit base for binary numbers. Each step between the units dimensions is done with this base value.
      */
-    static final BigInteger BINARY_UNIT_BASE = BigInteger.valueOf(1024);
+    static final BigInteger    BINARY_UNIT_BASE         = BigInteger.valueOf(1024);
 
-    static final BigInteger BYTES_IN_A_KIBIBYTE = BigInteger.ONE.multiply(StorageUnit.BINARY_UNIT_BASE);
+    static final BigInteger    BYTES_IN_A_KIBIBYTE      = BigInteger.ONE.multiply(StorageUnit.BINARY_UNIT_BASE);
 
-    static final BigInteger BYTES_IN_A_MEBIBYTE = StorageUnit.BYTES_IN_A_KIBIBYTE
+    static final BigInteger    BYTES_IN_A_MEBIBYTE      = StorageUnit.BYTES_IN_A_KIBIBYTE
             .multiply(StorageUnit.BINARY_UNIT_BASE);
 
-    static final BigInteger BYTES_IN_A_GIBIBYTE = StorageUnit.BYTES_IN_A_MEBIBYTE
+    static final BigInteger    BYTES_IN_A_GIBIBYTE      = StorageUnit.BYTES_IN_A_MEBIBYTE
             .multiply(StorageUnit.BINARY_UNIT_BASE);
 
-    static final BigInteger BYTES_IN_A_TEBIBYTE = StorageUnit.BYTES_IN_A_GIBIBYTE
+    static final BigInteger    BYTES_IN_A_TEBIBYTE      = StorageUnit.BYTES_IN_A_GIBIBYTE
             .multiply(StorageUnit.BINARY_UNIT_BASE);
 
-    static final BigInteger BYTES_IN_A_PEBIBYTE = StorageUnit.BYTES_IN_A_TEBIBYTE
+    static final BigInteger    BYTES_IN_A_PEBIBYTE      = StorageUnit.BYTES_IN_A_TEBIBYTE
             .multiply(StorageUnit.BINARY_UNIT_BASE);
 
-    static final BigInteger BYTES_IN_A_EXBIBYTE = StorageUnit.BYTES_IN_A_PEBIBYTE
+    static final BigInteger    BYTES_IN_A_EXBIBYTE      = StorageUnit.BYTES_IN_A_PEBIBYTE
             .multiply(StorageUnit.BINARY_UNIT_BASE);
 
-    static final BigInteger BYTES_IN_A_ZEBIBYTE = StorageUnit.BYTES_IN_A_EXBIBYTE
+    static final BigInteger    BYTES_IN_A_ZEBIBYTE      = StorageUnit.BYTES_IN_A_EXBIBYTE
             .multiply(StorageUnit.BINARY_UNIT_BASE);
 
-    static final BigInteger BYTES_IN_A_YOBIBYTE = StorageUnit.BYTES_IN_A_ZEBIBYTE
+    static final BigInteger    BYTES_IN_A_YOBIBYTE      = StorageUnit.BYTES_IN_A_ZEBIBYTE
             .multiply(StorageUnit.BINARY_UNIT_BASE);
 
     /**
      * The storage unit base for metric numbers. Each step between the units dimensions is done with this base value.
      */
-    static final BigInteger METRIC_UNIT_BASE = BigInteger.valueOf(1000);
+    static final BigInteger    METRIC_UNIT_BASE         = BigInteger.valueOf(1000);
 
-    static final BigInteger BYTES_IN_A_KILOBYTE = BigInteger.ONE
+    static final BigInteger    BYTES_IN_A_KILOBYTE      = BigInteger.ONE
             .multiply(StorageUnit.METRIC_UNIT_BASE);
 
-    static final BigInteger BYTES_IN_A_MEGABYTE = StorageUnit.BYTES_IN_A_KILOBYTE
+    static final BigInteger    BYTES_IN_A_MEGABYTE      = StorageUnit.BYTES_IN_A_KILOBYTE
             .multiply(StorageUnit.METRIC_UNIT_BASE);
 
-    static final BigInteger BYTES_IN_A_GIGABYTE = StorageUnit.BYTES_IN_A_MEGABYTE
+    static final BigInteger    BYTES_IN_A_GIGABYTE      = StorageUnit.BYTES_IN_A_MEGABYTE
             .multiply(StorageUnit.METRIC_UNIT_BASE);
 
-    static final BigInteger BYTES_IN_A_TERABYTE = StorageUnit.BYTES_IN_A_GIGABYTE
+    static final BigInteger    BYTES_IN_A_TERABYTE      = StorageUnit.BYTES_IN_A_GIGABYTE
             .multiply(StorageUnit.METRIC_UNIT_BASE);
 
-    static final BigInteger BYTES_IN_A_PETABYTE = StorageUnit.BYTES_IN_A_TERABYTE
+    static final BigInteger    BYTES_IN_A_PETABYTE      = StorageUnit.BYTES_IN_A_TERABYTE
             .multiply(StorageUnit.METRIC_UNIT_BASE);
 
-    static final BigInteger BYTES_IN_A_EXABYTE = StorageUnit.BYTES_IN_A_PETABYTE
+    static final BigInteger    BYTES_IN_A_EXABYTE       = StorageUnit.BYTES_IN_A_PETABYTE
             .multiply(StorageUnit.METRIC_UNIT_BASE);
 
-    static final BigInteger BYTES_IN_A_ZETTABYTE = StorageUnit.BYTES_IN_A_EXABYTE
+    static final BigInteger    BYTES_IN_A_ZETTABYTE     = StorageUnit.BYTES_IN_A_EXABYTE
             .multiply(StorageUnit.METRIC_UNIT_BASE);
 
-    static final BigInteger BYTES_IN_A_YOTTABYTE = StorageUnit.BYTES_IN_A_ZETTABYTE
+    static final BigInteger    BYTES_IN_A_YOTTABYTE     = StorageUnit.BYTES_IN_A_ZETTABYTE
             .multiply(StorageUnit.METRIC_UNIT_BASE);
 
     protected final BigInteger bytes;
@@ -362,7 +360,7 @@ public abstract class StorageUnit<T extends StorageUnit<T>> extends Number imple
     }
 
     @Override
-    public final boolean equals(@Nullable final Object other) {
+    public final boolean equals(final Object other) {
         if (other instanceof StorageUnit<?>) {
             final StorageUnit<?> that = (StorageUnit<?>) other;
 
@@ -373,7 +371,7 @@ public abstract class StorageUnit<T extends StorageUnit<T>> extends Number imple
     }
 
     @Override
-    public final int compareTo(@Nullable final StorageUnit<?> that) {
+    public final int compareTo(final StorageUnit<?> that) {
         if (that != null) {
             return this.bytes.compareTo(that.bytes);
         }
