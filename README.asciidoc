@@ -150,7 +150,7 @@ StorageUnit<?> unit = StorageUnits.binaryValueOf(256)       // Kibibyte (0.25 Ki
 StorageUnit<?> unit = StorageUnits.binaryValueOf(1048576)   // Mebibyte (1.00 MiB)
 
 // 'BigInteger' based
-StorageUnit<?> unit = StorageUnits.binaryValueOf(BigInteger.valueOf(256))     // Kibibyte (1.00 MiB)
+StorageUnit<?> unit = StorageUnits.binaryValueOf(BigInteger.valueOf(256))     // Kibibyte (0.25 MiB)
 StorageUnit<?> unit = StorageUnits.binaryValueOf(BigInteger.valueOf(1048576)) // Mebibyte (1.00 MiB)
 ----
 
