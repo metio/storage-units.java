@@ -143,6 +143,8 @@ Megabyte unit = Megabyte.valueOf(BigInteger.valueOf(1000000)) // 1 000 000 Byte 
 
 The `StorageUnits` class offers two factory methods that automatically pick the best-matching unit for a given number of bytes.
 
+==== binaryValueOf
+
 [source,java]
 ----
 // 'long' based
@@ -153,6 +155,8 @@ StorageUnit<?> unit = StorageUnits.binaryValueOf(1048576)   // Mebibyte (1.00 Mi
 StorageUnit<?> unit = StorageUnits.binaryValueOf(BigInteger.valueOf(256))     // Kibibyte (0.25 MiB)
 StorageUnit<?> unit = StorageUnits.binaryValueOf(BigInteger.valueOf(1048576)) // Mebibyte (1.00 MiB)
 ----
+
+==== metricValueOf
 
 [source,java]
 ----
@@ -169,14 +173,28 @@ Additionally high-level factory methods are also available in the `StorageUnits`
 
 [source,java]
 ----
-Megabyte unit = StorageUnits.megabyte(1) // 1 000 000 Byte
-Kibibyte unit = StorageUnits.kibibyte(8) // 8 192 Byte
-Gigabyte unit = StorageUnits.gigabyte(2) // 2 000 000 000 Byte
+Kibibyte unit = StorageUnits.kibibyte(1)   // 1 024 Byte
+Mebibyte unit = StorageUnits.mebibyte(1)   // 1 048 576 Byte
+Gibibyte unit = StorageUnits.gibibyte(1)   // 1 073 741 824 Byte
+Tebibyte unit = StorageUnits.tebibyte(1)   // 1 099 511 627 776 Byte
+Pebibyte unit = StorageUnits.pebibyte(1)   // 1 125 899 906 842 624 Byte
+Exbibyte unit = StorageUnits.exbibyte(1)   // 1 152 921 504 606 846 976 Byte
+Zebibyte unit = StorageUnits.zebibyte(1)   // 1 180 591 620 717 411 303 424 Byte
+Yobibyte unit = StorageUnits.yobibyte(1)   // 1 208 925 819 614 629 174 706 176 Byte
+
+Kilobyte unit = StorageUnits.kilobyte(1)   // 1 000 Byte
+Megabyte unit = StorageUnits.megabyte(1)   // 1 000 000 Byte
+Gigabyte unit = StorageUnits.gigabyte(1)   // 1 000 000 000 Byte
+Terabyte unit = StorageUnits.terabyte(1)   // 1 000 000 000 000 Byte
+Petabyte unit = StorageUnits.petabyte(1)   // 1 000 000 000 000 000 Byte
+Exabyte unit = StorageUnits.exabyte(1)     // 1 000 000 000 000 000 000 Byte
+Zettabyte unit = StorageUnits.zettabyte(1) // 1 000 000 000 000 000 000 000 Byte
+Yottabyte unit = StorageUnits.yottabyte(1) // 1 000 000 000 000 000 000 000 000 Byte
 ----
 
 === Add, Subtract, Multiply, Divide
 
-Each unit implements the basic four math operations.
+Each unit implements the basic four math operations. All operations retain their original type, e.g. `[Kilobyte] + [Megabyte] = [Kilobyte]`
 
 [source,java]
 ----
@@ -236,9 +254,9 @@ Each unit can be expressed as a fraction of another unit.
 
 [source,java]
 ----
-BigDecimal kilobytes = megabyte(1).inKilobyte() // 1 000
-BigDecimal bytes = kibibyte(2).inByte()         // 2 048
-BigDecimal terabytes = gigabyte(15).inTerabyte()   // 0.015
+BigDecimal kilobytes = megabyte(1).inKilobyte()  // 1 000
+BigDecimal bytes = kibibyte(2).inByte()          // 2 048
+BigDecimal terabytes = gigabyte(15).inTerabyte() // 0.015
 ----
 
 === Integration
