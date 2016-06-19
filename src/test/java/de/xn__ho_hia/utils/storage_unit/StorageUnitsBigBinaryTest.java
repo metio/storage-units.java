@@ -15,6 +15,7 @@ import org.junit.experimental.theories.Theory;
 import org.junit.runner.RunWith;
 
 import de.xn__ho_hia.quality.null_analysis.Nullsafe;
+import de.xn__ho_hia.quality.null_analysis.NullsafeMath;
 
 /**
 *

@@ -22,6 +22,7 @@ import org.junit.experimental.theories.Theories;
 import org.junit.experimental.theories.Theory;
 import org.junit.runner.RunWith;
 
+import de.xn__ho_hia.quality.null_analysis.NullsafeMath;
 import de.xn__ho_hia.quality.suppression.CompilerWarnings;
 
 /**

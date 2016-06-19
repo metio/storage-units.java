@@ -18,6 +18,8 @@ import org.junit.experimental.theories.Theories;
 import org.junit.experimental.theories.Theory;
 import org.junit.runner.RunWith;
 
+import de.xn__ho_hia.quality.null_analysis.NullsafeMath;
+
 /**
  * Test cases for the {@link StorageUnits} class that work with {@link BigInteger}s.
  */
