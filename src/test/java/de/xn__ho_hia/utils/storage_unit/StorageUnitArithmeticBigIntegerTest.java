@@ -1,32 +1,13 @@
 /*
- * This is free and unencumbered software released into the public domain.
- *
- * Anyone is free to copy, modify, publish, use, compile, sell, or
- * distribute this software, either in source code form or as a compiled
- * binary, for any purpose, commercial or non-commercial, and by any
- * means.
- *
- * In jurisdictions that recognize copyright laws, the author or authors
- * of this software dedicate any and all copyright interest in the
- * software to the public domain. We make this dedication for the benefit
- * of the public at large and to the detriment of our heirs and
- * successors. We intend this dedication to be an overt act of
- * relinquishment in perpetuity of all present and future rights to this
- * software under copyright law.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
- * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
- * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
- * IN NO EVENT SHALL THE AUTHORS BE LIABLE FOR ANY CLAIM, DAMAGES OR
- * OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
- * ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
- * OTHER DEALINGS IN THE SOFTWARE.
- *
- * For more information, please refer to <http://unlicense.org>
+ * This file is part of storage-units. It is subject to the license terms in the LICENSE file found in the top-level
+ * directory of this distribution and at http://creativecommons.org/publicdomain/zero/1.0/. No part of storage-units,
+ * including this file, may be copied, modified, propagated, or distributed except according to the terms contained
+ * in the LICENSE file.
  */
 package de.xn__ho_hia.utils.storage_unit;
 
-import static de.xn__ho_hia.utils.storage_unit.ObjectMother.bigIntegerBasedConstructors;
+import static de.xn__ho_hia.utils.storage_unit.NullsafeMath.asBigInteger;
+import static de.xn__ho_hia.utils.storage_unit.TestObjects.bigIntegerBasedConstructors;
 
 import java.math.BigInteger;
 import java.util.List;
@@ -38,24 +19,26 @@ import org.junit.experimental.theories.Theories;
 import org.junit.experimental.theories.Theory;
 import org.junit.runner.RunWith;
 
+import de.xn__ho_hia.quality.suppression.CompilerWarnings;
+
 /**
  *
  *
  */
 @RunWith(Theories.class)
-@SuppressWarnings({ "static-method", "nls" })
+@SuppressWarnings({ CompilerWarnings.NLS, CompilerWarnings.NULL, CompilerWarnings.STATIC_METHOD })
 public class StorageUnitArithmeticBigIntegerTest {
 
     /**
      *
      */
     @DataPoints
-    public static long[]                                     BYTES_TO_ADD = { 1, 2, 3, 5, 8, 13, 100, 500, -500,
+    public static long[] BYTES_TO_ADD = { 1, 2, 3, 5, 8, 13, 100, 500, -500,
             123456789 };
 
     /** The constructor methods to create storage units to test. */
     @DataPoints
-    public static List<Function<BigInteger, StorageUnit<?>>> UNITS        = bigIntegerBasedConstructors();
+    public static List<Function<BigInteger, StorageUnit<?>>> UNITS = bigIntegerBasedConstructors();
 
     /**
      * @param bytes
@@ -68,7 +51,7 @@ public class StorageUnitArithmeticBigIntegerTest {
             final long bytes,
             final Function<BigInteger, StorageUnit<?>> constructor) {
         // Given
-        final BigInteger initialAmount = BigInteger.valueOf(1);
+        final BigInteger initialAmount = asBigInteger(1);
         final StorageUnit<?> unit = constructor.apply(initialAmount);
 
         // When
@@ -91,8 +74,8 @@ public class StorageUnitArithmeticBigIntegerTest {
             final long bytes,
             final Function<BigInteger, StorageUnit<?>> constructor) {
         // Given
-        final BigInteger initialAmount = BigInteger.valueOf(1);
-        final BigInteger amountToAdd = BigInteger.valueOf(bytes);
+        final BigInteger initialAmount = asBigInteger(1);
+        final BigInteger amountToAdd = asBigInteger(bytes);
         final StorageUnit<?> unit = constructor.apply(initialAmount);
         final StorageUnit<?> unitToAdd = constructor.apply(amountToAdd);
 
@@ -112,7 +95,7 @@ public class StorageUnitArithmeticBigIntegerTest {
     @Theory
     public void shouldReturnNewInstanceAfterAddLong(final Function<BigInteger, StorageUnit<?>> constructor) {
         // Given
-        final BigInteger initialAmount = BigInteger.valueOf(1);
+        final BigInteger initialAmount = asBigInteger(1);
         final StorageUnit<?> first = constructor.apply(initialAmount);
 
         // When
@@ -129,7 +112,7 @@ public class StorageUnitArithmeticBigIntegerTest {
     @Theory
     public void shouldReturnNewInstanceAfterDivide(final Function<BigInteger, StorageUnit<?>> constructor) {
         // Given
-        final StorageUnit<?> first = constructor.apply(BigInteger.valueOf(100));
+        final StorageUnit<?> first = constructor.apply(asBigInteger(100));
 
         // When
         final StorageUnit<?> second = first.divide(5);
@@ -145,7 +128,7 @@ public class StorageUnitArithmeticBigIntegerTest {
     @Theory
     public void shouldReturnNewInstanceAfterMultiply(final Function<BigInteger, StorageUnit<?>> constructor) {
         // Given
-        final StorageUnit<?> first = constructor.apply(BigInteger.valueOf(100));
+        final StorageUnit<?> first = constructor.apply(asBigInteger(100));
 
         // When
         final StorageUnit<?> second = first.multiply(5);
@@ -161,7 +144,7 @@ public class StorageUnitArithmeticBigIntegerTest {
     @Theory
     public void shouldReturnNewInstanceAfterSubtractLong(final Function<BigInteger, StorageUnit<?>> constructor) {
         // Given
-        final StorageUnit<?> first = constructor.apply(BigInteger.valueOf(100));
+        final StorageUnit<?> first = constructor.apply(asBigInteger(100));
 
         // When
         final StorageUnit<?> second = first.subtract(20);
@@ -181,8 +164,8 @@ public class StorageUnitArithmeticBigIntegerTest {
             final long bytes,
             final Function<BigInteger, StorageUnit<?>> constructor) {
         // Given
-        final StorageUnit<?> unit = constructor.apply(BigInteger.valueOf(bytes));
-        final StorageUnit<?> unitToSubtract = constructor.apply(BigInteger.valueOf(1));
+        final StorageUnit<?> unit = constructor.apply(asBigInteger(bytes));
+        final StorageUnit<?> unitToSubtract = constructor.apply(asBigInteger(1));
 
         // When
         final StorageUnit<?> calculatedResult = unit.subtract(unitToSubtract);

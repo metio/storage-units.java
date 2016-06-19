@@ -1,30 +1,16 @@
 /*
- * This is free and unencumbered software released into the public domain.
- *
- * Anyone is free to copy, modify, publish, use, compile, sell, or
- * distribute this software, either in source code form or as a compiled
- * binary, for any purpose, commercial or non-commercial, and by any
- * means.
- *
- * In jurisdictions that recognize copyright laws, the author or authors
- * of this software dedicate any and all copyright interest in the
- * software to the public domain. We make this dedication for the benefit
- * of the public at large and to the detriment of our heirs and
- * successors. We intend this dedication to be an overt act of
- * relinquishment in perpetuity of all present and future rights to this
- * software under copyright law.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
- * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
- * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
- * IN NO EVENT SHALL THE AUTHORS BE LIABLE FOR ANY CLAIM, DAMAGES OR
- * OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
- * ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
- * OTHER DEALINGS IN THE SOFTWARE.
- *
- * For more information, please refer to <http://unlicense.org>
+ * This file is part of storage-units. It is subject to the license terms in the LICENSE file found in the top-level
+ * directory of this distribution and at http://creativecommons.org/publicdomain/zero/1.0/. No part of storage-units,
+ * including this file, may be copied, modified, propagated, or distributed except according to the terms contained
+ * in the LICENSE file.
  */
 package de.xn__ho_hia.utils.storage_unit;
+
+import static de.xn__ho_hia.utils.storage_unit.NullsafeMath.addNullsafe;
+import static de.xn__ho_hia.utils.storage_unit.NullsafeMath.asBigInteger;
+import static de.xn__ho_hia.utils.storage_unit.NullsafeMath.divideNullsafe;
+import static de.xn__ho_hia.utils.storage_unit.NullsafeMath.multiplyNullsafe;
+import static de.xn__ho_hia.utils.storage_unit.NullsafeMath.subtractNullsafe;
 
 import java.math.BigInteger;
 
@@ -54,7 +40,7 @@ public class Gigabyte extends StorageUnit<Gigabyte> {
      * @return A new Gigabyte unit with the given value.
      */
     public static Gigabyte valueOf(final long numberOfBytes) {
-        return new Gigabyte(BigInteger.valueOf(numberOfBytes));
+        return new Gigabyte(asBigInteger(numberOfBytes));
     }
 
     /**
@@ -68,32 +54,32 @@ public class Gigabyte extends StorageUnit<Gigabyte> {
 
     @Override
     public Gigabyte add(final long bytesToAdd) {
-        return new Gigabyte(bytes.add(BigInteger.valueOf(bytesToAdd)));
+        return new Gigabyte(addNullsafe(bytes, asBigInteger(bytesToAdd)));
     }
 
     @Override
     public Gigabyte add(final StorageUnit<?> storageAmount) {
-        return new Gigabyte(bytes.add(storageAmount.bytes));
+        return new Gigabyte(addNullsafe(bytes, storageAmount.bytes));
     }
 
     @Override
     public Gigabyte divide(final long divisor) {
-        return new Gigabyte(bytes.divide(BigInteger.valueOf(divisor)));
+        return new Gigabyte(divideNullsafe(bytes, asBigInteger(divisor)));
     }
 
     @Override
     public Gigabyte multiply(final long factor) {
-        return new Gigabyte(bytes.multiply(BigInteger.valueOf(factor)));
+        return new Gigabyte(multiplyNullsafe(bytes, asBigInteger(factor)));
     }
 
     @Override
     public Gigabyte subtract(final long bytesToSubtract) {
-        return new Gigabyte(bytes.subtract(BigInteger.valueOf(bytesToSubtract)));
+        return new Gigabyte(subtractNullsafe(bytes, asBigInteger(bytesToSubtract)));
     }
 
     @Override
     public Gigabyte subtract(final StorageUnit<?> storageAmount) {
-        return new Gigabyte(bytes.subtract(storageAmount.bytes));
+        return new Gigabyte(subtractNullsafe(bytes, storageAmount.bytes));
     }
 
     @Override

@@ -89,6 +89,10 @@
       <scope>test</scope>
     </dependency>
     <dependency>
+      <groupId>de.xn--ho-hia.quality</groupId>
+      <artifactId>null-analysis</artifactId>
+    </dependency>
+    <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
       <scope>test</scope>

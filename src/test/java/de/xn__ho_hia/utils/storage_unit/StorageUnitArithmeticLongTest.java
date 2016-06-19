@@ -1,30 +1,12 @@
 /*
- * This is free and unencumbered software released into the public domain.
- *
- * Anyone is free to copy, modify, publish, use, compile, sell, or
- * distribute this software, either in source code form or as a compiled
- * binary, for any purpose, commercial or non-commercial, and by any
- * means.
- *
- * In jurisdictions that recognize copyright laws, the author or authors
- * of this software dedicate any and all copyright interest in the
- * software to the public domain. We make this dedication for the benefit
- * of the public at large and to the detriment of our heirs and
- * successors. We intend this dedication to be an overt act of
- * relinquishment in perpetuity of all present and future rights to this
- * software under copyright law.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
- * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
- * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
- * IN NO EVENT SHALL THE AUTHORS BE LIABLE FOR ANY CLAIM, DAMAGES OR
- * OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
- * ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
- * OTHER DEALINGS IN THE SOFTWARE.
- *
- * For more information, please refer to <http://unlicense.org>
+ * This file is part of storage-units. It is subject to the license terms in the LICENSE file found in the top-level
+ * directory of this distribution and at http://creativecommons.org/publicdomain/zero/1.0/. No part of storage-units,
+ * including this file, may be copied, modified, propagated, or distributed except according to the terms contained
+ * in the LICENSE file.
  */
 package de.xn__ho_hia.utils.storage_unit;
+
+import static de.xn__ho_hia.utils.storage_unit.NullsafeMath.asLong;
 
 import java.math.BigInteger;
 import java.util.ArrayList;
@@ -37,30 +19,14 @@ import org.junit.experimental.theories.Theories;
 import org.junit.experimental.theories.Theory;
 import org.junit.runner.RunWith;
 
-import de.xn__ho_hia.utils.storage_unit.Exabyte;
-import de.xn__ho_hia.utils.storage_unit.Exbibyte;
-import de.xn__ho_hia.utils.storage_unit.Gibibyte;
-import de.xn__ho_hia.utils.storage_unit.Gigabyte;
-import de.xn__ho_hia.utils.storage_unit.Kibibyte;
-import de.xn__ho_hia.utils.storage_unit.Kilobyte;
-import de.xn__ho_hia.utils.storage_unit.Mebibyte;
-import de.xn__ho_hia.utils.storage_unit.Megabyte;
-import de.xn__ho_hia.utils.storage_unit.Pebibyte;
-import de.xn__ho_hia.utils.storage_unit.Petabyte;
-import de.xn__ho_hia.utils.storage_unit.StorageUnit;
-import de.xn__ho_hia.utils.storage_unit.Tebibyte;
-import de.xn__ho_hia.utils.storage_unit.Terabyte;
-import de.xn__ho_hia.utils.storage_unit.Yobibyte;
-import de.xn__ho_hia.utils.storage_unit.Yottabyte;
-import de.xn__ho_hia.utils.storage_unit.Zebibyte;
-import de.xn__ho_hia.utils.storage_unit.Zettabyte;
+import de.xn__ho_hia.quality.suppression.CompilerWarnings;
 
 /**
  *
  *
  */
 @RunWith(Theories.class)
-@SuppressWarnings({ "static-method", "nls" })
+@SuppressWarnings({ CompilerWarnings.NLS, CompilerWarnings.NULL, CompilerWarnings.STATIC_METHOD })
 public class StorageUnitArithmeticLongTest {
 
     /**
@@ -105,7 +71,7 @@ public class StorageUnitArithmeticLongTest {
             final long bytes,
             final Function<Long, StorageUnit<?>> constructor) {
         // Given
-        final StorageUnit<?> unit = constructor.apply(Long.valueOf(1));
+        final StorageUnit<?> unit = constructor.apply(asLong(1));
 
         // When
         final StorageUnit<?> calculatedResult = unit.add(bytes);
@@ -127,8 +93,8 @@ public class StorageUnitArithmeticLongTest {
             final long bytes,
             final Function<Long, StorageUnit<?>> constructor) {
         // Given
-        final StorageUnit<?> unit = constructor.apply(Long.valueOf(1));
-        final StorageUnit<?> unitToAdd = constructor.apply(Long.valueOf(bytes));
+        final StorageUnit<?> unit = constructor.apply(asLong(1));
+        final StorageUnit<?> unitToAdd = constructor.apply(asLong(bytes));
 
         // When
         final StorageUnit<?> calculatedResult = unit.add(unitToAdd);
@@ -146,7 +112,7 @@ public class StorageUnitArithmeticLongTest {
     @Theory
     public void shouldReturnNewInstanceAfterAddLong(final Function<Long, StorageUnit<?>> constructor) {
         // Given
-        final StorageUnit<?> first = constructor.apply(Long.valueOf(1));
+        final StorageUnit<?> first = constructor.apply(asLong(1));
 
         // When
         final StorageUnit<?> second = first.add(1000);
@@ -162,7 +128,7 @@ public class StorageUnitArithmeticLongTest {
     @Theory
     public void shouldReturnNewInstanceAfterDivide(final Function<Long, StorageUnit<?>> constructor) {
         // Given
-        final StorageUnit<?> first = constructor.apply(Long.valueOf(100));
+        final StorageUnit<?> first = constructor.apply(asLong(100));
 
         // When
         final StorageUnit<?> second = first.divide(5);
@@ -178,7 +144,7 @@ public class StorageUnitArithmeticLongTest {
     @Theory
     public void shouldReturnNewInstanceAfterMultiply(final Function<Long, StorageUnit<?>> constructor) {
         // Given
-        final StorageUnit<?> first = constructor.apply(Long.valueOf(100));
+        final StorageUnit<?> first = constructor.apply(asLong(100));
 
         // When
         final StorageUnit<?> second = first.multiply(5);
@@ -194,7 +160,7 @@ public class StorageUnitArithmeticLongTest {
     @Theory
     public void shouldReturnNewInstanceAfterSubtractLong(final Function<Long, StorageUnit<?>> constructor) {
         // Given
-        final StorageUnit<?> first = constructor.apply(Long.valueOf(100));
+        final StorageUnit<?> first = constructor.apply(asLong(100));
 
         // When
         final StorageUnit<?> second = first.subtract(20);
@@ -214,8 +180,8 @@ public class StorageUnitArithmeticLongTest {
             final long bytes,
             final Function<Long, StorageUnit<?>> constructor) {
         // Given
-        final StorageUnit<?> unit = constructor.apply(Long.valueOf(bytes));
-        final StorageUnit<?> unitToSubtract = constructor.apply(Long.valueOf(1));
+        final StorageUnit<?> unit = constructor.apply(asLong(bytes));
+        final StorageUnit<?> unitToSubtract = constructor.apply(asLong(1));
 
         // When
         final StorageUnit<?> calculatedResult = unit.subtract(unitToSubtract);
@@ -237,7 +203,7 @@ public class StorageUnitArithmeticLongTest {
             final long bytes,
             final Function<Long, StorageUnit<?>> constructor) {
         // Given
-        final StorageUnit<?> unit = constructor.apply(Long.valueOf(bytes));
+        final StorageUnit<?> unit = constructor.apply(asLong(bytes));
 
         // When
         final StorageUnit<?> calculatedResult = unit.subtract(1);
@@ -259,7 +225,7 @@ public class StorageUnitArithmeticLongTest {
             final long bytes,
             final Function<Long, StorageUnit<?>> constructor) {
         // Given
-        final StorageUnit<?> unit = constructor.apply(Long.valueOf(bytes));
+        final StorageUnit<?> unit = constructor.apply(asLong(bytes));
 
         // When
         final StorageUnit<?> calculatedResult = unit.divide(1);
@@ -281,7 +247,7 @@ public class StorageUnitArithmeticLongTest {
             final long bytes,
             final Function<Long, StorageUnit<?>> constructor) {
         // Given
-        final StorageUnit<?> unit = constructor.apply(Long.valueOf(bytes));
+        final StorageUnit<?> unit = constructor.apply(asLong(bytes));
 
         // When
         final StorageUnit<?> calculatedResult = unit.multiply(1);
