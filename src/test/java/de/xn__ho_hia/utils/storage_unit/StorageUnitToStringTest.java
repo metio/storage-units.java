@@ -30,7 +30,7 @@ import de.xn__ho_hia.quality.suppression.CompilerWarnings;
  * Test cases for the {@link StorageUnit} class and its {@link StorageUnit#toString() toString} behavior.
  */
 @RunWith(Theories.class)
-@SuppressWarnings({ CompilerWarnings.NLS, CompilerWarnings.NULL, CompilerWarnings.STATIC_METHOD })
+@SuppressWarnings({ CompilerWarnings.NLS, CompilerWarnings.STATIC_METHOD })
 public class StorageUnitToStringTest {
 
     /** The factory methods to create storage units to test. */

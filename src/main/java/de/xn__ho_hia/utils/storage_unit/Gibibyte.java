@@ -14,6 +14,8 @@ import static de.xn__ho_hia.quality.null_analysis.NullsafeMath.subtractNullsafe;
 
 import java.math.BigInteger;
 
+import org.eclipse.jdt.annotation.NonNull;
+
 /**
  * Gibibyte as specified in ISO IEC 80000-13:2008 (1 Gibibyte = 1 073 741 824 Byte).
  */
@@ -21,7 +23,7 @@ public final class Gibibyte extends StorageUnit<Gibibyte> {
 
     private static final long serialVersionUID = -1104749948510944566L;
 
-    Gibibyte(final BigInteger bytes) {
+    Gibibyte(@NonNull final BigInteger bytes) {
         super(bytes);
     }
 
@@ -30,7 +32,8 @@ public final class Gibibyte extends StorageUnit<Gibibyte> {
      *            The amount of bytes the gibibyte contains.
      * @return A new Gibibyte unit with the given value.
      */
-    public static Gibibyte valueOf(final BigInteger numberOfBytes) {
+    @NonNull
+    public static Gibibyte valueOf(@NonNull final BigInteger numberOfBytes) {
         return new Gibibyte(numberOfBytes);
     }
 
@@ -39,6 +42,7 @@ public final class Gibibyte extends StorageUnit<Gibibyte> {
      *            The amount of bytes the gibibytes contains.
      * @return A new Gibibyte unit with the given value.
      */
+    @NonNull
     public static Gibibyte valueOf(final long numberOfBytes) {
         return new Gibibyte(asBigInteger(numberOfBytes));
     }
@@ -48,7 +52,8 @@ public final class Gibibyte extends StorageUnit<Gibibyte> {
      *            The amount of bytes the gibibytes contains.
      * @return A new Gibibyte unit with the given value.
      */
-    public static Gibibyte valueOf(final Long numberOfBytes) {
+    @NonNull
+    public static Gibibyte valueOf(@NonNull final Long numberOfBytes) {
         return valueOf(numberOfBytes.longValue());
     }
 

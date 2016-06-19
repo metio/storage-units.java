@@ -20,7 +20,7 @@ import de.xn__ho_hia.quality.suppression.CompilerWarnings;
  *
  * @see <a href="http://martinfowler.com/bliki/ObjectMother.html">Martin Fowler about ObjectMothers</a>
  */
-@SuppressWarnings({ CompilerWarnings.NULL })
+@SuppressWarnings(CompilerWarnings.NULL)
 public class TestObjects {
 
     /** Multiplier for metric based units. */

@@ -14,6 +14,8 @@ import static de.xn__ho_hia.quality.null_analysis.NullsafeMath.subtractNullsafe;
 
 import java.math.BigInteger;
 
+import org.eclipse.jdt.annotation.NonNull;
+
 /**
  * Yobibyte as specified in ISO IEC 80000-13:2008 (1 Yobibyte = 1 208 925 819 614 629 174 706 176 Byte).
  */
@@ -22,7 +24,7 @@ public final class Yobibyte extends StorageUnit<Yobibyte> {
     /** Generated */
     private static final long serialVersionUID = -5606322878020884194L;
 
-    Yobibyte(final BigInteger bytes) {
+    Yobibyte(@NonNull final BigInteger bytes) {
         super(bytes);
     }
 
@@ -31,7 +33,8 @@ public final class Yobibyte extends StorageUnit<Yobibyte> {
      *            The amount of bytes the yobibyte contains.
      * @return A new Yobibyte unit with the given value.
      */
-    public static Yobibyte valueOf(final BigInteger numberOfBytes) {
+    @NonNull
+    public static Yobibyte valueOf(@NonNull final BigInteger numberOfBytes) {
         return new Yobibyte(numberOfBytes);
     }
 
@@ -40,6 +43,7 @@ public final class Yobibyte extends StorageUnit<Yobibyte> {
      *            The amount of bytes the yobibytes contains.
      * @return A new Yobibyte unit with the given value.
      */
+    @NonNull
     public static Yobibyte valueOf(final long numberOfBytes) {
         return new Yobibyte(asBigInteger(numberOfBytes));
     }
@@ -49,7 +53,8 @@ public final class Yobibyte extends StorageUnit<Yobibyte> {
      *            The amount of bytes the yobibytes contains.
      * @return A new Yobibyte unit with the given value.
      */
-    public static Yobibyte valueOf(final Long numberOfBytes) {
+    @NonNull
+    public static Yobibyte valueOf(@NonNull final Long numberOfBytes) {
         return valueOf(numberOfBytes.longValue());
     }
 

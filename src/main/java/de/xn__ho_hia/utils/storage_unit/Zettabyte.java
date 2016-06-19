@@ -14,6 +14,8 @@ import static de.xn__ho_hia.quality.null_analysis.NullsafeMath.subtractNullsafe;
 
 import java.math.BigInteger;
 
+import org.eclipse.jdt.annotation.NonNull;
+
 /**
  * Zettabyte as specified in ISO IEC 80000-13:2008 (1 Zettabyte = 1 000 000 000 000 000 000 000 Byte).
  */
@@ -21,7 +23,7 @@ public class Zettabyte extends StorageUnit<Zettabyte> {
 
     private static final long serialVersionUID = 8849006574018911826L;
 
-    Zettabyte(final BigInteger bytes) {
+    Zettabyte(@NonNull final BigInteger bytes) {
         super(bytes);
     }
 
@@ -30,7 +32,8 @@ public class Zettabyte extends StorageUnit<Zettabyte> {
      *            The amount of bytes the zettabyte contains.
      * @return A new Zettabyte unit with the given value.
      */
-    public static Zettabyte valueOf(final BigInteger numberOfBytes) {
+    @NonNull
+    public static Zettabyte valueOf(@NonNull final BigInteger numberOfBytes) {
         return new Zettabyte(numberOfBytes);
     }
 
@@ -39,6 +42,7 @@ public class Zettabyte extends StorageUnit<Zettabyte> {
      *            The amount of bytes the zettabytes contains.
      * @return A new Zettabyte unit with the given value.
      */
+    @NonNull
     public static Zettabyte valueOf(final long numberOfBytes) {
         return new Zettabyte(asBigInteger(numberOfBytes));
     }
@@ -48,7 +52,8 @@ public class Zettabyte extends StorageUnit<Zettabyte> {
      *            The amount of bytes the zettabytes contains.
      * @return A new Zettabyte unit with the given value.
      */
-    public static Zettabyte valueOf(final Long numberOfBytes) {
+    @NonNull
+    public static Zettabyte valueOf(@NonNull final Long numberOfBytes) {
         return valueOf(numberOfBytes.longValue());
     }
 

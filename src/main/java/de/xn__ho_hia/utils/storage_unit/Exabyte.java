@@ -14,6 +14,8 @@ import static de.xn__ho_hia.quality.null_analysis.NullsafeMath.subtractNullsafe;
 
 import java.math.BigInteger;
 
+import org.eclipse.jdt.annotation.NonNull;
+
 /**
  * Exabyte as specified in ISO IEC 80000-13:2008 (1 Exabyte = 1 000 000 000 000 000 000 Byte).
  */
@@ -21,7 +23,7 @@ public class Exabyte extends StorageUnit<Exabyte> {
 
     private static final long serialVersionUID = 6846441733771841250L;
 
-    Exabyte(final BigInteger bytes) {
+    Exabyte(@NonNull final BigInteger bytes) {
         super(bytes);
     }
 
@@ -30,7 +32,8 @@ public class Exabyte extends StorageUnit<Exabyte> {
      *            The amount of bytes the exabyte contains.
      * @return A new Exabyte unit with the given value.
      */
-    public static Exabyte valueOf(final BigInteger numberOfBytes) {
+    @NonNull
+    public static Exabyte valueOf(@NonNull final BigInteger numberOfBytes) {
         return new Exabyte(numberOfBytes);
     }
 
@@ -39,6 +42,7 @@ public class Exabyte extends StorageUnit<Exabyte> {
      *            The amount of bytes the exabytes contains.
      * @return A new Exabyte unit with the given value.
      */
+    @NonNull
     public static Exabyte valueOf(final long numberOfBytes) {
         return new Exabyte(asBigInteger(numberOfBytes));
     }
@@ -48,7 +52,8 @@ public class Exabyte extends StorageUnit<Exabyte> {
      *            The amount of bytes the exabytes contains.
      * @return A new Exabyte unit with the given value.
      */
-    public static Exabyte valueOf(final Long numberOfBytes) {
+    @NonNull
+    public static Exabyte valueOf(@NonNull final Long numberOfBytes) {
         return valueOf(numberOfBytes.longValue());
     }
 

@@ -57,7 +57,7 @@ public class StorageUnitsSmallBinaryTest {
                 unitClass);
     }
 
-    @SuppressWarnings({ CompilerWarnings.NLS, CompilerWarnings.NULL })
+    @SuppressWarnings({ CompilerWarnings.NLS })
     private static String logIncorrectCreation(
             final long bytes,
             final Class<?> expectedClass,

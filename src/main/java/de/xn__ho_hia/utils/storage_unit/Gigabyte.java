@@ -14,6 +14,8 @@ import static de.xn__ho_hia.quality.null_analysis.NullsafeMath.subtractNullsafe;
 
 import java.math.BigInteger;
 
+import org.eclipse.jdt.annotation.NonNull;
+
 /**
  * Gigabyte as specified in ISO IEC 80000-13:2008 (1 Gigabyte = 1 000 000 000 Byte).
  */
@@ -21,7 +23,7 @@ public class Gigabyte extends StorageUnit<Gigabyte> {
 
     private static final long serialVersionUID = 7581075190529125530L;
 
-    Gigabyte(final BigInteger bytes) {
+    Gigabyte(@NonNull final BigInteger bytes) {
         super(bytes);
     }
 
@@ -30,7 +32,8 @@ public class Gigabyte extends StorageUnit<Gigabyte> {
      *            The amount of bytes the gigabyte contains.
      * @return A new Gigabyte unit with the given value.
      */
-    public static Gigabyte valueOf(final BigInteger numberOfBytes) {
+    @NonNull
+    public static Gigabyte valueOf(@NonNull final BigInteger numberOfBytes) {
         return new Gigabyte(numberOfBytes);
     }
 
@@ -39,6 +42,7 @@ public class Gigabyte extends StorageUnit<Gigabyte> {
      *            The amount of bytes the gigabytes contains.
      * @return A new Gigabyte unit with the given value.
      */
+    @NonNull
     public static Gigabyte valueOf(final long numberOfBytes) {
         return new Gigabyte(asBigInteger(numberOfBytes));
     }
@@ -48,7 +52,8 @@ public class Gigabyte extends StorageUnit<Gigabyte> {
      *            The amount of bytes the gigabytes contains.
      * @return A new Gigabyte unit with the given value.
      */
-    public static Gigabyte valueOf(final Long numberOfBytes) {
+    @NonNull
+    public static Gigabyte valueOf(@NonNull final Long numberOfBytes) {
         return valueOf(numberOfBytes.longValue());
     }
 

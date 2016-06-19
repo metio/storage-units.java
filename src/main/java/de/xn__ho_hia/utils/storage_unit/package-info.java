@@ -9,5 +9,4 @@
  *
  * @see <a href="https://github.com/sebhoss/storage-units/blob/master/README.asciidoc">README</a>
  */
-@org.eclipse.jdt.annotation.NonNullByDefault
 package de.xn__ho_hia.utils.storage_unit;

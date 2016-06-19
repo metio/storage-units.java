@@ -35,7 +35,7 @@ public class StorageUnitNumberOfBytesPerUnitTest {
     @DataPoints
     public static List<Function<BigInteger, StorageUnit<?>>> UNITS = TestObjects.bigIntegerBasedConstructors();
 
-    @SuppressWarnings({ CompilerWarnings.NLS, CompilerWarnings.NULL })
+    @SuppressWarnings({ CompilerWarnings.NLS })
     private static final Map<Class<?>, BigInteger> EXPECTED_NUMBERS = Collections.unmodifiableMap(Stream.of(
             // binary units
             new SimpleEntry<>(Kibibyte.class, new BigInteger("1024")),

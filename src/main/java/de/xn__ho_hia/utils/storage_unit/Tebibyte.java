@@ -14,6 +14,8 @@ import static de.xn__ho_hia.quality.null_analysis.NullsafeMath.subtractNullsafe;
 
 import java.math.BigInteger;
 
+import org.eclipse.jdt.annotation.NonNull;
+
 /**
  * Tebibyte as specified in ISO IEC 80000-13:2008 (1 Tebibyte = 1 099 511 627 776 Byte).
  */
@@ -22,7 +24,7 @@ public final class Tebibyte extends StorageUnit<Tebibyte> {
     /** Generated */
     private static final long serialVersionUID = 3614537130129620881L;
 
-    Tebibyte(final BigInteger bytes) {
+    Tebibyte(@NonNull final BigInteger bytes) {
         super(bytes);
     }
 
@@ -31,7 +33,8 @@ public final class Tebibyte extends StorageUnit<Tebibyte> {
      *            The amount of bytes the tebibyte contains.
      * @return A new Tebibyte unit with the given value.
      */
-    public static Tebibyte valueOf(final BigInteger numberOfBytes) {
+    @NonNull
+    public static Tebibyte valueOf(@NonNull final BigInteger numberOfBytes) {
         return new Tebibyte(numberOfBytes);
     }
 
@@ -40,6 +43,7 @@ public final class Tebibyte extends StorageUnit<Tebibyte> {
      *            The amount of bytes the tebibytes contains.
      * @return A new Tebibyte unit with the given value.
      */
+    @NonNull
     public static Tebibyte valueOf(final long numberOfBytes) {
         return new Tebibyte(asBigInteger(numberOfBytes));
     }
@@ -49,7 +53,8 @@ public final class Tebibyte extends StorageUnit<Tebibyte> {
      *            The amount of bytes the tebibytes contains.
      * @return A new Tebibyte unit with the given value.
      */
-    public static Tebibyte valueOf(final Long numberOfBytes) {
+    @NonNull
+    public static Tebibyte valueOf(@NonNull final Long numberOfBytes) {
         return valueOf(numberOfBytes.longValue());
     }
 

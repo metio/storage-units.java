@@ -14,6 +14,8 @@ import static de.xn__ho_hia.quality.null_analysis.NullsafeMath.subtractNullsafe;
 
 import java.math.BigInteger;
 
+import org.eclipse.jdt.annotation.NonNull;
+
 /**
  * Yottabyte as specified in ISO IEC 80000-13:2008 (1 Yottabyte = 1 000 000 000 000 000 000 000 000 Byte).
  */
@@ -21,7 +23,7 @@ public class Yottabyte extends StorageUnit<Yottabyte> {
 
     private static final long serialVersionUID = 2482152459842042316L;
 
-    Yottabyte(final BigInteger bytes) {
+    Yottabyte(@NonNull final BigInteger bytes) {
         super(bytes);
     }
 
@@ -30,7 +32,8 @@ public class Yottabyte extends StorageUnit<Yottabyte> {
      *            The amount of bytes the yottabyte contains.
      * @return A new Yottabyte unit with the given value.
      */
-    public static Yottabyte valueOf(final BigInteger numberOfBytes) {
+    @NonNull
+    public static Yottabyte valueOf(@NonNull final BigInteger numberOfBytes) {
         return new Yottabyte(numberOfBytes);
     }
 
@@ -39,6 +42,7 @@ public class Yottabyte extends StorageUnit<Yottabyte> {
      *            The amount of bytes the yottabytes contains.
      * @return A new Yottabyte unit with the given value.
      */
+    @NonNull
     public static Yottabyte valueOf(final long numberOfBytes) {
         return new Yottabyte(asBigInteger(numberOfBytes));
     }
@@ -48,7 +52,8 @@ public class Yottabyte extends StorageUnit<Yottabyte> {
      *            The amount of bytes the yottabytes contains.
      * @return A new Yottabyte unit with the given value.
      */
-    public static Yottabyte valueOf(final Long numberOfBytes) {
+    @NonNull
+    public static Yottabyte valueOf(@NonNull final Long numberOfBytes) {
         return valueOf(numberOfBytes.longValue());
     }
 

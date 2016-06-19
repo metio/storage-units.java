@@ -14,6 +14,8 @@ import static de.xn__ho_hia.quality.null_analysis.NullsafeMath.subtractNullsafe;
 
 import java.math.BigInteger;
 
+import org.eclipse.jdt.annotation.NonNull;
+
 /**
  * Pebibyte as specified in ISO IEC 80000-13:2008 (1 Pebibyte = 1 125 899 906 842 624 Byte).
  */
@@ -21,7 +23,7 @@ public final class Pebibyte extends StorageUnit<Pebibyte> {
 
     private static final long serialVersionUID = -6112472064345339882L;
 
-    Pebibyte(final BigInteger bytes) {
+    Pebibyte(@NonNull final BigInteger bytes) {
         super(bytes);
     }
 
@@ -30,7 +32,8 @@ public final class Pebibyte extends StorageUnit<Pebibyte> {
      *            The amount of bytes the pebibyte contains.
      * @return A new Pebibyte unit with the given value.
      */
-    public static Pebibyte valueOf(final BigInteger numberOfBytes) {
+    @NonNull
+    public static Pebibyte valueOf(@NonNull final BigInteger numberOfBytes) {
         return new Pebibyte(numberOfBytes);
     }
 
@@ -39,6 +42,7 @@ public final class Pebibyte extends StorageUnit<Pebibyte> {
      *            The amount of bytes the pebibytes contains.
      * @return A new Pebibyte unit with the given value.
      */
+    @NonNull
     public static Pebibyte valueOf(final long numberOfBytes) {
         return new Pebibyte(asBigInteger(numberOfBytes));
     }
@@ -48,7 +52,8 @@ public final class Pebibyte extends StorageUnit<Pebibyte> {
      *            The amount of bytes the pebibytes contains.
      * @return A new Pebibyte unit with the given value.
      */
-    public static Pebibyte valueOf(final Long numberOfBytes) {
+    @NonNull
+    public static Pebibyte valueOf(@NonNull final Long numberOfBytes) {
         return valueOf(numberOfBytes.longValue());
     }
 

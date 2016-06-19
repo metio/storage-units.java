@@ -17,7 +17,7 @@ import de.xn__ho_hia.quality.suppression.CompilerWarnings;
  *
  *
  */
-@SuppressWarnings({ CompilerWarnings.NLS, CompilerWarnings.NULL, CompilerWarnings.STATIC_METHOD })
+@SuppressWarnings({ CompilerWarnings.NLS, CompilerWarnings.STATIC_METHOD })
 public class StorageUnitTest {
 
     /**

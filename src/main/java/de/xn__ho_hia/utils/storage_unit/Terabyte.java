@@ -14,6 +14,8 @@ import static de.xn__ho_hia.quality.null_analysis.NullsafeMath.subtractNullsafe;
 
 import java.math.BigInteger;
 
+import org.eclipse.jdt.annotation.NonNull;
+
 /**
  * Terabyte as specified in ISO IEC 80000-13:2008 (1 Terabyte = 1 000 000 000 000 Byte).
  */
@@ -21,7 +23,7 @@ public class Terabyte extends StorageUnit<Terabyte> {
 
     private static final long serialVersionUID = 2160488069631638952L;
 
-    Terabyte(final BigInteger bytes) {
+    Terabyte(@NonNull final BigInteger bytes) {
         super(bytes);
     }
 
@@ -30,7 +32,8 @@ public class Terabyte extends StorageUnit<Terabyte> {
      *            The amount of bytes the terabyte contains.
      * @return A new Kilobyte unit with the given value.
      */
-    public static Terabyte valueOf(final BigInteger numberOfBytes) {
+    @NonNull
+    public static Terabyte valueOf(@NonNull final BigInteger numberOfBytes) {
         return new Terabyte(numberOfBytes);
     }
 
@@ -39,6 +42,7 @@ public class Terabyte extends StorageUnit<Terabyte> {
      *            The amount of bytes the terabytes contains.
      * @return A new Terabyte unit with the given value.
      */
+    @NonNull
     public static Terabyte valueOf(final long numberOfBytes) {
         return new Terabyte(asBigInteger(numberOfBytes));
     }
@@ -48,7 +52,8 @@ public class Terabyte extends StorageUnit<Terabyte> {
      *            The amount of bytes the terabytes contains.
      * @return A new Terabyte unit with the given value.
      */
-    public static Terabyte valueOf(final Long numberOfBytes) {
+    @NonNull
+    public static Terabyte valueOf(@NonNull final Long numberOfBytes) {
         return valueOf(numberOfBytes.longValue());
     }
 

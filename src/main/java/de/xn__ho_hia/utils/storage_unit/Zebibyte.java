@@ -14,6 +14,8 @@ import static de.xn__ho_hia.quality.null_analysis.NullsafeMath.subtractNullsafe;
 
 import java.math.BigInteger;
 
+import org.eclipse.jdt.annotation.NonNull;
+
 /**
  * Zebibyte as specified in ISO IEC 80000-13:2008 (1 Zebibyte = 1 180 591 620 717 411 303 424 Byte).
  */
@@ -21,7 +23,7 @@ public final class Zebibyte extends StorageUnit<Zebibyte> {
 
     private static final long serialVersionUID = 2192254824473341887L;
 
-    Zebibyte(final BigInteger bytes) {
+    Zebibyte(@NonNull final BigInteger bytes) {
         super(bytes);
     }
 
@@ -30,7 +32,8 @@ public final class Zebibyte extends StorageUnit<Zebibyte> {
      *            The amount of bytes the zebibyte contains.
      * @return A new Zebibyte unit with the given value.
      */
-    public static Zebibyte valueOf(final BigInteger numberOfBytes) {
+    @NonNull
+    public static Zebibyte valueOf(@NonNull final BigInteger numberOfBytes) {
         return new Zebibyte(numberOfBytes);
     }
 
@@ -39,6 +42,7 @@ public final class Zebibyte extends StorageUnit<Zebibyte> {
      *            The amount of bytes the zebibytes contains.
      * @return A new Zebibyte unit with the given value.
      */
+    @NonNull
     public static Zebibyte valueOf(final long numberOfBytes) {
         return new Zebibyte(asBigInteger(numberOfBytes));
     }
@@ -48,7 +52,8 @@ public final class Zebibyte extends StorageUnit<Zebibyte> {
      *            The amount of bytes the zebibytes contains.
      * @return A new Zebibyte unit with the given value.
      */
-    public static Zebibyte valueOf(final Long numberOfBytes) {
+    @NonNull
+    public static Zebibyte valueOf(@NonNull final Long numberOfBytes) {
         return valueOf(numberOfBytes.longValue());
     }
 

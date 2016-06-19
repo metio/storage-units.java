@@ -14,6 +14,8 @@ import static de.xn__ho_hia.quality.null_analysis.NullsafeMath.subtractNullsafe;
 
 import java.math.BigInteger;
 
+import org.eclipse.jdt.annotation.NonNull;
+
 /**
  * Mebibyte as specified in ISO IEC 80000-13:2008 (1 Mebibyte = 1 048 576 Byte).
  */
@@ -22,7 +24,7 @@ public final class Mebibyte extends StorageUnit<Mebibyte> {
     /** Generated */
     private static final long serialVersionUID = 7697583678146919524L;
 
-    Mebibyte(final BigInteger bytes) {
+    Mebibyte(@NonNull final BigInteger bytes) {
         super(bytes);
     }
 
@@ -31,7 +33,8 @@ public final class Mebibyte extends StorageUnit<Mebibyte> {
      *            The amount of bytes the mebibyte contains.
      * @return A new Mebibyte unit with the given value.
      */
-    public static Mebibyte valueOf(final BigInteger numberOfBytes) {
+    @NonNull
+    public static Mebibyte valueOf(@NonNull final BigInteger numberOfBytes) {
         return new Mebibyte(numberOfBytes);
     }
 
@@ -40,6 +43,7 @@ public final class Mebibyte extends StorageUnit<Mebibyte> {
      *            The amount of bytes the mebibytes contains.
      * @return A new Mebibyte unit with the given value.
      */
+    @NonNull
     public static Mebibyte valueOf(final long numberOfBytes) {
         return new Mebibyte(asBigInteger(numberOfBytes));
     }
@@ -49,7 +53,8 @@ public final class Mebibyte extends StorageUnit<Mebibyte> {
      *            The amount of bytes the mebibytes contains.
      * @return A new Mebibyte unit with the given value.
      */
-    public static Mebibyte valueOf(final Long numberOfBytes) {
+    @NonNull
+    public static Mebibyte valueOf(@NonNull final Long numberOfBytes) {
         return valueOf(numberOfBytes.longValue());
     }
 
