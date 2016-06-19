@@ -4,3 +4,6 @@ Bundle-Description: ${project.description}
 Bundle-DocURL: ${project.url}
 Bundle-Version: ${project.version}
 Export-Package: de.xn__ho_hia.utils.storage_unit
+Import-Package: \
+	de.xn__ho_hia.quality.null_analysis,\
+	*
