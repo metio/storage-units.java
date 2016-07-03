@@ -1,0 +1,10 @@
+= Change Log
+
+All notable changes to this project will be documented in this file.
+
+== link:++https://github.com/sebhoss/storage-units/compare/storage-units-2.0.0...master++[Unreleased]
+
+=== Changed
+
+* Switch to groupId 'de.xn--ho-hia.utils.types'
+* Switch to continuous deployment mode
