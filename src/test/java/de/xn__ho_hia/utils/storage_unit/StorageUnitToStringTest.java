@@ -23,7 +23,7 @@ import org.junit.experimental.theories.Theories;
 import org.junit.experimental.theories.Theory;
 import org.junit.runner.RunWith;
 
-import de.xn__ho_hia.quality.null_analysis.NullsafeMath;
+import de.xn__ho_hia.quality.null_analysis.Nullsafe;
 import de.xn__ho_hia.quality.suppression.CompilerWarnings;
 
 /**
@@ -66,7 +66,7 @@ public class StorageUnitToStringTest {
     @Theory
     public void shouldPrintCorrectUnit(final Function<Long, StorageUnit<?>> constructor) {
         // Given
-        final Long bytes = NullsafeMath.asLong(1);
+        final Long bytes = Nullsafe.asLong(1);
         final StorageUnit<?> unit = constructor.apply(bytes);
 
         // When

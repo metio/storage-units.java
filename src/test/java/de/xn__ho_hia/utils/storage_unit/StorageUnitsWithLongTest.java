@@ -17,7 +17,7 @@ import org.junit.experimental.theories.Theories;
 import org.junit.experimental.theories.Theory;
 import org.junit.runner.RunWith;
 
-import de.xn__ho_hia.quality.null_analysis.NullsafeMath;
+import de.xn__ho_hia.quality.null_analysis.Nullsafe;
 
 /**
  * Test cases for the {@link StorageUnits} class that work with {@link Long}s.
@@ -41,7 +41,7 @@ public class StorageUnitsWithLongTest {
     @SuppressWarnings({ "static-method", "nls" })
     public void shouldCreateNotNullUnit(final Function<Long, StorageUnit<?>> constructor) {
         // Given
-        final Long bytes = NullsafeMath.asLong(1);
+        final Long bytes = Nullsafe.asLong(1);
 
         // When
         final StorageUnit<?> unit = constructor.apply(bytes);

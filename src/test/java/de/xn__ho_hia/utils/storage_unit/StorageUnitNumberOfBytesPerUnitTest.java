@@ -22,7 +22,7 @@ import org.junit.experimental.theories.Theories;
 import org.junit.experimental.theories.Theory;
 import org.junit.runner.RunWith;
 
-import de.xn__ho_hia.quality.null_analysis.NullsafeMath;
+import de.xn__ho_hia.quality.null_analysis.Nullsafe;
 import de.xn__ho_hia.quality.suppression.CompilerWarnings;
 
 /**
@@ -67,7 +67,7 @@ public class StorageUnitNumberOfBytesPerUnitTest {
     @SuppressWarnings({ "nls", "static-method" })
     public void shouldReturnNumberOfBytesPerUnit(final Function<BigInteger, StorageUnit<?>> constructor) {
         // Given
-        final BigInteger bytes = NullsafeMath.asBigInteger(1);
+        final BigInteger bytes = Nullsafe.asBigInteger(1);
         final StorageUnit<?> unit = constructor.apply(bytes);
         final Class<?> unitClass = unit.getClass();
 

@@ -6,8 +6,8 @@
  */
 package de.xn__ho_hia.utils.storage_unit;
 
-import static de.xn__ho_hia.quality.null_analysis.NullsafeMath.asBigInteger;
-import static de.xn__ho_hia.quality.null_analysis.NullsafeMath.multiplyNullsafe;
+import static de.xn__ho_hia.quality.null_analysis.Nullsafe.asBigInteger;
+import static de.xn__ho_hia.quality.null_analysis.Nullsafe.multiplyNullsafe;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;

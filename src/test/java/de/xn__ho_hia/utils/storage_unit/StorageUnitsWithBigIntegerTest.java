@@ -18,7 +18,7 @@ import org.junit.experimental.theories.Theories;
 import org.junit.experimental.theories.Theory;
 import org.junit.runner.RunWith;
 
-import de.xn__ho_hia.quality.null_analysis.NullsafeMath;
+import de.xn__ho_hia.quality.null_analysis.Nullsafe;
 
 /**
  * Test cases for the {@link StorageUnits} class that work with {@link BigInteger}s.
@@ -42,7 +42,7 @@ public class StorageUnitsWithBigIntegerTest {
     @SuppressWarnings({ "static-method", "nls" })
     public void shouldCreateNotNullUnit(final Function<BigInteger, StorageUnit<?>> constructor) {
         // Given
-        final BigInteger bytes = NullsafeMath.asBigInteger(1);
+        final BigInteger bytes = Nullsafe.asBigInteger(1);
 
         // When
         final StorageUnit<?> unit = constructor.apply(bytes);

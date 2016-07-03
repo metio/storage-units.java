@@ -6,11 +6,11 @@
  */
 package de.xn__ho_hia.utils.storage_unit;
 
-import static de.xn__ho_hia.quality.null_analysis.NullsafeMath.addNullsafe;
-import static de.xn__ho_hia.quality.null_analysis.NullsafeMath.asBigInteger;
-import static de.xn__ho_hia.quality.null_analysis.NullsafeMath.divideNullsafe;
-import static de.xn__ho_hia.quality.null_analysis.NullsafeMath.multiplyNullsafe;
-import static de.xn__ho_hia.quality.null_analysis.NullsafeMath.subtractNullsafe;
+import static de.xn__ho_hia.quality.null_analysis.Nullsafe.addNullsafe;
+import static de.xn__ho_hia.quality.null_analysis.Nullsafe.asBigInteger;
+import static de.xn__ho_hia.quality.null_analysis.Nullsafe.divideNullsafe;
+import static de.xn__ho_hia.quality.null_analysis.Nullsafe.multiplyNullsafe;
+import static de.xn__ho_hia.quality.null_analysis.Nullsafe.subtractNullsafe;
 
 import java.math.BigInteger;
 

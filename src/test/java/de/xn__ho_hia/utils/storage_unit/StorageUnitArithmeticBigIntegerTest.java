@@ -6,7 +6,7 @@
  */
 package de.xn__ho_hia.utils.storage_unit;
 
-import static de.xn__ho_hia.quality.null_analysis.NullsafeMath.asBigInteger;
+import static de.xn__ho_hia.quality.null_analysis.Nullsafe.asBigInteger;
 import static de.xn__ho_hia.utils.storage_unit.TestObjects.bigIntegerBasedConstructors;
 
 import java.math.BigInteger;

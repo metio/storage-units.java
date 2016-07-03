@@ -15,7 +15,6 @@ import org.junit.experimental.theories.Theory;
 import org.junit.runner.RunWith;
 
 import de.xn__ho_hia.quality.null_analysis.Nullsafe;
-import de.xn__ho_hia.quality.null_analysis.NullsafeMath;
 
 /**
 *
@@ -24,7 +23,7 @@ import de.xn__ho_hia.quality.null_analysis.NullsafeMath;
 @RunWith(Theories.class)
 public class StorageUnitsBigMetricTest {
 
-    private static final BigInteger MULTIPLIER = NullsafeMath.asBigInteger(1000);
+    private static final BigInteger MULTIPLIER = Nullsafe.asBigInteger(1000);
 
     /**
      *
