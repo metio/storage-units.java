@@ -2,7 +2,9 @@
 
 All notable changes to this project will be documented in this file.
 
-== link:++https://github.com/sebhoss/storage-units/compare/storage-units-2.0.0...master++[Unreleased]
+== link:++https://github.com/sebhoss/storage-units/compare/storage-units-3.0.0-20160703155124...master++[Unreleased]
+
+== link:++https://github.com/sebhoss/storage-units/compare/storage-units-3.0.0-20160703155124...storage-units-2.0.0++[3.0.0] - 2016-07-03
 
 === Changed
 
