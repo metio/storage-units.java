@@ -282,7 +282,7 @@ To use this project just declare the following dependency inside your POM:
 </dependencies>
 ----
 
-Replace `${version.storage-units}` with the link:http://search.maven.org/#search%7Cga%7C1%7Cg%3A{project-group}%20a%3A{project-name}[latest release]. This project follows the link:http://semver.org/[semantic versioning guidelines].
+Replace `${version.storage-units}` with the link:++http://search.maven.org/#search%7Cga%7C1%7Cg%3Ade.xn--ho-hia.utils.storage_units%20a%3Astorage-units++[latest release]. This project follows the link:http://semver.org/[semantic versioning guidelines].
 
 === Compatibility
 
