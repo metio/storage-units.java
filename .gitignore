@@ -4,3 +4,4 @@ target/
 .project
 .pmd
 .pmdruleset.xml
+.ansible-git-mirror-*
