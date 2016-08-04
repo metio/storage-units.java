@@ -31,7 +31,7 @@ https://www.java.com[Java] library for storage units according to link:http://en
 * Basic math operators
 * Comparisons and equality
 * Lossless conversion between all units
-* Human readable text format
+* Human readable text format, including custom formats.
 
 ==== Available Units
 
@@ -151,7 +151,7 @@ Megabyte unit = Megabyte.valueOf(BigInteger.valueOf(1000000)) // 1 000 000 Byte 
 
 The `StorageUnits` class offers two factory methods that automatically pick the best-matching unit for a given number of bytes.
 
-==== binaryValueOf
+==== Binary Units
 
 [source,java]
 ----
@@ -164,7 +164,7 @@ StorageUnit<?> unit = StorageUnits.binaryValueOf(BigInteger.valueOf(256))     //
 StorageUnit<?> unit = StorageUnits.binaryValueOf(BigInteger.valueOf(1048576)) // Mebibyte (1.00 MiB)
 ----
 
-==== metricValueOf
+==== Metric Units
 
 [source,java]
 ----
@@ -214,7 +214,7 @@ gigabyte(1).multiply(5)             // 1 Gigabyte times 5 = 5 Gigabyte
 terabyte(1).divide(5)               // 1 Terabyte divided by 5 = 0.2 Terabyte = 200 Gigabyte
 ----
 
-=== compareTo
+=== Comparison & Equality
 
 Each unit is comparable to each other unit.
 
@@ -223,28 +223,31 @@ Each unit is comparable to each other unit.
 kibibyte(1024).compareTo(mebibyte(1)) == 0 // true
 kibibyte(1000).compareTo(mebibyte(1)) == 0 // false
 petabyte(3).compareTo(terabyte(3000)) == 0 // true
+
+megabyte(1000).equals(gigabyte(1))         // true
+megabyte(1024).equals(gigabyte(1))         // false
+terabyte(12).equals(gigabyte(12000))       // true
 ----
 
-=== equals
-
-Each unit can be checked against each other unit.
-
-[source,java]
-----
-megabyte(1000).equals(gigabyte(1)) // true
-megabyte(1024).equals(gigabyte(1)) // false
-terabyte(12).equals(gigabyte(12000))  // false
-----
-
-=== toString
+=== Formatting
 
 Each unit prints a human-readable string, representing the amount of bytes in the given unit using the symbol specified in ISO IEC 80000-13:2008.
 
 [source,java]
 ----
+// default pattern '0.00'
 terabyte(2).toString()                         // "2.00 TB"
 gigabyte(1).add(megabyte(200)).toString()      // "1.20 GB"
 petabyte(1).subtract(terabyte(250)).toString() // "0.75 PB"
+
+// use custom pattern
+kilobyte(212345).toString("0.0")                                    // "212345.0 kB"
+gibibyte(2123458).asTebibyte().toString("#,###.000")                // "2,073.689 TiB"
+kilobyte(120).asMegabyte().add(gigabyte(1)).toString("#,##0.00000") // "1,000.12000 MB"
+
+// use custom format
+Format customFormat = new DecimalFormat("#.00000");
+terabyte(4).asTebibyte().toString(customFormat) // "3.63798 TiB"
 ----
 
 === Conversions

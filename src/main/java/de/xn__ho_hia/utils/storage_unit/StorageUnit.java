@@ -12,6 +12,8 @@ import static de.xn__ho_hia.quality.null_analysis.Nullsafe.multiplyNullsafe;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.math.RoundingMode;
+import java.text.DecimalFormat;
+import java.text.Format;
 import java.util.Objects;
 
 import org.eclipse.jdt.annotation.NonNull;
@@ -28,11 +30,10 @@ import de.xn__ho_hia.quality.null_analysis.Nullsafe;
  */
 public abstract class StorageUnit<T extends StorageUnit<T>> extends Number implements Comparable<StorageUnit<?>> {
 
-    private static final int NUMBER_OF_DECIMAL_PLACES = 2;
-
     private static final long serialVersionUID = -7344790980741118949L;
 
-    private static final int DEFAULT_SCALE = 24;
+    private static final String DEFAULT_FORMAT_PATTERN = "0.00"; //$NON-NLS-1$
+    private static final int    DEFAULT_SCALE          = 24;
 
     /**
      * The storage unit base for binary numbers. Each step between the units dimensions is done with this base value.
@@ -383,17 +384,48 @@ public abstract class StorageUnit<T extends StorageUnit<T>> extends Number imple
 
     @Override
     public final String toString() {
-        final BigDecimal amount = this.calculate(this.getNumberOfBytesPerUnit());
+        return this.toString(DEFAULT_FORMAT_PATTERN);
+    }
 
-        return amount
-                .setScale(NUMBER_OF_DECIMAL_PLACES, RoundingMode.HALF_UP)
-                .toPlainString() + " " + this.getSymbol(); //$NON-NLS-1$
+    /**
+     * Formats this storage unit according to the given pattern.
+     *
+     * @param pattern
+     *            The {@link Format} pattern to apply.
+     * @return The formatted representation of this storage unit.
+     */
+    public final String toString(final String pattern) {
+        return this.toString(new DecimalFormat(pattern));
+    }
+
+    /**
+     * Formats this storage unit according to a specified {@link Format}. The storage unit's symbol will be
+     * automatically added at the end of the formatted string together with a single whitespace character in front of
+     * it. Use the <code>asOtherUnit</code> methods before printing in order to change the symbol.
+     *
+     * @param format
+     *            The custom format to use.
+     * @return The formatted representation of this storage unit.
+     */
+    public final String toString(final Format format) {
+        final BigDecimal amount = this.calculate(this.getNumberOfBytesPerUnit());
+        final String formattedAmount = format.format(amount);
+        return new StringBuilder(calculateBuilderCapacity(formattedAmount))
+                .append(formattedAmount)
+                .append(" ") //$NON-NLS-1$
+                .append(getSymbol())
+                .toString();
     }
 
     @NonNull
     private final BigDecimal calculate(final BigInteger base) {
         return Nullsafe.nonNull(new BigDecimal(this.bytes.toString())
                 .divide(new BigDecimal(base.toString()), StorageUnit.DEFAULT_SCALE, RoundingMode.CEILING));
+    }
+
+    // Only exposed to be accessible by tests.
+    final int calculateBuilderCapacity(final String formattedAmount) {
+        return formattedAmount.length() + getSymbol().length() + 2;
     }
 
     @Override
