@@ -17,7 +17,7 @@ import de.xn__ho_hia.quality.suppression.CompilerWarnings;
  * Tests how a {@link StorageUnit} can be formatted.
  */
 @SuppressWarnings({ CompilerWarnings.NLS, CompilerWarnings.STATIC_METHOD })
-public class FormatterTest {
+public class StorageUnitFormattingTest {
 
     /**
      * Tests the default format for a unit.
@@ -111,6 +111,21 @@ public class FormatterTest {
 
         // then
         Assert.assertEquals("1,000.12000 MB", formatted);
+    }
+
+    /**
+     * Tests that a big unit can be formatted directly by supplying a {@link DecimalFormat}.
+     */
+    @Test
+    public void shouldFormatBiggestUnitWithImplicitFormat() {
+        // given
+        final StorageUnit<?> unit = StorageUnits.yobibyte(1);
+
+        // when
+        final String formatted = unit.asMegabyte().toString("#,##0.00000");
+
+        // then
+        Assert.assertEquals("1,208,925,819,614,629,174.70618 MB", formatted);
     }
 
     /**
