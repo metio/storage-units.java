@@ -8,5 +8,8 @@
  * Storage units according to ISO IEC 80000-13:2008.
  *
  * @see <a href="https://github.com/sebhoss/storage-units/blob/master/README.asciidoc">README</a>
+ * @see <a href="https://en.wikipedia.org/wiki/Binary_prefix">Binary prefixes</a>
+ * @see <a href="https://en.wikipedia.org/wiki/Metric_prefix#List_of_SI_prefixes">Metric prefixes</a>
+ * @see <a href="https://en.wikipedia.org/wiki/Binary_prefix#IEC_prefixes">IEC prefixes</a>
  */
 package de.xn__ho_hia.utils.storage_unit;

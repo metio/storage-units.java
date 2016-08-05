@@ -35,7 +35,7 @@ https://www.java.com[Java] library for storage units according to link:http://en
 
 ==== Available Units
 
-.Binary-based units
+.Binary-prefixed units
 |===
 | Name | Symbol | Exponential | Absolute
 
@@ -80,7 +80,7 @@ https://www.java.com[Java] library for storage units according to link:http://en
 | 1 208 925 819 614 629 174 706 176 Byte
 |===
 
-.Metric-based units
+.Metric-prefixed units
 |===
 | Name | Symbol | Exponential | Absolute
 
