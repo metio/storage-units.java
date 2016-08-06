@@ -26,7 +26,7 @@
   <!-- https://maven.apache.org/pom.html#Maven_Coordinates -->
   <groupId>de.xn--ho-hia.utils.storage_units</groupId>
   <artifactId>storage-units</artifactId>
-  <version>3.0.0-${revision}</version>
+  <version>3.1.0-${revision}</version>
   <packaging>jar</packaging>
 
   <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
