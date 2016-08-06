@@ -39,6 +39,7 @@ public class StorageUnitToStringTest {
 
     private static final Map<Class<?>, String> TYPE_SUFFIX_MAPPING = Collections
             .unmodifiableMap(Stream.of(
+                    new SimpleEntry<>(Byte.class, "B"),
                     new SimpleEntry<>(Kibibyte.class, "KiB"),
                     new SimpleEntry<>(Mebibyte.class, "MiB"),
                     new SimpleEntry<>(Gibibyte.class, "GiB"),

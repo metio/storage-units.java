@@ -30,7 +30,7 @@ public class StorageUnitsBigMetricTest {
      */
     @DataPoints
     public static Object[][] INPUT_RESULTS = {
-            { BigInteger.ONE, Kilobyte.class },
+            { BigInteger.ONE, Byte.class },
             { MULTIPLIER, Kilobyte.class },
             { MULTIPLIER.pow(2), Megabyte.class },
             { MULTIPLIER.pow(3), Gigabyte.class },

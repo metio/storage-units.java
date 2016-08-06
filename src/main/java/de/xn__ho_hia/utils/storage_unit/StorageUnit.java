@@ -125,6 +125,14 @@ public abstract class StorageUnit<T extends StorageUnit<T>> extends Number imple
     }
 
     /**
+     * @return This storage unit as bytes.
+     */
+    @NonNull
+    public final Byte asByte() {
+        return new Byte(this.bytes);
+    }
+
+    /**
      * @return This storage unit as a kibibyte.
      */
     @NonNull

@@ -39,6 +39,11 @@ https://www.java.com[Java] library for storage units according to link:http://en
 |===
 | Name | Symbol | Exponential | Absolute
 
+| Byte
+| B
+| 2 ^0^ Byte
+| 1 Byte
+
 | Kibibyte
 | KiB
 | 2 ^10^ Byte
@@ -83,6 +88,11 @@ https://www.java.com[Java] library for storage units according to link:http://en
 .Metric-prefixed units
 |===
 | Name | Symbol | Exponential | Absolute
+
+| Byte
+| kB
+| 10 ^0^ Byte
+| 1 Byte
 
 | Kilobyte
 | kB

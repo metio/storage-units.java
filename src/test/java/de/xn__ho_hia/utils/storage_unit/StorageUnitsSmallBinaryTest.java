@@ -30,7 +30,7 @@ public class StorageUnitsSmallBinaryTest {
      */
     @DataPoints
     public static Object[][] INPUT_RESULTS = {
-            { 1L, Kibibyte.class },
+            { 1L, Byte.class },
             { BINARY_MULTIPLIER, Kibibyte.class },
             { BINARY_MULTIPLIER * BINARY_MULTIPLIER, Mebibyte.class },
             { BINARY_MULTIPLIER * BINARY_MULTIPLIER * BINARY_MULTIPLIER, Gibibyte.class },

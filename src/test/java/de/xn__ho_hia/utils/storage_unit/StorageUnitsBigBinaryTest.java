@@ -30,7 +30,7 @@ public class StorageUnitsBigBinaryTest {
      */
     @DataPoints
     public static Object[][] INPUT_RESULTS = {
-            { BigInteger.ONE, Kibibyte.class },
+            { BigInteger.ONE, Byte.class },
             { MULTIPLIER, Kibibyte.class },
             { MULTIPLIER.pow(2), Mebibyte.class },
             { MULTIPLIER.pow(3), Gibibyte.class },

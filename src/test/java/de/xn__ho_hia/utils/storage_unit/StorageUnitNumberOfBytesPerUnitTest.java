@@ -38,6 +38,7 @@ public class StorageUnitNumberOfBytesPerUnitTest {
     @SuppressWarnings({ CompilerWarnings.NLS })
     private static final Map<Class<?>, BigInteger> EXPECTED_NUMBERS = Collections.unmodifiableMap(Stream.of(
             // binary units
+            new SimpleEntry<>(Byte.class, new BigInteger("1")),
             new SimpleEntry<>(Kibibyte.class, new BigInteger("1024")),
             new SimpleEntry<>(Mebibyte.class, new BigInteger("1048576")),
             new SimpleEntry<>(Gibibyte.class, new BigInteger("1073741824")),

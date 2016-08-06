@@ -33,8 +33,7 @@ public class StorageUnitArithmeticBigIntegerTest {
      *
      */
     @DataPoints
-    public static long[] BYTES_TO_ADD = { 1, 2, 3, 5, 8, 13, 100, 500, -500,
-            123456789 };
+    public static long[] BYTES_TO_ADD = { 1, 2, 3, 5, 8, 13, 100, 500, -500, 123456789 };
 
     /** The constructor methods to create storage units to test. */
     @DataPoints

@@ -8,6 +8,7 @@ package de.xn__ho_hia.utils.storage_unit;
 
 import static de.xn__ho_hia.quality.null_analysis.Nullsafe.asBigInteger;
 import static de.xn__ho_hia.quality.null_analysis.Nullsafe.multiplyNullsafe;
+import static de.xn__ho_hia.quality.null_analysis.Nullsafe.nonNull;
 import static de.xn__ho_hia.utils.storage_unit.FormatUtils.asFormat;
 import static de.xn__ho_hia.utils.storage_unit.StorageUnit.BYTES_IN_A_EXABYTE;
 import static de.xn__ho_hia.utils.storage_unit.StorageUnit.BYTES_IN_A_EXBIBYTE;
@@ -58,21 +59,25 @@ public final class StorageUnits {
      * @return The appropriate binary-prefixed unit for the given amount of bytes.
      */
     public static StorageUnit<?> binaryValueOf(@NonNull final BigInteger bytes) {
-        StorageUnit<?> unit = Kibibyte.valueOf(bytes);
+        StorageUnit<?> unit = Byte.valueOf(bytes);
+        @NonNull
+        final BigInteger positiveNumberOfBytes = bytes.signum() == -1 ? nonNull(bytes.negate()) : bytes;
 
-        if (inbetween(StorageUnit.BYTES_IN_A_MEBIBYTE, bytes, StorageUnit.BYTES_IN_A_GIBIBYTE)) {
+        if (inbetween(BYTES_IN_A_KIBIBYTE, positiveNumberOfBytes, BYTES_IN_A_MEBIBYTE)) {
+            unit = unit.asKibibyte();
+        } else if (inbetween(BYTES_IN_A_MEBIBYTE, positiveNumberOfBytes, BYTES_IN_A_GIBIBYTE)) {
             unit = unit.asMebibyte();
-        } else if (inbetween(StorageUnit.BYTES_IN_A_GIBIBYTE, bytes, StorageUnit.BYTES_IN_A_TEBIBYTE)) {
+        } else if (inbetween(BYTES_IN_A_GIBIBYTE, positiveNumberOfBytes, BYTES_IN_A_TEBIBYTE)) {
             unit = unit.asGibibyte();
-        } else if (inbetween(StorageUnit.BYTES_IN_A_TEBIBYTE, bytes, StorageUnit.BYTES_IN_A_PEBIBYTE)) {
+        } else if (inbetween(BYTES_IN_A_TEBIBYTE, positiveNumberOfBytes, BYTES_IN_A_PEBIBYTE)) {
             unit = unit.asTebibyte();
-        } else if (inbetween(StorageUnit.BYTES_IN_A_PEBIBYTE, bytes, StorageUnit.BYTES_IN_A_EXBIBYTE)) {
+        } else if (inbetween(BYTES_IN_A_PEBIBYTE, positiveNumberOfBytes, BYTES_IN_A_EXBIBYTE)) {
             unit = unit.asPebibyte();
-        } else if (inbetween(StorageUnit.BYTES_IN_A_EXBIBYTE, bytes, StorageUnit.BYTES_IN_A_ZEBIBYTE)) {
+        } else if (inbetween(BYTES_IN_A_EXBIBYTE, positiveNumberOfBytes, BYTES_IN_A_ZEBIBYTE)) {
             unit = unit.asExbibyte();
-        } else if (inbetween(StorageUnit.BYTES_IN_A_ZEBIBYTE, bytes, StorageUnit.BYTES_IN_A_YOBIBYTE)) {
+        } else if (inbetween(BYTES_IN_A_ZEBIBYTE, positiveNumberOfBytes, BYTES_IN_A_YOBIBYTE)) {
             unit = unit.asZebibyte();
-        } else if (greaterThanEquals(bytes, StorageUnit.BYTES_IN_A_YOBIBYTE)) {
+        } else if (greaterThanEquals(positiveNumberOfBytes, BYTES_IN_A_YOBIBYTE)) {
             unit = unit.asYobibyte();
         }
 
@@ -94,21 +99,25 @@ public final class StorageUnits {
      * @return The appropriate metric-prefixed unit for the given amount of bytes.
      */
     public static StorageUnit<?> metricValueOf(@NonNull final BigInteger bytes) {
-        StorageUnit<?> unit = Kilobyte.valueOf(bytes);
+        StorageUnit<?> unit = Byte.valueOf(bytes);
+        @NonNull
+        final BigInteger positiveNumberOfBytes = bytes.signum() == -1 ? nonNull(bytes.negate()) : bytes;
 
-        if (inbetween(StorageUnit.BYTES_IN_A_MEGABYTE, bytes, StorageUnit.BYTES_IN_A_GIGABYTE)) {
+        if (inbetween(BYTES_IN_A_KILOBYTE, positiveNumberOfBytes, BYTES_IN_A_MEGABYTE)) {
+            unit = unit.asKilobyte();
+        } else if (inbetween(BYTES_IN_A_MEGABYTE, positiveNumberOfBytes, BYTES_IN_A_GIGABYTE)) {
             unit = unit.asMegabyte();
-        } else if (inbetween(StorageUnit.BYTES_IN_A_GIGABYTE, bytes, StorageUnit.BYTES_IN_A_TERABYTE)) {
+        } else if (inbetween(BYTES_IN_A_GIGABYTE, positiveNumberOfBytes, BYTES_IN_A_TERABYTE)) {
             unit = unit.asGigabyte();
-        } else if (inbetween(StorageUnit.BYTES_IN_A_TERABYTE, bytes, StorageUnit.BYTES_IN_A_PETABYTE)) {
+        } else if (inbetween(BYTES_IN_A_TERABYTE, positiveNumberOfBytes, BYTES_IN_A_PETABYTE)) {
             unit = unit.asTerabyte();
-        } else if (inbetween(StorageUnit.BYTES_IN_A_PETABYTE, bytes, StorageUnit.BYTES_IN_A_EXABYTE)) {
+        } else if (inbetween(BYTES_IN_A_PETABYTE, positiveNumberOfBytes, BYTES_IN_A_EXABYTE)) {
             unit = unit.asPetabyte();
-        } else if (inbetween(StorageUnit.BYTES_IN_A_EXABYTE, bytes, StorageUnit.BYTES_IN_A_ZETTABYTE)) {
+        } else if (inbetween(BYTES_IN_A_EXABYTE, positiveNumberOfBytes, BYTES_IN_A_ZETTABYTE)) {
             unit = unit.asExabyte();
-        } else if (inbetween(StorageUnit.BYTES_IN_A_ZETTABYTE, bytes, StorageUnit.BYTES_IN_A_YOTTABYTE)) {
+        } else if (inbetween(BYTES_IN_A_ZETTABYTE, positiveNumberOfBytes, BYTES_IN_A_YOTTABYTE)) {
             unit = unit.asZettabyte();
-        } else if (greaterThanEquals(bytes, StorageUnit.BYTES_IN_A_YOTTABYTE)) {
+        } else if (greaterThanEquals(positiveNumberOfBytes, BYTES_IN_A_YOTTABYTE)) {
             unit = unit.asYottabyte();
         }
 
@@ -2779,6 +2788,36 @@ public final class StorageUnits {
     @NonNull
     public static String formatAsYottabyte(@NonNull final BigInteger numberOfBytes, final Format format) {
         return Yottabyte.valueOf(numberOfBytes).toString(format);
+    }
+
+    /**
+     * @param numberOfBytes
+     *            The amount of bytes to create.
+     * @return A new unit representing the given amount of bytes.
+     */
+    @NonNull
+    public static Byte bytes(@NonNull final Long numberOfBytes) {
+        return bytes(numberOfBytes.longValue());
+    }
+
+    /**
+     * @param numberOfBytes
+     *            The amount of bytes to create.
+     * @return A new unit representing the given amount of bytes.
+     */
+    @NonNull
+    public static Byte bytes(final long numberOfBytes) {
+        return bytes(asBigInteger(numberOfBytes));
+    }
+
+    /**
+     * @param numberOfBytes
+     *            The amount of bytes to create.
+     * @return A new unit representing the given amount of bytes.
+     */
+    @NonNull
+    public static Byte bytes(@NonNull final BigInteger numberOfBytes) {
+        return new Byte(numberOfBytes);
     }
 
     /**

@@ -30,7 +30,7 @@ public class StorageUnitsSmallMetricTest {
      */
     @DataPoints
     public static Object[][] INPUT_RESULTS = {
-            { 1L, Kilobyte.class },
+            { 1L, Byte.class },
             { METRIC_MULTIPLIER, Kilobyte.class },
             { METRIC_MULTIPLIER * METRIC_MULTIPLIER, Megabyte.class },
             { METRIC_MULTIPLIER * METRIC_MULTIPLIER * METRIC_MULTIPLIER, Gigabyte.class },

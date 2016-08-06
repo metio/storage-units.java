@@ -35,6 +35,7 @@ public class TestObjects {
      */
     public static List<Function<Long, StorageUnit<?>>> highLevelBinaryLongBasedConstructors() {
         final List<Function<Long, StorageUnit<?>>> units = new ArrayList<>();
+        units.add(StorageUnits::bytes);
         units.add(StorageUnits::kibibyte);
         units.add(StorageUnits::mebibyte);
         units.add(StorageUnits::gibibyte);
@@ -52,6 +53,7 @@ public class TestObjects {
      */
     public static List<Function<BigInteger, StorageUnit<?>>> highLevelBinaryBigIntegerBasedConstructors() {
         final List<Function<BigInteger, StorageUnit<?>>> units = new ArrayList<>();
+        units.add(StorageUnits::bytes);
         units.add(StorageUnits::kibibyte);
         units.add(StorageUnits::mebibyte);
         units.add(StorageUnits::gibibyte);
@@ -69,6 +71,7 @@ public class TestObjects {
      */
     public static List<Function<Long, StorageUnit<?>>> highLevelMetricLongBasedConstructors() {
         final List<Function<Long, StorageUnit<?>>> units = new ArrayList<>();
+        units.add(StorageUnits::bytes);
         units.add(StorageUnits::kilobyte);
         units.add(StorageUnits::megabyte);
         units.add(StorageUnits::gigabyte);
@@ -97,6 +100,7 @@ public class TestObjects {
      */
     public static List<Function<BigInteger, StorageUnit<?>>> bigIntegerBasedConstructors() {
         final List<Function<BigInteger, StorageUnit<?>>> units = new ArrayList<>();
+        units.add(Byte::valueOf);
         units.add(Exabyte::valueOf);
         units.add(Exbibyte::valueOf);
         units.add(Gibibyte::valueOf);
@@ -122,6 +126,7 @@ public class TestObjects {
      */
     public static List<Function<Long, StorageUnit<?>>> longBasedConstructors() {
         final List<Function<Long, StorageUnit<?>>> units = new ArrayList<>();
+        units.add(Byte::valueOf);
         units.add(Exabyte::valueOf);
         units.add(Exbibyte::valueOf);
         units.add(Gibibyte::valueOf);

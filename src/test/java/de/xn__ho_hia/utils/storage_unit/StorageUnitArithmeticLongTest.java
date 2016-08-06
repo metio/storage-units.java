@@ -7,9 +7,9 @@
 package de.xn__ho_hia.utils.storage_unit;
 
 import static de.xn__ho_hia.quality.null_analysis.Nullsafe.asLong;
+import static de.xn__ho_hia.utils.storage_unit.TestObjects.longBasedConstructors;
 
 import java.math.BigInteger;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Function;
 
@@ -36,29 +36,10 @@ public class StorageUnitArithmeticLongTest {
     public static long[] BYTES_TO_ADD = { 1, 2, 3, 5, 8, 13, 100, 500, -500, 123456789 };
 
     /**
-     * @return The factory methods to create storage units to test.
+     * The factory methods to create storage units to test.
      */
     @DataPoints
-    public static List<Function<Long, StorageUnit<?>>> storageUnits() {
-        final List<Function<Long, StorageUnit<?>>> units = new ArrayList<>();
-        units.add(Exabyte::valueOf);
-        units.add(Exbibyte::valueOf);
-        units.add(Gibibyte::valueOf);
-        units.add(Gigabyte::valueOf);
-        units.add(Kibibyte::valueOf);
-        units.add(Kilobyte::valueOf);
-        units.add(Mebibyte::valueOf);
-        units.add(Megabyte::valueOf);
-        units.add(Pebibyte::valueOf);
-        units.add(Petabyte::valueOf);
-        units.add(Tebibyte::valueOf);
-        units.add(Terabyte::valueOf);
-        units.add(Yobibyte::valueOf);
-        units.add(Yottabyte::valueOf);
-        units.add(Zebibyte::valueOf);
-        units.add(Zettabyte::valueOf);
-        return units;
-    }
+    public static List<Function<Long, StorageUnit<?>>> UNITS = longBasedConstructors();
 
     /**
      * @param bytes
