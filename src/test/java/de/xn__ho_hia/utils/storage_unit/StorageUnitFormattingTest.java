@@ -7,6 +7,7 @@
 package de.xn__ho_hia.utils.storage_unit;
 
 import java.text.DecimalFormat;
+import java.util.Locale;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -99,7 +100,7 @@ public class StorageUnitFormattingTest {
     }
 
     /**
-     * Tests that a unit can be formatted directly by supplying a {@link DecimalFormat}.
+     * Tests that a unit can be formatted directly by supplying a pattern.
      */
     @Test
     public void shouldFormatUnitWithImplicitFormat() {
@@ -114,7 +115,7 @@ public class StorageUnitFormattingTest {
     }
 
     /**
-     * Tests that a big unit can be formatted directly by supplying a {@link DecimalFormat}.
+     * Tests that a big unit can be formatted directly by supplying a pattern.
      */
     @Test
     public void shouldFormatBiggestUnitWithImplicitFormat() {
@@ -126,6 +127,21 @@ public class StorageUnitFormattingTest {
 
         // then
         Assert.assertEquals("1,208,925,819,614,629,174.70618 MB", formatted);
+    }
+
+    /**
+     * Tests that a big unit can be formatted directly by supplying a pattern and Locale.
+     */
+    @Test
+    public void shouldFormatBiggestUnitWithImplicitFormatAndLocale() {
+        // given
+        final StorageUnit<?> unit = StorageUnits.yobibyte(1);
+
+        // when
+        final String formatted = unit.asMegabyte().toString("#,##0.00000", Locale.GERMAN);
+
+        // then
+        Assert.assertEquals("1.208.925.819.614.629.174,70618 MB", formatted);
     }
 
     /**

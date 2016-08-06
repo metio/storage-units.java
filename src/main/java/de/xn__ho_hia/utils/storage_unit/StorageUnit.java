@@ -8,12 +8,14 @@ package de.xn__ho_hia.utils.storage_unit;
 
 import static de.xn__ho_hia.quality.null_analysis.Nullsafe.asBigInteger;
 import static de.xn__ho_hia.quality.null_analysis.Nullsafe.multiplyNullsafe;
+import static de.xn__ho_hia.utils.storage_unit.FormatUtils.asFormat;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
 import java.text.Format;
+import java.util.Locale;
 import java.util.Objects;
 
 import org.eclipse.jdt.annotation.NonNull;
@@ -32,8 +34,12 @@ public abstract class StorageUnit<T extends StorageUnit<T>> extends Number imple
 
     private static final long serialVersionUID = -7344790980741118949L;
 
-    private static final String DEFAULT_FORMAT_PATTERN = "0.00"; //$NON-NLS-1$
-    private static final int    DEFAULT_SCALE          = 24;
+    private static final int DEFAULT_SCALE = 24;
+
+    /**
+     * Default number format used within the library.
+     */
+    static final String DEFAULT_FORMAT_PATTERN = "0.00"; //$NON-NLS-1$
 
     /**
      * The storage unit base for binary numbers. Each step between the units dimensions is done with this base value.
@@ -382,6 +388,7 @@ public abstract class StorageUnit<T extends StorageUnit<T>> extends Number imple
         return this.calculate(StorageUnit.BYTES_IN_A_YOTTABYTE);
     }
 
+    @NonNull
     @Override
     public final String toString() {
         return this.toString(DEFAULT_FORMAT_PATTERN);
@@ -394,8 +401,23 @@ public abstract class StorageUnit<T extends StorageUnit<T>> extends Number imple
      *            The {@link Format} pattern to apply.
      * @return The formatted representation of this storage unit.
      */
+    @NonNull
     public final String toString(final String pattern) {
         return this.toString(new DecimalFormat(pattern));
+    }
+
+    /**
+     * Formats this storage unit according to the given pattern in a specific {@link Locale}.
+     *
+     * @param pattern
+     *            The {@link Format} pattern to apply.
+     * @param locale
+     *            The locale to use.
+     * @return The formatted representation of this storage unit.
+     */
+    @NonNull
+    public final String toString(final String pattern, final Locale locale) {
+        return this.toString(asFormat(pattern, locale));
     }
 
     /**
@@ -407,14 +429,15 @@ public abstract class StorageUnit<T extends StorageUnit<T>> extends Number imple
      *            The custom format to use.
      * @return The formatted representation of this storage unit.
      */
+    @NonNull
     public final String toString(final Format format) {
         final BigDecimal amount = this.calculate(this.getNumberOfBytesPerUnit());
         final String formattedAmount = format.format(amount);
-        return new StringBuilder(calculateBuilderCapacity(formattedAmount))
+        return Nullsafe.nonNull(new StringBuilder(calculateBuilderCapacity(formattedAmount))
                 .append(formattedAmount)
                 .append(" ") //$NON-NLS-1$
                 .append(getSymbol())
-                .toString();
+                .toString());
     }
 
     @NonNull

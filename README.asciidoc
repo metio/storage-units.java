@@ -235,6 +235,8 @@ Each unit prints a human-readable string, representing the amount of bytes in th
 
 [source,java]
 ----
+import static de.xn__ho_hia.utils.storage_unit.StorageUnits.*;
+
 // default pattern '0.00'
 terabyte(2).toString()                         // "2.00 TB"
 gigabyte(1).add(megabyte(200)).toString()      // "1.20 GB"
@@ -245,14 +247,36 @@ kilobyte(212345).toString("0.0")                                    // "212345.0
 gibibyte(2123458).asTebibyte().toString("#,###.000")                // "2,073.689 TiB"
 kilobyte(120).asMegabyte().add(gigabyte(1)).toString("#,##0.00000") // "1,000.12000 MB"
 
+// use custom pattern with specific Locale
+kilobyte(212345).toString("0.0", Locale.GERMAN)                     // "212345,0 kB"
+gibibyte(2123458).asTebibyte().toString("#,###.000", Locale.GERMAN) // "2.073,689 TiB"
+
 // use custom format
 Format customFormat = new DecimalFormat("#.00000");
 terabyte(4).asTebibyte().toString(customFormat) // "3.63798 TiB"
+
+// without creating unit type first
+long numberOfBytes = 1_000_000_000_000_000L;
+formatAsPetabyte(numberOfBytes) // "1.00 PB"
+formatAsTerabyte(numberOfBytes) // "1000.00 TB"
+formatAsPebibyte(numberOfBytes) // "0.89 PiB"
+
+// use custom pattern
+formatAsTerabyte(numberOfBytes, "#0.#####") // "1000 TB"
+formatAsPebibyte(numberOfBytes, "#0.#####") // "0.88818 PiB"
+
+// use custom pattern with specific Locale
+formatAsTerabyte(numberOfBytes, "#0.#####", Locale.GERMAN) // "1000 TB"
+formatAsPebibyte(numberOfBytes, "#0.#####", Locale.GERMAN) // "0,88818 PiB"
+
+// use custom format
+formatAsTerabyte(numberOfBytes, customFormat) // "1000.00000 TB"
+formatAsPebibyte(numberOfBytes, customFormat) // ".88818 PiB"
 ----
 
 === Conversions
 
-Each unit can be converted to each other unit.
+Each unit can be converted to each other unit without loss of information.
 
 [source,java]
 ----
@@ -261,7 +285,7 @@ Kilobyte unit = gigabyte(12).asKilobyte()   // "12000000.00 kB"
 Gigabyte unit = terabyte(1).asGigabyte()    // "1000.00 GB"
 ----
 
-Each unit can be expressed as a fraction of another unit.
+Each unit can be expressed as a fraction of another unit (precise up to 24 decimal places) 
 
 [source,java]
 ----

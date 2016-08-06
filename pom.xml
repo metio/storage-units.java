@@ -101,6 +101,12 @@
       <groupId>de.xn--ho-hia.quality</groupId>
       <artifactId>null-analysis</artifactId>
     </dependency>
+    <dependency>
+      <groupId>org.jooq</groupId>
+      <artifactId>jool</artifactId>
+      <version>0.9.11</version>
+      <scope>test</scope>
+    </dependency>
   </dependencies>
 
 </project>
