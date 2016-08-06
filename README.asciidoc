@@ -26,12 +26,13 @@ https://www.java.com[Java] library for storage units according to link:http://en
 
 === Features
 
-* Type safe object model for storage units
-* Factories to create those objects
-* Basic math operators
-* Comparisons and equality
+* Immutable, type- and thread-safe object model for storage units
+* Convenience factories to create units
+* Basic arithmetic operators
+* Comparisons and equality checks between units
 * Lossless conversion between all units
-* Human readable text format, including custom formats.
+* Human readable text format, including custom formats
+* Compatible with any `java.lang.Number`
 
 ==== Available Units
 
