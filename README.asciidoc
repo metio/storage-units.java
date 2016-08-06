@@ -345,6 +345,10 @@ This project is compatible with the following Java versions:
 
 Originally inspired by link:https://github.com/twitter/util#space[Twitters util] package.
 
+== Alternatives
+
+* link:https://github.com/JakeWharton/byteunits[Byte Units]
+
 == License
 
 To the extent possible under law, the author(s) have dedicated all copyright
