@@ -294,6 +294,11 @@ Each unit can be converted to each other unit without loss of information.
 Megabyte unit = kilobyte(1000).asMegabyte() // "1.00 MB"
 Kilobyte unit = gigabyte(12).asKilobyte()   // "12000000.00 kB"
 Gigabyte unit = terabyte(1).asGigabyte()    // "1000.00 GB"
+
+// convert to best-match
+kilobyte(1100).asBestMatchingUnit()         // "1.10 MB"
+kilobyte(1100).asBestMatchingBinaryUnit()   // "1.50 MiB"
+kilobyte(1100).asBestMatchingMetricUnit()   // "1.10 MB"
 ----
 
 Each unit can be expressed as a fraction of another unit (precise up to 24 decimal places) 

@@ -17,6 +17,7 @@ import java.text.DecimalFormat;
 import java.text.Format;
 import java.util.Locale;
 import java.util.Objects;
+import java.util.function.Function;
 
 import org.eclipse.jdt.annotation.NonNull;
 import org.eclipse.jdt.annotation.Nullable;
@@ -123,6 +124,33 @@ public abstract class StorageUnit<T extends StorageUnit<T>> extends Number imple
     protected StorageUnit(@NonNull final BigInteger bytes) {
         this.bytes = bytes;
     }
+
+    /**
+     * @return This storage unit as the best matching binary-prefixed unit.
+     */
+    @NonNull
+    public final StorageUnit<?> asBestMatchingBinaryUnit() {
+        return StorageUnits.binaryValueOf(this.bytes);
+    }
+
+    /**
+     * @return This storage unit as the best matching metric-prefixed unit.
+     */
+    @NonNull
+    public final StorageUnit<?> asBestMatchingMetricUnit() {
+        return StorageUnits.metricValueOf(this.bytes);
+    }
+
+    /**
+     * @return This storage unit as the unit within the same prefix group that matches the number of bytes within this
+     *         storage unit best.
+     */
+    @NonNull
+    public final StorageUnit<?> asBestMatchingUnit() {
+        return converter().apply(this.bytes);
+    }
+
+    protected abstract Function<@NonNull BigInteger, @NonNull StorageUnit<?>> converter();
 
     /**
      * @return This storage unit as bytes.

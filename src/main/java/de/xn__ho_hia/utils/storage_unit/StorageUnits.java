@@ -49,6 +49,7 @@ public final class StorageUnits {
      *            The amount to bytes to represent.
      * @return The appropriate binary-prefixed unit for the given amount of bytes.
      */
+    @NonNull
     public static StorageUnit<?> binaryValueOf(final long bytes) {
         return binaryValueOf(asBigInteger(bytes));
     }
@@ -58,6 +59,7 @@ public final class StorageUnits {
      *            The amount to bytes to represent.
      * @return The appropriate binary-prefixed unit for the given amount of bytes.
      */
+    @NonNull
     public static StorageUnit<?> binaryValueOf(@NonNull final BigInteger bytes) {
         StorageUnit<?> unit = Byte.valueOf(bytes);
         @NonNull
@@ -89,6 +91,7 @@ public final class StorageUnits {
      *            The amount of bytes to represent.
      * @return The appropriate metric-prefixed unit for the given amount of bytes.
      */
+    @NonNull
     public static StorageUnit<?> metricValueOf(final long bytes) {
         return metricValueOf(asBigInteger(bytes));
     }
@@ -98,6 +101,7 @@ public final class StorageUnits {
      *            The amount of bytes to represent.
      * @return The appropriate metric-prefixed unit for the given amount of bytes.
      */
+    @NonNull
     public static StorageUnit<?> metricValueOf(@NonNull final BigInteger bytes) {
         StorageUnit<?> unit = Byte.valueOf(bytes);
         @NonNull

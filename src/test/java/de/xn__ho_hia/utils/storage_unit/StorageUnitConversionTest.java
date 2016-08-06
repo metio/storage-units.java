@@ -40,6 +40,10 @@ public class StorageUnitConversionTest {
     public static List<Function<StorageUnit<?>, StorageUnit<?>>> expressions() {
         final List<Function<StorageUnit<?>, StorageUnit<?>>> units = new ArrayList<>();
 
+        units.add(StorageUnit::asBestMatchingBinaryUnit);
+        units.add(StorageUnit::asBestMatchingMetricUnit);
+        units.add(StorageUnit::asBestMatchingUnit);
+
         units.add(StorageUnit::asByte);
 
         units.add(StorageUnit::asKibibyte);

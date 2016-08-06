@@ -13,6 +13,7 @@ import static de.xn__ho_hia.quality.null_analysis.Nullsafe.multiplyNullsafe;
 import static de.xn__ho_hia.quality.null_analysis.Nullsafe.subtractNullsafe;
 
 import java.math.BigInteger;
+import java.util.function.Function;
 
 import org.eclipse.jdt.annotation.NonNull;
 
@@ -95,6 +96,11 @@ public class Zettabyte extends StorageUnit<Zettabyte> {
     @Override
     protected String getSymbol() {
         return "ZB"; //$NON-NLS-1$
+    }
+
+    @Override
+    protected Function<@NonNull BigInteger, @NonNull StorageUnit<?>> converter() {
+        return StorageUnits::metricValueOf;
     }
 
 }
