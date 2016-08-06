@@ -162,7 +162,7 @@ Megabyte unit = Megabyte.valueOf(BigInteger.valueOf(1000000)) // 1 000 000 Byte 
 
 The `StorageUnits` class offers two factory methods that automatically pick the best-matching unit for a given number of bytes.
 
-==== Binary Units
+==== Binary-prefixed Units
 
 [source,java]
 ----
@@ -175,7 +175,7 @@ StorageUnit<?> unit = StorageUnits.binaryValueOf(BigInteger.valueOf(256))     //
 StorageUnit<?> unit = StorageUnits.binaryValueOf(BigInteger.valueOf(1048576)) // Mebibyte (1.00 MiB)
 ----
 
-==== Metric Units
+==== Metric-prefixed Units
 
 [source,java]
 ----
