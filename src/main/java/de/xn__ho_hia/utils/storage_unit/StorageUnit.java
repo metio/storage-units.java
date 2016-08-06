@@ -142,8 +142,7 @@ public abstract class StorageUnit<T extends StorageUnit<T>> extends Number imple
     }
 
     /**
-     * @return This storage unit as the unit within the same prefix group that matches the number of bytes within this
-     *         storage unit best.
+     * @return This storage unit as the best matching unit, while keeping the current prefix-type (binary or metric).
      */
     @NonNull
     public final StorageUnit<?> asBestMatchingUnit() {
