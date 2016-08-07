@@ -97,7 +97,7 @@ https://www.java.com[Java] library for storage units according to link:http://en
 
 .Metric-prefixed units
 |===
-| Name | Symbol | Exponential | Absolute
+| Name | Symbol | Exponential | Absolute | Class
 
 | Byte
 | kB
@@ -156,7 +156,7 @@ https://www.java.com[Java] library for storage units according to link:http://en
 
 .Common units
 |===
-| Name | Symbol | Exponential | Absolute
+| Name | Symbol | Exponential | Absolute | Class
 
 | Byte
 | kB
