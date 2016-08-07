@@ -18,9 +18,17 @@ All notable changes to this project will be documented in this file.
 
 link:{milestone}/3?closed=1[See list of closed issues].
 
+=== Migration
+
+No migration needed, just update to the latest version.
+
 == link:++https://github.com/sebhoss/storage-units/compare/storage-units-2.0.0...storage-units-3.0.0-20160703155124++[3.0.0] - 2016-07-03
 
 === Changed
 
-* Switch to groupId 'de.xn--ho-hia.utils.types'
+* Switch to groupId 'de.xn--ho-hia.utils.storage_units'
 * Switch to continuous deployment mode
+
+=== Migration
+
+Change the groupId of your Maven dependency to this project to 'de.xn--ho-hia.utils.storage_units'.
