@@ -42,6 +42,7 @@ public class StorageUnitConversionTest {
 
         units.add(StorageUnit::asBestMatchingBinaryUnit);
         units.add(StorageUnit::asBestMatchingMetricUnit);
+        units.add(StorageUnit::asBestMatchingCommonUnit);
         units.add(StorageUnit::asBestMatchingUnit);
 
         units.add(StorageUnit::asByte);

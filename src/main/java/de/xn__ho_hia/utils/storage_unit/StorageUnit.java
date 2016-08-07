@@ -142,6 +142,14 @@ public abstract class StorageUnit<T extends StorageUnit<T>> extends Number imple
     }
 
     /**
+     * @return This storage unit as the best matching common unit.
+     */
+    @NonNull
+    public final StorageUnit<?> asBestMatchingCommonUnit() {
+        return StorageUnits.commonValueOf(this.bytes);
+    }
+
+    /**
      * @return This storage unit as the best matching unit, while keeping the current prefix-type (binary or metric).
      */
     @NonNull
