@@ -70,6 +70,12 @@ update-parent: ##@maintenance Updates the Maven parent to its latest version
 	git add pom.xml
 	git commit pom.xml -s -S -m 'Update to latest parent'
 
+.PHONY: update-maintenance-badge
+update-maintenance-badge: ##@maintenance Updates the maintenance badge to the current year
+	sed -i -e "s/maintenance\/yes\/[0-9]*/maintenance\/yes\/$(CURRENT_YEAR)/" README.asciidoc
+	git add README.asciidoc
+	git commit pom.xml -s -S -m 'Update maintenance badge'
+
 .PHONY: release-into-local-nexus
 release-into-local-nexus: ##@release Release all artifacts into a local nexus
 	mvn clean deploy scm:tag -Prelease -Drevision=$(TIMESTAMP) -DpushChanges=false -DskipLocalStaging=true -Drelease=local
