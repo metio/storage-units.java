@@ -26,7 +26,7 @@ import de.xn__ho_hia.quality.suppression.CompilerWarnings;
  * Test cases for the {@link StorageUnits} class that check the behavior of small binary based units.
  */
 @RunWith(Theories.class)
-public class StorageUnitsSmallBinaryTest {
+public class StorageUnitsSmallCommonTest {
 
     private static final Long MULTIPLIER = Long.valueOf(1024);
 
@@ -38,12 +38,12 @@ public class StorageUnitsSmallBinaryTest {
         final List<Tuple2<Long, Class<? extends StorageUnit<?>>>> inputs = new ArrayList<>();
 
         inputs.add(new Tuple2<>(Long.valueOf(1L), Byte.class));
-        inputs.add(new Tuple2<>(MULTIPLIER, Kibibyte.class));
-        inputs.add(new Tuple2<>(pow(MULTIPLIER, 2), Mebibyte.class));
-        inputs.add(new Tuple2<>(pow(MULTIPLIER, 3), Gibibyte.class));
-        inputs.add(new Tuple2<>(pow(MULTIPLIER, 4), Tebibyte.class));
-        inputs.add(new Tuple2<>(pow(MULTIPLIER, 5), Pebibyte.class));
-        inputs.add(new Tuple2<>(pow(MULTIPLIER, 6), Exbibyte.class));
+        inputs.add(new Tuple2<>(MULTIPLIER, CommonKilobyte.class));
+        inputs.add(new Tuple2<>(pow(MULTIPLIER, 2), CommonMegabyte.class));
+        inputs.add(new Tuple2<>(pow(MULTIPLIER, 3), CommonGigabyte.class));
+        inputs.add(new Tuple2<>(pow(MULTIPLIER, 4), CommonTerabyte.class));
+        inputs.add(new Tuple2<>(pow(MULTIPLIER, 5), CommonPetabyte.class));
+        inputs.add(new Tuple2<>(pow(MULTIPLIER, 6), CommonExabyte.class));
 
         return inputs;
     }
@@ -61,7 +61,7 @@ public class StorageUnitsSmallBinaryTest {
         final Class<? extends StorageUnit<?>> expectedClass = input.v2;
 
         // When
-        final StorageUnit<?> unit = StorageUnits.binaryValueOf(bytes);
+        final StorageUnit<?> unit = StorageUnits.commonValueOf(bytes);
         final Class<?> unitClass = unit.getClass();
 
         // Then

@@ -55,7 +55,15 @@ public class StorageUnitToStringTest {
                     new SimpleEntry<>(Petabyte.class, "PB"),
                     new SimpleEntry<>(Exabyte.class, "EB"),
                     new SimpleEntry<>(Zettabyte.class, "ZB"),
-                    new SimpleEntry<>(Yottabyte.class, "YB"))
+                    new SimpleEntry<>(Yottabyte.class, "YB"),
+                    new SimpleEntry<>(CommonKilobyte.class, "kB"),
+                    new SimpleEntry<>(CommonMegabyte.class, "MB"),
+                    new SimpleEntry<>(CommonGigabyte.class, "GB"),
+                    new SimpleEntry<>(CommonTerabyte.class, "TB"),
+                    new SimpleEntry<>(CommonPetabyte.class, "PB"),
+                    new SimpleEntry<>(CommonExabyte.class, "EB"),
+                    new SimpleEntry<>(CommonZettabyte.class, "ZB"),
+                    new SimpleEntry<>(CommonYottabyte.class, "YB"))
                     .collect(Collectors.toMap(Entry::getKey, Entry::getValue)));
 
     /**

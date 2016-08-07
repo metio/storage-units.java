@@ -30,7 +30,7 @@ public final class Exbibyte extends StorageUnit<Exbibyte> {
 
     /**
      * @param numberOfBytes
-     *            The amount of bytes the exbibyte contains.
+     *            The amount of bytes the Exbibyte contains.
      * @return A new Exbibyte unit with the given value.
      */
     @NonNull
@@ -40,7 +40,7 @@ public final class Exbibyte extends StorageUnit<Exbibyte> {
 
     /**
      * @param numberOfBytes
-     *            The amount of bytes the exbibytes contains.
+     *            The amount of bytes the Exbibyte contains.
      * @return A new Exbibyte unit with the given value.
      */
     @NonNull
@@ -50,7 +50,7 @@ public final class Exbibyte extends StorageUnit<Exbibyte> {
 
     /**
      * @param numberOfBytes
-     *            The amount of bytes the exbibytes contains.
+     *            The amount of bytes the Exbibyte contains.
      * @return A new Exbibyte unit with the given value.
      */
     @NonNull

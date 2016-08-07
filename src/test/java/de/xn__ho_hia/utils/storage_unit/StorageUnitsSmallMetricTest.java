@@ -6,39 +6,47 @@
  */
 package de.xn__ho_hia.utils.storage_unit;
 
-import static de.xn__ho_hia.utils.storage_unit.TestObjects.METRIC_MULTIPLIER;
+import static de.xn__ho_hia.utils.storage_unit.TestUtils.logIncorrectCreation;
+import static de.xn__ho_hia.utils.storage_unit.TestUtils.pow;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.jooq.lambda.tuple.Tuple2;
 import org.junit.Assert;
 import org.junit.experimental.theories.DataPoints;
+import org.junit.experimental.theories.FromDataPoints;
 import org.junit.experimental.theories.Theories;
 import org.junit.experimental.theories.Theory;
 import org.junit.runner.RunWith;
 
-import de.xn__ho_hia.quality.null_analysis.Nullsafe;
 import de.xn__ho_hia.quality.suppression.CompilerWarnings;
 
 /**
  * Test cases for the {@link StorageUnits} class that check the behavior of small metric based units.
  */
 @RunWith(Theories.class)
-@SuppressWarnings(CompilerWarnings.BOXING)
 public class StorageUnitsSmallMetricTest {
 
+    private static final Long MULTIPLIER = Long.valueOf(1000);
+
     /**
-     * Test inputs and their expected result. Since we are working with {@code long}s here, we can't build the really
-     * big storage units because their byte number is greater than {@link Long#MAX_VALUE}.
+     * @return inputs and expected result types.
      */
-    @DataPoints
-    public static Object[][] INPUT_RESULTS = {
-            { 1L, Byte.class },
-            { METRIC_MULTIPLIER, Kilobyte.class },
-            { METRIC_MULTIPLIER * METRIC_MULTIPLIER, Megabyte.class },
-            { METRIC_MULTIPLIER * METRIC_MULTIPLIER * METRIC_MULTIPLIER, Gigabyte.class },
-            { METRIC_MULTIPLIER * METRIC_MULTIPLIER * METRIC_MULTIPLIER * METRIC_MULTIPLIER, Terabyte.class },
-            { METRIC_MULTIPLIER * METRIC_MULTIPLIER * METRIC_MULTIPLIER * METRIC_MULTIPLIER * METRIC_MULTIPLIER,
-                    Petabyte.class },
-            { Long.MAX_VALUE, Exabyte.class },
-    };
+    @DataPoints("inputs")
+    public static List<Tuple2<Long, Class<? extends StorageUnit<?>>>> inputs() {
+        final List<Tuple2<Long, Class<? extends StorageUnit<?>>>> inputs = new ArrayList<>();
+
+        inputs.add(new Tuple2<>(Long.valueOf(1L), Byte.class));
+        inputs.add(new Tuple2<>(MULTIPLIER, Kilobyte.class));
+        inputs.add(new Tuple2<>(pow(MULTIPLIER, 2), Megabyte.class));
+        inputs.add(new Tuple2<>(pow(MULTIPLIER, 3), Gigabyte.class));
+        inputs.add(new Tuple2<>(pow(MULTIPLIER, 4), Terabyte.class));
+        inputs.add(new Tuple2<>(pow(MULTIPLIER, 5), Petabyte.class));
+        inputs.add(new Tuple2<>(pow(MULTIPLIER, 6), Exabyte.class));
+
+        return inputs;
+    }
 
     /**
      * @param input
@@ -46,30 +54,18 @@ public class StorageUnitsSmallMetricTest {
      */
     @Theory
     @SuppressWarnings(CompilerWarnings.STATIC_METHOD)
-    public void shouldCreateCorrectUnit(final Object[] input) {
-        // Given
-        final long bytes = (long) input[0];
-        final Class<?> expectedClass = (Class<?>) input[1];
+    public void shouldCreateCorrectUnit(
+            @FromDataPoints("inputs") final Tuple2<Long, Class<? extends StorageUnit<?>>> input) {
+        // given
+        final long bytes = input.v1.longValue();
+        final Class<? extends StorageUnit<?>> expectedClass = input.v2;
 
-        // When
+        // when
         final StorageUnit<?> unit = StorageUnits.metricValueOf(bytes);
         final Class<?> unitClass = unit.getClass();
 
-        // Then
-        Assert.assertEquals(logIncorrectCreation(bytes, Nullsafe.nonNull(expectedClass), unitClass), expectedClass,
-                unitClass);
-    }
-
-    @SuppressWarnings({ CompilerWarnings.NLS })
-    private static String logIncorrectCreation(
-            final long bytes,
-            final Class<?> expectedClass,
-            final Class<?> unitClass) {
-        return String.format(
-                "'%s' bytes should result in type [%s] but got [%s].",
-                bytes,
-                expectedClass.getSimpleName(),
-                unitClass.getSimpleName());
+        // then
+        Assert.assertEquals(logIncorrectCreation(bytes, expectedClass, unitClass), expectedClass, unitClass);
     }
 
 }

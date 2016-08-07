@@ -18,13 +18,14 @@ import java.util.function.Function;
 import org.eclipse.jdt.annotation.NonNull;
 
 /**
- * Megabyte as specified in ISO IEC 80000-13:2008 (1 Megabyte = 1 000 000 Byte).
+ * Megabyte as commonly found in the wild (1 Megabyte = 1 048 576 Byte).
  */
-public class Megabyte extends StorageUnit<Megabyte> {
+public final class CommonMegabyte extends StorageUnit<CommonMegabyte> {
 
-    private static final long serialVersionUID = 5901923092058760111L;
+    /** Generated */
+    private static final long serialVersionUID = 7697583678146919524L;
 
-    Megabyte(@NonNull final BigInteger bytes) {
+    CommonMegabyte(@NonNull final BigInteger bytes) {
         super(bytes);
     }
 
@@ -34,8 +35,8 @@ public class Megabyte extends StorageUnit<Megabyte> {
      * @return A new Megabyte unit with the given value.
      */
     @NonNull
-    public static Megabyte valueOf(@NonNull final BigInteger numberOfBytes) {
-        return new Megabyte(numberOfBytes);
+    public static CommonMegabyte valueOf(@NonNull final BigInteger numberOfBytes) {
+        return new CommonMegabyte(numberOfBytes);
     }
 
     /**
@@ -44,8 +45,8 @@ public class Megabyte extends StorageUnit<Megabyte> {
      * @return A new Megabyte unit with the given value.
      */
     @NonNull
-    public static Megabyte valueOf(final long numberOfBytes) {
-        return new Megabyte(asBigInteger(numberOfBytes));
+    public static CommonMegabyte valueOf(final long numberOfBytes) {
+        return new CommonMegabyte(asBigInteger(numberOfBytes));
     }
 
     /**
@@ -54,43 +55,43 @@ public class Megabyte extends StorageUnit<Megabyte> {
      * @return A new Megabyte unit with the given value.
      */
     @NonNull
-    public static Megabyte valueOf(@NonNull final Long numberOfBytes) {
+    public static CommonMegabyte valueOf(@NonNull final Long numberOfBytes) {
         return valueOf(numberOfBytes.longValue());
     }
 
     @Override
-    public Megabyte add(final long bytesToAdd) {
-        return new Megabyte(addNullsafe(bytes, asBigInteger(bytesToAdd)));
+    public CommonMegabyte add(final long bytesToAdd) {
+        return new CommonMegabyte(addNullsafe(bytes, asBigInteger(bytesToAdd)));
     }
 
     @Override
-    public Megabyte add(final StorageUnit<?> storageAmount) {
-        return new Megabyte(addNullsafe(bytes, storageAmount.bytes));
+    public CommonMegabyte add(final StorageUnit<?> storageAmount) {
+        return new CommonMegabyte(addNullsafe(bytes, storageAmount.bytes));
     }
 
     @Override
-    public Megabyte divide(final long divisor) {
-        return new Megabyte(divideNullsafe(bytes, asBigInteger(divisor)));
+    public CommonMegabyte divide(final long divisor) {
+        return new CommonMegabyte(divideNullsafe(bytes, asBigInteger(divisor)));
     }
 
     @Override
-    public Megabyte multiply(final long factor) {
-        return new Megabyte(multiplyNullsafe(bytes, asBigInteger(factor)));
+    public CommonMegabyte multiply(final long factor) {
+        return new CommonMegabyte(multiplyNullsafe(bytes, asBigInteger(factor)));
     }
 
     @Override
-    public Megabyte subtract(final long bytesToSubtract) {
-        return new Megabyte(subtractNullsafe(bytes, asBigInteger(bytesToSubtract)));
+    public CommonMegabyte subtract(final long bytesToSubtract) {
+        return new CommonMegabyte(subtractNullsafe(bytes, asBigInteger(bytesToSubtract)));
     }
 
     @Override
-    public Megabyte subtract(final StorageUnit<?> storageAmount) {
-        return new Megabyte(subtractNullsafe(bytes, storageAmount.bytes));
+    public CommonMegabyte subtract(final StorageUnit<?> storageAmount) {
+        return new CommonMegabyte(subtractNullsafe(bytes, storageAmount.bytes));
     }
 
     @Override
     protected BigInteger getNumberOfBytesPerUnit() {
-        return StorageUnit.BYTES_IN_A_MEGABYTE;
+        return StorageUnit.BYTES_IN_A_MEBIBYTE;
     }
 
     @Override
@@ -100,7 +101,7 @@ public class Megabyte extends StorageUnit<Megabyte> {
 
     @Override
     protected Function<@NonNull BigInteger, @NonNull StorageUnit<?>> converter() {
-        return StorageUnits::metricValueOf;
+        return StorageUnits::commonValueOf;
     }
 
 }

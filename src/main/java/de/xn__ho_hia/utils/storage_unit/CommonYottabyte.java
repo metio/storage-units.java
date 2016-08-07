@@ -18,13 +18,14 @@ import java.util.function.Function;
 import org.eclipse.jdt.annotation.NonNull;
 
 /**
- * Yottabyte as specified in ISO IEC 80000-13:2008 (1 Yottabyte = 1 000 000 000 000 000 000 000 000 Byte).
+ * Yottabyte as commonly found in the wild (1 Yottabyte = 1 208 925 819 614 629 174 706 176 Byte).
  */
-public class Yottabyte extends StorageUnit<Yottabyte> {
+public final class CommonYottabyte extends StorageUnit<CommonYottabyte> {
 
-    private static final long serialVersionUID = 2482152459842042316L;
+    /** Generated */
+    private static final long serialVersionUID = -5606322878020884194L;
 
-    Yottabyte(@NonNull final BigInteger bytes) {
+    CommonYottabyte(@NonNull final BigInteger bytes) {
         super(bytes);
     }
 
@@ -34,8 +35,8 @@ public class Yottabyte extends StorageUnit<Yottabyte> {
      * @return A new Yottabyte unit with the given value.
      */
     @NonNull
-    public static Yottabyte valueOf(@NonNull final BigInteger numberOfBytes) {
-        return new Yottabyte(numberOfBytes);
+    public static CommonYottabyte valueOf(@NonNull final BigInteger numberOfBytes) {
+        return new CommonYottabyte(numberOfBytes);
     }
 
     /**
@@ -44,8 +45,8 @@ public class Yottabyte extends StorageUnit<Yottabyte> {
      * @return A new Yottabyte unit with the given value.
      */
     @NonNull
-    public static Yottabyte valueOf(final long numberOfBytes) {
-        return new Yottabyte(asBigInteger(numberOfBytes));
+    public static CommonYottabyte valueOf(final long numberOfBytes) {
+        return new CommonYottabyte(asBigInteger(numberOfBytes));
     }
 
     /**
@@ -54,43 +55,43 @@ public class Yottabyte extends StorageUnit<Yottabyte> {
      * @return A new Yottabyte unit with the given value.
      */
     @NonNull
-    public static Yottabyte valueOf(@NonNull final Long numberOfBytes) {
+    public static CommonYottabyte valueOf(@NonNull final Long numberOfBytes) {
         return valueOf(numberOfBytes.longValue());
     }
 
     @Override
-    public Yottabyte add(final long bytesToAdd) {
-        return new Yottabyte(addNullsafe(bytes, asBigInteger(bytesToAdd)));
+    public CommonYottabyte add(final long bytesToAdd) {
+        return new CommonYottabyte(addNullsafe(bytes, asBigInteger(bytesToAdd)));
     }
 
     @Override
-    public Yottabyte add(final StorageUnit<?> storageAmount) {
-        return new Yottabyte(addNullsafe(bytes, storageAmount.bytes));
+    public CommonYottabyte add(final StorageUnit<?> storageAmount) {
+        return new CommonYottabyte(addNullsafe(bytes, storageAmount.bytes));
     }
 
     @Override
-    public Yottabyte divide(final long divisor) {
-        return new Yottabyte(divideNullsafe(bytes, asBigInteger(divisor)));
+    public CommonYottabyte divide(final long divisor) {
+        return new CommonYottabyte(divideNullsafe(bytes, asBigInteger(divisor)));
     }
 
     @Override
-    public Yottabyte multiply(final long factor) {
-        return new Yottabyte(multiplyNullsafe(bytes, asBigInteger(factor)));
+    public CommonYottabyte multiply(final long factor) {
+        return new CommonYottabyte(multiplyNullsafe(bytes, asBigInteger(factor)));
     }
 
     @Override
-    public Yottabyte subtract(final long bytesToSubtract) {
-        return new Yottabyte(subtractNullsafe(bytes, asBigInteger(bytesToSubtract)));
+    public CommonYottabyte subtract(final long bytesToSubtract) {
+        return new CommonYottabyte(subtractNullsafe(bytes, asBigInteger(bytesToSubtract)));
     }
 
     @Override
-    public Yottabyte subtract(final StorageUnit<?> storageAmount) {
-        return new Yottabyte(subtractNullsafe(bytes, storageAmount.bytes));
+    public CommonYottabyte subtract(final StorageUnit<?> storageAmount) {
+        return new CommonYottabyte(subtractNullsafe(bytes, storageAmount.bytes));
     }
 
     @Override
     protected BigInteger getNumberOfBytesPerUnit() {
-        return StorageUnit.BYTES_IN_A_YOTTABYTE;
+        return StorageUnit.BYTES_IN_A_YOBIBYTE;
     }
 
     @Override
@@ -100,7 +101,7 @@ public class Yottabyte extends StorageUnit<Yottabyte> {
 
     @Override
     protected Function<@NonNull BigInteger, @NonNull StorageUnit<?>> converter() {
-        return StorageUnits::metricValueOf;
+        return StorageUnits::commonValueOf;
     }
 
 }

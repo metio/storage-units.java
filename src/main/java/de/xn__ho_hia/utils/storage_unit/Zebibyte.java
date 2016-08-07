@@ -30,7 +30,7 @@ public final class Zebibyte extends StorageUnit<Zebibyte> {
 
     /**
      * @param numberOfBytes
-     *            The amount of bytes the zebibyte contains.
+     *            The amount of bytes the Zebibyte contains.
      * @return A new Zebibyte unit with the given value.
      */
     @NonNull
@@ -40,7 +40,7 @@ public final class Zebibyte extends StorageUnit<Zebibyte> {
 
     /**
      * @param numberOfBytes
-     *            The amount of bytes the zebibytes contains.
+     *            The amount of bytes the Zebibyte contains.
      * @return A new Zebibyte unit with the given value.
      */
     @NonNull
@@ -50,7 +50,7 @@ public final class Zebibyte extends StorageUnit<Zebibyte> {
 
     /**
      * @param numberOfBytes
-     *            The amount of bytes the zebibytes contains.
+     *            The amount of bytes the Zebibyte contains.
      * @return A new Zebibyte unit with the given value.
      */
     @NonNull

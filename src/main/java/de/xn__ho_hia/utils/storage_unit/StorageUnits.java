@@ -128,6 +128,48 @@ public final class StorageUnits {
         return unit;
     }
 
+    /**
+     * @param bytes
+     *            The amount to bytes to represent.
+     * @return The appropriate common unit for the given amount of bytes.
+     */
+    @NonNull
+    public static StorageUnit<?> commonValueOf(final long bytes) {
+        return commonValueOf(asBigInteger(bytes));
+    }
+
+    /**
+     * @param bytes
+     *            The amount to bytes to represent.
+     * @return The appropriate common unit for the given amount of bytes.
+     */
+    @NonNull
+    public static StorageUnit<?> commonValueOf(@NonNull final BigInteger bytes) {
+        StorageUnit<?> unit = Byte.valueOf(bytes);
+        @NonNull
+        final BigInteger positiveNumberOfBytes = bytes.signum() == -1 ? nonNull(bytes.negate()) : bytes;
+
+        if (inbetween(BYTES_IN_A_KIBIBYTE, positiveNumberOfBytes, BYTES_IN_A_MEBIBYTE)) {
+            unit = unit.asCommonKilobyte();
+        } else if (inbetween(BYTES_IN_A_MEBIBYTE, positiveNumberOfBytes, BYTES_IN_A_GIBIBYTE)) {
+            unit = unit.asCommonMegabyte();
+        } else if (inbetween(BYTES_IN_A_GIBIBYTE, positiveNumberOfBytes, BYTES_IN_A_TEBIBYTE)) {
+            unit = unit.asCommonGigabyte();
+        } else if (inbetween(BYTES_IN_A_TEBIBYTE, positiveNumberOfBytes, BYTES_IN_A_PEBIBYTE)) {
+            unit = unit.asCommonTerabyte();
+        } else if (inbetween(BYTES_IN_A_PEBIBYTE, positiveNumberOfBytes, BYTES_IN_A_EXBIBYTE)) {
+            unit = unit.asCommonPetabyte();
+        } else if (inbetween(BYTES_IN_A_EXBIBYTE, positiveNumberOfBytes, BYTES_IN_A_ZEBIBYTE)) {
+            unit = unit.asCommonExabyte();
+        } else if (inbetween(BYTES_IN_A_ZEBIBYTE, positiveNumberOfBytes, BYTES_IN_A_YOBIBYTE)) {
+            unit = unit.asCommonZettabyte();
+        } else if (greaterThanEquals(positiveNumberOfBytes, BYTES_IN_A_YOBIBYTE)) {
+            unit = unit.asCommonYottabyte();
+        }
+
+        return unit;
+    }
+
     private static boolean inbetween(final BigInteger start, final BigInteger value, final BigInteger endExclusive) {
         return greaterThanEquals(value, start) && value.compareTo(endExclusive) < 0;
     }
@@ -2796,6 +2838,1320 @@ public final class StorageUnits {
 
     /**
      * @param numberOfBytes
+     *            The amount of bytes to format.
+     * @return The formatted bytes using the default pattern.
+     */
+    @NonNull
+    public static String formatAsCommonUnit(@NonNull final Long numberOfBytes) {
+        return formatAsCommonUnit(numberOfBytes.longValue());
+    }
+
+    /**
+     * @param numberOfBytes
+     *            The amount of bytes to format.
+     * @return The formatted bytes using the default pattern.
+     */
+    @NonNull
+    public static String formatAsCommonUnit(final long numberOfBytes) {
+        return formatAsCommonUnit(asBigInteger(numberOfBytes));
+    }
+
+    /**
+     * @param numberOfBytes
+     *            The amount of bytes to format.
+     * @return The formatted bytes using the default pattern.
+     */
+    @NonNull
+    public static String formatAsCommonUnit(@NonNull final BigInteger numberOfBytes) {
+        return formatAsCommonUnit(numberOfBytes, DEFAULT_FORMAT_PATTERN);
+    }
+
+    /**
+     * @param numberOfBytes
+     *            The amount of bytes to format.
+     * @param pattern
+     *            The formatting pattern to apply.
+     * @return The formatted bytes using the default pattern.
+     */
+    @NonNull
+    public static String formatAsCommonUnit(@NonNull final Long numberOfBytes, final String pattern) {
+        return formatAsCommonUnit(numberOfBytes.longValue(), pattern);
+    }
+
+    /**
+     * @param numberOfBytes
+     *            The amount of bytes to format.
+     * @param pattern
+     *            The formatting pattern to apply.
+     * @return The formatted bytes using the default pattern.
+     */
+    @NonNull
+    public static String formatAsCommonUnit(final long numberOfBytes, final String pattern) {
+        return formatAsCommonUnit(asBigInteger(numberOfBytes), pattern);
+    }
+
+    /**
+     * @param numberOfBytes
+     *            The amount of bytes to format.
+     * @param pattern
+     *            The formatting pattern to apply.
+     * @return The formatted bytes using the default pattern.
+     */
+    @NonNull
+    public static String formatAsCommonUnit(@NonNull final BigInteger numberOfBytes, final String pattern) {
+        return formatAsCommonUnit(numberOfBytes, new DecimalFormat(pattern));
+    }
+
+    /**
+     * @param numberOfBytes
+     *            The amount of bytes to format.
+     * @param pattern
+     *            The formatting pattern to apply.
+     * @param locale
+     *            The locale to use.
+     * @return The formatted bytes using the default pattern.
+     */
+    @NonNull
+    public static String formatAsCommonUnit(@NonNull final Long numberOfBytes, final String pattern,
+            final Locale locale) {
+        return formatAsCommonUnit(numberOfBytes.longValue(), pattern, locale);
+    }
+
+    /**
+     * @param numberOfBytes
+     *            The amount of bytes to format.
+     * @param pattern
+     *            The formatting pattern to apply.
+     * @param locale
+     *            The locale to use.
+     * @return The formatted bytes using the default pattern.
+     */
+    @NonNull
+    public static String formatAsCommonUnit(final long numberOfBytes, final String pattern, final Locale locale) {
+        return formatAsCommonUnit(asBigInteger(numberOfBytes), pattern, locale);
+    }
+
+    /**
+     * @param numberOfBytes
+     *            The amount of bytes to format.
+     * @param pattern
+     *            The formatting pattern to apply.
+     * @param locale
+     *            The locale to use.
+     * @return The formatted bytes using the default pattern.
+     */
+    @NonNull
+    public static String formatAsCommonUnit(@NonNull final BigInteger numberOfBytes, final String pattern,
+            final Locale locale) {
+        return formatAsCommonUnit(numberOfBytes, asFormat(pattern, locale));
+    }
+
+    /**
+     * @param numberOfBytes
+     *            The amount of bytes to format.
+     * @param format
+     *            The formatting pattern to apply.
+     * @return The formatted bytes using the default pattern.
+     */
+    @NonNull
+    public static String formatAsCommonUnit(@NonNull final Long numberOfBytes, final Format format) {
+        return formatAsCommonUnit(numberOfBytes.longValue(), format);
+    }
+
+    /**
+     * @param numberOfBytes
+     *            The amount of bytes to format.
+     * @param format
+     *            The formatting pattern to apply.
+     * @return The formatted bytes using the default pattern.
+     */
+    @NonNull
+    public static String formatAsCommonUnit(final long numberOfBytes, final Format format) {
+        return formatAsCommonUnit(asBigInteger(numberOfBytes), format);
+    }
+
+    /**
+     * @param numberOfBytes
+     *            The amount of bytes to format.
+     * @param format
+     *            The formatting pattern to apply.
+     * @return The formatted bytes using the default pattern.
+     */
+    @NonNull
+    public static String formatAsCommonUnit(@NonNull final BigInteger numberOfBytes, final Format format) {
+        return commonValueOf(numberOfBytes).toString(format);
+    }
+
+    /**
+     * @param numberOfBytes
+     *            The amount of bytes to format.
+     * @return The formatted bytes using the default pattern.
+     */
+    @NonNull
+    public static String formatAsCommonKilobyte(@NonNull final Long numberOfBytes) {
+        return formatAsCommonKilobyte(numberOfBytes.longValue());
+    }
+
+    /**
+     * @param numberOfBytes
+     *            The amount of bytes to format.
+     * @return The formatted bytes using the default pattern.
+     */
+    @NonNull
+    public static String formatAsCommonKilobyte(final long numberOfBytes) {
+        return formatAsCommonKilobyte(asBigInteger(numberOfBytes));
+    }
+
+    /**
+     * @param numberOfBytes
+     *            The amount of bytes to format.
+     * @return The formatted bytes using the default pattern.
+     */
+    @NonNull
+    public static String formatAsCommonKilobyte(@NonNull final BigInteger numberOfBytes) {
+        return formatAsCommonKilobyte(numberOfBytes, DEFAULT_FORMAT_PATTERN);
+    }
+
+    /**
+     * @param numberOfBytes
+     *            The amount of bytes to format.
+     * @param pattern
+     *            The formatting pattern to apply.
+     * @return The formatted bytes using the default pattern.
+     */
+    @NonNull
+    public static String formatAsCommonKilobyte(@NonNull final Long numberOfBytes, final String pattern) {
+        return formatAsCommonKilobyte(numberOfBytes.longValue(), pattern);
+    }
+
+    /**
+     * @param numberOfBytes
+     *            The amount of bytes to format.
+     * @param pattern
+     *            The formatting pattern to apply.
+     * @return The formatted bytes using the default pattern.
+     */
+    @NonNull
+    public static String formatAsCommonKilobyte(final long numberOfBytes, final String pattern) {
+        return formatAsCommonKilobyte(asBigInteger(numberOfBytes), pattern);
+    }
+
+    /**
+     * @param numberOfBytes
+     *            The amount of bytes to format.
+     * @param pattern
+     *            The formatting pattern to apply.
+     * @return The formatted bytes using the default pattern.
+     */
+    @NonNull
+    public static String formatAsCommonKilobyte(@NonNull final BigInteger numberOfBytes, final String pattern) {
+        return formatAsCommonKilobyte(numberOfBytes, new DecimalFormat(pattern));
+    }
+
+    /**
+     * @param numberOfBytes
+     *            The amount of bytes to format.
+     * @param pattern
+     *            The formatting pattern to apply.
+     * @param locale
+     *            The locale to use.
+     * @return The formatted bytes using the default pattern.
+     */
+    @NonNull
+    public static String formatAsCommonKilobyte(@NonNull final Long numberOfBytes, final String pattern,
+            final Locale locale) {
+        return formatAsCommonKilobyte(numberOfBytes.longValue(), pattern, locale);
+    }
+
+    /**
+     * @param numberOfBytes
+     *            The amount of bytes to format.
+     * @param pattern
+     *            The formatting pattern to apply.
+     * @param locale
+     *            The locale to use.
+     * @return The formatted bytes using the default pattern.
+     */
+    @NonNull
+    public static String formatAsCommonKilobyte(final long numberOfBytes, final String pattern, final Locale locale) {
+        return formatAsCommonKilobyte(asBigInteger(numberOfBytes), pattern, locale);
+    }
+
+    /**
+     * @param numberOfBytes
+     *            The amount of bytes to format.
+     * @param pattern
+     *            The formatting pattern to apply.
+     * @param locale
+     *            The locale to use.
+     * @return The formatted bytes using the default pattern.
+     */
+    @NonNull
+    public static String formatAsCommonKilobyte(@NonNull final BigInteger numberOfBytes, final String pattern,
+            final Locale locale) {
+        return formatAsCommonKilobyte(numberOfBytes, asFormat(pattern, locale));
+    }
+
+    /**
+     * @param numberOfBytes
+     *            The amount of bytes to format.
+     * @param format
+     *            The formatting pattern to apply.
+     * @return The formatted bytes using the default pattern.
+     */
+    @NonNull
+    public static String formatAsCommonKilobyte(@NonNull final Long numberOfBytes, final Format format) {
+        return formatAsCommonKilobyte(numberOfBytes.longValue(), format);
+    }
+
+    /**
+     * @param numberOfBytes
+     *            The amount of bytes to format.
+     * @param format
+     *            The formatting pattern to apply.
+     * @return The formatted bytes using the default pattern.
+     */
+    @NonNull
+    public static String formatAsCommonKilobyte(final long numberOfBytes, final Format format) {
+        return formatAsCommonKilobyte(asBigInteger(numberOfBytes), format);
+    }
+
+    /**
+     * @param numberOfBytes
+     *            The amount of bytes to format.
+     * @param format
+     *            The formatting pattern to apply.
+     * @return The formatted bytes using the default pattern.
+     */
+    @NonNull
+    public static String formatAsCommonKilobyte(@NonNull final BigInteger numberOfBytes, final Format format) {
+        return CommonKilobyte.valueOf(numberOfBytes).toString(format);
+    }
+
+    /**
+     * @param numberOfBytes
+     *            The amount of bytes to format.
+     * @return The formatted bytes using the default pattern.
+     */
+    @NonNull
+    public static String formatAsCommonMegabyte(@NonNull final Long numberOfBytes) {
+        return formatAsCommonMegabyte(numberOfBytes.longValue());
+    }
+
+    /**
+     * @param numberOfBytes
+     *            The amount of bytes to format.
+     * @return The formatted bytes using the default pattern.
+     */
+    @NonNull
+    public static String formatAsCommonMegabyte(final long numberOfBytes) {
+        return formatAsCommonMegabyte(asBigInteger(numberOfBytes));
+    }
+
+    /**
+     * @param numberOfBytes
+     *            The amount of bytes to format.
+     * @return The formatted bytes using the default pattern.
+     */
+    @NonNull
+    public static String formatAsCommonMegabyte(@NonNull final BigInteger numberOfBytes) {
+        return formatAsCommonMegabyte(numberOfBytes, DEFAULT_FORMAT_PATTERN);
+    }
+
+    /**
+     * @param numberOfBytes
+     *            The amount of bytes to format.
+     * @param pattern
+     *            The formatting pattern to apply.
+     * @return The formatted bytes using the default pattern.
+     */
+    @NonNull
+    public static String formatAsCommonMegabyte(@NonNull final Long numberOfBytes, final String pattern) {
+        return formatAsCommonMegabyte(numberOfBytes.longValue(), pattern);
+    }
+
+    /**
+     * @param numberOfBytes
+     *            The amount of bytes to format.
+     * @param pattern
+     *            The formatting pattern to apply.
+     * @return The formatted bytes using the default pattern.
+     */
+    @NonNull
+    public static String formatAsCommonMegabyte(final long numberOfBytes, final String pattern) {
+        return formatAsCommonMegabyte(asBigInteger(numberOfBytes), pattern);
+    }
+
+    /**
+     * @param numberOfBytes
+     *            The amount of bytes to format.
+     * @param pattern
+     *            The formatting pattern to apply.
+     * @return The formatted bytes using the default pattern.
+     */
+    @NonNull
+    public static String formatAsCommonMegabyte(@NonNull final BigInteger numberOfBytes, final String pattern) {
+        return formatAsCommonMegabyte(numberOfBytes, new DecimalFormat(pattern));
+    }
+
+    /**
+     * @param numberOfBytes
+     *            The amount of bytes to format.
+     * @param pattern
+     *            The formatting pattern to apply.
+     * @param locale
+     *            The locale to use.
+     * @return The formatted bytes using the default pattern.
+     */
+    @NonNull
+    public static String formatAsCommonMegabyte(@NonNull final Long numberOfBytes, final String pattern,
+            final Locale locale) {
+        return formatAsCommonMegabyte(numberOfBytes.longValue(), pattern, locale);
+    }
+
+    /**
+     * @param numberOfBytes
+     *            The amount of bytes to format.
+     * @param pattern
+     *            The formatting pattern to apply.
+     * @param locale
+     *            The locale to use.
+     * @return The formatted bytes using the default pattern.
+     */
+    @NonNull
+    public static String formatAsCommonMegabyte(final long numberOfBytes, final String pattern, final Locale locale) {
+        return formatAsCommonMegabyte(asBigInteger(numberOfBytes), pattern, locale);
+    }
+
+    /**
+     * @param numberOfBytes
+     *            The amount of bytes to format.
+     * @param pattern
+     *            The formatting pattern to apply.
+     * @param locale
+     *            The locale to use.
+     * @return The formatted bytes using the default pattern.
+     */
+    @NonNull
+    public static String formatAsCommonMegabyte(@NonNull final BigInteger numberOfBytes, final String pattern,
+            final Locale locale) {
+        return formatAsCommonMegabyte(numberOfBytes, asFormat(pattern, locale));
+    }
+
+    /**
+     * @param numberOfBytes
+     *            The amount of bytes to format.
+     * @param format
+     *            The formatting pattern to apply.
+     * @return The formatted bytes using the default pattern.
+     */
+    @NonNull
+    public static String formatAsCommonMegabyte(@NonNull final Long numberOfBytes, final Format format) {
+        return formatAsCommonMegabyte(numberOfBytes.longValue(), format);
+    }
+
+    /**
+     * @param numberOfBytes
+     *            The amount of bytes to format.
+     * @param format
+     *            The formatting pattern to apply.
+     * @return The formatted bytes using the default pattern.
+     */
+    @NonNull
+    public static String formatAsCommonMegabyte(final long numberOfBytes, final Format format) {
+        return formatAsCommonMegabyte(asBigInteger(numberOfBytes), format);
+    }
+
+    /**
+     * @param numberOfBytes
+     *            The amount of bytes to format.
+     * @param format
+     *            The formatting pattern to apply.
+     * @return The formatted bytes using the default pattern.
+     */
+    @NonNull
+    public static String formatAsCommonMegabyte(@NonNull final BigInteger numberOfBytes, final Format format) {
+        return CommonMegabyte.valueOf(numberOfBytes).toString(format);
+    }
+
+    /**
+     * @param numberOfBytes
+     *            The amount of bytes to format.
+     * @return The formatted bytes using the default pattern.
+     */
+    @NonNull
+    public static String formatAsCommonGigabyte(@NonNull final Long numberOfBytes) {
+        return formatAsCommonGigabyte(numberOfBytes.longValue());
+    }
+
+    /**
+     * @param numberOfBytes
+     *            The amount of bytes to format.
+     * @return The formatted bytes using the default pattern.
+     */
+    @NonNull
+    public static String formatAsCommonGigabyte(final long numberOfBytes) {
+        return formatAsCommonGigabyte(asBigInteger(numberOfBytes));
+    }
+
+    /**
+     * @param numberOfBytes
+     *            The amount of bytes to format.
+     * @return The formatted bytes using the default pattern.
+     */
+    @NonNull
+    public static String formatAsCommonGigabyte(@NonNull final BigInteger numberOfBytes) {
+        return formatAsCommonGigabyte(numberOfBytes, DEFAULT_FORMAT_PATTERN);
+    }
+
+    /**
+     * @param numberOfBytes
+     *            The amount of bytes to format.
+     * @param pattern
+     *            The formatting pattern to apply.
+     * @return The formatted bytes using the default pattern.
+     */
+    @NonNull
+    public static String formatAsCommonGigabyte(@NonNull final Long numberOfBytes, final String pattern) {
+        return formatAsCommonGigabyte(numberOfBytes.longValue(), pattern);
+    }
+
+    /**
+     * @param numberOfBytes
+     *            The amount of bytes to format.
+     * @param pattern
+     *            The formatting pattern to apply.
+     * @return The formatted bytes using the default pattern.
+     */
+    @NonNull
+    public static String formatAsCommonGigabyte(final long numberOfBytes, final String pattern) {
+        return formatAsCommonGigabyte(asBigInteger(numberOfBytes), pattern);
+    }
+
+    /**
+     * @param numberOfBytes
+     *            The amount of bytes to format.
+     * @param pattern
+     *            The formatting pattern to apply.
+     * @return The formatted bytes using the default pattern.
+     */
+    @NonNull
+    public static String formatAsCommonGigabyte(@NonNull final BigInteger numberOfBytes, final String pattern) {
+        return formatAsCommonGigabyte(numberOfBytes, new DecimalFormat(pattern));
+    }
+
+    /**
+     * @param numberOfBytes
+     *            The amount of bytes to format.
+     * @param pattern
+     *            The formatting pattern to apply.
+     * @param locale
+     *            The locale to use.
+     * @return The formatted bytes using the default pattern.
+     */
+    @NonNull
+    public static String formatAsCommonGigabyte(@NonNull final Long numberOfBytes, final String pattern,
+            final Locale locale) {
+        return formatAsCommonGigabyte(numberOfBytes.longValue(), pattern, locale);
+    }
+
+    /**
+     * @param numberOfBytes
+     *            The amount of bytes to format.
+     * @param pattern
+     *            The formatting pattern to apply.
+     * @param locale
+     *            The locale to use.
+     * @return The formatted bytes using the default pattern.
+     */
+    @NonNull
+    public static String formatAsCommonGigabyte(final long numberOfBytes, final String pattern, final Locale locale) {
+        return formatAsCommonGigabyte(asBigInteger(numberOfBytes), pattern, locale);
+    }
+
+    /**
+     * @param numberOfBytes
+     *            The amount of bytes to format.
+     * @param pattern
+     *            The formatting pattern to apply.
+     * @param locale
+     *            The locale to use.
+     * @return The formatted bytes using the default pattern.
+     */
+    @NonNull
+    public static String formatAsCommonGigabyte(@NonNull final BigInteger numberOfBytes, final String pattern,
+            final Locale locale) {
+        return formatAsCommonGigabyte(numberOfBytes, asFormat(pattern, locale));
+    }
+
+    /**
+     * @param numberOfBytes
+     *            The amount of bytes to format.
+     * @param format
+     *            The formatting pattern to apply.
+     * @return The formatted bytes using the default pattern.
+     */
+    @NonNull
+    public static String formatAsCommonGigabyte(@NonNull final Long numberOfBytes, final Format format) {
+        return formatAsCommonGigabyte(numberOfBytes.longValue(), format);
+    }
+
+    /**
+     * @param numberOfBytes
+     *            The amount of bytes to format.
+     * @param format
+     *            The formatting pattern to apply.
+     * @return The formatted bytes using the default pattern.
+     */
+    @NonNull
+    public static String formatAsCommonGigabyte(final long numberOfBytes, final Format format) {
+        return formatAsCommonGigabyte(asBigInteger(numberOfBytes), format);
+    }
+
+    /**
+     * @param numberOfBytes
+     *            The amount of bytes to format.
+     * @param format
+     *            The formatting pattern to apply.
+     * @return The formatted bytes using the default pattern.
+     */
+    @NonNull
+    public static String formatAsCommonGigabyte(@NonNull final BigInteger numberOfBytes, final Format format) {
+        return CommonGigabyte.valueOf(numberOfBytes).toString(format);
+    }
+
+    /**
+     * @param numberOfBytes
+     *            The amount of bytes to format.
+     * @return The formatted bytes using the default pattern.
+     */
+    @NonNull
+    public static String formatAsCommonTerabyte(@NonNull final Long numberOfBytes) {
+        return formatAsCommonTerabyte(numberOfBytes.longValue());
+    }
+
+    /**
+     * @param numberOfBytes
+     *            The amount of bytes to format.
+     * @return The formatted bytes using the default pattern.
+     */
+    @NonNull
+    public static String formatAsCommonTerabyte(final long numberOfBytes) {
+        return formatAsCommonTerabyte(asBigInteger(numberOfBytes));
+    }
+
+    /**
+     * @param numberOfBytes
+     *            The amount of bytes to format.
+     * @return The formatted bytes using the default pattern.
+     */
+    @NonNull
+    public static String formatAsCommonTerabyte(@NonNull final BigInteger numberOfBytes) {
+        return formatAsCommonTerabyte(numberOfBytes, DEFAULT_FORMAT_PATTERN);
+    }
+
+    /**
+     * @param numberOfBytes
+     *            The amount of bytes to format.
+     * @param pattern
+     *            The formatting pattern to apply.
+     * @return The formatted bytes using the default pattern.
+     */
+    @NonNull
+    public static String formatAsCommonTerabyte(@NonNull final Long numberOfBytes, final String pattern) {
+        return formatAsCommonTerabyte(numberOfBytes.longValue(), pattern);
+    }
+
+    /**
+     * @param numberOfBytes
+     *            The amount of bytes to format.
+     * @param pattern
+     *            The formatting pattern to apply.
+     * @return The formatted bytes using the default pattern.
+     */
+    @NonNull
+    public static String formatAsCommonTerabyte(final long numberOfBytes, final String pattern) {
+        return formatAsCommonTerabyte(asBigInteger(numberOfBytes), pattern);
+    }
+
+    /**
+     * @param numberOfBytes
+     *            The amount of bytes to format.
+     * @param pattern
+     *            The formatting pattern to apply.
+     * @return The formatted bytes using the default pattern.
+     */
+    @NonNull
+    public static String formatAsCommonTerabyte(@NonNull final BigInteger numberOfBytes, final String pattern) {
+        return formatAsCommonTerabyte(numberOfBytes, new DecimalFormat(pattern));
+    }
+
+    /**
+     * @param numberOfBytes
+     *            The amount of bytes to format.
+     * @param pattern
+     *            The formatting pattern to apply.
+     * @param locale
+     *            The locale to use.
+     * @return The formatted bytes using the default pattern.
+     */
+    @NonNull
+    public static String formatAsCommonTerabyte(@NonNull final Long numberOfBytes, final String pattern,
+            final Locale locale) {
+        return formatAsCommonTerabyte(numberOfBytes.longValue(), pattern, locale);
+    }
+
+    /**
+     * @param numberOfBytes
+     *            The amount of bytes to format.
+     * @param pattern
+     *            The formatting pattern to apply.
+     * @param locale
+     *            The locale to use.
+     * @return The formatted bytes using the default pattern.
+     */
+    @NonNull
+    public static String formatAsCommonTerabyte(final long numberOfBytes, final String pattern, final Locale locale) {
+        return formatAsCommonTerabyte(asBigInteger(numberOfBytes), pattern, locale);
+    }
+
+    /**
+     * @param numberOfBytes
+     *            The amount of bytes to format.
+     * @param pattern
+     *            The formatting pattern to apply.
+     * @param locale
+     *            The locale to use.
+     * @return The formatted bytes using the default pattern.
+     */
+    @NonNull
+    public static String formatAsCommonTerabyte(@NonNull final BigInteger numberOfBytes, final String pattern,
+            final Locale locale) {
+        return formatAsCommonTerabyte(numberOfBytes, asFormat(pattern, locale));
+    }
+
+    /**
+     * @param numberOfBytes
+     *            The amount of bytes to format.
+     * @param format
+     *            The formatting pattern to apply.
+     * @return The formatted bytes using the default pattern.
+     */
+    @NonNull
+    public static String formatAsCommonTerabyte(@NonNull final Long numberOfBytes, final Format format) {
+        return formatAsCommonTerabyte(numberOfBytes.longValue(), format);
+    }
+
+    /**
+     * @param numberOfBytes
+     *            The amount of bytes to format.
+     * @param format
+     *            The formatting pattern to apply.
+     * @return The formatted bytes using the default pattern.
+     */
+    @NonNull
+    public static String formatAsCommonTerabyte(final long numberOfBytes, final Format format) {
+        return formatAsCommonTerabyte(asBigInteger(numberOfBytes), format);
+    }
+
+    /**
+     * @param numberOfBytes
+     *            The amount of bytes to format.
+     * @param format
+     *            The formatting pattern to apply.
+     * @return The formatted bytes using the default pattern.
+     */
+    @NonNull
+    public static String formatAsCommonTerabyte(@NonNull final BigInteger numberOfBytes, final Format format) {
+        return CommonTerabyte.valueOf(numberOfBytes).toString(format);
+    }
+
+    /**
+     * @param numberOfBytes
+     *            The amount of bytes to format.
+     * @return The formatted bytes using the default pattern.
+     */
+    @NonNull
+    public static String formatAsCommonPetabyte(@NonNull final Long numberOfBytes) {
+        return formatAsCommonPetabyte(numberOfBytes.longValue());
+    }
+
+    /**
+     * @param numberOfBytes
+     *            The amount of bytes to format.
+     * @return The formatted bytes using the default pattern.
+     */
+    @NonNull
+    public static String formatAsCommonPetabyte(final long numberOfBytes) {
+        return formatAsCommonPetabyte(asBigInteger(numberOfBytes));
+    }
+
+    /**
+     * @param numberOfBytes
+     *            The amount of bytes to format.
+     * @return The formatted bytes using the default pattern.
+     */
+    @NonNull
+    public static String formatAsCommonPetabyte(@NonNull final BigInteger numberOfBytes) {
+        return formatAsCommonPetabyte(numberOfBytes, DEFAULT_FORMAT_PATTERN);
+    }
+
+    /**
+     * @param numberOfBytes
+     *            The amount of bytes to format.
+     * @param pattern
+     *            The formatting pattern to apply.
+     * @return The formatted bytes using the default pattern.
+     */
+    @NonNull
+    public static String formatAsCommonPetabyte(@NonNull final Long numberOfBytes, final String pattern) {
+        return formatAsCommonPetabyte(numberOfBytes.longValue(), pattern);
+    }
+
+    /**
+     * @param numberOfBytes
+     *            The amount of bytes to format.
+     * @param pattern
+     *            The formatting pattern to apply.
+     * @return The formatted bytes using the default pattern.
+     */
+    @NonNull
+    public static String formatAsCommonPetabyte(final long numberOfBytes, final String pattern) {
+        return formatAsCommonPetabyte(asBigInteger(numberOfBytes), pattern);
+    }
+
+    /**
+     * @param numberOfBytes
+     *            The amount of bytes to format.
+     * @param pattern
+     *            The formatting pattern to apply.
+     * @return The formatted bytes using the default pattern.
+     */
+    @NonNull
+    public static String formatAsCommonPetabyte(@NonNull final BigInteger numberOfBytes, final String pattern) {
+        return formatAsCommonPetabyte(numberOfBytes, new DecimalFormat(pattern));
+    }
+
+    /**
+     * @param numberOfBytes
+     *            The amount of bytes to format.
+     * @param pattern
+     *            The formatting pattern to apply.
+     * @param locale
+     *            The locale to use.
+     * @return The formatted bytes using the default pattern.
+     */
+    @NonNull
+    public static String formatAsCommonPetabyte(@NonNull final Long numberOfBytes, final String pattern,
+            final Locale locale) {
+        return formatAsCommonPetabyte(numberOfBytes.longValue(), pattern, locale);
+    }
+
+    /**
+     * @param numberOfBytes
+     *            The amount of bytes to format.
+     * @param pattern
+     *            The formatting pattern to apply.
+     * @param locale
+     *            The locale to use.
+     * @return The formatted bytes using the default pattern.
+     */
+    @NonNull
+    public static String formatAsCommonPetabyte(final long numberOfBytes, final String pattern, final Locale locale) {
+        return formatAsCommonPetabyte(asBigInteger(numberOfBytes), pattern, locale);
+    }
+
+    /**
+     * @param numberOfBytes
+     *            The amount of bytes to format.
+     * @param pattern
+     *            The formatting pattern to apply.
+     * @param locale
+     *            The locale to use.
+     * @return The formatted bytes using the default pattern.
+     */
+    @NonNull
+    public static String formatAsCommonPetabyte(@NonNull final BigInteger numberOfBytes, final String pattern,
+            final Locale locale) {
+        return formatAsCommonPetabyte(numberOfBytes, asFormat(pattern, locale));
+    }
+
+    /**
+     * @param numberOfBytes
+     *            The amount of bytes to format.
+     * @param format
+     *            The formatting pattern to apply.
+     * @return The formatted bytes using the default pattern.
+     */
+    @NonNull
+    public static String formatAsCommonPetabyte(@NonNull final Long numberOfBytes, final Format format) {
+        return formatAsCommonPetabyte(numberOfBytes.longValue(), format);
+    }
+
+    /**
+     * @param numberOfBytes
+     *            The amount of bytes to format.
+     * @param format
+     *            The formatting pattern to apply.
+     * @return The formatted bytes using the default pattern.
+     */
+    @NonNull
+    public static String formatAsCommonPetabyte(final long numberOfBytes, final Format format) {
+        return formatAsCommonPetabyte(asBigInteger(numberOfBytes), format);
+    }
+
+    /**
+     * @param numberOfBytes
+     *            The amount of bytes to format.
+     * @param format
+     *            The formatting pattern to apply.
+     * @return The formatted bytes using the default pattern.
+     */
+    @NonNull
+    public static String formatAsCommonPetabyte(@NonNull final BigInteger numberOfBytes, final Format format) {
+        return CommonPetabyte.valueOf(numberOfBytes).toString(format);
+    }
+
+    /**
+     * @param numberOfBytes
+     *            The amount of bytes to format.
+     * @return The formatted bytes using the default pattern.
+     */
+    @NonNull
+    public static String formatAsCommonExabyte(@NonNull final Long numberOfBytes) {
+        return formatAsCommonExabyte(numberOfBytes.longValue());
+    }
+
+    /**
+     * @param numberOfBytes
+     *            The amount of bytes to format.
+     * @return The formatted bytes using the default pattern.
+     */
+    @NonNull
+    public static String formatAsCommonExabyte(final long numberOfBytes) {
+        return formatAsCommonExabyte(asBigInteger(numberOfBytes));
+    }
+
+    /**
+     * @param numberOfBytes
+     *            The amount of bytes to format.
+     * @return The formatted bytes using the default pattern.
+     */
+    @NonNull
+    public static String formatAsCommonExabyte(@NonNull final BigInteger numberOfBytes) {
+        return formatAsCommonExabyte(numberOfBytes, DEFAULT_FORMAT_PATTERN);
+    }
+
+    /**
+     * @param numberOfBytes
+     *            The amount of bytes to format.
+     * @param pattern
+     *            The formatting pattern to apply.
+     * @return The formatted bytes using the default pattern.
+     */
+    @NonNull
+    public static String formatAsCommonExabyte(@NonNull final Long numberOfBytes, final String pattern) {
+        return formatAsCommonExabyte(numberOfBytes.longValue(), pattern);
+    }
+
+    /**
+     * @param numberOfBytes
+     *            The amount of bytes to format.
+     * @param pattern
+     *            The formatting pattern to apply.
+     * @return The formatted bytes using the default pattern.
+     */
+    @NonNull
+    public static String formatAsCommonExabyte(final long numberOfBytes, final String pattern) {
+        return formatAsCommonExabyte(asBigInteger(numberOfBytes), pattern);
+    }
+
+    /**
+     * @param numberOfBytes
+     *            The amount of bytes to format.
+     * @param pattern
+     *            The formatting pattern to apply.
+     * @return The formatted bytes using the default pattern.
+     */
+    @NonNull
+    public static String formatAsCommonExabyte(@NonNull final BigInteger numberOfBytes, final String pattern) {
+        return formatAsCommonExabyte(numberOfBytes, new DecimalFormat(pattern));
+    }
+
+    /**
+     * @param numberOfBytes
+     *            The amount of bytes to format.
+     * @param pattern
+     *            The formatting pattern to apply.
+     * @param locale
+     *            The locale to use.
+     * @return The formatted bytes using the default pattern.
+     */
+    @NonNull
+    public static String formatAsCommonExabyte(@NonNull final Long numberOfBytes, final String pattern,
+            final Locale locale) {
+        return formatAsCommonExabyte(numberOfBytes.longValue(), pattern, locale);
+    }
+
+    /**
+     * @param numberOfBytes
+     *            The amount of bytes to format.
+     * @param pattern
+     *            The formatting pattern to apply.
+     * @param locale
+     *            The locale to use.
+     * @return The formatted bytes using the default pattern.
+     */
+    @NonNull
+    public static String formatAsCommonExabyte(final long numberOfBytes, final String pattern, final Locale locale) {
+        return formatAsCommonExabyte(asBigInteger(numberOfBytes), pattern, locale);
+    }
+
+    /**
+     * @param numberOfBytes
+     *            The amount of bytes to format.
+     * @param pattern
+     *            The formatting pattern to apply.
+     * @param locale
+     *            The locale to use.
+     * @return The formatted bytes using the default pattern.
+     */
+    @NonNull
+    public static String formatAsCommonExabyte(@NonNull final BigInteger numberOfBytes, final String pattern,
+            final Locale locale) {
+        return formatAsCommonExabyte(numberOfBytes, asFormat(pattern, locale));
+    }
+
+    /**
+     * @param numberOfBytes
+     *            The amount of bytes to format.
+     * @param format
+     *            The formatting pattern to apply.
+     * @return The formatted bytes using the default pattern.
+     */
+    @NonNull
+    public static String formatAsCommonExabyte(@NonNull final Long numberOfBytes, final Format format) {
+        return formatAsCommonExabyte(numberOfBytes.longValue(), format);
+    }
+
+    /**
+     * @param numberOfBytes
+     *            The amount of bytes to format.
+     * @param format
+     *            The formatting pattern to apply.
+     * @return The formatted bytes using the default pattern.
+     */
+    @NonNull
+    public static String formatAsCommonExabyte(final long numberOfBytes, final Format format) {
+        return formatAsCommonExabyte(asBigInteger(numberOfBytes), format);
+    }
+
+    /**
+     * @param numberOfBytes
+     *            The amount of bytes to format.
+     * @param format
+     *            The formatting pattern to apply.
+     * @return The formatted bytes using the default pattern.
+     */
+    @NonNull
+    public static String formatAsCommonExabyte(@NonNull final BigInteger numberOfBytes, final Format format) {
+        return CommonExabyte.valueOf(numberOfBytes).toString(format);
+    }
+
+    /**
+     * @param numberOfBytes
+     *            The amount of bytes to format.
+     * @return The formatted bytes using the default pattern.
+     */
+    @NonNull
+    public static String formatAsCommonZettabyte(@NonNull final Long numberOfBytes) {
+        return formatAsCommonZettabyte(numberOfBytes.longValue());
+    }
+
+    /**
+     * @param numberOfBytes
+     *            The amount of bytes to format.
+     * @return The formatted bytes using the default pattern.
+     */
+    @NonNull
+    public static String formatAsCommonZettabyte(final long numberOfBytes) {
+        return formatAsCommonZettabyte(asBigInteger(numberOfBytes));
+    }
+
+    /**
+     * @param numberOfBytes
+     *            The amount of bytes to format.
+     * @return The formatted bytes using the default pattern.
+     */
+    @NonNull
+    public static String formatAsCommonZettabyte(@NonNull final BigInteger numberOfBytes) {
+        return formatAsCommonZettabyte(numberOfBytes, DEFAULT_FORMAT_PATTERN);
+    }
+
+    /**
+     * @param numberOfBytes
+     *            The amount of bytes to format.
+     * @param pattern
+     *            The formatting pattern to apply.
+     * @return The formatted bytes using the default pattern.
+     */
+    @NonNull
+    public static String formatAsCommonZettabyte(@NonNull final Long numberOfBytes, final String pattern) {
+        return formatAsCommonZettabyte(numberOfBytes.longValue(), pattern);
+    }
+
+    /**
+     * @param numberOfBytes
+     *            The amount of bytes to format.
+     * @param pattern
+     *            The formatting pattern to apply.
+     * @return The formatted bytes using the default pattern.
+     */
+    @NonNull
+    public static String formatAsCommonZettabyte(final long numberOfBytes, final String pattern) {
+        return formatAsCommonZettabyte(asBigInteger(numberOfBytes), pattern);
+    }
+
+    /**
+     * @param numberOfBytes
+     *            The amount of bytes to format.
+     * @param pattern
+     *            The formatting pattern to apply.
+     * @return The formatted bytes using the default pattern.
+     */
+    @NonNull
+    public static String formatAsCommonZettabyte(@NonNull final BigInteger numberOfBytes, final String pattern) {
+        return formatAsCommonZettabyte(numberOfBytes, new DecimalFormat(pattern));
+    }
+
+    /**
+     * @param numberOfBytes
+     *            The amount of bytes to format.
+     * @param pattern
+     *            The formatting pattern to apply.
+     * @param locale
+     *            The locale to use.
+     * @return The formatted bytes using the default pattern.
+     */
+    @NonNull
+    public static String formatAsCommonZettabyte(@NonNull final Long numberOfBytes, final String pattern,
+            final Locale locale) {
+        return formatAsCommonZettabyte(numberOfBytes.longValue(), pattern, locale);
+    }
+
+    /**
+     * @param numberOfBytes
+     *            The amount of bytes to format.
+     * @param pattern
+     *            The formatting pattern to apply.
+     * @param locale
+     *            The locale to use.
+     * @return The formatted bytes using the default pattern.
+     */
+    @NonNull
+    public static String formatAsCommonZettabyte(final long numberOfBytes, final String pattern, final Locale locale) {
+        return formatAsCommonZettabyte(asBigInteger(numberOfBytes), pattern, locale);
+    }
+
+    /**
+     * @param numberOfBytes
+     *            The amount of bytes to format.
+     * @param pattern
+     *            The formatting pattern to apply.
+     * @param locale
+     *            The locale to use.
+     * @return The formatted bytes using the default pattern.
+     */
+    @NonNull
+    public static String formatAsCommonZettabyte(@NonNull final BigInteger numberOfBytes, final String pattern,
+            final Locale locale) {
+        return formatAsCommonZettabyte(numberOfBytes, asFormat(pattern, locale));
+    }
+
+    /**
+     * @param numberOfBytes
+     *            The amount of bytes to format.
+     * @param format
+     *            The formatting pattern to apply.
+     * @return The formatted bytes using the default pattern.
+     */
+    @NonNull
+    public static String formatAsCommonZettabyte(@NonNull final Long numberOfBytes, final Format format) {
+        return formatAsCommonZettabyte(numberOfBytes.longValue(), format);
+    }
+
+    /**
+     * @param numberOfBytes
+     *            The amount of bytes to format.
+     * @param format
+     *            The formatting pattern to apply.
+     * @return The formatted bytes using the default pattern.
+     */
+    @NonNull
+    public static String formatAsCommonZettabyte(final long numberOfBytes, final Format format) {
+        return formatAsCommonZettabyte(asBigInteger(numberOfBytes), format);
+    }
+
+    /**
+     * @param numberOfBytes
+     *            The amount of bytes to format.
+     * @param format
+     *            The formatting pattern to apply.
+     * @return The formatted bytes using the default pattern.
+     */
+    @NonNull
+    public static String formatAsCommonZettabyte(@NonNull final BigInteger numberOfBytes, final Format format) {
+        return CommonZettabyte.valueOf(numberOfBytes).toString(format);
+    }
+
+    /**
+     * @param numberOfBytes
+     *            The amount of bytes to format.
+     * @return The formatted bytes using the default pattern.
+     */
+    @NonNull
+    public static String formatAsCommonYottabyte(@NonNull final Long numberOfBytes) {
+        return formatAsCommonYottabyte(numberOfBytes.longValue());
+    }
+
+    /**
+     * @param numberOfBytes
+     *            The amount of bytes to format.
+     * @return The formatted bytes using the default pattern.
+     */
+    @NonNull
+    public static String formatAsCommonYottabyte(final long numberOfBytes) {
+        return formatAsCommonYottabyte(asBigInteger(numberOfBytes));
+    }
+
+    /**
+     * @param numberOfBytes
+     *            The amount of bytes to format.
+     * @return The formatted bytes using the default pattern.
+     */
+    @NonNull
+    public static String formatAsCommonYottabyte(@NonNull final BigInteger numberOfBytes) {
+        return formatAsCommonYottabyte(numberOfBytes, DEFAULT_FORMAT_PATTERN);
+    }
+
+    /**
+     * @param numberOfBytes
+     *            The amount of bytes to format.
+     * @param pattern
+     *            The formatting pattern to apply.
+     * @return The formatted bytes using the default pattern.
+     */
+    @NonNull
+    public static String formatAsCommonYottabyte(@NonNull final Long numberOfBytes, final String pattern) {
+        return formatAsCommonYottabyte(numberOfBytes.longValue(), pattern);
+    }
+
+    /**
+     * @param numberOfBytes
+     *            The amount of bytes to format.
+     * @param pattern
+     *            The formatting pattern to apply.
+     * @return The formatted bytes using the default pattern.
+     */
+    @NonNull
+    public static String formatAsCommonYottabyte(final long numberOfBytes, final String pattern) {
+        return formatAsCommonYottabyte(asBigInteger(numberOfBytes), pattern);
+    }
+
+    /**
+     * @param numberOfBytes
+     *            The amount of bytes to format.
+     * @param pattern
+     *            The formatting pattern to apply.
+     * @param locale
+     *            The locale to use.
+     * @return The formatted bytes using the default pattern.
+     */
+    @NonNull
+    public static String formatAsCommonYottabyte(@NonNull final BigInteger numberOfBytes, final String pattern,
+            final Locale locale) {
+        return formatAsCommonYottabyte(numberOfBytes, asFormat(pattern, locale));
+    }
+
+    /**
+     * @param numberOfBytes
+     *            The amount of bytes to format.
+     * @param pattern
+     *            The formatting pattern to apply.
+     * @param locale
+     *            The locale to use.
+     * @return The formatted bytes using the default pattern.
+     */
+    @NonNull
+    public static String formatAsCommonYottabyte(@NonNull final Long numberOfBytes, final String pattern,
+            final Locale locale) {
+        return formatAsCommonYottabyte(numberOfBytes.longValue(), pattern, locale);
+    }
+
+    /**
+     * @param numberOfBytes
+     *            The amount of bytes to format.
+     * @param pattern
+     *            The formatting pattern to apply.
+     * @param locale
+     *            The locale to use.
+     * @return The formatted bytes using the default pattern.
+     */
+    @NonNull
+    public static String formatAsCommonYottabyte(final long numberOfBytes, final String pattern, final Locale locale) {
+        return formatAsCommonYottabyte(asBigInteger(numberOfBytes), pattern, locale);
+    }
+
+    /**
+     * @param numberOfBytes
+     *            The amount of bytes to format.
+     * @param pattern
+     *            The formatting pattern to apply.
+     * @return The formatted bytes using the default pattern.
+     */
+    @NonNull
+    public static String formatAsCommonYottabyte(@NonNull final BigInteger numberOfBytes, final String pattern) {
+        return formatAsCommonYottabyte(numberOfBytes, new DecimalFormat(pattern));
+    }
+
+    /**
+     * @param numberOfBytes
+     *            The amount of bytes to format.
+     * @param format
+     *            The formatting pattern to apply.
+     * @return The formatted bytes using the default pattern.
+     */
+    @NonNull
+    public static String formatAsCommonYottabyte(@NonNull final Long numberOfBytes, final Format format) {
+        return formatAsCommonYottabyte(numberOfBytes.longValue(), format);
+    }
+
+    /**
+     * @param numberOfBytes
+     *            The amount of bytes to format.
+     * @param format
+     *            The formatting pattern to apply.
+     * @return The formatted bytes using the default pattern.
+     */
+    @NonNull
+    public static String formatAsCommonYottabyte(final long numberOfBytes, final Format format) {
+        return formatAsCommonYottabyte(asBigInteger(numberOfBytes), format);
+    }
+
+    /**
+     * @param numberOfBytes
+     *            The amount of bytes to format.
+     * @param format
+     *            The formatting pattern to apply.
+     * @return The formatted bytes using the default pattern.
+     */
+    @NonNull
+    public static String formatAsCommonYottabyte(@NonNull final BigInteger numberOfBytes, final Format format) {
+        return CommonYottabyte.valueOf(numberOfBytes).toString(format);
+    }
+
+    /**
+     * @param numberOfBytes
      *            The amount of bytes to create.
      * @return A new unit representing the given amount of bytes.
      */
@@ -3302,6 +4658,246 @@ public final class StorageUnits {
     @NonNull
     public static Yottabyte yottabyte(@NonNull final BigInteger numberOfYottabytes) {
         return new Yottabyte(multiplyNullsafe(BYTES_IN_A_YOTTABYTE, numberOfYottabytes));
+    }
+
+    /**
+     * @param numberOfKilobytes
+     *            The number of kilobytes to create.
+     * @return A new unit representing the given amount of kilobytes.
+     */
+    @NonNull
+    public static CommonKilobyte commonKilobyte(@NonNull final Long numberOfKilobytes) {
+        return commonKilobyte(numberOfKilobytes.longValue());
+    }
+
+    /**
+     * @param numberOfKilobytes
+     *            The number of kilobytes to create.
+     * @return A new unit representing the given amount of kilobytes.
+     */
+    @NonNull
+    public static CommonKilobyte commonKilobyte(final long numberOfKilobytes) {
+        return commonKilobyte(asBigInteger(numberOfKilobytes));
+    }
+
+    /**
+     * @param numberOfKilobytes
+     *            The number of kilobytes to create.
+     * @return A new unit representing the given amount of kilobytes.
+     */
+    @NonNull
+    public static CommonKilobyte commonKilobyte(@NonNull final BigInteger numberOfKilobytes) {
+        return new CommonKilobyte(multiplyNullsafe(BYTES_IN_A_KIBIBYTE, numberOfKilobytes));
+    }
+
+    /**
+     * @param numberOfMegabytes
+     *            The number of megabytes to create.
+     * @return A new unit representing the given amount of megabytes.
+     */
+    @NonNull
+    public static CommonMegabyte commonMegabyte(@NonNull final Long numberOfMegabytes) {
+        return commonMegabyte(numberOfMegabytes.longValue());
+    }
+
+    /**
+     * @param numberOfMegabytes
+     *            The number of megabytes to create.
+     * @return A new unit representing the given amount of megabytes.
+     */
+    @NonNull
+    public static CommonMegabyte commonMegabyte(final long numberOfMegabytes) {
+        return commonMegabyte(asBigInteger(numberOfMegabytes));
+    }
+
+    /**
+     * @param numberOfMegabytes
+     *            The number of megabytes to create.
+     * @return A new unit representing the given amount of megabytes.
+     */
+    @NonNull
+    public static CommonMegabyte commonMegabyte(@NonNull final BigInteger numberOfMegabytes) {
+        return new CommonMegabyte(multiplyNullsafe(BYTES_IN_A_MEBIBYTE, numberOfMegabytes));
+    }
+
+    /**
+     * @param numberOfGigabytes
+     *            The number of gigabytes to create.
+     * @return A new unit representing the given amount of gigabytes.
+     */
+    @NonNull
+    public static CommonGigabyte commonGigabyte(@NonNull final Long numberOfGigabytes) {
+        return commonGigabyte(numberOfGigabytes.longValue());
+    }
+
+    /**
+     * @param numberOfGigabytes
+     *            The number of gigabytes to create.
+     * @return A new unit representing the given amount of gigabytes.
+     */
+    @NonNull
+    public static CommonGigabyte commonGigabyte(final long numberOfGigabytes) {
+        return commonGigabyte(asBigInteger(numberOfGigabytes));
+    }
+
+    /**
+     * @param numberOfGigabytes
+     *            The number of gigabytes to create.
+     * @return A new unit representing the given amount of gigabytes.
+     */
+    @NonNull
+    public static CommonGigabyte commonGigabyte(@NonNull final BigInteger numberOfGigabytes) {
+        return new CommonGigabyte(multiplyNullsafe(BYTES_IN_A_GIBIBYTE, numberOfGigabytes));
+    }
+
+    /**
+     * @param numberOfTerabytes
+     *            The number of terabytes to create.
+     * @return A new unit representing the given amount of terabytes.
+     */
+    @NonNull
+    public static CommonTerabyte commonTerabyte(@NonNull final Long numberOfTerabytes) {
+        return commonTerabyte(numberOfTerabytes.longValue());
+    }
+
+    /**
+     * @param numberOfTerabytes
+     *            The number of terabytes to create.
+     * @return A new unit representing the given amount of terabytes.
+     */
+    @NonNull
+    public static CommonTerabyte commonTerabyte(final long numberOfTerabytes) {
+        return commonTerabyte(asBigInteger(numberOfTerabytes));
+    }
+
+    /**
+     * @param numberOfTerabytes
+     *            The number of terabytes to create.
+     * @return A new unit representing the given amount of terabytes.
+     */
+    @NonNull
+    public static CommonTerabyte commonTerabyte(@NonNull final BigInteger numberOfTerabytes) {
+        return new CommonTerabyte(multiplyNullsafe(BYTES_IN_A_TEBIBYTE, numberOfTerabytes));
+    }
+
+    /**
+     * @param numberOfPetabytes
+     *            The number of petabytes to create.
+     * @return A new unit representing the given amount of petabytes.
+     */
+    @NonNull
+    public static CommonPetabyte commonPetabyte(@NonNull final Long numberOfPetabytes) {
+        return commonPetabyte(numberOfPetabytes.longValue());
+    }
+
+    /**
+     * @param numberOfPetabytes
+     *            The number of petabytes to create.
+     * @return A new unit representing the given amount of petabytes.
+     */
+    @NonNull
+    public static CommonPetabyte commonPetabyte(final long numberOfPetabytes) {
+        return commonPetabyte(asBigInteger(numberOfPetabytes));
+    }
+
+    /**
+     * @param numberOfPetabytes
+     *            The number of petabytes to create.
+     * @return A new unit representing the given amount of petabytes.
+     */
+    @NonNull
+    public static CommonPetabyte commonPetabyte(@NonNull final BigInteger numberOfPetabytes) {
+        return new CommonPetabyte(multiplyNullsafe(BYTES_IN_A_PEBIBYTE, numberOfPetabytes));
+    }
+
+    /**
+     * @param numberOfExabytes
+     *            The number of exabytes to create.
+     * @return A new unit representing the given amount of exabytes.
+     */
+    @NonNull
+    public static CommonExabyte commonExabyte(@NonNull final Long numberOfExabytes) {
+        return commonExabyte(numberOfExabytes.longValue());
+    }
+
+    /**
+     * @param numberOfExabytes
+     *            The number of exabytes to create.
+     * @return A new unit representing the given amount of exabytes.
+     */
+    @NonNull
+    public static CommonExabyte commonExabyte(final long numberOfExabytes) {
+        return commonExabyte(asBigInteger(numberOfExabytes));
+    }
+
+    /**
+     * @param numberOfExabytes
+     *            The number of exabytes to create.
+     * @return A new unit representing the given amount of exabytes.
+     */
+    @NonNull
+    public static CommonExabyte commonExabyte(@NonNull final BigInteger numberOfExabytes) {
+        return new CommonExabyte(multiplyNullsafe(BYTES_IN_A_EXBIBYTE, numberOfExabytes));
+    }
+
+    /**
+     * @param numberOfZettabytes
+     *            The number of zettabytes to create.
+     * @return A new unit representing the given amount of zettabytes.
+     */
+    @NonNull
+    public static CommonZettabyte commonZettabyte(@NonNull final Long numberOfZettabytes) {
+        return commonZettabyte(numberOfZettabytes.longValue());
+    }
+
+    /**
+     * @param numberOfZettabytes
+     *            The number of zettabytes to create.
+     * @return A new unit representing the given amount of zettabytes.
+     */
+    @NonNull
+    public static CommonZettabyte commonZettabyte(final long numberOfZettabytes) {
+        return commonZettabyte(asBigInteger(numberOfZettabytes));
+    }
+
+    /**
+     * @param numberOfZettabytes
+     *            The number of zettabytes to create.
+     * @return A new unit representing the given amount of zettabytes.
+     */
+    @NonNull
+    public static CommonZettabyte commonZettabyte(@NonNull final BigInteger numberOfZettabytes) {
+        return new CommonZettabyte(multiplyNullsafe(BYTES_IN_A_ZEBIBYTE, numberOfZettabytes));
+    }
+
+    /**
+     * @param numberOfYottabytes
+     *            The number of yottabytes to create.
+     * @return A new unit representing the given amount of yottabytes.
+     */
+    @NonNull
+    public static CommonYottabyte commonYottabyte(@NonNull final Long numberOfYottabytes) {
+        return commonYottabyte(numberOfYottabytes.longValue());
+    }
+
+    /**
+     * @param numberOfYottabytes
+     *            The number of yottabytes to create.
+     * @return A new unit representing the given amount of yottabytes.
+     */
+    @NonNull
+    public static CommonYottabyte commonYottabyte(final long numberOfYottabytes) {
+        return commonYottabyte(asBigInteger(numberOfYottabytes));
+    }
+
+    /**
+     * @param numberOfYottabytes
+     *            The number of yottabytes to create.
+     * @return A new unit representing the given amount of yottabytes.
+     */
+    @NonNull
+    public static CommonYottabyte commonYottabyte(@NonNull final BigInteger numberOfYottabytes) {
+        return new CommonYottabyte(multiplyNullsafe(BYTES_IN_A_YOBIBYTE, numberOfYottabytes));
     }
 
 }

@@ -80,6 +80,16 @@ public class StorageUnitsFormattingWithPatternAndLocaleTest {
         units.add(new Tuple5<>(StorageUnits::formatAsZettabyte, BYTES_IN_A_ZETTABYTE, PATTERN, LOCALE, "1,0 ZB"));
         units.add(new Tuple5<>(StorageUnits::formatAsYottabyte, BYTES_IN_A_YOTTABYTE, PATTERN, LOCALE, "1,0 YB"));
 
+        units.add(new Tuple5<>(StorageUnits::formatAsCommonUnit, BYTES_IN_A_KIBIBYTE, PATTERN, LOCALE, "1,0 kB"));
+        units.add(new Tuple5<>(StorageUnits::formatAsCommonKilobyte, BYTES_IN_A_KIBIBYTE, PATTERN, LOCALE, "1,0 kB"));
+        units.add(new Tuple5<>(StorageUnits::formatAsCommonMegabyte, BYTES_IN_A_MEBIBYTE, PATTERN, LOCALE, "1,0 MB"));
+        units.add(new Tuple5<>(StorageUnits::formatAsCommonGigabyte, BYTES_IN_A_GIBIBYTE, PATTERN, LOCALE, "1,0 GB"));
+        units.add(new Tuple5<>(StorageUnits::formatAsCommonTerabyte, BYTES_IN_A_TEBIBYTE, PATTERN, LOCALE, "1,0 TB"));
+        units.add(new Tuple5<>(StorageUnits::formatAsCommonPetabyte, BYTES_IN_A_PEBIBYTE, PATTERN, LOCALE, "1,0 PB"));
+        units.add(new Tuple5<>(StorageUnits::formatAsCommonExabyte, BYTES_IN_A_EXBIBYTE, PATTERN, LOCALE, "1,0 EB"));
+        units.add(new Tuple5<>(StorageUnits::formatAsCommonZettabyte, BYTES_IN_A_ZEBIBYTE, PATTERN, LOCALE, "1,0 ZB"));
+        units.add(new Tuple5<>(StorageUnits::formatAsCommonYottabyte, BYTES_IN_A_YOBIBYTE, PATTERN, LOCALE, "1,0 YB"));
+
         return units;
     }
 
@@ -125,6 +135,25 @@ public class StorageUnitsFormattingWithPatternAndLocaleTest {
                 new Tuple5<>(StorageUnits::formatAsZettabyte, asLong(BYTES_IN_A_ZETTABYTE), PATTERN, LOCALE, "0,0 ZB"));
         units.add(
                 new Tuple5<>(StorageUnits::formatAsYottabyte, asLong(BYTES_IN_A_YOTTABYTE), PATTERN, LOCALE, "0,0 YB"));
+
+        units.add(new Tuple5<>(StorageUnits::formatAsCommonUnit, asLong(BYTES_IN_A_KIBIBYTE), PATTERN, LOCALE,
+                "1,0 kB"));
+        units.add(new Tuple5<>(StorageUnits::formatAsCommonKilobyte, asLong(BYTES_IN_A_KIBIBYTE), PATTERN, LOCALE,
+                "1,0 kB"));
+        units.add(new Tuple5<>(StorageUnits::formatAsCommonMegabyte, asLong(BYTES_IN_A_MEBIBYTE), PATTERN, LOCALE,
+                "1,0 MB"));
+        units.add(new Tuple5<>(StorageUnits::formatAsCommonGigabyte, asLong(BYTES_IN_A_GIBIBYTE), PATTERN, LOCALE,
+                "1,0 GB"));
+        units.add(new Tuple5<>(StorageUnits::formatAsCommonTerabyte, asLong(BYTES_IN_A_TEBIBYTE), PATTERN, LOCALE,
+                "1,0 TB"));
+        units.add(new Tuple5<>(StorageUnits::formatAsCommonPetabyte, asLong(BYTES_IN_A_PEBIBYTE), PATTERN, LOCALE,
+                "1,0 PB"));
+        units.add(new Tuple5<>(StorageUnits::formatAsCommonExabyte, asLong(BYTES_IN_A_EXBIBYTE), PATTERN, LOCALE,
+                "1,0 EB"));
+        units.add(new Tuple5<>(StorageUnits::formatAsCommonZettabyte, asLong(BYTES_IN_A_ZEBIBYTE), PATTERN, LOCALE,
+                "0,0 ZB"));
+        units.add(new Tuple5<>(StorageUnits::formatAsCommonYottabyte, asLong(BYTES_IN_A_YOBIBYTE), PATTERN, LOCALE,
+                "0,0 YB"));
 
         return units;
     }

@@ -31,7 +31,7 @@ public final class Tebibyte extends StorageUnit<Tebibyte> {
 
     /**
      * @param numberOfBytes
-     *            The amount of bytes the tebibyte contains.
+     *            The amount of bytes the Tebibyte contains.
      * @return A new Tebibyte unit with the given value.
      */
     @NonNull
@@ -41,7 +41,7 @@ public final class Tebibyte extends StorageUnit<Tebibyte> {
 
     /**
      * @param numberOfBytes
-     *            The amount of bytes the tebibytes contains.
+     *            The amount of bytes the Tebibyte contains.
      * @return A new Tebibyte unit with the given value.
      */
     @NonNull
@@ -51,7 +51,7 @@ public final class Tebibyte extends StorageUnit<Tebibyte> {
 
     /**
      * @param numberOfBytes
-     *            The amount of bytes the tebibytes contains.
+     *            The amount of bytes the Tebibyte contains.
      * @return A new Tebibyte unit with the given value.
      */
     @NonNull

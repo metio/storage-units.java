@@ -30,7 +30,7 @@ public final class Gibibyte extends StorageUnit<Gibibyte> {
 
     /**
      * @param numberOfBytes
-     *            The amount of bytes the gibibyte contains.
+     *            The amount of bytes the Gibibyte contains.
      * @return A new Gibibyte unit with the given value.
      */
     @NonNull
@@ -40,7 +40,7 @@ public final class Gibibyte extends StorageUnit<Gibibyte> {
 
     /**
      * @param numberOfBytes
-     *            The amount of bytes the gibibytes contains.
+     *            The amount of bytes the Gibibyte contains.
      * @return A new Gibibyte unit with the given value.
      */
     @NonNull
@@ -50,7 +50,7 @@ public final class Gibibyte extends StorageUnit<Gibibyte> {
 
     /**
      * @param numberOfBytes
-     *            The amount of bytes the gibibytes contains.
+     *            The amount of bytes the Gibibyte contains.
      * @return A new Gibibyte unit with the given value.
      */
     @NonNull

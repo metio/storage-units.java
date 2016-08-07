@@ -84,13 +84,83 @@ public class TestObjects {
     }
 
     /**
+     * @return A list of constructor functions that take in a {@link BigInteger} and produce a metric-based
+     *         {@link StorageUnit}.
+     */
+    public static List<Function<BigInteger, StorageUnit<?>>> highLevelMetricBigIntegerBasedConstructors() {
+        final List<Function<BigInteger, StorageUnit<?>>> units = new ArrayList<>();
+        units.add(StorageUnits::bytes);
+        units.add(StorageUnits::kilobyte);
+        units.add(StorageUnits::megabyte);
+        units.add(StorageUnits::gigabyte);
+        units.add(StorageUnits::petabyte);
+        units.add(StorageUnits::terabyte);
+        units.add(StorageUnits::exabyte);
+        units.add(StorageUnits::zettabyte);
+        units.add(StorageUnits::yottabyte);
+        return units;
+    }
+
+    /**
+     * @return A list of constructor functions that take in a {@link Long} and produce a common {@link StorageUnit}.
+     */
+    public static List<Function<Long, StorageUnit<?>>> highLevelCommonLongBasedConstructors() {
+        final List<Function<Long, StorageUnit<?>>> units = new ArrayList<>();
+        units.add(StorageUnits::bytes);
+        units.add(StorageUnits::commonKilobyte);
+        units.add(StorageUnits::commonMegabyte);
+        units.add(StorageUnits::commonGigabyte);
+        units.add(StorageUnits::commonPetabyte);
+        units.add(StorageUnits::commonTerabyte);
+        units.add(StorageUnits::commonExabyte);
+        units.add(StorageUnits::commonZettabyte);
+        units.add(StorageUnits::commonYottabyte);
+        return units;
+    }
+
+    /**
+     * @return A list of constructor functions that take in a {@link BigInteger} and produce a common
+     *         {@link StorageUnit}.
+     */
+    public static List<Function<BigInteger, StorageUnit<?>>> highLevelCommonBigIntegerBasedConstructors() {
+        final List<Function<BigInteger, StorageUnit<?>>> units = new ArrayList<>();
+        units.add(StorageUnits::bytes);
+        units.add(StorageUnits::commonKilobyte);
+        units.add(StorageUnits::commonMegabyte);
+        units.add(StorageUnits::commonGigabyte);
+        units.add(StorageUnits::commonPetabyte);
+        units.add(StorageUnits::commonTerabyte);
+        units.add(StorageUnits::commonExabyte);
+        units.add(StorageUnits::commonZettabyte);
+        units.add(StorageUnits::commonYottabyte);
+        return units;
+    }
+
+    /**
      * @return A list of constructor functions that take in a {@link Long} and produce any kind of {@link StorageUnit}.
      */
     public static List<Function<Long, StorageUnit<?>>> highLevelLongBasedConstructors() {
+        final Stream<Function<Long, StorageUnit<?>>> first = Stream.concat(
+                highLevelBinaryLongBasedConstructors().stream(), highLevelMetricLongBasedConstructors().stream());
         return Stream
                 .concat(
-                        highLevelBinaryLongBasedConstructors().stream(),
-                        highLevelMetricLongBasedConstructors().stream())
+                        first,
+                        highLevelCommonLongBasedConstructors().stream())
+                .collect(Collectors.toList());
+    }
+
+    /**
+     * @return A list of constructor functions that take in a {@link BigInteger} and produce any kind of
+     *         {@link StorageUnit}.
+     */
+    public static List<Function<BigInteger, StorageUnit<?>>> highLevelBigIntegerBasedConstructors() {
+        final Stream<Function<BigInteger, StorageUnit<?>>> first = Stream.concat(
+                highLevelBinaryBigIntegerBasedConstructors().stream(),
+                highLevelMetricBigIntegerBasedConstructors().stream());
+        return Stream
+                .concat(
+                        first,
+                        highLevelCommonBigIntegerBasedConstructors().stream())
                 .collect(Collectors.toList());
     }
 
@@ -103,20 +173,28 @@ public class TestObjects {
         units.add(Byte::valueOf);
         units.add(Exabyte::valueOf);
         units.add(Exbibyte::valueOf);
+        units.add(CommonExabyte::valueOf);
         units.add(Gibibyte::valueOf);
         units.add(Gigabyte::valueOf);
+        units.add(CommonGigabyte::valueOf);
         units.add(Kibibyte::valueOf);
         units.add(Kilobyte::valueOf);
+        units.add(CommonKilobyte::valueOf);
         units.add(Mebibyte::valueOf);
         units.add(Megabyte::valueOf);
+        units.add(CommonMegabyte::valueOf);
         units.add(Pebibyte::valueOf);
         units.add(Petabyte::valueOf);
+        units.add(CommonPetabyte::valueOf);
         units.add(Tebibyte::valueOf);
         units.add(Terabyte::valueOf);
+        units.add(CommonTerabyte::valueOf);
         units.add(Yobibyte::valueOf);
         units.add(Yottabyte::valueOf);
+        units.add(CommonYottabyte::valueOf);
         units.add(Zebibyte::valueOf);
         units.add(Zettabyte::valueOf);
+        units.add(CommonZettabyte::valueOf);
         return units;
     }
 
@@ -129,20 +207,28 @@ public class TestObjects {
         units.add(Byte::valueOf);
         units.add(Exabyte::valueOf);
         units.add(Exbibyte::valueOf);
+        units.add(CommonExabyte::valueOf);
         units.add(Gibibyte::valueOf);
         units.add(Gigabyte::valueOf);
+        units.add(CommonGigabyte::valueOf);
         units.add(Kibibyte::valueOf);
         units.add(Kilobyte::valueOf);
+        units.add(CommonKilobyte::valueOf);
         units.add(Mebibyte::valueOf);
         units.add(Megabyte::valueOf);
+        units.add(CommonMegabyte::valueOf);
         units.add(Pebibyte::valueOf);
         units.add(Petabyte::valueOf);
+        units.add(CommonPetabyte::valueOf);
         units.add(Tebibyte::valueOf);
         units.add(Terabyte::valueOf);
+        units.add(CommonTerabyte::valueOf);
         units.add(Yobibyte::valueOf);
         units.add(Yottabyte::valueOf);
+        units.add(CommonYottabyte::valueOf);
         units.add(Zebibyte::valueOf);
         units.add(Zettabyte::valueOf);
+        units.add(CommonZettabyte::valueOf);
         return units;
     }
 

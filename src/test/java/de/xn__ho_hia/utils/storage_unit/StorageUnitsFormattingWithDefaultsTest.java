@@ -74,6 +74,16 @@ public class StorageUnitsFormattingWithDefaultsTest {
         units.add(new Tuple3<>(StorageUnits::formatAsZettabyte, BYTES_IN_A_ZETTABYTE, "1.00 ZB"));
         units.add(new Tuple3<>(StorageUnits::formatAsYottabyte, BYTES_IN_A_YOTTABYTE, "1.00 YB"));
 
+        units.add(new Tuple3<>(StorageUnits::formatAsCommonUnit, BYTES_IN_A_KIBIBYTE, "1.00 kB"));
+        units.add(new Tuple3<>(StorageUnits::formatAsCommonKilobyte, BYTES_IN_A_KIBIBYTE, "1.00 kB"));
+        units.add(new Tuple3<>(StorageUnits::formatAsCommonMegabyte, BYTES_IN_A_MEBIBYTE, "1.00 MB"));
+        units.add(new Tuple3<>(StorageUnits::formatAsCommonGigabyte, BYTES_IN_A_GIBIBYTE, "1.00 GB"));
+        units.add(new Tuple3<>(StorageUnits::formatAsCommonTerabyte, BYTES_IN_A_TEBIBYTE, "1.00 TB"));
+        units.add(new Tuple3<>(StorageUnits::formatAsCommonPetabyte, BYTES_IN_A_PEBIBYTE, "1.00 PB"));
+        units.add(new Tuple3<>(StorageUnits::formatAsCommonExabyte, BYTES_IN_A_EXBIBYTE, "1.00 EB"));
+        units.add(new Tuple3<>(StorageUnits::formatAsCommonZettabyte, BYTES_IN_A_ZEBIBYTE, "1.00 ZB"));
+        units.add(new Tuple3<>(StorageUnits::formatAsCommonYottabyte, BYTES_IN_A_YOBIBYTE, "1.00 YB"));
+
         return units;
     }
 
@@ -103,6 +113,16 @@ public class StorageUnitsFormattingWithDefaultsTest {
         units.add(new Tuple3<>(StorageUnits::formatAsExabyte, asLong(BYTES_IN_A_EXABYTE), "1.00 EB"));
         units.add(new Tuple3<>(StorageUnits::formatAsZettabyte, asLong(BYTES_IN_A_ZETTABYTE), "0.00 ZB"));
         units.add(new Tuple3<>(StorageUnits::formatAsYottabyte, asLong(BYTES_IN_A_YOTTABYTE), "0.00 YB"));
+
+        units.add(new Tuple3<>(StorageUnits::formatAsCommonUnit, asLong(BYTES_IN_A_KIBIBYTE), "1.00 kB"));
+        units.add(new Tuple3<>(StorageUnits::formatAsCommonKilobyte, asLong(BYTES_IN_A_KIBIBYTE), "1.00 kB"));
+        units.add(new Tuple3<>(StorageUnits::formatAsCommonMegabyte, asLong(BYTES_IN_A_MEBIBYTE), "1.00 MB"));
+        units.add(new Tuple3<>(StorageUnits::formatAsCommonGigabyte, asLong(BYTES_IN_A_GIBIBYTE), "1.00 GB"));
+        units.add(new Tuple3<>(StorageUnits::formatAsCommonTerabyte, asLong(BYTES_IN_A_TEBIBYTE), "1.00 TB"));
+        units.add(new Tuple3<>(StorageUnits::formatAsCommonPetabyte, asLong(BYTES_IN_A_PEBIBYTE), "1.00 PB"));
+        units.add(new Tuple3<>(StorageUnits::formatAsCommonExabyte, asLong(BYTES_IN_A_EXBIBYTE), "1.00 EB"));
+        units.add(new Tuple3<>(StorageUnits::formatAsCommonZettabyte, asLong(BYTES_IN_A_ZEBIBYTE), "0.00 ZB"));
+        units.add(new Tuple3<>(StorageUnits::formatAsCommonYottabyte, asLong(BYTES_IN_A_YOBIBYTE), "0.00 YB"));
 
         return units;
     }

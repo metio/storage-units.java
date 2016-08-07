@@ -18,24 +18,25 @@ import java.util.function.Function;
 import org.eclipse.jdt.annotation.NonNull;
 
 /**
- * Terabyte as specified in ISO IEC 80000-13:2008 (1 Terabyte = 1 000 000 000 000 Byte).
+ * Terabyte as commonly found in the wild (1 Terabyte = 1 099 511 627 776 Byte).
  */
-public class Terabyte extends StorageUnit<Terabyte> {
+public final class CommonTerabyte extends StorageUnit<CommonTerabyte> {
 
-    private static final long serialVersionUID = 2160488069631638952L;
+    /** Generated */
+    private static final long serialVersionUID = 3614537130129620881L;
 
-    Terabyte(@NonNull final BigInteger bytes) {
+    CommonTerabyte(@NonNull final BigInteger bytes) {
         super(bytes);
     }
 
     /**
      * @param numberOfBytes
      *            The amount of bytes the Terabyte contains.
-     * @return A new Kilobyte unit with the given value.
+     * @return A new Terabyte unit with the given value.
      */
     @NonNull
-    public static Terabyte valueOf(@NonNull final BigInteger numberOfBytes) {
-        return new Terabyte(numberOfBytes);
+    public static CommonTerabyte valueOf(@NonNull final BigInteger numberOfBytes) {
+        return new CommonTerabyte(numberOfBytes);
     }
 
     /**
@@ -44,8 +45,8 @@ public class Terabyte extends StorageUnit<Terabyte> {
      * @return A new Terabyte unit with the given value.
      */
     @NonNull
-    public static Terabyte valueOf(final long numberOfBytes) {
-        return new Terabyte(asBigInteger(numberOfBytes));
+    public static CommonTerabyte valueOf(final long numberOfBytes) {
+        return new CommonTerabyte(asBigInteger(numberOfBytes));
     }
 
     /**
@@ -54,43 +55,43 @@ public class Terabyte extends StorageUnit<Terabyte> {
      * @return A new Terabyte unit with the given value.
      */
     @NonNull
-    public static Terabyte valueOf(@NonNull final Long numberOfBytes) {
+    public static CommonTerabyte valueOf(@NonNull final Long numberOfBytes) {
         return valueOf(numberOfBytes.longValue());
     }
 
     @Override
-    public Terabyte add(final long bytesToAdd) {
-        return new Terabyte(addNullsafe(bytes, asBigInteger(bytesToAdd)));
+    public CommonTerabyte add(final long bytesToAdd) {
+        return new CommonTerabyte(addNullsafe(bytes, asBigInteger(bytesToAdd)));
     }
 
     @Override
-    public Terabyte add(final StorageUnit<?> storageAmount) {
-        return new Terabyte(addNullsafe(bytes, storageAmount.bytes));
+    public CommonTerabyte add(final StorageUnit<?> storageAmount) {
+        return new CommonTerabyte(addNullsafe(bytes, storageAmount.bytes));
     }
 
     @Override
-    public Terabyte divide(final long divisor) {
-        return new Terabyte(divideNullsafe(bytes, asBigInteger(divisor)));
+    public CommonTerabyte divide(final long divisor) {
+        return new CommonTerabyte(divideNullsafe(bytes, asBigInteger(divisor)));
     }
 
     @Override
-    public Terabyte multiply(final long factor) {
-        return new Terabyte(multiplyNullsafe(bytes, asBigInteger(factor)));
+    public CommonTerabyte multiply(final long factor) {
+        return new CommonTerabyte(multiplyNullsafe(bytes, asBigInteger(factor)));
     }
 
     @Override
-    public Terabyte subtract(final long bytesToSubtract) {
-        return new Terabyte(subtractNullsafe(bytes, asBigInteger(bytesToSubtract)));
+    public CommonTerabyte subtract(final long bytesToSubtract) {
+        return new CommonTerabyte(subtractNullsafe(bytes, asBigInteger(bytesToSubtract)));
     }
 
     @Override
-    public Terabyte subtract(final StorageUnit<?> storageAmount) {
-        return new Terabyte(subtractNullsafe(bytes, storageAmount.bytes));
+    public CommonTerabyte subtract(final StorageUnit<?> storageAmount) {
+        return new CommonTerabyte(subtractNullsafe(bytes, storageAmount.bytes));
     }
 
     @Override
     protected BigInteger getNumberOfBytesPerUnit() {
-        return StorageUnit.BYTES_IN_A_TERABYTE;
+        return StorageUnit.BYTES_IN_A_TEBIBYTE;
     }
 
     @Override
@@ -100,7 +101,7 @@ public class Terabyte extends StorageUnit<Terabyte> {
 
     @Override
     protected Function<@NonNull BigInteger, @NonNull StorageUnit<?>> converter() {
-        return StorageUnits::metricValueOf;
+        return StorageUnits::commonValueOf;
     }
 
 }

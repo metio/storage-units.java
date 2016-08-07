@@ -30,7 +30,7 @@ public final class Pebibyte extends StorageUnit<Pebibyte> {
 
     /**
      * @param numberOfBytes
-     *            The amount of bytes the pebibyte contains.
+     *            The amount of bytes the Pebibyte contains.
      * @return A new Pebibyte unit with the given value.
      */
     @NonNull
@@ -40,7 +40,7 @@ public final class Pebibyte extends StorageUnit<Pebibyte> {
 
     /**
      * @param numberOfBytes
-     *            The amount of bytes the pebibytes contains.
+     *            The amount of bytes the Pebibyte contains.
      * @return A new Pebibyte unit with the given value.
      */
     @NonNull
@@ -50,7 +50,7 @@ public final class Pebibyte extends StorageUnit<Pebibyte> {
 
     /**
      * @param numberOfBytes
-     *            The amount of bytes the pebibytes contains.
+     *            The amount of bytes the Pebibyte contains.
      * @return A new Pebibyte unit with the given value.
      */
     @NonNull

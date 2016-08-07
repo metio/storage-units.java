@@ -55,7 +55,16 @@ public class StorageUnitNumberOfBytesPerUnitTest {
             new SimpleEntry<>(Petabyte.class, new BigInteger("1000000000000000")),
             new SimpleEntry<>(Exabyte.class, new BigInteger("1000000000000000000")),
             new SimpleEntry<>(Zettabyte.class, new BigInteger("1000000000000000000000")),
-            new SimpleEntry<>(Yottabyte.class, new BigInteger("1000000000000000000000000")))
+            new SimpleEntry<>(Yottabyte.class, new BigInteger("1000000000000000000000000")),
+            // common units
+            new SimpleEntry<>(CommonKilobyte.class, new BigInteger("1024")),
+            new SimpleEntry<>(CommonMegabyte.class, new BigInteger("1048576")),
+            new SimpleEntry<>(CommonGigabyte.class, new BigInteger("1073741824")),
+            new SimpleEntry<>(CommonTerabyte.class, new BigInteger("1099511627776")),
+            new SimpleEntry<>(CommonPetabyte.class, new BigInteger("1125899906842624")),
+            new SimpleEntry<>(CommonExabyte.class, new BigInteger("1152921504606846976")),
+            new SimpleEntry<>(CommonZettabyte.class, new BigInteger("1180591620717411303424")),
+            new SimpleEntry<>(CommonYottabyte.class, new BigInteger("1208925819614629174706176")))
             .collect(Collectors.toMap(Entry::getKey, Entry::getValue)));
 
     /**

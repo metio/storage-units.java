@@ -29,7 +29,7 @@ import de.xn__ho_hia.quality.suppression.CompilerWarnings;
 */
 @RunWith(Theories.class)
 @SuppressWarnings(CompilerWarnings.STATIC_METHOD)
-public class StorageUnitsBigBinaryTest {
+public class StorageUnitsBigCommonTest {
 
     private static final BigInteger MULTIPLIER = Nullsafe.asBigInteger(1024);
 
@@ -41,15 +41,15 @@ public class StorageUnitsBigBinaryTest {
         final List<Tuple2<BigInteger, Class<? extends StorageUnit<?>>>> inputs = new ArrayList<>();
 
         inputs.add(new Tuple2<>(BigInteger.ONE, Byte.class));
-        inputs.add(new Tuple2<>(MULTIPLIER, Kibibyte.class));
-        inputs.add(new Tuple2<>(MULTIPLIER.pow(2), Mebibyte.class));
-        inputs.add(new Tuple2<>(MULTIPLIER.pow(3), Gibibyte.class));
-        inputs.add(new Tuple2<>(MULTIPLIER.pow(4), Tebibyte.class));
-        inputs.add(new Tuple2<>(MULTIPLIER.pow(5), Pebibyte.class));
-        inputs.add(new Tuple2<>(MULTIPLIER.pow(6), Exbibyte.class));
-        inputs.add(new Tuple2<>(MULTIPLIER.pow(7), Zebibyte.class));
-        inputs.add(new Tuple2<>(MULTIPLIER.pow(8), Yobibyte.class));
-        inputs.add(new Tuple2<>(MULTIPLIER.pow(9), Yobibyte.class));
+        inputs.add(new Tuple2<>(MULTIPLIER, CommonKilobyte.class));
+        inputs.add(new Tuple2<>(MULTIPLIER.pow(2), CommonMegabyte.class));
+        inputs.add(new Tuple2<>(MULTIPLIER.pow(3), CommonGigabyte.class));
+        inputs.add(new Tuple2<>(MULTIPLIER.pow(4), CommonTerabyte.class));
+        inputs.add(new Tuple2<>(MULTIPLIER.pow(5), CommonPetabyte.class));
+        inputs.add(new Tuple2<>(MULTIPLIER.pow(6), CommonExabyte.class));
+        inputs.add(new Tuple2<>(MULTIPLIER.pow(7), CommonZettabyte.class));
+        inputs.add(new Tuple2<>(MULTIPLIER.pow(8), CommonYottabyte.class));
+        inputs.add(new Tuple2<>(MULTIPLIER.pow(9), CommonYottabyte.class));
 
         return inputs;
     }
@@ -66,7 +66,7 @@ public class StorageUnitsBigBinaryTest {
         final Class<? extends StorageUnit<?>> expectedClass = input.v2;
 
         // when
-        final StorageUnit<?> unit = StorageUnits.binaryValueOf(Nullsafe.nonNull(bytes));
+        final StorageUnit<?> unit = StorageUnits.commonValueOf(Nullsafe.nonNull(bytes));
         final Class<?> unitClass = unit.getClass();
 
         // then
@@ -85,7 +85,7 @@ public class StorageUnitsBigBinaryTest {
         final Class<? extends StorageUnit<?>> expectedClass = input.v2;
 
         // when
-        final StorageUnit<?> unit = StorageUnits.binaryValueOf(Nullsafe.nonNull(bytes.negate()));
+        final StorageUnit<?> unit = StorageUnits.commonValueOf(Nullsafe.nonNull(bytes.negate()));
         final Class<?> unitClass = unit.getClass();
 
         // then

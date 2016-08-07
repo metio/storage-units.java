@@ -6,61 +6,90 @@
  */
 package de.xn__ho_hia.utils.storage_unit;
 
-import java.math.BigInteger;
+import static de.xn__ho_hia.utils.storage_unit.TestUtils.logIncorrectCreation;
 
+import java.math.BigInteger;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.jooq.lambda.tuple.Tuple2;
 import org.junit.Assert;
 import org.junit.experimental.theories.DataPoints;
+import org.junit.experimental.theories.FromDataPoints;
 import org.junit.experimental.theories.Theories;
 import org.junit.experimental.theories.Theory;
 import org.junit.runner.RunWith;
 
 import de.xn__ho_hia.quality.null_analysis.Nullsafe;
+import de.xn__ho_hia.quality.suppression.CompilerWarnings;
 
 /**
 *
 *
 */
 @RunWith(Theories.class)
+@SuppressWarnings(CompilerWarnings.STATIC_METHOD)
 public class StorageUnitsBigMetricTest {
 
     private static final BigInteger MULTIPLIER = Nullsafe.asBigInteger(1000);
 
     /**
-     *
+     * @return inputs and expected result types.
      */
-    @DataPoints
-    public static Object[][] INPUT_RESULTS = {
-            { BigInteger.ONE, Byte.class },
-            { MULTIPLIER, Kilobyte.class },
-            { MULTIPLIER.pow(2), Megabyte.class },
-            { MULTIPLIER.pow(3), Gigabyte.class },
-            { MULTIPLIER.pow(4), Terabyte.class },
-            { MULTIPLIER.pow(5), Petabyte.class },
-            { MULTIPLIER.pow(6), Exabyte.class },
-            { MULTIPLIER.pow(7), Zettabyte.class },
-            { MULTIPLIER.pow(8), Yottabyte.class },
-            { MULTIPLIER.pow(9), Yottabyte.class },
-    };
+    @DataPoints("inputs")
+    public static List<Tuple2<BigInteger, Class<? extends StorageUnit<?>>>> inputs() {
+        final List<Tuple2<BigInteger, Class<? extends StorageUnit<?>>>> inputs = new ArrayList<>();
+
+        inputs.add(new Tuple2<>(BigInteger.ONE, Byte.class));
+        inputs.add(new Tuple2<>(MULTIPLIER, Kilobyte.class));
+        inputs.add(new Tuple2<>(MULTIPLIER.pow(2), Megabyte.class));
+        inputs.add(new Tuple2<>(MULTIPLIER.pow(3), Gigabyte.class));
+        inputs.add(new Tuple2<>(MULTIPLIER.pow(4), Terabyte.class));
+        inputs.add(new Tuple2<>(MULTIPLIER.pow(5), Petabyte.class));
+        inputs.add(new Tuple2<>(MULTIPLIER.pow(6), Exabyte.class));
+        inputs.add(new Tuple2<>(MULTIPLIER.pow(7), Zettabyte.class));
+        inputs.add(new Tuple2<>(MULTIPLIER.pow(8), Yottabyte.class));
+        inputs.add(new Tuple2<>(MULTIPLIER.pow(9), Yottabyte.class));
+
+        return inputs;
+    }
 
     /**
      * @param input
      *            The number of bytes to wrap + the expected return class.
      */
-    @SuppressWarnings({ "nls", "static-method", "unchecked" })
     @Theory
-    public void shouldCreateCorrectBinaryUnit(final Object[] input) {
-        // Given
-        final BigInteger bytes = (BigInteger) input[0];
-        final Class<? extends StorageUnit<?>> expectedClass = (Class<? extends StorageUnit<?>>) input[1];
+    public void shouldCreateCorrectBinaryUnit(
+            @FromDataPoints("inputs") final Tuple2<BigInteger, Class<? extends StorageUnit<?>>> input) {
+        // given
+        final BigInteger bytes = input.v1;
+        final Class<? extends StorageUnit<?>> expectedClass = input.v2;
 
-        // When
+        // when
         final StorageUnit<?> unit = StorageUnits.metricValueOf(Nullsafe.nonNull(bytes));
+        final Class<?> unitClass = unit.getClass();
 
-        // Then
-        Assert.assertEquals(
-                bytes + " should result in " + expectedClass.getSimpleName() + " but got "
-                        + unit.getClass().getSimpleName(),
-                expectedClass, unit.getClass());
+        // then
+        Assert.assertEquals(logIncorrectCreation(bytes, expectedClass, unitClass), expectedClass, unitClass);
+    }
+
+    /**
+     * @param input
+     *            The number of bytes to wrap + the expected return class.
+     */
+    @Theory
+    public void shouldCreateCorrectBinaryUnitNegated(
+            @FromDataPoints("inputs") final Tuple2<BigInteger, Class<? extends StorageUnit<?>>> input) {
+        // given
+        final BigInteger bytes = input.v1;
+        final Class<? extends StorageUnit<?>> expectedClass = input.v2;
+
+        // when
+        final StorageUnit<?> unit = StorageUnits.metricValueOf(Nullsafe.nonNull(bytes.negate()));
+        final Class<?> unitClass = unit.getClass();
+
+        // then
+        Assert.assertEquals(logIncorrectCreation(bytes, expectedClass, unitClass), expectedClass, unitClass);
     }
 
 }

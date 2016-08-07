@@ -31,7 +31,7 @@ public final class Yobibyte extends StorageUnit<Yobibyte> {
 
     /**
      * @param numberOfBytes
-     *            The amount of bytes the yobibyte contains.
+     *            The amount of bytes the Yobibyte contains.
      * @return A new Yobibyte unit with the given value.
      */
     @NonNull
@@ -41,7 +41,7 @@ public final class Yobibyte extends StorageUnit<Yobibyte> {
 
     /**
      * @param numberOfBytes
-     *            The amount of bytes the yobibytes contains.
+     *            The amount of bytes the Yobibyte contains.
      * @return A new Yobibyte unit with the given value.
      */
     @NonNull
@@ -51,7 +51,7 @@ public final class Yobibyte extends StorageUnit<Yobibyte> {
 
     /**
      * @param numberOfBytes
-     *            The amount of bytes the yobibytes contains.
+     *            The amount of bytes the Yobibyte contains.
      * @return A new Yobibyte unit with the given value.
      */
     @NonNull

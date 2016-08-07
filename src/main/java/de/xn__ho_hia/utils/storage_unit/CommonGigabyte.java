@@ -18,13 +18,13 @@ import java.util.function.Function;
 import org.eclipse.jdt.annotation.NonNull;
 
 /**
- * Gigabyte as specified in ISO IEC 80000-13:2008 (1 Gigabyte = 1 000 000 000 Byte).
+ * Gigabyte as commonly found in the wild (1 Gigabyte = 1 073 741 824 Byte).
  */
-public class Gigabyte extends StorageUnit<Gigabyte> {
+public final class CommonGigabyte extends StorageUnit<CommonGigabyte> {
 
-    private static final long serialVersionUID = 7581075190529125530L;
+    private static final long serialVersionUID = -1104749948510944566L;
 
-    Gigabyte(@NonNull final BigInteger bytes) {
+    CommonGigabyte(@NonNull final BigInteger bytes) {
         super(bytes);
     }
 
@@ -34,8 +34,8 @@ public class Gigabyte extends StorageUnit<Gigabyte> {
      * @return A new Gigabyte unit with the given value.
      */
     @NonNull
-    public static Gigabyte valueOf(@NonNull final BigInteger numberOfBytes) {
-        return new Gigabyte(numberOfBytes);
+    public static CommonGigabyte valueOf(@NonNull final BigInteger numberOfBytes) {
+        return new CommonGigabyte(numberOfBytes);
     }
 
     /**
@@ -44,8 +44,8 @@ public class Gigabyte extends StorageUnit<Gigabyte> {
      * @return A new Gigabyte unit with the given value.
      */
     @NonNull
-    public static Gigabyte valueOf(final long numberOfBytes) {
-        return new Gigabyte(asBigInteger(numberOfBytes));
+    public static CommonGigabyte valueOf(final long numberOfBytes) {
+        return new CommonGigabyte(asBigInteger(numberOfBytes));
     }
 
     /**
@@ -54,43 +54,43 @@ public class Gigabyte extends StorageUnit<Gigabyte> {
      * @return A new Gigabyte unit with the given value.
      */
     @NonNull
-    public static Gigabyte valueOf(@NonNull final Long numberOfBytes) {
+    public static CommonGigabyte valueOf(@NonNull final Long numberOfBytes) {
         return valueOf(numberOfBytes.longValue());
     }
 
     @Override
-    public Gigabyte add(final long bytesToAdd) {
-        return new Gigabyte(addNullsafe(bytes, asBigInteger(bytesToAdd)));
+    public CommonGigabyte add(final long bytesToAdd) {
+        return new CommonGigabyte(addNullsafe(bytes, asBigInteger(bytesToAdd)));
     }
 
     @Override
-    public Gigabyte add(final StorageUnit<?> storageAmount) {
-        return new Gigabyte(addNullsafe(bytes, storageAmount.bytes));
+    public CommonGigabyte add(final StorageUnit<?> storageAmount) {
+        return new CommonGigabyte(addNullsafe(bytes, storageAmount.bytes));
     }
 
     @Override
-    public Gigabyte divide(final long divisor) {
-        return new Gigabyte(divideNullsafe(bytes, asBigInteger(divisor)));
+    public CommonGigabyte divide(final long divisor) {
+        return new CommonGigabyte(divideNullsafe(bytes, asBigInteger(divisor)));
     }
 
     @Override
-    public Gigabyte multiply(final long factor) {
-        return new Gigabyte(multiplyNullsafe(bytes, asBigInteger(factor)));
+    public CommonGigabyte multiply(final long factor) {
+        return new CommonGigabyte(multiplyNullsafe(bytes, asBigInteger(factor)));
     }
 
     @Override
-    public Gigabyte subtract(final long bytesToSubtract) {
-        return new Gigabyte(subtractNullsafe(bytes, asBigInteger(bytesToSubtract)));
+    public CommonGigabyte subtract(final long bytesToSubtract) {
+        return new CommonGigabyte(subtractNullsafe(bytes, asBigInteger(bytesToSubtract)));
     }
 
     @Override
-    public Gigabyte subtract(final StorageUnit<?> storageAmount) {
-        return new Gigabyte(subtractNullsafe(bytes, storageAmount.bytes));
+    public CommonGigabyte subtract(final StorageUnit<?> storageAmount) {
+        return new CommonGigabyte(subtractNullsafe(bytes, storageAmount.bytes));
     }
 
     @Override
     protected BigInteger getNumberOfBytesPerUnit() {
-        return StorageUnit.BYTES_IN_A_GIGABYTE;
+        return StorageUnit.BYTES_IN_A_GIBIBYTE;
     }
 
     @Override
@@ -100,7 +100,7 @@ public class Gigabyte extends StorageUnit<Gigabyte> {
 
     @Override
     protected Function<@NonNull BigInteger, @NonNull StorageUnit<?>> converter() {
-        return StorageUnits::metricValueOf;
+        return StorageUnits::commonValueOf;
     }
 
 }

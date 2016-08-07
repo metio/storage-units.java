@@ -18,13 +18,13 @@ import java.util.function.Function;
 import org.eclipse.jdt.annotation.NonNull;
 
 /**
- * Exabyte as specified in ISO IEC 80000-13:2008 (1 Exabyte = 1 000 000 000 000 000 000 Byte).
+ * Exabyte as commonly found in the wild (1 Exabyte = 1 152 921 504 606 846 976 Byte).
  */
-public class Exabyte extends StorageUnit<Exabyte> {
+public final class CommonExabyte extends StorageUnit<CommonExabyte> {
 
-    private static final long serialVersionUID = 6846441733771841250L;
+    private static final long serialVersionUID = 5993490571003918471L;
 
-    Exabyte(@NonNull final BigInteger bytes) {
+    CommonExabyte(@NonNull final BigInteger bytes) {
         super(bytes);
     }
 
@@ -34,8 +34,8 @@ public class Exabyte extends StorageUnit<Exabyte> {
      * @return A new Exabyte unit with the given value.
      */
     @NonNull
-    public static Exabyte valueOf(@NonNull final BigInteger numberOfBytes) {
-        return new Exabyte(numberOfBytes);
+    public static CommonExabyte valueOf(@NonNull final BigInteger numberOfBytes) {
+        return new CommonExabyte(numberOfBytes);
     }
 
     /**
@@ -44,8 +44,8 @@ public class Exabyte extends StorageUnit<Exabyte> {
      * @return A new Exabyte unit with the given value.
      */
     @NonNull
-    public static Exabyte valueOf(final long numberOfBytes) {
-        return new Exabyte(asBigInteger(numberOfBytes));
+    public static CommonExabyte valueOf(final long numberOfBytes) {
+        return new CommonExabyte(asBigInteger(numberOfBytes));
     }
 
     /**
@@ -54,43 +54,43 @@ public class Exabyte extends StorageUnit<Exabyte> {
      * @return A new Exabyte unit with the given value.
      */
     @NonNull
-    public static Exabyte valueOf(@NonNull final Long numberOfBytes) {
+    public static CommonExabyte valueOf(@NonNull final Long numberOfBytes) {
         return valueOf(numberOfBytes.longValue());
     }
 
     @Override
-    public Exabyte add(final long bytesToAdd) {
-        return new Exabyte(addNullsafe(bytes, asBigInteger(bytesToAdd)));
+    public CommonExabyte add(final long bytesToAdd) {
+        return new CommonExabyte(addNullsafe(bytes, asBigInteger(bytesToAdd)));
     }
 
     @Override
-    public Exabyte add(final StorageUnit<?> storageAmount) {
-        return new Exabyte(addNullsafe(bytes, storageAmount.bytes));
+    public CommonExabyte add(final StorageUnit<?> storageAmount) {
+        return new CommonExabyte(addNullsafe(bytes, storageAmount.bytes));
     }
 
     @Override
-    public Exabyte divide(final long divisor) {
-        return new Exabyte(divideNullsafe(bytes, asBigInteger(divisor)));
+    public CommonExabyte divide(final long divisor) {
+        return new CommonExabyte(divideNullsafe(bytes, asBigInteger(divisor)));
     }
 
     @Override
-    public Exabyte multiply(final long factor) {
-        return new Exabyte(multiplyNullsafe(bytes, asBigInteger(factor)));
+    public CommonExabyte multiply(final long factor) {
+        return new CommonExabyte(multiplyNullsafe(bytes, asBigInteger(factor)));
     }
 
     @Override
-    public Exabyte subtract(final long bytesToSubtract) {
-        return new Exabyte(subtractNullsafe(bytes, asBigInteger(bytesToSubtract)));
+    public CommonExabyte subtract(final long bytesToSubtract) {
+        return new CommonExabyte(subtractNullsafe(bytes, asBigInteger(bytesToSubtract)));
     }
 
     @Override
-    public Exabyte subtract(final StorageUnit<?> storageAmount) {
-        return new Exabyte(subtractNullsafe(bytes, storageAmount.bytes));
+    public CommonExabyte subtract(final StorageUnit<?> storageAmount) {
+        return new CommonExabyte(subtractNullsafe(bytes, storageAmount.bytes));
     }
 
     @Override
     protected BigInteger getNumberOfBytesPerUnit() {
-        return StorageUnit.BYTES_IN_A_EXABYTE;
+        return StorageUnit.BYTES_IN_A_EXBIBYTE;
     }
 
     @Override
@@ -100,7 +100,7 @@ public class Exabyte extends StorageUnit<Exabyte> {
 
     @Override
     protected Function<@NonNull BigInteger, @NonNull StorageUnit<?>> converter() {
-        return StorageUnits::metricValueOf;
+        return StorageUnits::commonValueOf;
     }
 
 }

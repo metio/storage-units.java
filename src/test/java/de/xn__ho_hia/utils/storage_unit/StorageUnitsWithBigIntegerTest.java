@@ -6,7 +6,7 @@
  */
 package de.xn__ho_hia.utils.storage_unit;
 
-import static de.xn__ho_hia.utils.storage_unit.TestObjects.highLevelBinaryBigIntegerBasedConstructors;
+import static de.xn__ho_hia.utils.storage_unit.TestObjects.highLevelBigIntegerBasedConstructors;
 
 import java.math.BigInteger;
 import java.util.List;
@@ -28,7 +28,7 @@ public class StorageUnitsWithBigIntegerTest {
 
     /** The factory methods to create storage units to test. */
     @DataPoints
-    public static List<Function<BigInteger, StorageUnit<?>>> UNITS = highLevelBinaryBigIntegerBasedConstructors();
+    public static List<Function<BigInteger, StorageUnit<?>>> UNITS = highLevelBigIntegerBasedConstructors();
 
     /**
      * Ensures that high-level constructors for all given unit constructors produce a not-null output when fed with a

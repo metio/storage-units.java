@@ -18,13 +18,13 @@ import java.util.function.Function;
 import org.eclipse.jdt.annotation.NonNull;
 
 /**
- * Petabyte as specified in ISO IEC 80000-13:2008 (1 Petabyte = 1 000 000 000 000 000 Byte).
+ * Petabyte as commonly found in the wild (1 Petabyte = 1 125 899 906 842 624 Byte).
  */
-public class Petabyte extends StorageUnit<Petabyte> {
+public final class CommonPetabyte extends StorageUnit<CommonPetabyte> {
 
-    private static final long serialVersionUID = 5889808368085688387L;
+    private static final long serialVersionUID = -6112472064345339882L;
 
-    Petabyte(@NonNull final BigInteger bytes) {
+    CommonPetabyte(@NonNull final BigInteger bytes) {
         super(bytes);
     }
 
@@ -34,8 +34,8 @@ public class Petabyte extends StorageUnit<Petabyte> {
      * @return A new Petabyte unit with the given value.
      */
     @NonNull
-    public static Petabyte valueOf(@NonNull final BigInteger numberOfBytes) {
-        return new Petabyte(numberOfBytes);
+    public static CommonPetabyte valueOf(@NonNull final BigInteger numberOfBytes) {
+        return new CommonPetabyte(numberOfBytes);
     }
 
     /**
@@ -44,8 +44,8 @@ public class Petabyte extends StorageUnit<Petabyte> {
      * @return A new Petabyte unit with the given value.
      */
     @NonNull
-    public static Petabyte valueOf(final long numberOfBytes) {
-        return new Petabyte(asBigInteger(numberOfBytes));
+    public static CommonPetabyte valueOf(final long numberOfBytes) {
+        return new CommonPetabyte(asBigInteger(numberOfBytes));
     }
 
     /**
@@ -54,43 +54,43 @@ public class Petabyte extends StorageUnit<Petabyte> {
      * @return A new Petabyte unit with the given value.
      */
     @NonNull
-    public static Petabyte valueOf(@NonNull final Long numberOfBytes) {
+    public static CommonPetabyte valueOf(@NonNull final Long numberOfBytes) {
         return valueOf(numberOfBytes.longValue());
     }
 
     @Override
-    public Petabyte add(final long bytesToAdd) {
-        return new Petabyte(addNullsafe(bytes, asBigInteger(bytesToAdd)));
+    public CommonPetabyte add(final long bytesToAdd) {
+        return new CommonPetabyte(addNullsafe(bytes, asBigInteger(bytesToAdd)));
     }
 
     @Override
-    public Petabyte add(final StorageUnit<?> storageAmount) {
-        return new Petabyte(addNullsafe(bytes, storageAmount.bytes));
+    public CommonPetabyte add(final StorageUnit<?> storageAmount) {
+        return new CommonPetabyte(addNullsafe(bytes, storageAmount.bytes));
     }
 
     @Override
-    public Petabyte divide(final long divisor) {
-        return new Petabyte(divideNullsafe(bytes, asBigInteger(divisor)));
+    public CommonPetabyte divide(final long divisor) {
+        return new CommonPetabyte(divideNullsafe(bytes, asBigInteger(divisor)));
     }
 
     @Override
-    public Petabyte multiply(final long factor) {
-        return new Petabyte(multiplyNullsafe(bytes, asBigInteger(factor)));
+    public CommonPetabyte multiply(final long factor) {
+        return new CommonPetabyte(multiplyNullsafe(bytes, asBigInteger(factor)));
     }
 
     @Override
-    public Petabyte subtract(final long bytesToSubtract) {
-        return new Petabyte(subtractNullsafe(bytes, asBigInteger(bytesToSubtract)));
+    public CommonPetabyte subtract(final long bytesToSubtract) {
+        return new CommonPetabyte(subtractNullsafe(bytes, asBigInteger(bytesToSubtract)));
     }
 
     @Override
-    public Petabyte subtract(final StorageUnit<?> storageAmount) {
-        return new Petabyte(subtractNullsafe(bytes, storageAmount.bytes));
+    public CommonPetabyte subtract(final StorageUnit<?> storageAmount) {
+        return new CommonPetabyte(subtractNullsafe(bytes, storageAmount.bytes));
     }
 
     @Override
     protected BigInteger getNumberOfBytesPerUnit() {
-        return StorageUnit.BYTES_IN_A_PETABYTE;
+        return StorageUnit.BYTES_IN_A_PEBIBYTE;
     }
 
     @Override
@@ -100,7 +100,7 @@ public class Petabyte extends StorageUnit<Petabyte> {
 
     @Override
     protected Function<@NonNull BigInteger, @NonNull StorageUnit<?>> converter() {
-        return StorageUnits::metricValueOf;
+        return StorageUnits::commonValueOf;
     }
 
 }

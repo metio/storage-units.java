@@ -18,14 +18,14 @@ import java.util.function.Function;
 import org.eclipse.jdt.annotation.NonNull;
 
 /**
- * Kilobyte as specified in ISO IEC 80000-13:2008 (1 Kilobyte = 1 000 Byte).
+ * Kilobyte as commonly found in the wild (1 Kilobyte = 1 024 Byte).
  */
-public class Kilobyte extends StorageUnit<Kilobyte> {
+public final class CommonKilobyte extends StorageUnit<CommonKilobyte> {
 
-    private static final long serialVersionUID = 6952239416014811456L;
+    private static final long serialVersionUID = 3798828851496657978L;
 
-    Kilobyte(@NonNull final BigInteger numberOfBytes) {
-        super(numberOfBytes);
+    CommonKilobyte(@NonNull final BigInteger bytes) {
+        super(bytes);
     }
 
     /**
@@ -34,8 +34,8 @@ public class Kilobyte extends StorageUnit<Kilobyte> {
      * @return A new Kilobyte unit with the given value.
      */
     @NonNull
-    public static Kilobyte valueOf(@NonNull final BigInteger numberOfBytes) {
-        return new Kilobyte(numberOfBytes);
+    public static CommonKilobyte valueOf(@NonNull final BigInteger numberOfBytes) {
+        return new CommonKilobyte(numberOfBytes);
     }
 
     /**
@@ -44,7 +44,7 @@ public class Kilobyte extends StorageUnit<Kilobyte> {
      * @return A new Kilobyte unit with the given value.
      */
     @NonNull
-    public static Kilobyte valueOf(final long numberOfBytes) {
+    public static CommonKilobyte valueOf(final long numberOfBytes) {
         return valueOf(asBigInteger(numberOfBytes));
     }
 
@@ -54,43 +54,43 @@ public class Kilobyte extends StorageUnit<Kilobyte> {
      * @return A new Kilobyte unit with the given value.
      */
     @NonNull
-    public static Kilobyte valueOf(@NonNull final Long numberOfBytes) {
+    public static CommonKilobyte valueOf(@NonNull final Long numberOfBytes) {
         return valueOf(numberOfBytes.longValue());
     }
 
     @Override
-    public Kilobyte add(final long bytesToAdd) {
-        return new Kilobyte(addNullsafe(bytes, asBigInteger(bytesToAdd)));
+    public CommonKilobyte add(final long bytesToAdd) {
+        return new CommonKilobyte(addNullsafe(bytes, asBigInteger(bytesToAdd)));
     }
 
     @Override
-    public Kilobyte add(final StorageUnit<?> storageAmount) {
-        return new Kilobyte(addNullsafe(bytes, storageAmount.bytes));
+    public CommonKilobyte add(final StorageUnit<?> storageAmount) {
+        return new CommonKilobyte(addNullsafe(bytes, storageAmount.bytes));
     }
 
     @Override
-    public Kilobyte divide(final long divisor) {
-        return new Kilobyte(divideNullsafe(bytes, asBigInteger(divisor)));
+    public CommonKilobyte divide(final long divisor) {
+        return new CommonKilobyte(divideNullsafe(bytes, asBigInteger(divisor)));
     }
 
     @Override
-    public Kilobyte multiply(final long factor) {
-        return new Kilobyte(multiplyNullsafe(bytes, asBigInteger(factor)));
+    public CommonKilobyte multiply(final long factor) {
+        return new CommonKilobyte(multiplyNullsafe(bytes, asBigInteger(factor)));
     }
 
     @Override
-    public Kilobyte subtract(final long bytesToSubtract) {
-        return new Kilobyte(subtractNullsafe(bytes, asBigInteger(bytesToSubtract)));
+    public CommonKilobyte subtract(final long bytesToSubtract) {
+        return new CommonKilobyte(subtractNullsafe(bytes, asBigInteger(bytesToSubtract)));
     }
 
     @Override
-    public Kilobyte subtract(final StorageUnit<?> storageAmount) {
-        return new Kilobyte(subtractNullsafe(bytes, storageAmount.bytes));
+    public CommonKilobyte subtract(final StorageUnit<?> storageAmount) {
+        return new CommonKilobyte(subtractNullsafe(bytes, storageAmount.bytes));
     }
 
     @Override
     protected BigInteger getNumberOfBytesPerUnit() {
-        return StorageUnit.BYTES_IN_A_KILOBYTE;
+        return StorageUnit.BYTES_IN_A_KIBIBYTE;
     }
 
     @Override
@@ -100,7 +100,7 @@ public class Kilobyte extends StorageUnit<Kilobyte> {
 
     @Override
     protected Function<@NonNull BigInteger, @NonNull StorageUnit<?>> converter() {
-        return StorageUnits::metricValueOf;
+        return StorageUnits::commonValueOf;
     }
 
 }

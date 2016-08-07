@@ -59,6 +59,15 @@ public class StorageUnitExpressionTest {
         units.add(StorageUnit::inZettabyte);
         units.add(StorageUnit::inYottabyte);
 
+        units.add(StorageUnit::inCommonKilobyte);
+        units.add(StorageUnit::inCommonMegabyte);
+        units.add(StorageUnit::inCommonGigabyte);
+        units.add(StorageUnit::inCommonTerabyte);
+        units.add(StorageUnit::inCommonPetabyte);
+        units.add(StorageUnit::inCommonExabyte);
+        units.add(StorageUnit::inCommonZettabyte);
+        units.add(StorageUnit::inCommonYottabyte);
+
         return units;
     }
 

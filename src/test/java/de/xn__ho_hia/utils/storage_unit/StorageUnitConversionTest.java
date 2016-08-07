@@ -64,6 +64,15 @@ public class StorageUnitConversionTest {
         units.add(StorageUnit::asZettabyte);
         units.add(StorageUnit::asYottabyte);
 
+        units.add(StorageUnit::asCommonKilobyte);
+        units.add(StorageUnit::asCommonMegabyte);
+        units.add(StorageUnit::asCommonGigabyte);
+        units.add(StorageUnit::asCommonTerabyte);
+        units.add(StorageUnit::asCommonPetabyte);
+        units.add(StorageUnit::asCommonExabyte);
+        units.add(StorageUnit::asCommonZettabyte);
+        units.add(StorageUnit::asCommonYottabyte);
+
         return units;
     }
 

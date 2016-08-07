@@ -31,7 +31,7 @@ public final class Mebibyte extends StorageUnit<Mebibyte> {
 
     /**
      * @param numberOfBytes
-     *            The amount of bytes the mebibyte contains.
+     *            The amount of bytes the Mebibyte contains.
      * @return A new Mebibyte unit with the given value.
      */
     @NonNull
@@ -41,7 +41,7 @@ public final class Mebibyte extends StorageUnit<Mebibyte> {
 
     /**
      * @param numberOfBytes
-     *            The amount of bytes the mebibytes contains.
+     *            The amount of bytes the Mebibyte contains.
      * @return A new Mebibyte unit with the given value.
      */
     @NonNull
@@ -51,7 +51,7 @@ public final class Mebibyte extends StorageUnit<Mebibyte> {
 
     /**
      * @param numberOfBytes
-     *            The amount of bytes the mebibytes contains.
+     *            The amount of bytes the Mebibyte contains.
      * @return A new Mebibyte unit with the given value.
      */
     @NonNull

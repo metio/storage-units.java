@@ -18,13 +18,13 @@ import java.util.function.Function;
 import org.eclipse.jdt.annotation.NonNull;
 
 /**
- * Zettabyte as specified in ISO IEC 80000-13:2008 (1 Zettabyte = 1 000 000 000 000 000 000 000 Byte).
+ * Zettabyte as commonly found in the wild (1 Zettabyte = 1 180 591 620 717 411 303 424 Byte).
  */
-public class Zettabyte extends StorageUnit<Zettabyte> {
+public final class CommonZettabyte extends StorageUnit<CommonZettabyte> {
 
-    private static final long serialVersionUID = 8849006574018911826L;
+    private static final long serialVersionUID = 2192254824473341887L;
 
-    Zettabyte(@NonNull final BigInteger bytes) {
+    CommonZettabyte(@NonNull final BigInteger bytes) {
         super(bytes);
     }
 
@@ -34,8 +34,8 @@ public class Zettabyte extends StorageUnit<Zettabyte> {
      * @return A new Zettabyte unit with the given value.
      */
     @NonNull
-    public static Zettabyte valueOf(@NonNull final BigInteger numberOfBytes) {
-        return new Zettabyte(numberOfBytes);
+    public static CommonZettabyte valueOf(@NonNull final BigInteger numberOfBytes) {
+        return new CommonZettabyte(numberOfBytes);
     }
 
     /**
@@ -44,8 +44,8 @@ public class Zettabyte extends StorageUnit<Zettabyte> {
      * @return A new Zettabyte unit with the given value.
      */
     @NonNull
-    public static Zettabyte valueOf(final long numberOfBytes) {
-        return new Zettabyte(asBigInteger(numberOfBytes));
+    public static CommonZettabyte valueOf(final long numberOfBytes) {
+        return new CommonZettabyte(asBigInteger(numberOfBytes));
     }
 
     /**
@@ -54,43 +54,43 @@ public class Zettabyte extends StorageUnit<Zettabyte> {
      * @return A new Zettabyte unit with the given value.
      */
     @NonNull
-    public static Zettabyte valueOf(@NonNull final Long numberOfBytes) {
+    public static CommonZettabyte valueOf(@NonNull final Long numberOfBytes) {
         return valueOf(numberOfBytes.longValue());
     }
 
     @Override
-    public Zettabyte add(final long bytesToAdd) {
-        return new Zettabyte(addNullsafe(bytes, asBigInteger(bytesToAdd)));
+    public CommonZettabyte add(final long bytesToAdd) {
+        return new CommonZettabyte(addNullsafe(bytes, asBigInteger(bytesToAdd)));
     }
 
     @Override
-    public Zettabyte add(final StorageUnit<?> storageAmount) {
-        return new Zettabyte(addNullsafe(bytes, storageAmount.bytes));
+    public CommonZettabyte add(final StorageUnit<?> storageAmount) {
+        return new CommonZettabyte(addNullsafe(bytes, storageAmount.bytes));
     }
 
     @Override
-    public Zettabyte divide(final long divisor) {
-        return new Zettabyte(divideNullsafe(bytes, asBigInteger(divisor)));
+    public CommonZettabyte divide(final long divisor) {
+        return new CommonZettabyte(divideNullsafe(bytes, asBigInteger(divisor)));
     }
 
     @Override
-    public Zettabyte multiply(final long factor) {
-        return new Zettabyte(multiplyNullsafe(bytes, asBigInteger(factor)));
+    public CommonZettabyte multiply(final long factor) {
+        return new CommonZettabyte(multiplyNullsafe(bytes, asBigInteger(factor)));
     }
 
     @Override
-    public Zettabyte subtract(final long bytesToSubtract) {
-        return new Zettabyte(subtractNullsafe(bytes, asBigInteger(bytesToSubtract)));
+    public CommonZettabyte subtract(final long bytesToSubtract) {
+        return new CommonZettabyte(subtractNullsafe(bytes, asBigInteger(bytesToSubtract)));
     }
 
     @Override
-    public Zettabyte subtract(final StorageUnit<?> storageAmount) {
-        return new Zettabyte(subtractNullsafe(bytes, storageAmount.bytes));
+    public CommonZettabyte subtract(final StorageUnit<?> storageAmount) {
+        return new CommonZettabyte(subtractNullsafe(bytes, storageAmount.bytes));
     }
 
     @Override
     protected BigInteger getNumberOfBytesPerUnit() {
-        return StorageUnit.BYTES_IN_A_ZETTABYTE;
+        return StorageUnit.BYTES_IN_A_ZEBIBYTE;
     }
 
     @Override
@@ -100,7 +100,7 @@ public class Zettabyte extends StorageUnit<Zettabyte> {
 
     @Override
     protected Function<@NonNull BigInteger, @NonNull StorageUnit<?>> converter() {
-        return StorageUnits::metricValueOf;
+        return StorageUnits::commonValueOf;
     }
 
 }

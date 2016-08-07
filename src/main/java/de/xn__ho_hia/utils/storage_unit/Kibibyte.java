@@ -30,7 +30,7 @@ public final class Kibibyte extends StorageUnit<Kibibyte> {
 
     /**
      * @param numberOfBytes
-     *            The amount of bytes the kibibytes contains.
+     *            The amount of bytes the Kibibyte contains.
      * @return A new Kibibyte unit with the given value.
      */
     @NonNull
@@ -40,7 +40,7 @@ public final class Kibibyte extends StorageUnit<Kibibyte> {
 
     /**
      * @param numberOfBytes
-     *            The amount of bytes the kibibytes contains.
+     *            The amount of bytes the Kibibyte contains.
      * @return A new Kibibyte unit with the given value.
      */
     @NonNull
@@ -50,7 +50,7 @@ public final class Kibibyte extends StorageUnit<Kibibyte> {
 
     /**
      * @param numberOfBytes
-     *            The amount of bytes the kibibytes contains.
+     *            The amount of bytes the Kibibyte contains.
      * @return A new Kibibyte unit with the given value.
      */
     @NonNull

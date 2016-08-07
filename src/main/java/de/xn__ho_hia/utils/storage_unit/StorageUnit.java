@@ -288,6 +288,70 @@ public abstract class StorageUnit<T extends StorageUnit<T>> extends Number imple
     }
 
     /**
+     * @return This storage unit as a non-standard kilobyte.
+     */
+    @NonNull
+    public final CommonKilobyte asCommonKilobyte() {
+        return new CommonKilobyte(this.bytes);
+    }
+
+    /**
+     * @return This storage unit as a non-standard megabyte.
+     */
+    @NonNull
+    public final CommonMegabyte asCommonMegabyte() {
+        return new CommonMegabyte(this.bytes);
+    }
+
+    /**
+     * @return This storage unit as a non-standard gigabyte.
+     */
+    @NonNull
+    public final CommonGigabyte asCommonGigabyte() {
+        return new CommonGigabyte(this.bytes);
+    }
+
+    /**
+     * @return This storage unit as a non-standard terabyte.
+     */
+    @NonNull
+    public final CommonTerabyte asCommonTerabyte() {
+        return new CommonTerabyte(this.bytes);
+    }
+
+    /**
+     * @return This storage unit as a non-standard petabyte.
+     */
+    @NonNull
+    public final CommonPetabyte asCommonPetabyte() {
+        return new CommonPetabyte(this.bytes);
+    }
+
+    /**
+     * @return This storage unit as a non-standard exabyte.
+     */
+    @NonNull
+    public final CommonExabyte asCommonExabyte() {
+        return new CommonExabyte(this.bytes);
+    }
+
+    /**
+     * @return This storage unit as a non-standard zettabyte.
+     */
+    @NonNull
+    public final CommonZettabyte asCommonZettabyte() {
+        return new CommonZettabyte(this.bytes);
+    }
+
+    /**
+     * @return This storage unit as a non-standard yottabyte.
+     */
+    @NonNull
+    public final CommonYottabyte asCommonYottabyte() {
+        return new CommonYottabyte(this.bytes);
+    }
+
+    /**
      * @return The amount of bytes this storage unit encompasses.
      */
     @NonNull
@@ -421,6 +485,70 @@ public abstract class StorageUnit<T extends StorageUnit<T>> extends Number imple
     @NonNull
     public final BigDecimal inYottabyte() {
         return this.calculate(StorageUnit.BYTES_IN_A_YOTTABYTE);
+    }
+
+    /**
+     * @return This storage unit quantified as common kibibyte.
+     */
+    @NonNull
+    public final BigDecimal inCommonKilobyte() {
+        return this.calculate(StorageUnit.BYTES_IN_A_KIBIBYTE);
+    }
+
+    /**
+     * @return This storage unit quantified as common mebibyte.
+     */
+    @NonNull
+    public final BigDecimal inCommonMegabyte() {
+        return this.calculate(StorageUnit.BYTES_IN_A_MEBIBYTE);
+    }
+
+    /**
+     * @return This storage unit quantified as common gibibyte.
+     */
+    @NonNull
+    public final BigDecimal inCommonGigabyte() {
+        return this.calculate(StorageUnit.BYTES_IN_A_GIBIBYTE);
+    }
+
+    /**
+     * @return This storage unit quantified as common tebibyte.
+     */
+    @NonNull
+    public final BigDecimal inCommonTerabyte() {
+        return this.calculate(StorageUnit.BYTES_IN_A_TEBIBYTE);
+    }
+
+    /**
+     * @return This storage unit quantified as common pebibyte.
+     */
+    @NonNull
+    public final BigDecimal inCommonPetabyte() {
+        return this.calculate(StorageUnit.BYTES_IN_A_PEBIBYTE);
+    }
+
+    /**
+     * @return This storage unit quantified as common exbibyte.
+     */
+    @NonNull
+    public final BigDecimal inCommonExabyte() {
+        return this.calculate(StorageUnit.BYTES_IN_A_EXBIBYTE);
+    }
+
+    /**
+     * @return This storage unit quantified as common zebibyte.
+     */
+    @NonNull
+    public final BigDecimal inCommonZettabyte() {
+        return this.calculate(StorageUnit.BYTES_IN_A_ZEBIBYTE);
+    }
+
+    /**
+     * @return This storage unit quantified as common yottabyte.
+     */
+    @NonNull
+    public final BigDecimal inCommonYottabyte() {
+        return this.calculate(StorageUnit.BYTES_IN_A_YOBIBYTE);
     }
 
     @NonNull
