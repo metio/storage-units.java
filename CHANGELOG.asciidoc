@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file.
 
 == link:++https://github.com/sebhoss/storage-units/compare/storage-units-3.0.0-20160703155124...master++[Unreleased]
 
+== link:++https://github.com/sebhoss/storage-units/compare/storage-units-3.0.0-20160703155124...master++[3.1.0] - TBD
+
 === Added
 
 * Allow to customize the formatted output of a unit with a custom format/pattern/locale
