@@ -9,6 +9,7 @@ All notable changes to this project will be documented in this file.
 * Allow to customize the formatted output of a unit with a custom format/pattern/locale
 * Provide as-best-matching converters for units
 * The `Byte` unit!
+* Commonly found units such as 1 Kilobyte = 1024 Byte
 
 == link:++https://github.com/sebhoss/storage-units/compare/storage-units-2.0.0...storage-units-3.0.0-20160703155124++[3.0.0] - 2016-07-03
 
