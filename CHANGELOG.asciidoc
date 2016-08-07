@@ -1,4 +1,5 @@
 = Change Log
+:milestone: https://github.com/sebhoss/storage-units/milestone
 
 All notable changes to this project will be documented in this file.
 
@@ -12,6 +13,10 @@ All notable changes to this project will be documented in this file.
 * Provide as-best-matching converters for units
 * The `Byte` unit!
 * Commonly found units such as 1 Kilobyte = 1024 Byte
+
+=== Issues closed
+
+link:{milestone}/3?closed=1[See list of closed issues].
 
 == link:++https://github.com/sebhoss/storage-units/compare/storage-units-2.0.0...storage-units-3.0.0-20160703155124++[3.0.0] - 2016-07-03
 
