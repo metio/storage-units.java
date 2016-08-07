@@ -6,6 +6,7 @@
  */
 package de.xn__ho_hia.utils.storage_unit;
 
+import static de.xn__ho_hia.quality.null_analysis.Nullsafe.nonNull;
 import static de.xn__ho_hia.utils.storage_unit.StorageUnits.formatAsPebibyte;
 import static de.xn__ho_hia.utils.storage_unit.StorageUnits.formatAsPetabyte;
 import static de.xn__ho_hia.utils.storage_unit.StorageUnits.formatAsTerabyte;
@@ -98,8 +99,8 @@ public class ReadmeFormattingTest {
     @Test
     public void shouldFormatWithoutCreatingUnitUsingCustomPatternWithSpecificLocale() {
         final long numberOfBytes = 1_000_000_000_000_000L;
-        Assert.assertEquals("1000 TB", formatAsTerabyte(numberOfBytes, "#0.#####", Locale.GERMAN));
-        Assert.assertEquals("0,88818 PiB", formatAsPebibyte(numberOfBytes, "#0.#####", Locale.GERMAN));
+        Assert.assertEquals("1000 TB", formatAsTerabyte(numberOfBytes, "#0.#####", nonNull(Locale.GERMAN)));
+        Assert.assertEquals("0,88818 PiB", formatAsPebibyte(numberOfBytes, "#0.#####", nonNull(Locale.GERMAN)));
     }
 
     /**

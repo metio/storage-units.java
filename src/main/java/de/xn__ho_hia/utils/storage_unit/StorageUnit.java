@@ -40,6 +40,7 @@ public abstract class StorageUnit<T extends StorageUnit<T>> extends Number imple
     /**
      * Default number format used within the library.
      */
+    @NonNull
     static final String DEFAULT_FORMAT_PATTERN = "0.00"; //$NON-NLS-1$
 
     /**

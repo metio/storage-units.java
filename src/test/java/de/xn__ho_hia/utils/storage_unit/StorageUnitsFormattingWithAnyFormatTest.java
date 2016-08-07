@@ -49,14 +49,15 @@ import de.xn__ho_hia.quality.null_analysis.Nullsafe;
 @SuppressWarnings({ "nls", "static-method" })
 public class StorageUnitsFormattingWithAnyFormatTest {
 
+    @NonNull
     private static final Format FORMAT = asFormat("#0.0");
 
     /**
      * @return Formatting functions that accept {@link BigInteger} as input.
      */
     @DataPoints("format-biginteger")
-    public static List<Tuple4<BiFunction<@NonNull BigInteger, Format, String>, @NonNull BigInteger, Format, String>> bigIntegerFunction() {
-        final List<Tuple4<BiFunction<@NonNull BigInteger, Format, String>, @NonNull BigInteger, Format, String>> units = new ArrayList<>();
+    public static List<Tuple4<BiFunction<@NonNull BigInteger, @NonNull Format, String>, @NonNull BigInteger, @NonNull Format, String>> bigIntegerFunction() {
+        final List<Tuple4<BiFunction<@NonNull BigInteger, @NonNull Format, String>, @NonNull BigInteger, @NonNull Format, String>> units = new ArrayList<>();
 
         units.add(new Tuple4<>(StorageUnits::formatAsBinaryUnit, BYTES_IN_A_KIBIBYTE, FORMAT, "1.0 KiB"));
         units.add(new Tuple4<>(StorageUnits::formatAsKibibyte, BYTES_IN_A_KIBIBYTE, FORMAT, "1.0 KiB"));
@@ -95,8 +96,8 @@ public class StorageUnitsFormattingWithAnyFormatTest {
      * @return Formatting functions that accept {@link Long} as input.
      */
     @DataPoints("format-long")
-    public static List<Tuple4<BiFunction<@NonNull Long, Format, String>, @NonNull Long, Format, String>> longFunction() {
-        final List<Tuple4<BiFunction<@NonNull Long, Format, String>, @NonNull Long, Format, String>> units = new ArrayList<>();
+    public static List<Tuple4<BiFunction<@NonNull Long, @NonNull Format, String>, @NonNull Long, @NonNull Format, String>> longFunction() {
+        final List<Tuple4<BiFunction<@NonNull Long, @NonNull Format, String>, @NonNull Long, @NonNull Format, String>> units = new ArrayList<>();
 
         units.add(new Tuple4<>(StorageUnits::formatAsBinaryUnit, asLong(BYTES_IN_A_KIBIBYTE), FORMAT, "1.0 KiB"));
         units.add(new Tuple4<>(StorageUnits::formatAsKibibyte, asLong(BYTES_IN_A_KIBIBYTE), FORMAT, "1.0 KiB"));
@@ -139,7 +140,7 @@ public class StorageUnitsFormattingWithAnyFormatTest {
      */
     @Theory
     public void shouldFormatBigIntegerAsStorageUnitWithAnyFormat(
-            @FromDataPoints("format-biginteger") final Tuple4<BiFunction<@NonNull BigInteger, Format, String>, @NonNull BigInteger, Format, String> input) {
+            @FromDataPoints("format-biginteger") final Tuple4<BiFunction<@NonNull BigInteger, @NonNull Format, String>, @NonNull BigInteger, @NonNull Format, String> input) {
         // given
         Assume.assumeNotNull(input.v1);
         Assume.assumeNotNull(input.v2);
@@ -161,7 +162,7 @@ public class StorageUnitsFormattingWithAnyFormatTest {
      */
     @Theory
     public void shouldFormatLongAsStorageUnitWithAnyFormat(
-            @FromDataPoints("format-long") final Tuple4<BiFunction<@NonNull Long, Format, String>, @NonNull Long, Format, String> input) {
+            @FromDataPoints("format-long") final Tuple4<BiFunction<@NonNull Long, @NonNull Format, String>, @NonNull Long, @NonNull Format, String> input) {
         // given
         Assume.assumeNotNull(input.v1);
         Assume.assumeNotNull(input.v2);

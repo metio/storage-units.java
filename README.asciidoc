@@ -22,7 +22,7 @@ image:https://img.shields.io/badge/forkable-yes-brightgreen.svg?style=flat-squar
 image:https://img.shields.io/maintenance/yes/2016.svg?style=flat-square["Is this thing still maintained?"]
 image:https://img.shields.io/bountysource/team/metio/activity.svg?style=flat-square["Bounties on open tickets", link="https://www.bountysource.com/teams/metio"]
 
-https://www.java.com[Java] library for storage- or byte-units. All units defined in link:http://en.wikipedia.org/wiki/ISO/IEC_80000[ISO IEC 80000-13:2008] are supported, as well as other commonly found units, like 1 Kilobyte = 1024 Byte.
+https://www.java.com[Java] library for storage-/byte-units. All units defined in link:http://en.wikipedia.org/wiki/ISO/IEC_80000[ISO IEC 80000-13:2008] are supported, as well as other commonly found units, like 1 Kilobyte = 1024 Byte.
 
 === Features
 

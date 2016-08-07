@@ -11,12 +11,15 @@ import java.text.Format;
 import java.text.NumberFormat;
 import java.util.Locale;
 
+import org.eclipse.jdt.annotation.NonNull;
+
 final class FormatUtils {
 
     private FormatUtils() {
         // Hidden constructor.
     }
 
+    @NonNull
     static final Format asFormat(final String pattern, final Locale locale) {
         final NumberFormat localizedFormat = NumberFormat.getNumberInstance(locale);
         final DecimalFormat outputFormat = (DecimalFormat) localizedFormat;

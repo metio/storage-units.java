@@ -246,7 +246,7 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsBinaryUnit(@NonNull final Long numberOfBytes, final String pattern) {
+    public static String formatAsBinaryUnit(@NonNull final Long numberOfBytes, @NonNull final String pattern) {
         return formatAsBinaryUnit(numberOfBytes.longValue(), pattern);
     }
 
@@ -258,7 +258,7 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsBinaryUnit(final long numberOfBytes, final String pattern) {
+    public static String formatAsBinaryUnit(final long numberOfBytes, @NonNull final String pattern) {
         return formatAsBinaryUnit(asBigInteger(numberOfBytes), pattern);
     }
 
@@ -270,7 +270,7 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsBinaryUnit(@NonNull final BigInteger numberOfBytes, final String pattern) {
+    public static String formatAsBinaryUnit(@NonNull final BigInteger numberOfBytes, @NonNull final String pattern) {
         return formatAsBinaryUnit(numberOfBytes, new DecimalFormat(pattern));
     }
 
@@ -284,8 +284,8 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsBinaryUnit(@NonNull final Long numberOfBytes, final String pattern,
-            final Locale locale) {
+    public static String formatAsBinaryUnit(@NonNull final Long numberOfBytes, @NonNull final String pattern,
+            @NonNull final Locale locale) {
         return formatAsBinaryUnit(numberOfBytes.longValue(), pattern, locale);
     }
 
@@ -299,7 +299,8 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsBinaryUnit(final long numberOfBytes, final String pattern, final Locale locale) {
+    public static String formatAsBinaryUnit(final long numberOfBytes, @NonNull final String pattern,
+            @NonNull final Locale locale) {
         return formatAsBinaryUnit(asBigInteger(numberOfBytes), pattern, locale);
     }
 
@@ -313,8 +314,8 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsBinaryUnit(@NonNull final BigInteger numberOfBytes, final String pattern,
-            final Locale locale) {
+    public static String formatAsBinaryUnit(@NonNull final BigInteger numberOfBytes, @NonNull final String pattern,
+            @NonNull final Locale locale) {
         return formatAsBinaryUnit(numberOfBytes, asFormat(pattern, locale));
     }
 
@@ -326,7 +327,7 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsBinaryUnit(@NonNull final Long numberOfBytes, final Format format) {
+    public static String formatAsBinaryUnit(@NonNull final Long numberOfBytes, @NonNull final Format format) {
         return formatAsBinaryUnit(numberOfBytes.longValue(), format);
     }
 
@@ -338,7 +339,7 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsBinaryUnit(final long numberOfBytes, final Format format) {
+    public static String formatAsBinaryUnit(final long numberOfBytes, @NonNull final Format format) {
         return formatAsBinaryUnit(asBigInteger(numberOfBytes), format);
     }
 
@@ -350,7 +351,7 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsBinaryUnit(@NonNull final BigInteger numberOfBytes, final Format format) {
+    public static String formatAsBinaryUnit(@NonNull final BigInteger numberOfBytes, @NonNull final Format format) {
         return binaryValueOf(numberOfBytes).toString(format);
     }
 
@@ -392,7 +393,7 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsKibibyte(@NonNull final Long numberOfBytes, final String pattern) {
+    public static String formatAsKibibyte(@NonNull final Long numberOfBytes, @NonNull final String pattern) {
         return formatAsKibibyte(numberOfBytes.longValue(), pattern);
     }
 
@@ -404,7 +405,7 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsKibibyte(final long numberOfBytes, final String pattern) {
+    public static String formatAsKibibyte(final long numberOfBytes, @NonNull final String pattern) {
         return formatAsKibibyte(asBigInteger(numberOfBytes), pattern);
     }
 
@@ -416,7 +417,7 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsKibibyte(@NonNull final BigInteger numberOfBytes, final String pattern) {
+    public static String formatAsKibibyte(@NonNull final BigInteger numberOfBytes, @NonNull final String pattern) {
         return formatAsKibibyte(numberOfBytes, new DecimalFormat(pattern));
     }
 
@@ -430,8 +431,8 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsKibibyte(@NonNull final Long numberOfBytes, final String pattern,
-            final Locale locale) {
+    public static String formatAsKibibyte(@NonNull final Long numberOfBytes, @NonNull final String pattern,
+            @NonNull final Locale locale) {
         return formatAsKibibyte(numberOfBytes.longValue(), pattern, locale);
     }
 
@@ -445,7 +446,8 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsKibibyte(final long numberOfBytes, final String pattern, final Locale locale) {
+    public static String formatAsKibibyte(final long numberOfBytes, @NonNull final String pattern,
+            @NonNull final Locale locale) {
         return formatAsKibibyte(asBigInteger(numberOfBytes), pattern, locale);
     }
 
@@ -459,8 +461,8 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsKibibyte(@NonNull final BigInteger numberOfBytes, final String pattern,
-            final Locale locale) {
+    public static String formatAsKibibyte(@NonNull final BigInteger numberOfBytes, @NonNull final String pattern,
+            @NonNull final Locale locale) {
         return formatAsKibibyte(numberOfBytes, asFormat(pattern, locale));
     }
 
@@ -472,7 +474,7 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsKibibyte(@NonNull final Long numberOfBytes, final Format format) {
+    public static String formatAsKibibyte(@NonNull final Long numberOfBytes, @NonNull final Format format) {
         return formatAsKibibyte(numberOfBytes.longValue(), format);
     }
 
@@ -484,7 +486,7 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsKibibyte(final long numberOfBytes, final Format format) {
+    public static String formatAsKibibyte(final long numberOfBytes, @NonNull final Format format) {
         return formatAsKibibyte(asBigInteger(numberOfBytes), format);
     }
 
@@ -496,7 +498,7 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsKibibyte(@NonNull final BigInteger numberOfBytes, final Format format) {
+    public static String formatAsKibibyte(@NonNull final BigInteger numberOfBytes, @NonNull final Format format) {
         return Kibibyte.valueOf(numberOfBytes).toString(format);
     }
 
@@ -538,7 +540,7 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsMebibyte(@NonNull final Long numberOfBytes, final String pattern) {
+    public static String formatAsMebibyte(@NonNull final Long numberOfBytes, @NonNull final String pattern) {
         return formatAsMebibyte(numberOfBytes.longValue(), pattern);
     }
 
@@ -550,7 +552,7 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsMebibyte(final long numberOfBytes, final String pattern) {
+    public static String formatAsMebibyte(final long numberOfBytes, @NonNull final String pattern) {
         return formatAsMebibyte(asBigInteger(numberOfBytes), pattern);
     }
 
@@ -562,7 +564,7 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsMebibyte(@NonNull final BigInteger numberOfBytes, final String pattern) {
+    public static String formatAsMebibyte(@NonNull final BigInteger numberOfBytes, @NonNull final String pattern) {
         return formatAsMebibyte(numberOfBytes, new DecimalFormat(pattern));
     }
 
@@ -576,8 +578,8 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsMebibyte(@NonNull final Long numberOfBytes, final String pattern,
-            final Locale locale) {
+    public static String formatAsMebibyte(@NonNull final Long numberOfBytes, @NonNull final String pattern,
+            @NonNull final Locale locale) {
         return formatAsMebibyte(numberOfBytes.longValue(), pattern, locale);
     }
 
@@ -591,7 +593,8 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsMebibyte(final long numberOfBytes, final String pattern, final Locale locale) {
+    public static String formatAsMebibyte(final long numberOfBytes, @NonNull final String pattern,
+            @NonNull final Locale locale) {
         return formatAsMebibyte(asBigInteger(numberOfBytes), pattern, locale);
     }
 
@@ -605,8 +608,8 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsMebibyte(@NonNull final BigInteger numberOfBytes, final String pattern,
-            final Locale locale) {
+    public static String formatAsMebibyte(@NonNull final BigInteger numberOfBytes, @NonNull final String pattern,
+            @NonNull final Locale locale) {
         return formatAsMebibyte(numberOfBytes, asFormat(pattern, locale));
     }
 
@@ -618,7 +621,7 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsMebibyte(@NonNull final Long numberOfBytes, final Format format) {
+    public static String formatAsMebibyte(@NonNull final Long numberOfBytes, @NonNull final Format format) {
         return formatAsMebibyte(numberOfBytes.longValue(), format);
     }
 
@@ -630,7 +633,7 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsMebibyte(final long numberOfBytes, final Format format) {
+    public static String formatAsMebibyte(final long numberOfBytes, @NonNull final Format format) {
         return formatAsMebibyte(asBigInteger(numberOfBytes), format);
     }
 
@@ -642,7 +645,7 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsMebibyte(@NonNull final BigInteger numberOfBytes, final Format format) {
+    public static String formatAsMebibyte(@NonNull final BigInteger numberOfBytes, @NonNull final Format format) {
         return Mebibyte.valueOf(numberOfBytes).toString(format);
     }
 
@@ -684,7 +687,7 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsGibibyte(@NonNull final Long numberOfBytes, final String pattern) {
+    public static String formatAsGibibyte(@NonNull final Long numberOfBytes, @NonNull final String pattern) {
         return formatAsGibibyte(numberOfBytes.longValue(), pattern);
     }
 
@@ -696,7 +699,7 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsGibibyte(final long numberOfBytes, final String pattern) {
+    public static String formatAsGibibyte(final long numberOfBytes, @NonNull final String pattern) {
         return formatAsGibibyte(asBigInteger(numberOfBytes), pattern);
     }
 
@@ -708,7 +711,7 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsGibibyte(@NonNull final BigInteger numberOfBytes, final String pattern) {
+    public static String formatAsGibibyte(@NonNull final BigInteger numberOfBytes, @NonNull final String pattern) {
         return formatAsGibibyte(numberOfBytes, new DecimalFormat(pattern));
     }
 
@@ -722,8 +725,8 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsGibibyte(@NonNull final Long numberOfBytes, final String pattern,
-            final Locale locale) {
+    public static String formatAsGibibyte(@NonNull final Long numberOfBytes, @NonNull final String pattern,
+            @NonNull final Locale locale) {
         return formatAsGibibyte(numberOfBytes.longValue(), pattern, locale);
     }
 
@@ -737,7 +740,8 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsGibibyte(final long numberOfBytes, final String pattern, final Locale locale) {
+    public static String formatAsGibibyte(final long numberOfBytes, @NonNull final String pattern,
+            @NonNull final Locale locale) {
         return formatAsGibibyte(asBigInteger(numberOfBytes), pattern, locale);
     }
 
@@ -751,8 +755,8 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsGibibyte(@NonNull final BigInteger numberOfBytes, final String pattern,
-            final Locale locale) {
+    public static String formatAsGibibyte(@NonNull final BigInteger numberOfBytes, @NonNull final String pattern,
+            @NonNull final Locale locale) {
         return formatAsGibibyte(numberOfBytes, asFormat(pattern, locale));
     }
 
@@ -764,7 +768,7 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsGibibyte(@NonNull final Long numberOfBytes, final Format format) {
+    public static String formatAsGibibyte(@NonNull final Long numberOfBytes, @NonNull final Format format) {
         return formatAsGibibyte(numberOfBytes.longValue(), format);
     }
 
@@ -776,7 +780,7 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsGibibyte(final long numberOfBytes, final Format format) {
+    public static String formatAsGibibyte(final long numberOfBytes, @NonNull final Format format) {
         return formatAsGibibyte(asBigInteger(numberOfBytes), format);
     }
 
@@ -788,7 +792,7 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsGibibyte(@NonNull final BigInteger numberOfBytes, final Format format) {
+    public static String formatAsGibibyte(@NonNull final BigInteger numberOfBytes, @NonNull final Format format) {
         return Gibibyte.valueOf(numberOfBytes).toString(format);
     }
 
@@ -830,7 +834,7 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsTebibyte(@NonNull final Long numberOfBytes, final String pattern) {
+    public static String formatAsTebibyte(@NonNull final Long numberOfBytes, @NonNull final String pattern) {
         return formatAsTebibyte(numberOfBytes.longValue(), pattern);
     }
 
@@ -842,7 +846,7 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsTebibyte(final long numberOfBytes, final String pattern) {
+    public static String formatAsTebibyte(final long numberOfBytes, @NonNull final String pattern) {
         return formatAsTebibyte(asBigInteger(numberOfBytes), pattern);
     }
 
@@ -854,7 +858,7 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsTebibyte(@NonNull final BigInteger numberOfBytes, final String pattern) {
+    public static String formatAsTebibyte(@NonNull final BigInteger numberOfBytes, @NonNull final String pattern) {
         return formatAsTebibyte(numberOfBytes, new DecimalFormat(pattern));
     }
 
@@ -868,8 +872,8 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsTebibyte(@NonNull final Long numberOfBytes, final String pattern,
-            final Locale locale) {
+    public static String formatAsTebibyte(@NonNull final Long numberOfBytes, @NonNull final String pattern,
+            @NonNull final Locale locale) {
         return formatAsTebibyte(numberOfBytes.longValue(), pattern, locale);
     }
 
@@ -883,7 +887,8 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsTebibyte(final long numberOfBytes, final String pattern, final Locale locale) {
+    public static String formatAsTebibyte(final long numberOfBytes, @NonNull final String pattern,
+            @NonNull final Locale locale) {
         return formatAsTebibyte(asBigInteger(numberOfBytes), pattern, locale);
     }
 
@@ -897,8 +902,8 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsTebibyte(@NonNull final BigInteger numberOfBytes, final String pattern,
-            final Locale locale) {
+    public static String formatAsTebibyte(@NonNull final BigInteger numberOfBytes, @NonNull final String pattern,
+            @NonNull final Locale locale) {
         return formatAsTebibyte(numberOfBytes, asFormat(pattern, locale));
     }
 
@@ -910,7 +915,7 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsTebibyte(@NonNull final Long numberOfBytes, final Format format) {
+    public static String formatAsTebibyte(@NonNull final Long numberOfBytes, @NonNull final Format format) {
         return formatAsTebibyte(numberOfBytes.longValue(), format);
     }
 
@@ -922,7 +927,7 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsTebibyte(final long numberOfBytes, final Format format) {
+    public static String formatAsTebibyte(final long numberOfBytes, @NonNull final Format format) {
         return formatAsTebibyte(asBigInteger(numberOfBytes), format);
     }
 
@@ -934,7 +939,7 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsTebibyte(@NonNull final BigInteger numberOfBytes, final Format format) {
+    public static String formatAsTebibyte(@NonNull final BigInteger numberOfBytes, @NonNull final Format format) {
         return Tebibyte.valueOf(numberOfBytes).toString(format);
     }
 
@@ -976,7 +981,7 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsPebibyte(@NonNull final Long numberOfBytes, final String pattern) {
+    public static String formatAsPebibyte(@NonNull final Long numberOfBytes, @NonNull final String pattern) {
         return formatAsPebibyte(numberOfBytes.longValue(), pattern);
     }
 
@@ -988,7 +993,7 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsPebibyte(final long numberOfBytes, final String pattern) {
+    public static String formatAsPebibyte(final long numberOfBytes, @NonNull final String pattern) {
         return formatAsPebibyte(asBigInteger(numberOfBytes), pattern);
     }
 
@@ -1000,7 +1005,7 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsPebibyte(@NonNull final BigInteger numberOfBytes, final String pattern) {
+    public static String formatAsPebibyte(@NonNull final BigInteger numberOfBytes, @NonNull final String pattern) {
         return formatAsPebibyte(numberOfBytes, new DecimalFormat(pattern));
     }
 
@@ -1014,8 +1019,8 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsPebibyte(@NonNull final Long numberOfBytes, final String pattern,
-            final Locale locale) {
+    public static String formatAsPebibyte(@NonNull final Long numberOfBytes, @NonNull final String pattern,
+            @NonNull final Locale locale) {
         return formatAsPebibyte(numberOfBytes.longValue(), pattern, locale);
     }
 
@@ -1029,7 +1034,8 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsPebibyte(final long numberOfBytes, final String pattern, final Locale locale) {
+    public static String formatAsPebibyte(final long numberOfBytes, @NonNull final String pattern,
+            @NonNull final Locale locale) {
         return formatAsPebibyte(asBigInteger(numberOfBytes), pattern, locale);
     }
 
@@ -1043,8 +1049,8 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsPebibyte(@NonNull final BigInteger numberOfBytes, final String pattern,
-            final Locale locale) {
+    public static String formatAsPebibyte(@NonNull final BigInteger numberOfBytes, @NonNull final String pattern,
+            @NonNull final Locale locale) {
         return formatAsPebibyte(numberOfBytes, asFormat(pattern, locale));
     }
 
@@ -1056,7 +1062,7 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsPebibyte(@NonNull final Long numberOfBytes, final Format format) {
+    public static String formatAsPebibyte(@NonNull final Long numberOfBytes, @NonNull final Format format) {
         return formatAsPebibyte(numberOfBytes.longValue(), format);
     }
 
@@ -1068,7 +1074,7 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsPebibyte(final long numberOfBytes, final Format format) {
+    public static String formatAsPebibyte(final long numberOfBytes, @NonNull final Format format) {
         return formatAsPebibyte(asBigInteger(numberOfBytes), format);
     }
 
@@ -1080,7 +1086,7 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsPebibyte(@NonNull final BigInteger numberOfBytes, final Format format) {
+    public static String formatAsPebibyte(@NonNull final BigInteger numberOfBytes, @NonNull final Format format) {
         return Pebibyte.valueOf(numberOfBytes).toString(format);
     }
 
@@ -1122,7 +1128,7 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsExbibyte(@NonNull final Long numberOfBytes, final String pattern) {
+    public static String formatAsExbibyte(@NonNull final Long numberOfBytes, @NonNull final String pattern) {
         return formatAsExbibyte(numberOfBytes.longValue(), pattern);
     }
 
@@ -1134,7 +1140,7 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsExbibyte(final long numberOfBytes, final String pattern) {
+    public static String formatAsExbibyte(final long numberOfBytes, @NonNull final String pattern) {
         return formatAsExbibyte(asBigInteger(numberOfBytes), pattern);
     }
 
@@ -1146,7 +1152,7 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsExbibyte(@NonNull final BigInteger numberOfBytes, final String pattern) {
+    public static String formatAsExbibyte(@NonNull final BigInteger numberOfBytes, @NonNull final String pattern) {
         return formatAsExbibyte(numberOfBytes, new DecimalFormat(pattern));
     }
 
@@ -1160,8 +1166,8 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsExbibyte(@NonNull final Long numberOfBytes, final String pattern,
-            final Locale locale) {
+    public static String formatAsExbibyte(@NonNull final Long numberOfBytes, @NonNull final String pattern,
+            @NonNull final Locale locale) {
         return formatAsExbibyte(numberOfBytes.longValue(), pattern, locale);
     }
 
@@ -1175,7 +1181,8 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsExbibyte(final long numberOfBytes, final String pattern, final Locale locale) {
+    public static String formatAsExbibyte(final long numberOfBytes, @NonNull final String pattern,
+            @NonNull final Locale locale) {
         return formatAsExbibyte(asBigInteger(numberOfBytes), pattern, locale);
     }
 
@@ -1189,8 +1196,8 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsExbibyte(@NonNull final BigInteger numberOfBytes, final String pattern,
-            final Locale locale) {
+    public static String formatAsExbibyte(@NonNull final BigInteger numberOfBytes, @NonNull final String pattern,
+            @NonNull final Locale locale) {
         return formatAsExbibyte(numberOfBytes, asFormat(pattern, locale));
     }
 
@@ -1202,7 +1209,7 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsExbibyte(@NonNull final Long numberOfBytes, final Format format) {
+    public static String formatAsExbibyte(@NonNull final Long numberOfBytes, @NonNull final Format format) {
         return formatAsExbibyte(numberOfBytes.longValue(), format);
     }
 
@@ -1214,7 +1221,7 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsExbibyte(final long numberOfBytes, final Format format) {
+    public static String formatAsExbibyte(final long numberOfBytes, @NonNull final Format format) {
         return formatAsExbibyte(asBigInteger(numberOfBytes), format);
     }
 
@@ -1226,7 +1233,7 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsExbibyte(@NonNull final BigInteger numberOfBytes, final Format format) {
+    public static String formatAsExbibyte(@NonNull final BigInteger numberOfBytes, @NonNull final Format format) {
         return Exbibyte.valueOf(numberOfBytes).toString(format);
     }
 
@@ -1268,7 +1275,7 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsZebibyte(@NonNull final Long numberOfBytes, final String pattern) {
+    public static String formatAsZebibyte(@NonNull final Long numberOfBytes, @NonNull final String pattern) {
         return formatAsZebibyte(numberOfBytes.longValue(), pattern);
     }
 
@@ -1280,7 +1287,7 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsZebibyte(final long numberOfBytes, final String pattern) {
+    public static String formatAsZebibyte(final long numberOfBytes, @NonNull final String pattern) {
         return formatAsZebibyte(asBigInteger(numberOfBytes), pattern);
     }
 
@@ -1292,7 +1299,7 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsZebibyte(@NonNull final BigInteger numberOfBytes, final String pattern) {
+    public static String formatAsZebibyte(@NonNull final BigInteger numberOfBytes, @NonNull final String pattern) {
         return formatAsZebibyte(numberOfBytes, new DecimalFormat(pattern));
     }
 
@@ -1306,8 +1313,8 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsZebibyte(@NonNull final Long numberOfBytes, final String pattern,
-            final Locale locale) {
+    public static String formatAsZebibyte(@NonNull final Long numberOfBytes, @NonNull final String pattern,
+            @NonNull final Locale locale) {
         return formatAsZebibyte(numberOfBytes.longValue(), pattern, locale);
     }
 
@@ -1321,7 +1328,8 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsZebibyte(final long numberOfBytes, final String pattern, final Locale locale) {
+    public static String formatAsZebibyte(final long numberOfBytes, @NonNull final String pattern,
+            @NonNull final Locale locale) {
         return formatAsZebibyte(asBigInteger(numberOfBytes), pattern, locale);
     }
 
@@ -1335,8 +1343,8 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsZebibyte(@NonNull final BigInteger numberOfBytes, final String pattern,
-            final Locale locale) {
+    public static String formatAsZebibyte(@NonNull final BigInteger numberOfBytes, @NonNull final String pattern,
+            @NonNull final Locale locale) {
         return formatAsZebibyte(numberOfBytes, asFormat(pattern, locale));
     }
 
@@ -1348,7 +1356,7 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsZebibyte(@NonNull final Long numberOfBytes, final Format format) {
+    public static String formatAsZebibyte(@NonNull final Long numberOfBytes, @NonNull final Format format) {
         return formatAsZebibyte(numberOfBytes.longValue(), format);
     }
 
@@ -1360,7 +1368,7 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsZebibyte(final long numberOfBytes, final Format format) {
+    public static String formatAsZebibyte(final long numberOfBytes, @NonNull final Format format) {
         return formatAsZebibyte(asBigInteger(numberOfBytes), format);
     }
 
@@ -1372,7 +1380,7 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsZebibyte(@NonNull final BigInteger numberOfBytes, final Format format) {
+    public static String formatAsZebibyte(@NonNull final BigInteger numberOfBytes, @NonNull final Format format) {
         return Zebibyte.valueOf(numberOfBytes).toString(format);
     }
 
@@ -1414,7 +1422,7 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsYobibyte(@NonNull final Long numberOfBytes, final String pattern) {
+    public static String formatAsYobibyte(@NonNull final Long numberOfBytes, @NonNull final String pattern) {
         return formatAsYobibyte(numberOfBytes.longValue(), pattern);
     }
 
@@ -1426,7 +1434,7 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsYobibyte(final long numberOfBytes, final String pattern) {
+    public static String formatAsYobibyte(final long numberOfBytes, @NonNull final String pattern) {
         return formatAsYobibyte(asBigInteger(numberOfBytes), pattern);
     }
 
@@ -1438,7 +1446,7 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsYobibyte(@NonNull final BigInteger numberOfBytes, final String pattern) {
+    public static String formatAsYobibyte(@NonNull final BigInteger numberOfBytes, @NonNull final String pattern) {
         return formatAsYobibyte(numberOfBytes, new DecimalFormat(pattern));
     }
 
@@ -1452,8 +1460,8 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsYobibyte(@NonNull final Long numberOfBytes, final String pattern,
-            final Locale locale) {
+    public static String formatAsYobibyte(@NonNull final Long numberOfBytes, @NonNull final String pattern,
+            @NonNull final Locale locale) {
         return formatAsYobibyte(numberOfBytes.longValue(), pattern, locale);
     }
 
@@ -1467,7 +1475,8 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsYobibyte(final long numberOfBytes, final String pattern, final Locale locale) {
+    public static String formatAsYobibyte(final long numberOfBytes, @NonNull final String pattern,
+            @NonNull final Locale locale) {
         return formatAsYobibyte(asBigInteger(numberOfBytes), pattern, locale);
     }
 
@@ -1481,8 +1490,8 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsYobibyte(@NonNull final BigInteger numberOfBytes, final String pattern,
-            final Locale locale) {
+    public static String formatAsYobibyte(@NonNull final BigInteger numberOfBytes, @NonNull final String pattern,
+            @NonNull final Locale locale) {
         return formatAsYobibyte(numberOfBytes, asFormat(pattern, locale));
     }
 
@@ -1494,7 +1503,7 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsYobibyte(@NonNull final Long numberOfBytes, final Format format) {
+    public static String formatAsYobibyte(@NonNull final Long numberOfBytes, @NonNull final Format format) {
         return formatAsYobibyte(numberOfBytes.longValue(), format);
     }
 
@@ -1506,7 +1515,7 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsYobibyte(final long numberOfBytes, final Format format) {
+    public static String formatAsYobibyte(final long numberOfBytes, @NonNull final Format format) {
         return formatAsYobibyte(asBigInteger(numberOfBytes), format);
     }
 
@@ -1518,7 +1527,7 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsYobibyte(@NonNull final BigInteger numberOfBytes, final Format format) {
+    public static String formatAsYobibyte(@NonNull final BigInteger numberOfBytes, @NonNull final Format format) {
         return Yobibyte.valueOf(numberOfBytes).toString(format);
     }
 
@@ -1560,7 +1569,7 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsMetricUnit(@NonNull final Long numberOfBytes, final String pattern) {
+    public static String formatAsMetricUnit(@NonNull final Long numberOfBytes, @NonNull final String pattern) {
         return formatAsMetricUnit(numberOfBytes.longValue(), pattern);
     }
 
@@ -1572,7 +1581,7 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsMetricUnit(final long numberOfBytes, final String pattern) {
+    public static String formatAsMetricUnit(final long numberOfBytes, @NonNull final String pattern) {
         return formatAsMetricUnit(asBigInteger(numberOfBytes), pattern);
     }
 
@@ -1584,7 +1593,7 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsMetricUnit(@NonNull final BigInteger numberOfBytes, final String pattern) {
+    public static String formatAsMetricUnit(@NonNull final BigInteger numberOfBytes, @NonNull final String pattern) {
         return formatAsMetricUnit(numberOfBytes, new DecimalFormat(pattern));
     }
 
@@ -1598,8 +1607,8 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsMetricUnit(@NonNull final Long numberOfBytes, final String pattern,
-            final Locale locale) {
+    public static String formatAsMetricUnit(@NonNull final Long numberOfBytes, @NonNull final String pattern,
+            @NonNull final Locale locale) {
         return formatAsMetricUnit(numberOfBytes.longValue(), pattern, locale);
     }
 
@@ -1613,7 +1622,8 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsMetricUnit(final long numberOfBytes, final String pattern, final Locale locale) {
+    public static String formatAsMetricUnit(final long numberOfBytes, @NonNull final String pattern,
+            @NonNull final Locale locale) {
         return formatAsMetricUnit(asBigInteger(numberOfBytes), pattern, locale);
     }
 
@@ -1627,8 +1637,8 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsMetricUnit(@NonNull final BigInteger numberOfBytes, final String pattern,
-            final Locale locale) {
+    public static String formatAsMetricUnit(@NonNull final BigInteger numberOfBytes, @NonNull final String pattern,
+            @NonNull final Locale locale) {
         return formatAsMetricUnit(numberOfBytes, asFormat(pattern, locale));
     }
 
@@ -1640,7 +1650,7 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsMetricUnit(@NonNull final Long numberOfBytes, final Format format) {
+    public static String formatAsMetricUnit(@NonNull final Long numberOfBytes, @NonNull final Format format) {
         return formatAsMetricUnit(numberOfBytes.longValue(), format);
     }
 
@@ -1652,7 +1662,7 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsMetricUnit(final long numberOfBytes, final Format format) {
+    public static String formatAsMetricUnit(final long numberOfBytes, @NonNull final Format format) {
         return formatAsMetricUnit(asBigInteger(numberOfBytes), format);
     }
 
@@ -1664,7 +1674,7 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsMetricUnit(@NonNull final BigInteger numberOfBytes, final Format format) {
+    public static String formatAsMetricUnit(@NonNull final BigInteger numberOfBytes, @NonNull final Format format) {
         return metricValueOf(numberOfBytes).toString(format);
     }
 
@@ -1706,7 +1716,7 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsKilobyte(@NonNull final Long numberOfBytes, final String pattern) {
+    public static String formatAsKilobyte(@NonNull final Long numberOfBytes, @NonNull final String pattern) {
         return formatAsKilobyte(numberOfBytes.longValue(), pattern);
     }
 
@@ -1718,7 +1728,7 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsKilobyte(final long numberOfBytes, final String pattern) {
+    public static String formatAsKilobyte(final long numberOfBytes, @NonNull final String pattern) {
         return formatAsKilobyte(asBigInteger(numberOfBytes), pattern);
     }
 
@@ -1730,7 +1740,7 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsKilobyte(@NonNull final BigInteger numberOfBytes, final String pattern) {
+    public static String formatAsKilobyte(@NonNull final BigInteger numberOfBytes, @NonNull final String pattern) {
         return formatAsKilobyte(numberOfBytes, new DecimalFormat(pattern));
     }
 
@@ -1744,8 +1754,8 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsKilobyte(@NonNull final Long numberOfBytes, final String pattern,
-            final Locale locale) {
+    public static String formatAsKilobyte(@NonNull final Long numberOfBytes, @NonNull final String pattern,
+            @NonNull final Locale locale) {
         return formatAsKilobyte(numberOfBytes.longValue(), pattern, locale);
     }
 
@@ -1759,7 +1769,8 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsKilobyte(final long numberOfBytes, final String pattern, final Locale locale) {
+    public static String formatAsKilobyte(final long numberOfBytes, @NonNull final String pattern,
+            @NonNull final Locale locale) {
         return formatAsKilobyte(asBigInteger(numberOfBytes), pattern, locale);
     }
 
@@ -1773,8 +1784,8 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsKilobyte(@NonNull final BigInteger numberOfBytes, final String pattern,
-            final Locale locale) {
+    public static String formatAsKilobyte(@NonNull final BigInteger numberOfBytes, @NonNull final String pattern,
+            @NonNull final Locale locale) {
         return formatAsKilobyte(numberOfBytes, asFormat(pattern, locale));
     }
 
@@ -1786,7 +1797,7 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsKilobyte(@NonNull final Long numberOfBytes, final Format format) {
+    public static String formatAsKilobyte(@NonNull final Long numberOfBytes, @NonNull final Format format) {
         return formatAsKilobyte(numberOfBytes.longValue(), format);
     }
 
@@ -1798,7 +1809,7 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsKilobyte(final long numberOfBytes, final Format format) {
+    public static String formatAsKilobyte(final long numberOfBytes, @NonNull final Format format) {
         return formatAsKilobyte(asBigInteger(numberOfBytes), format);
     }
 
@@ -1810,7 +1821,7 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsKilobyte(@NonNull final BigInteger numberOfBytes, final Format format) {
+    public static String formatAsKilobyte(@NonNull final BigInteger numberOfBytes, @NonNull final Format format) {
         return Kilobyte.valueOf(numberOfBytes).toString(format);
     }
 
@@ -1852,7 +1863,7 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsMegabyte(@NonNull final Long numberOfBytes, final String pattern) {
+    public static String formatAsMegabyte(@NonNull final Long numberOfBytes, @NonNull final String pattern) {
         return formatAsMegabyte(numberOfBytes.longValue(), pattern);
     }
 
@@ -1864,7 +1875,7 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsMegabyte(final long numberOfBytes, final String pattern) {
+    public static String formatAsMegabyte(final long numberOfBytes, @NonNull final String pattern) {
         return formatAsMegabyte(asBigInteger(numberOfBytes), pattern);
     }
 
@@ -1876,7 +1887,7 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsMegabyte(@NonNull final BigInteger numberOfBytes, final String pattern) {
+    public static String formatAsMegabyte(@NonNull final BigInteger numberOfBytes, @NonNull final String pattern) {
         return formatAsMegabyte(numberOfBytes, new DecimalFormat(pattern));
     }
 
@@ -1890,8 +1901,8 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsMegabyte(@NonNull final Long numberOfBytes, final String pattern,
-            final Locale locale) {
+    public static String formatAsMegabyte(@NonNull final Long numberOfBytes, @NonNull final String pattern,
+            @NonNull final Locale locale) {
         return formatAsMegabyte(numberOfBytes.longValue(), pattern, locale);
     }
 
@@ -1905,7 +1916,8 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsMegabyte(final long numberOfBytes, final String pattern, final Locale locale) {
+    public static String formatAsMegabyte(final long numberOfBytes, @NonNull final String pattern,
+            @NonNull final Locale locale) {
         return formatAsMegabyte(asBigInteger(numberOfBytes), pattern, locale);
     }
 
@@ -1919,8 +1931,8 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsMegabyte(@NonNull final BigInteger numberOfBytes, final String pattern,
-            final Locale locale) {
+    public static String formatAsMegabyte(@NonNull final BigInteger numberOfBytes, @NonNull final String pattern,
+            @NonNull final Locale locale) {
         return formatAsMegabyte(numberOfBytes, asFormat(pattern, locale));
     }
 
@@ -1932,7 +1944,7 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsMegabyte(@NonNull final Long numberOfBytes, final Format format) {
+    public static String formatAsMegabyte(@NonNull final Long numberOfBytes, @NonNull final Format format) {
         return formatAsMegabyte(numberOfBytes.longValue(), format);
     }
 
@@ -1944,7 +1956,7 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsMegabyte(final long numberOfBytes, final Format format) {
+    public static String formatAsMegabyte(final long numberOfBytes, @NonNull final Format format) {
         return formatAsMegabyte(asBigInteger(numberOfBytes), format);
     }
 
@@ -1956,7 +1968,7 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsMegabyte(@NonNull final BigInteger numberOfBytes, final Format format) {
+    public static String formatAsMegabyte(@NonNull final BigInteger numberOfBytes, @NonNull final Format format) {
         return Megabyte.valueOf(numberOfBytes).toString(format);
     }
 
@@ -1998,7 +2010,7 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsGigabyte(@NonNull final Long numberOfBytes, final String pattern) {
+    public static String formatAsGigabyte(@NonNull final Long numberOfBytes, @NonNull final String pattern) {
         return formatAsGigabyte(numberOfBytes.longValue(), pattern);
     }
 
@@ -2010,7 +2022,7 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsGigabyte(final long numberOfBytes, final String pattern) {
+    public static String formatAsGigabyte(final long numberOfBytes, @NonNull final String pattern) {
         return formatAsGigabyte(asBigInteger(numberOfBytes), pattern);
     }
 
@@ -2022,7 +2034,7 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsGigabyte(@NonNull final BigInteger numberOfBytes, final String pattern) {
+    public static String formatAsGigabyte(@NonNull final BigInteger numberOfBytes, @NonNull final String pattern) {
         return formatAsGigabyte(numberOfBytes, new DecimalFormat(pattern));
     }
 
@@ -2036,8 +2048,8 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsGigabyte(@NonNull final Long numberOfBytes, final String pattern,
-            final Locale locale) {
+    public static String formatAsGigabyte(@NonNull final Long numberOfBytes, @NonNull final String pattern,
+            @NonNull final Locale locale) {
         return formatAsGigabyte(numberOfBytes.longValue(), pattern, locale);
     }
 
@@ -2051,7 +2063,8 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsGigabyte(final long numberOfBytes, final String pattern, final Locale locale) {
+    public static String formatAsGigabyte(final long numberOfBytes, @NonNull final String pattern,
+            @NonNull final Locale locale) {
         return formatAsGigabyte(asBigInteger(numberOfBytes), pattern, locale);
     }
 
@@ -2065,8 +2078,8 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsGigabyte(@NonNull final BigInteger numberOfBytes, final String pattern,
-            final Locale locale) {
+    public static String formatAsGigabyte(@NonNull final BigInteger numberOfBytes, @NonNull final String pattern,
+            @NonNull final Locale locale) {
         return formatAsGigabyte(numberOfBytes, asFormat(pattern, locale));
     }
 
@@ -2078,7 +2091,7 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsGigabyte(@NonNull final Long numberOfBytes, final Format format) {
+    public static String formatAsGigabyte(@NonNull final Long numberOfBytes, @NonNull final Format format) {
         return formatAsGigabyte(numberOfBytes.longValue(), format);
     }
 
@@ -2090,7 +2103,7 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsGigabyte(final long numberOfBytes, final Format format) {
+    public static String formatAsGigabyte(final long numberOfBytes, @NonNull final Format format) {
         return formatAsGigabyte(asBigInteger(numberOfBytes), format);
     }
 
@@ -2102,7 +2115,7 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsGigabyte(@NonNull final BigInteger numberOfBytes, final Format format) {
+    public static String formatAsGigabyte(@NonNull final BigInteger numberOfBytes, @NonNull final Format format) {
         return Gigabyte.valueOf(numberOfBytes).toString(format);
     }
 
@@ -2144,7 +2157,7 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsTerabyte(@NonNull final Long numberOfBytes, final String pattern) {
+    public static String formatAsTerabyte(@NonNull final Long numberOfBytes, @NonNull final String pattern) {
         return formatAsTerabyte(numberOfBytes.longValue(), pattern);
     }
 
@@ -2156,7 +2169,7 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsTerabyte(final long numberOfBytes, final String pattern) {
+    public static String formatAsTerabyte(final long numberOfBytes, @NonNull final String pattern) {
         return formatAsTerabyte(asBigInteger(numberOfBytes), pattern);
     }
 
@@ -2168,7 +2181,7 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsTerabyte(@NonNull final BigInteger numberOfBytes, final String pattern) {
+    public static String formatAsTerabyte(@NonNull final BigInteger numberOfBytes, @NonNull final String pattern) {
         return formatAsTerabyte(numberOfBytes, new DecimalFormat(pattern));
     }
 
@@ -2182,8 +2195,8 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsTerabyte(@NonNull final Long numberOfBytes, final String pattern,
-            final Locale locale) {
+    public static String formatAsTerabyte(@NonNull final Long numberOfBytes, @NonNull final String pattern,
+            @NonNull final Locale locale) {
         return formatAsTerabyte(numberOfBytes.longValue(), pattern, locale);
     }
 
@@ -2197,7 +2210,8 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsTerabyte(final long numberOfBytes, final String pattern, final Locale locale) {
+    public static String formatAsTerabyte(final long numberOfBytes, @NonNull final String pattern,
+            @NonNull final Locale locale) {
         return formatAsTerabyte(asBigInteger(numberOfBytes), pattern, locale);
     }
 
@@ -2211,8 +2225,8 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsTerabyte(@NonNull final BigInteger numberOfBytes, final String pattern,
-            final Locale locale) {
+    public static String formatAsTerabyte(@NonNull final BigInteger numberOfBytes, @NonNull final String pattern,
+            @NonNull final Locale locale) {
         return formatAsTerabyte(numberOfBytes, asFormat(pattern, locale));
     }
 
@@ -2224,7 +2238,7 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsTerabyte(@NonNull final Long numberOfBytes, final Format format) {
+    public static String formatAsTerabyte(@NonNull final Long numberOfBytes, @NonNull final Format format) {
         return formatAsTerabyte(numberOfBytes.longValue(), format);
     }
 
@@ -2236,7 +2250,7 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsTerabyte(final long numberOfBytes, final Format format) {
+    public static String formatAsTerabyte(final long numberOfBytes, @NonNull final Format format) {
         return formatAsTerabyte(asBigInteger(numberOfBytes), format);
     }
 
@@ -2248,7 +2262,7 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsTerabyte(@NonNull final BigInteger numberOfBytes, final Format format) {
+    public static String formatAsTerabyte(@NonNull final BigInteger numberOfBytes, @NonNull final Format format) {
         return Terabyte.valueOf(numberOfBytes).toString(format);
     }
 
@@ -2290,7 +2304,7 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsPetabyte(@NonNull final Long numberOfBytes, final String pattern) {
+    public static String formatAsPetabyte(@NonNull final Long numberOfBytes, @NonNull final String pattern) {
         return formatAsPetabyte(numberOfBytes.longValue(), pattern);
     }
 
@@ -2302,7 +2316,7 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsPetabyte(final long numberOfBytes, final String pattern) {
+    public static String formatAsPetabyte(final long numberOfBytes, @NonNull final String pattern) {
         return formatAsPetabyte(asBigInteger(numberOfBytes), pattern);
     }
 
@@ -2314,7 +2328,7 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsPetabyte(@NonNull final BigInteger numberOfBytes, final String pattern) {
+    public static String formatAsPetabyte(@NonNull final BigInteger numberOfBytes, @NonNull final String pattern) {
         return formatAsPetabyte(numberOfBytes, new DecimalFormat(pattern));
     }
 
@@ -2328,8 +2342,8 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsPetabyte(@NonNull final Long numberOfBytes, final String pattern,
-            final Locale locale) {
+    public static String formatAsPetabyte(@NonNull final Long numberOfBytes, @NonNull final String pattern,
+            @NonNull final Locale locale) {
         return formatAsPetabyte(numberOfBytes.longValue(), pattern, locale);
     }
 
@@ -2343,7 +2357,8 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsPetabyte(final long numberOfBytes, final String pattern, final Locale locale) {
+    public static String formatAsPetabyte(final long numberOfBytes, @NonNull final String pattern,
+            @NonNull final Locale locale) {
         return formatAsPetabyte(asBigInteger(numberOfBytes), pattern, locale);
     }
 
@@ -2357,8 +2372,8 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsPetabyte(@NonNull final BigInteger numberOfBytes, final String pattern,
-            final Locale locale) {
+    public static String formatAsPetabyte(@NonNull final BigInteger numberOfBytes, @NonNull final String pattern,
+            @NonNull final Locale locale) {
         return formatAsPetabyte(numberOfBytes, asFormat(pattern, locale));
     }
 
@@ -2370,7 +2385,7 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsPetabyte(@NonNull final Long numberOfBytes, final Format format) {
+    public static String formatAsPetabyte(@NonNull final Long numberOfBytes, @NonNull final Format format) {
         return formatAsPetabyte(numberOfBytes.longValue(), format);
     }
 
@@ -2382,7 +2397,7 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsPetabyte(final long numberOfBytes, final Format format) {
+    public static String formatAsPetabyte(final long numberOfBytes, @NonNull final Format format) {
         return formatAsPetabyte(asBigInteger(numberOfBytes), format);
     }
 
@@ -2394,7 +2409,7 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsPetabyte(@NonNull final BigInteger numberOfBytes, final Format format) {
+    public static String formatAsPetabyte(@NonNull final BigInteger numberOfBytes, @NonNull final Format format) {
         return Petabyte.valueOf(numberOfBytes).toString(format);
     }
 
@@ -2436,7 +2451,7 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsExabyte(@NonNull final Long numberOfBytes, final String pattern) {
+    public static String formatAsExabyte(@NonNull final Long numberOfBytes, @NonNull final String pattern) {
         return formatAsExabyte(numberOfBytes.longValue(), pattern);
     }
 
@@ -2448,7 +2463,7 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsExabyte(final long numberOfBytes, final String pattern) {
+    public static String formatAsExabyte(final long numberOfBytes, @NonNull final String pattern) {
         return formatAsExabyte(asBigInteger(numberOfBytes), pattern);
     }
 
@@ -2460,7 +2475,7 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsExabyte(@NonNull final BigInteger numberOfBytes, final String pattern) {
+    public static String formatAsExabyte(@NonNull final BigInteger numberOfBytes, @NonNull final String pattern) {
         return formatAsExabyte(numberOfBytes, new DecimalFormat(pattern));
     }
 
@@ -2474,8 +2489,8 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsExabyte(@NonNull final Long numberOfBytes, final String pattern,
-            final Locale locale) {
+    public static String formatAsExabyte(@NonNull final Long numberOfBytes, @NonNull final String pattern,
+            @NonNull final Locale locale) {
         return formatAsExabyte(numberOfBytes.longValue(), pattern, locale);
     }
 
@@ -2489,7 +2504,8 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsExabyte(final long numberOfBytes, final String pattern, final Locale locale) {
+    public static String formatAsExabyte(final long numberOfBytes, @NonNull final String pattern,
+            @NonNull final Locale locale) {
         return formatAsExabyte(asBigInteger(numberOfBytes), pattern, locale);
     }
 
@@ -2503,8 +2519,8 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsExabyte(@NonNull final BigInteger numberOfBytes, final String pattern,
-            final Locale locale) {
+    public static String formatAsExabyte(@NonNull final BigInteger numberOfBytes, @NonNull final String pattern,
+            @NonNull final Locale locale) {
         return formatAsExabyte(numberOfBytes, asFormat(pattern, locale));
     }
 
@@ -2516,7 +2532,7 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsExabyte(@NonNull final Long numberOfBytes, final Format format) {
+    public static String formatAsExabyte(@NonNull final Long numberOfBytes, @NonNull final Format format) {
         return formatAsExabyte(numberOfBytes.longValue(), format);
     }
 
@@ -2528,7 +2544,7 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsExabyte(final long numberOfBytes, final Format format) {
+    public static String formatAsExabyte(final long numberOfBytes, @NonNull final Format format) {
         return formatAsExabyte(asBigInteger(numberOfBytes), format);
     }
 
@@ -2540,7 +2556,7 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsExabyte(@NonNull final BigInteger numberOfBytes, final Format format) {
+    public static String formatAsExabyte(@NonNull final BigInteger numberOfBytes, @NonNull final Format format) {
         return Exabyte.valueOf(numberOfBytes).toString(format);
     }
 
@@ -2582,7 +2598,7 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsZettabyte(@NonNull final Long numberOfBytes, final String pattern) {
+    public static String formatAsZettabyte(@NonNull final Long numberOfBytes, @NonNull final String pattern) {
         return formatAsZettabyte(numberOfBytes.longValue(), pattern);
     }
 
@@ -2594,7 +2610,7 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsZettabyte(final long numberOfBytes, final String pattern) {
+    public static String formatAsZettabyte(final long numberOfBytes, @NonNull final String pattern) {
         return formatAsZettabyte(asBigInteger(numberOfBytes), pattern);
     }
 
@@ -2606,7 +2622,7 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsZettabyte(@NonNull final BigInteger numberOfBytes, final String pattern) {
+    public static String formatAsZettabyte(@NonNull final BigInteger numberOfBytes, @NonNull final String pattern) {
         return formatAsZettabyte(numberOfBytes, new DecimalFormat(pattern));
     }
 
@@ -2620,8 +2636,8 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsZettabyte(@NonNull final Long numberOfBytes, final String pattern,
-            final Locale locale) {
+    public static String formatAsZettabyte(@NonNull final Long numberOfBytes, @NonNull final String pattern,
+            @NonNull final Locale locale) {
         return formatAsZettabyte(numberOfBytes.longValue(), pattern, locale);
     }
 
@@ -2635,7 +2651,8 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsZettabyte(final long numberOfBytes, final String pattern, final Locale locale) {
+    public static String formatAsZettabyte(final long numberOfBytes, @NonNull final String pattern,
+            @NonNull final Locale locale) {
         return formatAsZettabyte(asBigInteger(numberOfBytes), pattern, locale);
     }
 
@@ -2649,8 +2666,8 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsZettabyte(@NonNull final BigInteger numberOfBytes, final String pattern,
-            final Locale locale) {
+    public static String formatAsZettabyte(@NonNull final BigInteger numberOfBytes, @NonNull final String pattern,
+            @NonNull final Locale locale) {
         return formatAsZettabyte(numberOfBytes, asFormat(pattern, locale));
     }
 
@@ -2662,7 +2679,7 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsZettabyte(@NonNull final Long numberOfBytes, final Format format) {
+    public static String formatAsZettabyte(@NonNull final Long numberOfBytes, @NonNull final Format format) {
         return formatAsZettabyte(numberOfBytes.longValue(), format);
     }
 
@@ -2674,7 +2691,7 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsZettabyte(final long numberOfBytes, final Format format) {
+    public static String formatAsZettabyte(final long numberOfBytes, @NonNull final Format format) {
         return formatAsZettabyte(asBigInteger(numberOfBytes), format);
     }
 
@@ -2686,7 +2703,7 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsZettabyte(@NonNull final BigInteger numberOfBytes, final Format format) {
+    public static String formatAsZettabyte(@NonNull final BigInteger numberOfBytes, @NonNull final Format format) {
         return Zettabyte.valueOf(numberOfBytes).toString(format);
     }
 
@@ -2728,7 +2745,7 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsYottabyte(@NonNull final Long numberOfBytes, final String pattern) {
+    public static String formatAsYottabyte(@NonNull final Long numberOfBytes, @NonNull final String pattern) {
         return formatAsYottabyte(numberOfBytes.longValue(), pattern);
     }
 
@@ -2740,7 +2757,7 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsYottabyte(final long numberOfBytes, final String pattern) {
+    public static String formatAsYottabyte(final long numberOfBytes, @NonNull final String pattern) {
         return formatAsYottabyte(asBigInteger(numberOfBytes), pattern);
     }
 
@@ -2754,8 +2771,8 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsYottabyte(@NonNull final BigInteger numberOfBytes, final String pattern,
-            final Locale locale) {
+    public static String formatAsYottabyte(@NonNull final BigInteger numberOfBytes, @NonNull final String pattern,
+            @NonNull final Locale locale) {
         return formatAsYottabyte(numberOfBytes, asFormat(pattern, locale));
     }
 
@@ -2769,8 +2786,8 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsYottabyte(@NonNull final Long numberOfBytes, final String pattern,
-            final Locale locale) {
+    public static String formatAsYottabyte(@NonNull final Long numberOfBytes, @NonNull final String pattern,
+            @NonNull final Locale locale) {
         return formatAsYottabyte(numberOfBytes.longValue(), pattern, locale);
     }
 
@@ -2784,7 +2801,8 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsYottabyte(final long numberOfBytes, final String pattern, final Locale locale) {
+    public static String formatAsYottabyte(final long numberOfBytes, @NonNull final String pattern,
+            @NonNull final Locale locale) {
         return formatAsYottabyte(asBigInteger(numberOfBytes), pattern, locale);
     }
 
@@ -2796,7 +2814,7 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsYottabyte(@NonNull final BigInteger numberOfBytes, final String pattern) {
+    public static String formatAsYottabyte(@NonNull final BigInteger numberOfBytes, @NonNull final String pattern) {
         return formatAsYottabyte(numberOfBytes, new DecimalFormat(pattern));
     }
 
@@ -2808,7 +2826,7 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsYottabyte(@NonNull final Long numberOfBytes, final Format format) {
+    public static String formatAsYottabyte(@NonNull final Long numberOfBytes, @NonNull final Format format) {
         return formatAsYottabyte(numberOfBytes.longValue(), format);
     }
 
@@ -2820,7 +2838,7 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsYottabyte(final long numberOfBytes, final Format format) {
+    public static String formatAsYottabyte(final long numberOfBytes, @NonNull final Format format) {
         return formatAsYottabyte(asBigInteger(numberOfBytes), format);
     }
 
@@ -2832,7 +2850,7 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsYottabyte(@NonNull final BigInteger numberOfBytes, final Format format) {
+    public static String formatAsYottabyte(@NonNull final BigInteger numberOfBytes, @NonNull final Format format) {
         return Yottabyte.valueOf(numberOfBytes).toString(format);
     }
 
@@ -2874,7 +2892,7 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsCommonUnit(@NonNull final Long numberOfBytes, final String pattern) {
+    public static String formatAsCommonUnit(@NonNull final Long numberOfBytes, @NonNull final String pattern) {
         return formatAsCommonUnit(numberOfBytes.longValue(), pattern);
     }
 
@@ -2886,7 +2904,7 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsCommonUnit(final long numberOfBytes, final String pattern) {
+    public static String formatAsCommonUnit(final long numberOfBytes, @NonNull final String pattern) {
         return formatAsCommonUnit(asBigInteger(numberOfBytes), pattern);
     }
 
@@ -2898,7 +2916,7 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsCommonUnit(@NonNull final BigInteger numberOfBytes, final String pattern) {
+    public static String formatAsCommonUnit(@NonNull final BigInteger numberOfBytes, @NonNull final String pattern) {
         return formatAsCommonUnit(numberOfBytes, new DecimalFormat(pattern));
     }
 
@@ -2912,8 +2930,8 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsCommonUnit(@NonNull final Long numberOfBytes, final String pattern,
-            final Locale locale) {
+    public static String formatAsCommonUnit(@NonNull final Long numberOfBytes, @NonNull final String pattern,
+            @NonNull final Locale locale) {
         return formatAsCommonUnit(numberOfBytes.longValue(), pattern, locale);
     }
 
@@ -2927,7 +2945,8 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsCommonUnit(final long numberOfBytes, final String pattern, final Locale locale) {
+    public static String formatAsCommonUnit(final long numberOfBytes, @NonNull final String pattern,
+            @NonNull final Locale locale) {
         return formatAsCommonUnit(asBigInteger(numberOfBytes), pattern, locale);
     }
 
@@ -2941,8 +2960,8 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsCommonUnit(@NonNull final BigInteger numberOfBytes, final String pattern,
-            final Locale locale) {
+    public static String formatAsCommonUnit(@NonNull final BigInteger numberOfBytes, @NonNull final String pattern,
+            @NonNull final Locale locale) {
         return formatAsCommonUnit(numberOfBytes, asFormat(pattern, locale));
     }
 
@@ -2954,7 +2973,7 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsCommonUnit(@NonNull final Long numberOfBytes, final Format format) {
+    public static String formatAsCommonUnit(@NonNull final Long numberOfBytes, @NonNull final Format format) {
         return formatAsCommonUnit(numberOfBytes.longValue(), format);
     }
 
@@ -2966,7 +2985,7 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsCommonUnit(final long numberOfBytes, final Format format) {
+    public static String formatAsCommonUnit(final long numberOfBytes, @NonNull final Format format) {
         return formatAsCommonUnit(asBigInteger(numberOfBytes), format);
     }
 
@@ -2978,7 +2997,7 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsCommonUnit(@NonNull final BigInteger numberOfBytes, final Format format) {
+    public static String formatAsCommonUnit(@NonNull final BigInteger numberOfBytes, @NonNull final Format format) {
         return commonValueOf(numberOfBytes).toString(format);
     }
 
@@ -3020,7 +3039,7 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsCommonKilobyte(@NonNull final Long numberOfBytes, final String pattern) {
+    public static String formatAsCommonKilobyte(@NonNull final Long numberOfBytes, @NonNull final String pattern) {
         return formatAsCommonKilobyte(numberOfBytes.longValue(), pattern);
     }
 
@@ -3032,7 +3051,7 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsCommonKilobyte(final long numberOfBytes, final String pattern) {
+    public static String formatAsCommonKilobyte(final long numberOfBytes, @NonNull final String pattern) {
         return formatAsCommonKilobyte(asBigInteger(numberOfBytes), pattern);
     }
 
@@ -3044,7 +3063,8 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsCommonKilobyte(@NonNull final BigInteger numberOfBytes, final String pattern) {
+    public static String formatAsCommonKilobyte(@NonNull final BigInteger numberOfBytes,
+            @NonNull final String pattern) {
         return formatAsCommonKilobyte(numberOfBytes, new DecimalFormat(pattern));
     }
 
@@ -3058,8 +3078,8 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsCommonKilobyte(@NonNull final Long numberOfBytes, final String pattern,
-            final Locale locale) {
+    public static String formatAsCommonKilobyte(@NonNull final Long numberOfBytes, @NonNull final String pattern,
+            @NonNull final Locale locale) {
         return formatAsCommonKilobyte(numberOfBytes.longValue(), pattern, locale);
     }
 
@@ -3073,7 +3093,8 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsCommonKilobyte(final long numberOfBytes, final String pattern, final Locale locale) {
+    public static String formatAsCommonKilobyte(final long numberOfBytes, @NonNull final String pattern,
+            @NonNull final Locale locale) {
         return formatAsCommonKilobyte(asBigInteger(numberOfBytes), pattern, locale);
     }
 
@@ -3087,8 +3108,8 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsCommonKilobyte(@NonNull final BigInteger numberOfBytes, final String pattern,
-            final Locale locale) {
+    public static String formatAsCommonKilobyte(@NonNull final BigInteger numberOfBytes, @NonNull final String pattern,
+            @NonNull final Locale locale) {
         return formatAsCommonKilobyte(numberOfBytes, asFormat(pattern, locale));
     }
 
@@ -3100,7 +3121,7 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsCommonKilobyte(@NonNull final Long numberOfBytes, final Format format) {
+    public static String formatAsCommonKilobyte(@NonNull final Long numberOfBytes, @NonNull final Format format) {
         return formatAsCommonKilobyte(numberOfBytes.longValue(), format);
     }
 
@@ -3112,7 +3133,7 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsCommonKilobyte(final long numberOfBytes, final Format format) {
+    public static String formatAsCommonKilobyte(final long numberOfBytes, @NonNull final Format format) {
         return formatAsCommonKilobyte(asBigInteger(numberOfBytes), format);
     }
 
@@ -3124,7 +3145,7 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsCommonKilobyte(@NonNull final BigInteger numberOfBytes, final Format format) {
+    public static String formatAsCommonKilobyte(@NonNull final BigInteger numberOfBytes, @NonNull final Format format) {
         return CommonKilobyte.valueOf(numberOfBytes).toString(format);
     }
 
@@ -3166,7 +3187,7 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsCommonMegabyte(@NonNull final Long numberOfBytes, final String pattern) {
+    public static String formatAsCommonMegabyte(@NonNull final Long numberOfBytes, @NonNull final String pattern) {
         return formatAsCommonMegabyte(numberOfBytes.longValue(), pattern);
     }
 
@@ -3178,7 +3199,7 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsCommonMegabyte(final long numberOfBytes, final String pattern) {
+    public static String formatAsCommonMegabyte(final long numberOfBytes, @NonNull final String pattern) {
         return formatAsCommonMegabyte(asBigInteger(numberOfBytes), pattern);
     }
 
@@ -3190,7 +3211,8 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsCommonMegabyte(@NonNull final BigInteger numberOfBytes, final String pattern) {
+    public static String formatAsCommonMegabyte(@NonNull final BigInteger numberOfBytes,
+            @NonNull final String pattern) {
         return formatAsCommonMegabyte(numberOfBytes, new DecimalFormat(pattern));
     }
 
@@ -3204,8 +3226,8 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsCommonMegabyte(@NonNull final Long numberOfBytes, final String pattern,
-            final Locale locale) {
+    public static String formatAsCommonMegabyte(@NonNull final Long numberOfBytes, @NonNull final String pattern,
+            @NonNull final Locale locale) {
         return formatAsCommonMegabyte(numberOfBytes.longValue(), pattern, locale);
     }
 
@@ -3219,7 +3241,8 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsCommonMegabyte(final long numberOfBytes, final String pattern, final Locale locale) {
+    public static String formatAsCommonMegabyte(final long numberOfBytes, @NonNull final String pattern,
+            @NonNull final Locale locale) {
         return formatAsCommonMegabyte(asBigInteger(numberOfBytes), pattern, locale);
     }
 
@@ -3233,8 +3256,8 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsCommonMegabyte(@NonNull final BigInteger numberOfBytes, final String pattern,
-            final Locale locale) {
+    public static String formatAsCommonMegabyte(@NonNull final BigInteger numberOfBytes, @NonNull final String pattern,
+            @NonNull final Locale locale) {
         return formatAsCommonMegabyte(numberOfBytes, asFormat(pattern, locale));
     }
 
@@ -3246,7 +3269,7 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsCommonMegabyte(@NonNull final Long numberOfBytes, final Format format) {
+    public static String formatAsCommonMegabyte(@NonNull final Long numberOfBytes, @NonNull final Format format) {
         return formatAsCommonMegabyte(numberOfBytes.longValue(), format);
     }
 
@@ -3258,7 +3281,7 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsCommonMegabyte(final long numberOfBytes, final Format format) {
+    public static String formatAsCommonMegabyte(final long numberOfBytes, @NonNull final Format format) {
         return formatAsCommonMegabyte(asBigInteger(numberOfBytes), format);
     }
 
@@ -3270,7 +3293,7 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsCommonMegabyte(@NonNull final BigInteger numberOfBytes, final Format format) {
+    public static String formatAsCommonMegabyte(@NonNull final BigInteger numberOfBytes, @NonNull final Format format) {
         return CommonMegabyte.valueOf(numberOfBytes).toString(format);
     }
 
@@ -3312,7 +3335,7 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsCommonGigabyte(@NonNull final Long numberOfBytes, final String pattern) {
+    public static String formatAsCommonGigabyte(@NonNull final Long numberOfBytes, @NonNull final String pattern) {
         return formatAsCommonGigabyte(numberOfBytes.longValue(), pattern);
     }
 
@@ -3324,7 +3347,7 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsCommonGigabyte(final long numberOfBytes, final String pattern) {
+    public static String formatAsCommonGigabyte(final long numberOfBytes, @NonNull final String pattern) {
         return formatAsCommonGigabyte(asBigInteger(numberOfBytes), pattern);
     }
 
@@ -3336,7 +3359,8 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsCommonGigabyte(@NonNull final BigInteger numberOfBytes, final String pattern) {
+    public static String formatAsCommonGigabyte(@NonNull final BigInteger numberOfBytes,
+            @NonNull final String pattern) {
         return formatAsCommonGigabyte(numberOfBytes, new DecimalFormat(pattern));
     }
 
@@ -3350,8 +3374,8 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsCommonGigabyte(@NonNull final Long numberOfBytes, final String pattern,
-            final Locale locale) {
+    public static String formatAsCommonGigabyte(@NonNull final Long numberOfBytes, @NonNull final String pattern,
+            @NonNull final Locale locale) {
         return formatAsCommonGigabyte(numberOfBytes.longValue(), pattern, locale);
     }
 
@@ -3365,7 +3389,8 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsCommonGigabyte(final long numberOfBytes, final String pattern, final Locale locale) {
+    public static String formatAsCommonGigabyte(final long numberOfBytes, @NonNull final String pattern,
+            @NonNull final Locale locale) {
         return formatAsCommonGigabyte(asBigInteger(numberOfBytes), pattern, locale);
     }
 
@@ -3379,8 +3404,8 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsCommonGigabyte(@NonNull final BigInteger numberOfBytes, final String pattern,
-            final Locale locale) {
+    public static String formatAsCommonGigabyte(@NonNull final BigInteger numberOfBytes, @NonNull final String pattern,
+            @NonNull final Locale locale) {
         return formatAsCommonGigabyte(numberOfBytes, asFormat(pattern, locale));
     }
 
@@ -3392,7 +3417,7 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsCommonGigabyte(@NonNull final Long numberOfBytes, final Format format) {
+    public static String formatAsCommonGigabyte(@NonNull final Long numberOfBytes, @NonNull final Format format) {
         return formatAsCommonGigabyte(numberOfBytes.longValue(), format);
     }
 
@@ -3404,7 +3429,7 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsCommonGigabyte(final long numberOfBytes, final Format format) {
+    public static String formatAsCommonGigabyte(final long numberOfBytes, @NonNull final Format format) {
         return formatAsCommonGigabyte(asBigInteger(numberOfBytes), format);
     }
 
@@ -3416,7 +3441,7 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsCommonGigabyte(@NonNull final BigInteger numberOfBytes, final Format format) {
+    public static String formatAsCommonGigabyte(@NonNull final BigInteger numberOfBytes, @NonNull final Format format) {
         return CommonGigabyte.valueOf(numberOfBytes).toString(format);
     }
 
@@ -3458,7 +3483,7 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsCommonTerabyte(@NonNull final Long numberOfBytes, final String pattern) {
+    public static String formatAsCommonTerabyte(@NonNull final Long numberOfBytes, @NonNull final String pattern) {
         return formatAsCommonTerabyte(numberOfBytes.longValue(), pattern);
     }
 
@@ -3470,7 +3495,7 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsCommonTerabyte(final long numberOfBytes, final String pattern) {
+    public static String formatAsCommonTerabyte(final long numberOfBytes, @NonNull final String pattern) {
         return formatAsCommonTerabyte(asBigInteger(numberOfBytes), pattern);
     }
 
@@ -3482,7 +3507,8 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsCommonTerabyte(@NonNull final BigInteger numberOfBytes, final String pattern) {
+    public static String formatAsCommonTerabyte(@NonNull final BigInteger numberOfBytes,
+            @NonNull final String pattern) {
         return formatAsCommonTerabyte(numberOfBytes, new DecimalFormat(pattern));
     }
 
@@ -3496,8 +3522,8 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsCommonTerabyte(@NonNull final Long numberOfBytes, final String pattern,
-            final Locale locale) {
+    public static String formatAsCommonTerabyte(@NonNull final Long numberOfBytes, @NonNull final String pattern,
+            @NonNull final Locale locale) {
         return formatAsCommonTerabyte(numberOfBytes.longValue(), pattern, locale);
     }
 
@@ -3511,7 +3537,8 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsCommonTerabyte(final long numberOfBytes, final String pattern, final Locale locale) {
+    public static String formatAsCommonTerabyte(final long numberOfBytes, @NonNull final String pattern,
+            @NonNull final Locale locale) {
         return formatAsCommonTerabyte(asBigInteger(numberOfBytes), pattern, locale);
     }
 
@@ -3525,8 +3552,8 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsCommonTerabyte(@NonNull final BigInteger numberOfBytes, final String pattern,
-            final Locale locale) {
+    public static String formatAsCommonTerabyte(@NonNull final BigInteger numberOfBytes, @NonNull final String pattern,
+            @NonNull final Locale locale) {
         return formatAsCommonTerabyte(numberOfBytes, asFormat(pattern, locale));
     }
 
@@ -3538,7 +3565,7 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsCommonTerabyte(@NonNull final Long numberOfBytes, final Format format) {
+    public static String formatAsCommonTerabyte(@NonNull final Long numberOfBytes, @NonNull final Format format) {
         return formatAsCommonTerabyte(numberOfBytes.longValue(), format);
     }
 
@@ -3550,7 +3577,7 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsCommonTerabyte(final long numberOfBytes, final Format format) {
+    public static String formatAsCommonTerabyte(final long numberOfBytes, @NonNull final Format format) {
         return formatAsCommonTerabyte(asBigInteger(numberOfBytes), format);
     }
 
@@ -3562,7 +3589,7 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsCommonTerabyte(@NonNull final BigInteger numberOfBytes, final Format format) {
+    public static String formatAsCommonTerabyte(@NonNull final BigInteger numberOfBytes, @NonNull final Format format) {
         return CommonTerabyte.valueOf(numberOfBytes).toString(format);
     }
 
@@ -3604,7 +3631,7 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsCommonPetabyte(@NonNull final Long numberOfBytes, final String pattern) {
+    public static String formatAsCommonPetabyte(@NonNull final Long numberOfBytes, @NonNull final String pattern) {
         return formatAsCommonPetabyte(numberOfBytes.longValue(), pattern);
     }
 
@@ -3616,7 +3643,7 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsCommonPetabyte(final long numberOfBytes, final String pattern) {
+    public static String formatAsCommonPetabyte(final long numberOfBytes, @NonNull final String pattern) {
         return formatAsCommonPetabyte(asBigInteger(numberOfBytes), pattern);
     }
 
@@ -3628,7 +3655,8 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsCommonPetabyte(@NonNull final BigInteger numberOfBytes, final String pattern) {
+    public static String formatAsCommonPetabyte(@NonNull final BigInteger numberOfBytes,
+            @NonNull final String pattern) {
         return formatAsCommonPetabyte(numberOfBytes, new DecimalFormat(pattern));
     }
 
@@ -3642,8 +3670,8 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsCommonPetabyte(@NonNull final Long numberOfBytes, final String pattern,
-            final Locale locale) {
+    public static String formatAsCommonPetabyte(@NonNull final Long numberOfBytes, @NonNull final String pattern,
+            @NonNull final Locale locale) {
         return formatAsCommonPetabyte(numberOfBytes.longValue(), pattern, locale);
     }
 
@@ -3657,7 +3685,8 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsCommonPetabyte(final long numberOfBytes, final String pattern, final Locale locale) {
+    public static String formatAsCommonPetabyte(final long numberOfBytes, @NonNull final String pattern,
+            @NonNull final Locale locale) {
         return formatAsCommonPetabyte(asBigInteger(numberOfBytes), pattern, locale);
     }
 
@@ -3671,8 +3700,8 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsCommonPetabyte(@NonNull final BigInteger numberOfBytes, final String pattern,
-            final Locale locale) {
+    public static String formatAsCommonPetabyte(@NonNull final BigInteger numberOfBytes, @NonNull final String pattern,
+            @NonNull final Locale locale) {
         return formatAsCommonPetabyte(numberOfBytes, asFormat(pattern, locale));
     }
 
@@ -3684,7 +3713,7 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsCommonPetabyte(@NonNull final Long numberOfBytes, final Format format) {
+    public static String formatAsCommonPetabyte(@NonNull final Long numberOfBytes, @NonNull final Format format) {
         return formatAsCommonPetabyte(numberOfBytes.longValue(), format);
     }
 
@@ -3696,7 +3725,7 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsCommonPetabyte(final long numberOfBytes, final Format format) {
+    public static String formatAsCommonPetabyte(final long numberOfBytes, @NonNull final Format format) {
         return formatAsCommonPetabyte(asBigInteger(numberOfBytes), format);
     }
 
@@ -3708,7 +3737,7 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsCommonPetabyte(@NonNull final BigInteger numberOfBytes, final Format format) {
+    public static String formatAsCommonPetabyte(@NonNull final BigInteger numberOfBytes, @NonNull final Format format) {
         return CommonPetabyte.valueOf(numberOfBytes).toString(format);
     }
 
@@ -3750,7 +3779,7 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsCommonExabyte(@NonNull final Long numberOfBytes, final String pattern) {
+    public static String formatAsCommonExabyte(@NonNull final Long numberOfBytes, @NonNull final String pattern) {
         return formatAsCommonExabyte(numberOfBytes.longValue(), pattern);
     }
 
@@ -3762,7 +3791,7 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsCommonExabyte(final long numberOfBytes, final String pattern) {
+    public static String formatAsCommonExabyte(final long numberOfBytes, @NonNull final String pattern) {
         return formatAsCommonExabyte(asBigInteger(numberOfBytes), pattern);
     }
 
@@ -3774,7 +3803,7 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsCommonExabyte(@NonNull final BigInteger numberOfBytes, final String pattern) {
+    public static String formatAsCommonExabyte(@NonNull final BigInteger numberOfBytes, @NonNull final String pattern) {
         return formatAsCommonExabyte(numberOfBytes, new DecimalFormat(pattern));
     }
 
@@ -3788,8 +3817,8 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsCommonExabyte(@NonNull final Long numberOfBytes, final String pattern,
-            final Locale locale) {
+    public static String formatAsCommonExabyte(@NonNull final Long numberOfBytes, @NonNull final String pattern,
+            @NonNull final Locale locale) {
         return formatAsCommonExabyte(numberOfBytes.longValue(), pattern, locale);
     }
 
@@ -3803,7 +3832,8 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsCommonExabyte(final long numberOfBytes, final String pattern, final Locale locale) {
+    public static String formatAsCommonExabyte(final long numberOfBytes, @NonNull final String pattern,
+            @NonNull final Locale locale) {
         return formatAsCommonExabyte(asBigInteger(numberOfBytes), pattern, locale);
     }
 
@@ -3817,8 +3847,8 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsCommonExabyte(@NonNull final BigInteger numberOfBytes, final String pattern,
-            final Locale locale) {
+    public static String formatAsCommonExabyte(@NonNull final BigInteger numberOfBytes, @NonNull final String pattern,
+            @NonNull final Locale locale) {
         return formatAsCommonExabyte(numberOfBytes, asFormat(pattern, locale));
     }
 
@@ -3830,7 +3860,7 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsCommonExabyte(@NonNull final Long numberOfBytes, final Format format) {
+    public static String formatAsCommonExabyte(@NonNull final Long numberOfBytes, @NonNull final Format format) {
         return formatAsCommonExabyte(numberOfBytes.longValue(), format);
     }
 
@@ -3842,7 +3872,7 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsCommonExabyte(final long numberOfBytes, final Format format) {
+    public static String formatAsCommonExabyte(final long numberOfBytes, @NonNull final Format format) {
         return formatAsCommonExabyte(asBigInteger(numberOfBytes), format);
     }
 
@@ -3854,7 +3884,7 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsCommonExabyte(@NonNull final BigInteger numberOfBytes, final Format format) {
+    public static String formatAsCommonExabyte(@NonNull final BigInteger numberOfBytes, @NonNull final Format format) {
         return CommonExabyte.valueOf(numberOfBytes).toString(format);
     }
 
@@ -3896,7 +3926,7 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsCommonZettabyte(@NonNull final Long numberOfBytes, final String pattern) {
+    public static String formatAsCommonZettabyte(@NonNull final Long numberOfBytes, @NonNull final String pattern) {
         return formatAsCommonZettabyte(numberOfBytes.longValue(), pattern);
     }
 
@@ -3908,7 +3938,7 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsCommonZettabyte(final long numberOfBytes, final String pattern) {
+    public static String formatAsCommonZettabyte(final long numberOfBytes, @NonNull final String pattern) {
         return formatAsCommonZettabyte(asBigInteger(numberOfBytes), pattern);
     }
 
@@ -3920,7 +3950,8 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsCommonZettabyte(@NonNull final BigInteger numberOfBytes, final String pattern) {
+    public static String formatAsCommonZettabyte(@NonNull final BigInteger numberOfBytes,
+            @NonNull final String pattern) {
         return formatAsCommonZettabyte(numberOfBytes, new DecimalFormat(pattern));
     }
 
@@ -3934,8 +3965,8 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsCommonZettabyte(@NonNull final Long numberOfBytes, final String pattern,
-            final Locale locale) {
+    public static String formatAsCommonZettabyte(@NonNull final Long numberOfBytes, @NonNull final String pattern,
+            @NonNull final Locale locale) {
         return formatAsCommonZettabyte(numberOfBytes.longValue(), pattern, locale);
     }
 
@@ -3949,7 +3980,8 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsCommonZettabyte(final long numberOfBytes, final String pattern, final Locale locale) {
+    public static String formatAsCommonZettabyte(final long numberOfBytes, @NonNull final String pattern,
+            @NonNull final Locale locale) {
         return formatAsCommonZettabyte(asBigInteger(numberOfBytes), pattern, locale);
     }
 
@@ -3963,8 +3995,8 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsCommonZettabyte(@NonNull final BigInteger numberOfBytes, final String pattern,
-            final Locale locale) {
+    public static String formatAsCommonZettabyte(@NonNull final BigInteger numberOfBytes, @NonNull final String pattern,
+            @NonNull final Locale locale) {
         return formatAsCommonZettabyte(numberOfBytes, asFormat(pattern, locale));
     }
 
@@ -3976,7 +4008,7 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsCommonZettabyte(@NonNull final Long numberOfBytes, final Format format) {
+    public static String formatAsCommonZettabyte(@NonNull final Long numberOfBytes, @NonNull final Format format) {
         return formatAsCommonZettabyte(numberOfBytes.longValue(), format);
     }
 
@@ -3988,7 +4020,7 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsCommonZettabyte(final long numberOfBytes, final Format format) {
+    public static String formatAsCommonZettabyte(final long numberOfBytes, @NonNull final Format format) {
         return formatAsCommonZettabyte(asBigInteger(numberOfBytes), format);
     }
 
@@ -4000,7 +4032,8 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsCommonZettabyte(@NonNull final BigInteger numberOfBytes, final Format format) {
+    public static String formatAsCommonZettabyte(@NonNull final BigInteger numberOfBytes,
+            @NonNull final Format format) {
         return CommonZettabyte.valueOf(numberOfBytes).toString(format);
     }
 
@@ -4042,7 +4075,7 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsCommonYottabyte(@NonNull final Long numberOfBytes, final String pattern) {
+    public static String formatAsCommonYottabyte(@NonNull final Long numberOfBytes, @NonNull final String pattern) {
         return formatAsCommonYottabyte(numberOfBytes.longValue(), pattern);
     }
 
@@ -4054,7 +4087,7 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsCommonYottabyte(final long numberOfBytes, final String pattern) {
+    public static String formatAsCommonYottabyte(final long numberOfBytes, @NonNull final String pattern) {
         return formatAsCommonYottabyte(asBigInteger(numberOfBytes), pattern);
     }
 
@@ -4068,8 +4101,8 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsCommonYottabyte(@NonNull final BigInteger numberOfBytes, final String pattern,
-            final Locale locale) {
+    public static String formatAsCommonYottabyte(@NonNull final BigInteger numberOfBytes, @NonNull final String pattern,
+            @NonNull final Locale locale) {
         return formatAsCommonYottabyte(numberOfBytes, asFormat(pattern, locale));
     }
 
@@ -4083,8 +4116,8 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsCommonYottabyte(@NonNull final Long numberOfBytes, final String pattern,
-            final Locale locale) {
+    public static String formatAsCommonYottabyte(@NonNull final Long numberOfBytes, @NonNull final String pattern,
+            @NonNull final Locale locale) {
         return formatAsCommonYottabyte(numberOfBytes.longValue(), pattern, locale);
     }
 
@@ -4098,7 +4131,8 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsCommonYottabyte(final long numberOfBytes, final String pattern, final Locale locale) {
+    public static String formatAsCommonYottabyte(final long numberOfBytes, @NonNull final String pattern,
+            @NonNull final Locale locale) {
         return formatAsCommonYottabyte(asBigInteger(numberOfBytes), pattern, locale);
     }
 
@@ -4110,7 +4144,8 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsCommonYottabyte(@NonNull final BigInteger numberOfBytes, final String pattern) {
+    public static String formatAsCommonYottabyte(@NonNull final BigInteger numberOfBytes,
+            @NonNull final String pattern) {
         return formatAsCommonYottabyte(numberOfBytes, new DecimalFormat(pattern));
     }
 
@@ -4122,7 +4157,7 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsCommonYottabyte(@NonNull final Long numberOfBytes, final Format format) {
+    public static String formatAsCommonYottabyte(@NonNull final Long numberOfBytes, @NonNull final Format format) {
         return formatAsCommonYottabyte(numberOfBytes.longValue(), format);
     }
 
@@ -4134,7 +4169,7 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsCommonYottabyte(final long numberOfBytes, final Format format) {
+    public static String formatAsCommonYottabyte(final long numberOfBytes, @NonNull final Format format) {
         return formatAsCommonYottabyte(asBigInteger(numberOfBytes), format);
     }
 
@@ -4146,7 +4181,8 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsCommonYottabyte(@NonNull final BigInteger numberOfBytes, final Format format) {
+    public static String formatAsCommonYottabyte(@NonNull final BigInteger numberOfBytes,
+            @NonNull final Format format) {
         return CommonYottabyte.valueOf(numberOfBytes).toString(format);
     }
 

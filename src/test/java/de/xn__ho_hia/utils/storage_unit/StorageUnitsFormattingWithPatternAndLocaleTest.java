@@ -48,17 +48,18 @@ import de.xn__ho_hia.quality.null_analysis.Nullsafe;
 @SuppressWarnings({ "nls", "static-method" })
 public class StorageUnitsFormattingWithPatternAndLocaleTest {
 
-    // TODO: Check if annotation is required
     @NonNull
     private static final String PATTERN = "#0.0";
-    private static final Locale LOCALE  = Locale.GERMAN;
+
+    @NonNull
+    private static final Locale LOCALE = Nullsafe.nonNull(Locale.GERMAN);
 
     /**
      * @return Formatting functions that accept {@link BigInteger} as input.
      */
     @DataPoints("format-biginteger")
-    public static List<Tuple5<Function3<@NonNull BigInteger, String, Locale, String>, @NonNull BigInteger, String, Locale, String>> bigIntegerFunction() {
-        final List<Tuple5<Function3<@NonNull BigInteger, String, Locale, String>, @NonNull BigInteger, String, Locale, String>> units = new ArrayList<>();
+    public static List<Tuple5<Function3<@NonNull BigInteger, @NonNull String, @NonNull Locale, String>, @NonNull BigInteger, @NonNull String, @NonNull Locale, String>> bigIntegerFunction() {
+        final List<Tuple5<Function3<@NonNull BigInteger, @NonNull String, @NonNull Locale, String>, @NonNull BigInteger, @NonNull String, @NonNull Locale, String>> units = new ArrayList<>();
 
         units.add(new Tuple5<>(StorageUnits::formatAsBinaryUnit, BYTES_IN_A_KIBIBYTE, PATTERN, LOCALE, "1,0 KiB"));
         units.add(new Tuple5<>(StorageUnits::formatAsKibibyte, BYTES_IN_A_KIBIBYTE, PATTERN, LOCALE, "1,0 KiB"));
@@ -97,8 +98,8 @@ public class StorageUnitsFormattingWithPatternAndLocaleTest {
      * @return Formatting functions that accept {@link Long} as input.
      */
     @DataPoints("format-long")
-    public static List<Tuple5<Function3<@NonNull Long, String, Locale, String>, @NonNull Long, String, Locale, String>> longFunction() {
-        final List<Tuple5<Function3<@NonNull Long, String, Locale, String>, @NonNull Long, String, Locale, String>> units = new ArrayList<>();
+    public static List<Tuple5<Function3<@NonNull Long, @NonNull String, @NonNull Locale, String>, @NonNull Long, @NonNull String, @NonNull Locale, String>> longFunction() {
+        final List<Tuple5<Function3<@NonNull Long, @NonNull String, @NonNull Locale, String>, @NonNull Long, @NonNull String, @NonNull Locale, String>> units = new ArrayList<>();
 
         units.add(new Tuple5<>(StorageUnits::formatAsBinaryUnit, asLong(BYTES_IN_A_KIBIBYTE), PATTERN, LOCALE,
                 "1,0 KiB"));
@@ -166,7 +167,7 @@ public class StorageUnitsFormattingWithPatternAndLocaleTest {
      */
     @Theory
     public void shouldFormatBigIntegerAsStorageUnitWithPatternAndLocale(
-            @FromDataPoints("format-biginteger") final Tuple5<Function3<@NonNull BigInteger, String, Locale, String>, @NonNull BigInteger, String, Locale, String> input) {
+            @FromDataPoints("format-biginteger") final Tuple5<Function3<@NonNull BigInteger, @NonNull String, @NonNull Locale, String>, @NonNull BigInteger, @NonNull String, @NonNull Locale, String> input) {
         // given
         Assume.assumeNotNull(input.v1);
         Assume.assumeNotNull(input.v2);
@@ -189,7 +190,7 @@ public class StorageUnitsFormattingWithPatternAndLocaleTest {
      */
     @Theory
     public void shouldFormatLongAsStorageUnitWithPatternAndLocale(
-            @FromDataPoints("format-long") final Tuple5<Function3<@NonNull Long, String, Locale, String>, @NonNull Long, String, Locale, String> input) {
+            @FromDataPoints("format-long") final Tuple5<Function3<@NonNull Long, @NonNull String, @NonNull Locale, String>, @NonNull Long, @NonNull String, @NonNull Locale, String> input) {
         // given
         Assume.assumeNotNull(input.v1);
         Assume.assumeNotNull(input.v2);
