@@ -22,7 +22,7 @@ image:https://img.shields.io/badge/forkable-yes-brightgreen.svg?style=flat-squar
 image:https://img.shields.io/maintenance/yes/2016.svg?style=flat-square["Is this thing still maintained?"]
 image:https://img.shields.io/bountysource/team/metio/activity.svg?style=flat-square["Bounties on open tickets", link="https://www.bountysource.com/teams/metio"]
 
-https://www.java.com[Java] library for storage units according to link:http://en.wikipedia.org/wiki/ISO/IEC_80000[ISO IEC 80000-13:2008].
+https://www.java.com[Java] library for storage units according to link:http://en.wikipedia.org/wiki/ISO/IEC_80000[ISO IEC 80000-13:2008] and other commonly found units (e.g. 1 Kilobyte = 1024 Byte).
 
 === Features
 
@@ -38,52 +38,61 @@ https://www.java.com[Java] library for storage units according to link:http://en
 
 .Binary-prefixed units
 |===
-| Name | Symbol | Exponential | Absolute
+| Name | Symbol | Exponential | Absolute | Class
 
 | Byte
 | B
 | 2 ^0^ Byte
 | 1 Byte
+| `Byte`
 
 | Kibibyte
 | KiB
 | 2 ^10^ Byte
 | 1 024 Byte
+| `Kibibyte`
 
 | Mebibyte
 | MiB
 | 2 ^20^ Byte
 | 1 048 576 Byte
+| `Mebibyte`
 
 | Gibibyte
 | GiB
 | 2 ^30^ Byte
 | 1 073 741 824 Byte
+| `Gibibyte`
 
 | Tebibyte
 | TiB
 | 2 ^40^ Byte
 | 1 099 511 627 776 Byte
+| `Tebibyte`
 
 | Pebibyte
 | PiB
 | 2 ^50^ Byte
 | 1 125 899 906 842 624 Byte
+| `Pebibyte`
 
 | Exbibyte
 | EiB
 | 2 ^60^ Byte
 | 1 152 921 504 606 846 976 Byte
+| `Exbibyte`
 
 | Zebibyte
 | ZiB
 | 2 ^70^ Byte
 | 1 180 591 620 717 411 303 424 Byte
+| `Zebibyte`
 
 | Yobibyte
 | YiB
 | 2 ^80^ Byte
 | 1 208 925 819 614 629 174 706 176 Byte
+| `Yobibyte`
 |===
 
 .Metric-prefixed units
@@ -94,46 +103,114 @@ https://www.java.com[Java] library for storage units according to link:http://en
 | kB
 | 10 ^0^ Byte
 | 1 Byte
+| `Byte`
 
 | Kilobyte
 | kB
 | 10 ^3^ Byte
 | 1 000 Byte
+| `Kilobyte`
 
 | Megabyte
 | MB
 | 10 ^6^ Byte
 | 1 000 000 Byte
+| `Megabyte`
 
 | Gigabyte
 | GB
 | 10 ^9^ Byte
 | 1 000 000 000 Byte
+| `Gigabyte`
 
 | Terabyte
 | TB
 | 10 ^12^ Byte
 | 1 000 000 000 000 Byte
+| `Terabyte`
 
 | Petabyte
 | PB
 | 10 ^15^ Byte
 | 1 000 000 000 000 000 Byte
+| `Petabyte`
 
 | Exabyte
 | EB
 | 10 ^18^ Byte
 | 1 000 000 000 000 000 000 Byte
+| `Exabyte`
 
 | Zettabyte
 | ZB
 | 10 ^21^ Byte
 | 1 000 000 000 000 000 000 000 Byte
+| `Zettabyte`
 
 | Yottabyte
 | YB
 | 10 ^24^ Byte
 | 1 000 000 000 000 000 000 000 000 Byte
+| `Yottabyte`
+|===
+
+.Common units
+|===
+| Name | Symbol | Exponential | Absolute
+
+| Byte
+| kB
+| 2 ^0^ Byte
+| 1 Byte
+| `Byte`
+
+| Kilobyte
+| kB
+| 2 ^10^ Byte
+| 1 024 Byte
+| `CommonKilobyte`
+
+| Megabyte
+| MB
+| 2 ^20^ Byte
+| 1 048 576 Byte
+| `CommonMegabyte`
+
+| Gigabyte
+| GB
+| 2 ^30^ Byte
+| 1 073 741 824 Byte
+| `CommonGigabyte`
+
+| Terabyte
+| TB
+| 2 ^40^ Byte
+| 1 099 511 627 776 Byte
+| `CommonTerabyte`
+
+| Petabyte
+| PB
+| 2 ^50^ Byte
+| 1 125 899 906 842 624 Byte
+| `CommonPetabyte`
+
+| Exabyte
+| EB
+| 2 ^60^ Byte
+| 1 152 921 504 606 846 976 Byte
+| `CommonExabyte`
+
+| Zettabyte
+| ZB
+| 2 ^70^ Byte
+| 1 180 591 620 717 411 303 424 Byte
+| `CommonZettabyte`
+
+| Yottabyte
+| YB
+| 2 ^80^ Byte
+| 1 208 925 819 614 629 174 706 176 Byte
+| `CommonYottabyte`
 |===
 
 === Development Status
@@ -150,14 +227,22 @@ Each unit implements a Byte-based static factory method (`valueOf(BigInteger)` o
 [source,java]
 ----
 // 'long' based
-Kilobyte unit = Kilobyte.valueOf(2500)    // 2 500 Byte or "2.50 kB"
-Kibibyte unit = Kibibyte.valueOf(512)     // 512 Byte or "0.50 KiB"
-Megabyte unit = Megabyte.valueOf(1000000) // 1 000 000 Byte or "1.00 MB"
+Kilobyte unit = Kilobyte.valueOf(500)               // 500 Byte or "0.50 kB"
+Kibibyte unit = Kibibyte.valueOf(512)               // 512 Byte or "0.50 KiB"
+CommonKilobyte unit = CommonKilobyte.valueOf(512)   // 500 Byte or "0.50 kB"
+
+Megabyte unit = Megabyte.valueOf(1_000_000)             // 1 000 000 Byte or "1.00 MB"
+Mebibyte unit = Mebibyte.valueOf(1_048_576)             // 1 048 576 Byte or "1.00 MiB"
+CommonMegabyte unit = CommonMegabyte.valueOf(1_048_576) // 1 048 576 Byte or "1.00 MB"
 
 // 'BigInteger' based
-Kilobyte unit = Kilobyte.valueOf(BigInteger.valueOf(2500))    // 2 500 Byte or "2.50 kB"
-Kibibyte unit = Kibibyte.valueOf(BigInteger.valueOf(512))     // 512 Byte or "0.50 KiB"
-Megabyte unit = Megabyte.valueOf(BigInteger.valueOf(1000000)) // 1 000 000 Byte or "1.00 MB"
+Kilobyte unit = Kilobyte.valueOf(BigInteger.valueOf(500))               // 500 Byte or "0.50 kB"
+Kibibyte unit = Kibibyte.valueOf(BigInteger.valueOf(512))               // 512 Byte or "0.50 KiB"
+CommonKilobyte unit = CommonKilobyte.valueOf(BigInteger.valueOf(512))   // 512 Byte or "0.50 KB"
+
+Megabyte unit = Megabyte.valueOf(BigInteger.valueOf(1000000))               // 1 000 000 Byte or "1.00 MB"
+Mebibyte unit = Mebibyte.valueOf(BigInteger.valueOf(1_048_576))             // 1 048 576 Byte or "1.00 MB"
+CommonMegabyte unit = CommonMegabyte.valueOf(BigInteger.valueOf(1_048_576)) // 1 048 576 Byte or "1.00 MB"
 ----
 
 The `StorageUnits` class offers two factory methods that automatically pick the best-matching unit for a given number of bytes.
@@ -188,27 +273,51 @@ StorageUnit<?> unit = StorageUnits.metricValueOf(BigInteger.valueOf(120000))    
 StorageUnit<?> unit = StorageUnits.metricValueOf(BigInteger.valueOf(1000000))   // Megabyte (1.00 MB)
 ----
 
+==== Common Units
+
+[source,java]
+----
+// 'long' based
+StorageUnit<?> unit = StorageUnits.commonValueOf(256)       // CommonKilobyte (0.25 kB)
+StorageUnit<?> unit = StorageUnits.commonValueOf(1048576)   // CommonMebibyte (1.00 MB)
+
+// 'BigInteger' based
+StorageUnit<?> unit = StorageUnits.commonValueOf(BigInteger.valueOf(256))     // CommonKilobyte (0.25 kB)
+StorageUnit<?> unit = StorageUnits.commonValueOf(BigInteger.valueOf(1048576)) // CommonMebibyte (1.00 MB)
+----
+
 Additionally high-level factory methods are also available in the `StorageUnits` class.
 
 [source,java]
 ----
-Kibibyte unit = StorageUnits.kibibyte(1)   // 1 024 Byte
-Mebibyte unit = StorageUnits.mebibyte(1)   // 1 048 576 Byte
-Gibibyte unit = StorageUnits.gibibyte(1)   // 1 073 741 824 Byte
-Tebibyte unit = StorageUnits.tebibyte(1)   // 1 099 511 627 776 Byte
-Pebibyte unit = StorageUnits.pebibyte(1)   // 1 125 899 906 842 624 Byte
-Exbibyte unit = StorageUnits.exbibyte(1)   // 1 152 921 504 606 846 976 Byte
-Zebibyte unit = StorageUnits.zebibyte(1)   // 1 180 591 620 717 411 303 424 Byte
-Yobibyte unit = StorageUnits.yobibyte(1)   // 1 208 925 819 614 629 174 706 176 Byte
+import static de.xn__ho_hia.utils.storage_unit.StorageUnits.*;
 
-Kilobyte unit = StorageUnits.kilobyte(1)   // 1 000 Byte
-Megabyte unit = StorageUnits.megabyte(1)   // 1 000 000 Byte
-Gigabyte unit = StorageUnits.gigabyte(1)   // 1 000 000 000 Byte
-Terabyte unit = StorageUnits.terabyte(1)   // 1 000 000 000 000 Byte
-Petabyte unit = StorageUnits.petabyte(1)   // 1 000 000 000 000 000 Byte
-Exabyte unit = StorageUnits.exabyte(1)     // 1 000 000 000 000 000 000 Byte
-Zettabyte unit = StorageUnits.zettabyte(1) // 1 000 000 000 000 000 000 000 Byte
-Yottabyte unit = StorageUnits.yottabyte(1) // 1 000 000 000 000 000 000 000 000 Byte
+Kibibyte unit = kibibyte(1)   // 1 024 Byte
+Mebibyte unit = mebibyte(1)   // 1 048 576 Byte
+Gibibyte unit = gibibyte(1)   // 1 073 741 824 Byte
+Tebibyte unit = tebibyte(1)   // 1 099 511 627 776 Byte
+Pebibyte unit = pebibyte(1)   // 1 125 899 906 842 624 Byte
+Exbibyte unit = exbibyte(1)   // 1 152 921 504 606 846 976 Byte
+Zebibyte unit = zebibyte(1)   // 1 180 591 620 717 411 303 424 Byte
+Yobibyte unit = yobibyte(1)   // 1 208 925 819 614 629 174 706 176 Byte
+
+Kilobyte unit = kilobyte(1)   // 1 000 Byte
+Megabyte unit = megabyte(1)   // 1 000 000 Byte
+Gigabyte unit = gigabyte(1)   // 1 000 000 000 Byte
+Terabyte unit = terabyte(1)   // 1 000 000 000 000 Byte
+Petabyte unit = petabyte(1)   // 1 000 000 000 000 000 Byte
+Exabyte unit = exabyte(1)     // 1 000 000 000 000 000 000 Byte
+Zettabyte unit = zettabyte(1) // 1 000 000 000 000 000 000 000 Byte
+Yottabyte unit = yottabyte(1) // 1 000 000 000 000 000 000 000 000 Byte
+
+CommonKilobyte unit = commonKilobyte(1)   // 1 024 Byte
+CommonMegabyte unit = commonMegabyte(1)   // 1 048 576 Byte
+CommonGigabyte unit = commonGigabyte(1)   // 1 073 741 824 Byte
+CommonTerabyte unit = commonTerabyte(1)   // 1 099 511 627 776 Byte
+CommonPetabyte unit = commonPetabyte(1)   // 1 125 899 906 842 624 Byte
+CommonExabyte unit = commonExabyte(1)     // 1 152 921 504 606 846 976 Byte
+CommonZettabyte unit = commonZettabyte(1) // 1 180 591 620 717 411 303 424 Byte
+CommonYottabyte unit = commonYottabyte(1) // 1 208 925 819 614 629 174 706 176 Byte
 ----
 
 === Add, Subtract, Multiply, Divide
@@ -217,6 +326,8 @@ Each unit implements the basic four math operations. All operations retain their
 
 [source,java]
 ----
+import static de.xn__ho_hia.utils.storage_unit.StorageUnits.*;
+
 kilobyte(4).add(kilobyte(8))        // 4 Kilobyte + 8 Kilobyte = 12 Kilobyte = 12 000 Byte
 kibibyte(1).add(1024)               // 1 Kibibyte + 1 024 Byte = 2 Kibibyte = 2 048 Byte
 kibibyte(1).subtract(24)            // 1 024 Byte - 24 Byte = 1 000 Byte
@@ -231,6 +342,8 @@ Each unit is comparable to each other unit.
 
 [source,java]
 ----
+import static de.xn__ho_hia.utils.storage_unit.StorageUnits.*;
+
 kibibyte(1024).compareTo(mebibyte(1)) == 0 // true
 kibibyte(1000).compareTo(mebibyte(1)) == 0 // false
 petabyte(3).compareTo(terabyte(3000)) == 0 // true
@@ -291,6 +404,8 @@ Each unit can be converted to each other unit without loss of information.
 
 [source,java]
 ----
+import static de.xn__ho_hia.utils.storage_unit.StorageUnits.*;
+
 Megabyte unit = kilobyte(1000).asMegabyte() // "1.00 MB"
 Kilobyte unit = gigabyte(12).asKilobyte()   // "12000000.00 kB"
 Gigabyte unit = terabyte(1).asGigabyte()    // "1000.00 GB"
@@ -305,6 +420,8 @@ Each unit can be expressed as a fraction of another unit (precise up to 24 decim
 
 [source,java]
 ----
+import static de.xn__ho_hia.utils.storage_unit.StorageUnits.*;
+
 BigDecimal kilobytes = megabyte(1).inKilobyte()  // 1 000
 BigDecimal bytes = kibibyte(2).inByte()          // 2 048
 BigDecimal terabytes = gigabyte(15).inTerabyte() // 0.015
