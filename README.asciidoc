@@ -471,6 +471,7 @@ Originally inspired by link:https://github.com/twitter/util#space[Twitters util]
 == Alternatives
 
 * link:https://github.com/JakeWharton/byteunits[Byte Units]
+* link:https://github.com/trivago/triava[triava]
 
 == License
 
