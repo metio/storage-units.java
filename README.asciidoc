@@ -222,7 +222,7 @@ All units are implemented. For future ideas, take a look at the link:https://git
 
 === Factories
 
-Each unit implements a Byte-based static factory method (`valueOf(BigInteger)` or `valueOf(long)`) that can be used to represent a given number of bytes in a specific unit.
+Each unit implements a Byte-based static factory method (`valueOf(BigInteger)` or `valueOf(long)`) that can be used to represent a given number of bytes in a specific unit. Note that `Long.MAX_VALUE == 8 Exabyte`, thus use `BigInteger` if you want to work with anything bigger than a eight Exabyte. When in doubt, always use `BigInteger`.
 
 [source,java]
 ----

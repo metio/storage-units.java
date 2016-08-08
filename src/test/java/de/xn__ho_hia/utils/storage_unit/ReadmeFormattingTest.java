@@ -7,6 +7,7 @@
 package de.xn__ho_hia.utils.storage_unit;
 
 import static de.xn__ho_hia.quality.null_analysis.Nullsafe.nonNull;
+import static de.xn__ho_hia.utils.storage_unit.StorageUnits.formatAsExbibyte;
 import static de.xn__ho_hia.utils.storage_unit.StorageUnits.formatAsPebibyte;
 import static de.xn__ho_hia.utils.storage_unit.StorageUnits.formatAsPetabyte;
 import static de.xn__ho_hia.utils.storage_unit.StorageUnits.formatAsTerabyte;
@@ -112,6 +113,8 @@ public class ReadmeFormattingTest {
         final long numberOfBytes = 1_000_000_000_000_000L;
         Assert.assertEquals("1000.00000 TB", formatAsTerabyte(numberOfBytes, customFormat));
         Assert.assertEquals(".88818 PiB", formatAsPebibyte(numberOfBytes, customFormat));
+        Assert.assertEquals("8.00000 EiB", formatAsExbibyte(Long.MAX_VALUE, customFormat));
+        Assert.assertEquals("-8.00000 EiB", formatAsExbibyte(Long.MAX_VALUE + 1, customFormat));
     }
 
 }
