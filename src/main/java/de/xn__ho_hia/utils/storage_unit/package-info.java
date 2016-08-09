@@ -5,7 +5,7 @@
  * in the LICENSE file.
  */
 /**
- * Storage units according to ISO IEC 80000-13:2008.
+ * Storage units according to ISO IEC 80000-13:2008 and other commonly found units..
  *
  * @see <a href="https://github.com/sebhoss/storage-units/blob/master/README.asciidoc">README</a>
  * @see <a href="https://en.wikipedia.org/wiki/Binary_prefix">Binary prefixes</a>
