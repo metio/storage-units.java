@@ -25,9 +25,8 @@ import org.eclipse.jdt.annotation.Nullable;
 import de.xn__ho_hia.quality.null_analysis.Nullsafe;
 
 /**
- * Abstract base class for all storage units. Provides common functionality for
- * unit conversion, hashCode(), equals(), compareTo(), toString(),
- * doubleValue(), floatValue(), intValue() and longValue().
+ * Abstract base class for all storage units. Provides common functionality for unit conversion, hashCode(), equals(),
+ * compareTo(), toString(), doubleValue(), floatValue(), intValue() and longValue().
  *
  * @param <T>
  *            The type of this storage unit.
@@ -45,8 +44,7 @@ public abstract class StorageUnit<T extends StorageUnit<T>> extends Number imple
     static final String DEFAULT_FORMAT_PATTERN = "0.00"; //$NON-NLS-1$
 
     /**
-     * The storage unit base for binary numbers. Each step between the units
-     * dimensions is done with this base value.
+     * The storage unit base for binary numbers. Each step between the units dimensions is done with this base value.
      */
     @NonNull
     static final BigInteger BINARY_UNIT_BASE = asBigInteger(1024);
@@ -84,43 +82,42 @@ public abstract class StorageUnit<T extends StorageUnit<T>> extends Number imple
             StorageUnit.BINARY_UNIT_BASE);
 
     /**
-     * The storage unit base for metric numbers. Each step between the units
-     * dimensions is done with this base value.
+     * The storage unit base for decimal numbers. Each step between the units dimensions is done with this base value.
      */
     @NonNull
-    static final BigInteger METRIC_UNIT_BASE = asBigInteger(1000);
+    static final BigInteger DECIMAL_UNIT_BASE = asBigInteger(1000);
 
     @NonNull
     static final BigInteger BYTES_IN_A_KILOBYTE = multiplyNullsafe(Nullsafe.nonNull(BigInteger.ONE),
-            StorageUnit.METRIC_UNIT_BASE);
+            StorageUnit.DECIMAL_UNIT_BASE);
 
     @NonNull
     static final BigInteger BYTES_IN_A_MEGABYTE = multiplyNullsafe(StorageUnit.BYTES_IN_A_KILOBYTE,
-            StorageUnit.METRIC_UNIT_BASE);
+            StorageUnit.DECIMAL_UNIT_BASE);
 
     @NonNull
     static final BigInteger BYTES_IN_A_GIGABYTE = multiplyNullsafe(StorageUnit.BYTES_IN_A_MEGABYTE,
-            StorageUnit.METRIC_UNIT_BASE);
+            StorageUnit.DECIMAL_UNIT_BASE);
 
     @NonNull
     static final BigInteger BYTES_IN_A_TERABYTE = multiplyNullsafe(StorageUnit.BYTES_IN_A_GIGABYTE,
-            StorageUnit.METRIC_UNIT_BASE);
+            StorageUnit.DECIMAL_UNIT_BASE);
 
     @NonNull
     static final BigInteger BYTES_IN_A_PETABYTE = multiplyNullsafe(StorageUnit.BYTES_IN_A_TERABYTE,
-            StorageUnit.METRIC_UNIT_BASE);
+            StorageUnit.DECIMAL_UNIT_BASE);
 
     @NonNull
     static final BigInteger BYTES_IN_A_EXABYTE = multiplyNullsafe(StorageUnit.BYTES_IN_A_PETABYTE,
-            StorageUnit.METRIC_UNIT_BASE);
+            StorageUnit.DECIMAL_UNIT_BASE);
 
     @NonNull
     static final BigInteger BYTES_IN_A_ZETTABYTE = multiplyNullsafe(StorageUnit.BYTES_IN_A_EXABYTE,
-            StorageUnit.METRIC_UNIT_BASE);
+            StorageUnit.DECIMAL_UNIT_BASE);
 
     @NonNull
     static final BigInteger BYTES_IN_A_YOTTABYTE = multiplyNullsafe(StorageUnit.BYTES_IN_A_ZETTABYTE,
-            StorageUnit.METRIC_UNIT_BASE);
+            StorageUnit.DECIMAL_UNIT_BASE);
 
     @NonNull
     protected final BigInteger bytes;
@@ -130,7 +127,7 @@ public abstract class StorageUnit<T extends StorageUnit<T>> extends Number imple
     }
 
     /**
-     * @return This storage unit as the best matching binary-prefixed unit.
+     * @return This storage unit as the best matching binary unit.
      */
     @NonNull
     public final StorageUnit<?> asBestMatchingBinaryUnit() {
@@ -138,11 +135,11 @@ public abstract class StorageUnit<T extends StorageUnit<T>> extends Number imple
     }
 
     /**
-     * @return This storage unit as the best matching metric-prefixed unit.
+     * @return This storage unit as the best matching decimal unit.
      */
     @NonNull
-    public final StorageUnit<?> asBestMatchingMetricUnit() {
-        return StorageUnits.metricValueOf(this.bytes);
+    public final StorageUnit<?> asBestMatchingDecimalUnit() {
+        return StorageUnits.decimalValueOf(this.bytes);
     }
 
     /**
@@ -154,8 +151,7 @@ public abstract class StorageUnit<T extends StorageUnit<T>> extends Number imple
     }
 
     /**
-     * @return This storage unit as the best matching unit, while keeping the
-     *         current prefix-type (binary or metric).
+     * @return This storage unit as the best matching unit, while keeping the current type (binary, decimal, common).
      */
     @NonNull
     public final StorageUnit<?> asBestMatchingUnit() {
@@ -583,8 +579,7 @@ public abstract class StorageUnit<T extends StorageUnit<T>> extends Number imple
     }
 
     /**
-     * Formats this storage unit according to the given pattern in a specific
-     * {@link Locale}.
+     * Formats this storage unit according to the given pattern in a specific {@link Locale}.
      *
      * @param pattern
      *            The {@link Format} pattern to apply.
@@ -598,11 +593,9 @@ public abstract class StorageUnit<T extends StorageUnit<T>> extends Number imple
     }
 
     /**
-     * Formats this storage unit according to a specified {@link Format}. The
-     * storage unit's symbol will be automatically added at the end of the
-     * formatted string together with a single whitespace character in front of
-     * it. Use the <code>asOtherUnit</code> methods before printing in order to
-     * change the symbol.
+     * Formats this storage unit according to a specified {@link Format}. The storage unit's symbol will be
+     * automatically added at the end of the formatted string together with a single whitespace character in front of
+     * it. Use the <code>asOtherUnit</code> methods before printing in order to change the symbol.
      *
      * @param format
      *            The custom format to use.

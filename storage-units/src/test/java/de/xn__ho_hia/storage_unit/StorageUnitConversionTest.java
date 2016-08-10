@@ -42,7 +42,7 @@ public class StorageUnitConversionTest {
         final List<Function<StorageUnit<?>, StorageUnit<?>>> units = new ArrayList<>();
 
         units.add(StorageUnit::asBestMatchingBinaryUnit);
-        units.add(StorageUnit::asBestMatchingMetricUnit);
+        units.add(StorageUnit::asBestMatchingDecimalUnit);
         units.add(StorageUnit::asBestMatchingCommonUnit);
         units.add(StorageUnit::asBestMatchingUnit);
 

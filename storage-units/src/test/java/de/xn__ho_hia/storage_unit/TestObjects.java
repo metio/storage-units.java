@@ -14,33 +14,6 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import de.xn__ho_hia.quality.suppression.CompilerWarnings;
-import de.xn__ho_hia.storage_unit.Byte;
-import de.xn__ho_hia.storage_unit.CommonExabyte;
-import de.xn__ho_hia.storage_unit.CommonGigabyte;
-import de.xn__ho_hia.storage_unit.CommonKilobyte;
-import de.xn__ho_hia.storage_unit.CommonMegabyte;
-import de.xn__ho_hia.storage_unit.CommonPetabyte;
-import de.xn__ho_hia.storage_unit.CommonTerabyte;
-import de.xn__ho_hia.storage_unit.CommonYottabyte;
-import de.xn__ho_hia.storage_unit.CommonZettabyte;
-import de.xn__ho_hia.storage_unit.Exabyte;
-import de.xn__ho_hia.storage_unit.Exbibyte;
-import de.xn__ho_hia.storage_unit.Gibibyte;
-import de.xn__ho_hia.storage_unit.Gigabyte;
-import de.xn__ho_hia.storage_unit.Kibibyte;
-import de.xn__ho_hia.storage_unit.Kilobyte;
-import de.xn__ho_hia.storage_unit.Mebibyte;
-import de.xn__ho_hia.storage_unit.Megabyte;
-import de.xn__ho_hia.storage_unit.Pebibyte;
-import de.xn__ho_hia.storage_unit.Petabyte;
-import de.xn__ho_hia.storage_unit.StorageUnit;
-import de.xn__ho_hia.storage_unit.StorageUnits;
-import de.xn__ho_hia.storage_unit.Tebibyte;
-import de.xn__ho_hia.storage_unit.Terabyte;
-import de.xn__ho_hia.storage_unit.Yobibyte;
-import de.xn__ho_hia.storage_unit.Yottabyte;
-import de.xn__ho_hia.storage_unit.Zebibyte;
-import de.xn__ho_hia.storage_unit.Zettabyte;
 
 /**
  * Helps with the creation of objects that are used for testing.
@@ -50,8 +23,8 @@ import de.xn__ho_hia.storage_unit.Zettabyte;
 @SuppressWarnings(CompilerWarnings.NULL)
 public class TestObjects {
 
-    /** Multiplier for metric based units. */
-    public static final long METRIC_MULTIPLIER = 1000L;
+    /** Multiplier for decimal based units. */
+    public static final long DECIMAL_MULTIPLIER = 1000L;
 
     /** Multiplier for binary based units. */
     public static final long BINARY_MULTIPLIER = 1024;
@@ -93,10 +66,9 @@ public class TestObjects {
     }
 
     /**
-     * @return A list of constructor functions that take in a {@link Long} and produce a metric-based
-     *         {@link StorageUnit}.
+     * @return A list of constructor functions that take in a {@link Long} and produce a decimal {@link StorageUnit}.
      */
-    public static List<Function<Long, StorageUnit<?>>> highLevelMetricLongBasedConstructors() {
+    public static List<Function<Long, StorageUnit<?>>> highLevelDecimalLongBasedConstructors() {
         final List<Function<Long, StorageUnit<?>>> units = new ArrayList<>();
         units.add(StorageUnits::bytes);
         units.add(StorageUnits::kilobyte);
@@ -111,10 +83,10 @@ public class TestObjects {
     }
 
     /**
-     * @return A list of constructor functions that take in a {@link BigInteger} and produce a metric-based
+     * @return A list of constructor functions that take in a {@link BigInteger} and produce a decimal
      *         {@link StorageUnit}.
      */
-    public static List<Function<BigInteger, StorageUnit<?>>> highLevelMetricBigIntegerBasedConstructors() {
+    public static List<Function<BigInteger, StorageUnit<?>>> highLevelDecimalBigIntegerBasedConstructors() {
         final List<Function<BigInteger, StorageUnit<?>>> units = new ArrayList<>();
         units.add(StorageUnits::bytes);
         units.add(StorageUnits::kilobyte);
@@ -168,7 +140,7 @@ public class TestObjects {
      */
     public static List<Function<Long, StorageUnit<?>>> highLevelLongBasedConstructors() {
         final Stream<Function<Long, StorageUnit<?>>> first = Stream.concat(
-                highLevelBinaryLongBasedConstructors().stream(), highLevelMetricLongBasedConstructors().stream());
+                highLevelBinaryLongBasedConstructors().stream(), highLevelDecimalLongBasedConstructors().stream());
         return Stream
                 .concat(
                         first,
@@ -183,7 +155,7 @@ public class TestObjects {
     public static List<Function<BigInteger, StorageUnit<?>>> highLevelBigIntegerBasedConstructors() {
         final Stream<Function<BigInteger, StorageUnit<?>>> first = Stream.concat(
                 highLevelBinaryBigIntegerBasedConstructors().stream(),
-                highLevelMetricBigIntegerBasedConstructors().stream());
+                highLevelDecimalBigIntegerBasedConstructors().stream());
         return Stream
                 .concat(
                         first,
@@ -192,7 +164,7 @@ public class TestObjects {
     }
 
     /**
-     * @return A list of constructor functions that take in a {@link BigInteger} and produce a metric-based
+     * @return A list of constructor functions that take in a {@link BigInteger} and produce a decimal
      *         {@link StorageUnit}.
      */
     public static List<Function<BigInteger, StorageUnit<?>>> bigIntegerBasedConstructors() {
@@ -226,8 +198,7 @@ public class TestObjects {
     }
 
     /**
-     * @return A list of constructor functions that take in a {@link Long} and produce a metric-based
-     *         {@link StorageUnit}.
+     * @return A list of constructor functions that take in a {@link Long} and produce a decimal {@link StorageUnit}.
      */
     public static List<Function<Long, StorageUnit<?>>> longBasedConstructors() {
         final List<Function<Long, StorageUnit<?>>> units = new ArrayList<>();

@@ -26,7 +26,7 @@ public class ReadmeConversionsTest {
     public void shouldFormatUnitWithDefaults() {
         Assert.assertEquals("1.10 MB", kilobyte(900).add(kilobyte(200)).asBestMatchingUnit().toString());
         Assert.assertEquals("1.05 MiB", kilobyte(900).add(kilobyte(200)).asBestMatchingBinaryUnit().toString());
-        Assert.assertEquals("1.10 MB", kilobyte(900).add(kilobyte(200)).asBestMatchingMetricUnit().toString());
+        Assert.assertEquals("1.10 MB", kilobyte(900).add(kilobyte(200)).asBestMatchingDecimalUnit().toString());
         Assert.assertEquals("1.05 MB", kilobyte(900).add(kilobyte(200)).asBestMatchingCommonUnit().toString());
     }
 

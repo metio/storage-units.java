@@ -142,9 +142,9 @@ public class StackOverflowTest {
 
         // when
         @NonNull
-        final StorageUnit<?> unit1 = StorageUnits.metricValueOf(input1);
+        final StorageUnit<?> unit1 = StorageUnits.decimalValueOf(input1);
         @NonNull
-        final StorageUnit<?> unit2 = StorageUnits.metricValueOf(input2);
+        final StorageUnit<?> unit2 = StorageUnits.decimalValueOf(input2);
 
         // then
         Assert.assertEquals("1 kB", unit1.toString("#"));

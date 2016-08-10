@@ -36,7 +36,7 @@ https://www.java.com[Java] library for storage-/byte-units. All units defined in
 
 ==== Available Units
 
-.Binary-prefixed units
+.Binary units
 |===
 | Name | Symbol | Exponential | Absolute | Class
 
@@ -95,7 +95,7 @@ https://www.java.com[Java] library for storage-/byte-units. All units defined in
 | `Yobibyte`
 |===
 
-.Metric-prefixed units
+.Decimal units
 |===
 | Name | Symbol | Exponential | Absolute | Class
 
@@ -247,7 +247,7 @@ CommonMegabyte unit = CommonMegabyte.valueOf(BigInteger.valueOf(1_048_576)) // 1
 
 The `StorageUnits` class offers two factory methods that automatically pick the best-matching unit for a given number of bytes.
 
-==== Binary-prefixed Units
+==== Binary Units
 
 [source,java]
 ----
@@ -260,17 +260,17 @@ StorageUnit<?> unit = StorageUnits.binaryValueOf(BigInteger.valueOf(256))     //
 StorageUnit<?> unit = StorageUnits.binaryValueOf(BigInteger.valueOf(1048576)) // Mebibyte (1.00 MiB)
 ----
 
-==== Metric-prefixed Units
+==== Decimal Units
 
 [source,java]
 ----
 // 'long' based
-StorageUnit<?> unit = StorageUnits.metricValueOf(120000)    // Kilobyte (120.00 kB)
-StorageUnit<?> unit = StorageUnits.metricValueOf(1000000)   // Megabyte (1.00 MB)
+StorageUnit<?> unit = StorageUnits.decimalValueOf(120000)    // Kilobyte (120.00 kB)
+StorageUnit<?> unit = StorageUnits.decimalValueOf(1000000)   // Megabyte (1.00 MB)
 
 // 'BigInteger' based
-StorageUnit<?> unit = StorageUnits.metricValueOf(BigInteger.valueOf(120000))    // Kilobyte (120.00 kB)
-StorageUnit<?> unit = StorageUnits.metricValueOf(BigInteger.valueOf(1000000))   // Megabyte (1.00 MB)
+StorageUnit<?> unit = StorageUnits.decimalValueOf(BigInteger.valueOf(120000))    // Kilobyte (120.00 kB)
+StorageUnit<?> unit = StorageUnits.decimalValueOf(BigInteger.valueOf(1000000))   // Megabyte (1.00 MB)
 ----
 
 ==== Common Units
@@ -411,10 +411,10 @@ Kilobyte unit = gigabyte(12).asKilobyte()   // "12000000.00 kB"
 Gigabyte unit = terabyte(1).asGigabyte()    // "1000.00 GB"
 
 // convert to best-match
-kilobyte(1100).asBestMatchingUnit()         // "1.10 MB"
-kilobyte(1100).asBestMatchingBinaryUnit()   // "1.05 MiB"
-kilobyte(1100).asBestMatchingMetricUnit()   // "1.10 MB"
-kilobyte(1100).asBestMatchingCommonUnit()   // "1.05 MB"
+kilobyte(1100).asBestMatchingUnit()          // "1.10 MB"
+kilobyte(1100).asBestMatchingBinaryUnit()    // "1.05 MiB"
+kilobyte(1100).asBestMatchingDecimalUnit()   // "1.10 MB"
+kilobyte(1100).asBestMatchingCommonUnit()    // "1.05 MB"
 ----
 
 Each unit can be expressed as a fraction of another unit (precise up to 24 decimal places) 

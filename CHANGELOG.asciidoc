@@ -5,6 +5,16 @@ All notable changes to this project will be documented in this file.
 
 == link:++https://github.com/sebhoss/storage-units/compare/storage-units-3.1.0-20160809215257...master++[Unreleased]
 
+=== Changed
+
+* Switch to groupId 'de.xn--ho-hia.utils.storage_units'
+* Rename 'metric' to 'decimal'
+
+=== Migration
+
+* Change the groupId of your Maven dependency to this project to 'de.xn--ho-hia.storage_units'.
+* Change calls to `metricValueOf` and similar methods to `decimalValueOf`
+
 == link:++https://github.com/sebhoss/storage-units/compare/storage-units-3.0.0-20160703155124...storage-units-3.1.0-20160809215257++[3.1.0] - 2016-08-09
 
 === Added

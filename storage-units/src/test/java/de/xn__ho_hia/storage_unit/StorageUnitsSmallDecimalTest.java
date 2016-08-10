@@ -23,11 +23,10 @@ import org.junit.runner.RunWith;
 import de.xn__ho_hia.quality.suppression.CompilerWarnings;
 
 /**
- * Test cases for the {@link StorageUnits} class that check the behavior of
- * small metric based units.
+ * Test cases for the {@link StorageUnits} class that check the behavior of small decimal units.
  */
 @RunWith(Theories.class)
-public class StorageUnitsSmallMetricTest {
+public class StorageUnitsSmallDecimalTest {
 
     private static final Long MULTIPLIER = Long.valueOf(1000);
 
@@ -62,7 +61,7 @@ public class StorageUnitsSmallMetricTest {
         final Class<? extends StorageUnit<?>> expectedClass = input.v2;
 
         // when
-        final StorageUnit<?> unit = StorageUnits.metricValueOf(bytes);
+        final StorageUnit<?> unit = StorageUnits.decimalValueOf(bytes);
         final Class<?> unitClass = unit.getClass();
 
         // then

@@ -71,7 +71,7 @@ public class StorageUnitsFormattingWithPatternAndLocaleTest {
         units.add(new Tuple5<>(StorageUnits::formatAsZebibyte, BYTES_IN_A_ZEBIBYTE, PATTERN, LOCALE, "1,0 ZiB"));
         units.add(new Tuple5<>(StorageUnits::formatAsYobibyte, BYTES_IN_A_YOBIBYTE, PATTERN, LOCALE, "1,0 YiB"));
 
-        units.add(new Tuple5<>(StorageUnits::formatAsMetricUnit, BYTES_IN_A_KILOBYTE, PATTERN, LOCALE, "1,0 kB"));
+        units.add(new Tuple5<>(StorageUnits::formatAsDecimalUnit, BYTES_IN_A_KILOBYTE, PATTERN, LOCALE, "1,0 kB"));
         units.add(new Tuple5<>(StorageUnits::formatAsKilobyte, BYTES_IN_A_KILOBYTE, PATTERN, LOCALE, "1,0 kB"));
         units.add(new Tuple5<>(StorageUnits::formatAsMegabyte, BYTES_IN_A_MEGABYTE, PATTERN, LOCALE, "1,0 MB"));
         units.add(new Tuple5<>(StorageUnits::formatAsGigabyte, BYTES_IN_A_GIGABYTE, PATTERN, LOCALE, "1,0 GB"));
@@ -120,7 +120,7 @@ public class StorageUnitsFormattingWithPatternAndLocaleTest {
         units.add(
                 new Tuple5<>(StorageUnits::formatAsYobibyte, asLong(BYTES_IN_A_YOBIBYTE), PATTERN, LOCALE, "0,0 YiB"));
 
-        units.add(new Tuple5<>(StorageUnits::formatAsMetricUnit, asLong(BYTES_IN_A_KILOBYTE), PATTERN, LOCALE,
+        units.add(new Tuple5<>(StorageUnits::formatAsDecimalUnit, asLong(BYTES_IN_A_KILOBYTE), PATTERN, LOCALE,
                 "1,0 kB"));
         units.add(
                 new Tuple5<>(StorageUnits::formatAsKilobyte, asLong(BYTES_IN_A_KILOBYTE), PATTERN, LOCALE, "1,0 kB"));

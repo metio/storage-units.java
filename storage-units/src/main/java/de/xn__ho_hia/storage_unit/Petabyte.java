@@ -100,7 +100,7 @@ public class Petabyte extends StorageUnit<Petabyte> {
 
     @Override
     protected Function<@NonNull BigInteger, @NonNull StorageUnit<?>> converter() {
-        return StorageUnits::metricValueOf;
+        return StorageUnits::decimalValueOf;
     }
 
 }

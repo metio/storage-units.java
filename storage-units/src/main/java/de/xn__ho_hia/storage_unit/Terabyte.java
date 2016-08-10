@@ -100,7 +100,7 @@ public class Terabyte extends StorageUnit<Terabyte> {
 
     @Override
     protected Function<@NonNull BigInteger, @NonNull StorageUnit<?>> converter() {
-        return StorageUnits::metricValueOf;
+        return StorageUnits::decimalValueOf;
     }
 
 }

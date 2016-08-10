@@ -100,7 +100,7 @@ public class Zettabyte extends StorageUnit<Zettabyte> {
 
     @Override
     protected Function<@NonNull BigInteger, @NonNull StorageUnit<?>> converter() {
-        return StorageUnits::metricValueOf;
+        return StorageUnits::decimalValueOf;
     }
 
 }

@@ -100,7 +100,7 @@ public class Kilobyte extends StorageUnit<Kilobyte> {
 
     @Override
     protected Function<@NonNull BigInteger, @NonNull StorageUnit<?>> converter() {
-        return StorageUnits::metricValueOf;
+        return StorageUnits::decimalValueOf;
     }
 
 }

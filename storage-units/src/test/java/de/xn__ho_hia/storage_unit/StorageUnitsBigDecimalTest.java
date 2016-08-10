@@ -29,7 +29,7 @@ import de.xn__ho_hia.quality.suppression.CompilerWarnings;
 */
 @RunWith(Theories.class)
 @SuppressWarnings(CompilerWarnings.STATIC_METHOD)
-public class StorageUnitsBigMetricTest {
+public class StorageUnitsBigDecimalTest {
 
     private static final BigInteger MULTIPLIER = Nullsafe.asBigInteger(1000);
 
@@ -66,7 +66,7 @@ public class StorageUnitsBigMetricTest {
         final Class<? extends StorageUnit<?>> expectedClass = input.v2;
 
         // when
-        final StorageUnit<?> unit = StorageUnits.metricValueOf(Nullsafe.nonNull(bytes));
+        final StorageUnit<?> unit = StorageUnits.decimalValueOf(Nullsafe.nonNull(bytes));
         final Class<?> unitClass = unit.getClass();
 
         // then
@@ -85,7 +85,7 @@ public class StorageUnitsBigMetricTest {
         final Class<? extends StorageUnit<?>> expectedClass = input.v2;
 
         // when
-        final StorageUnit<?> unit = StorageUnits.metricValueOf(Nullsafe.nonNull(bytes.negate()));
+        final StorageUnit<?> unit = StorageUnits.decimalValueOf(Nullsafe.nonNull(bytes.negate()));
         final Class<?> unitClass = unit.getClass();
 
         // then

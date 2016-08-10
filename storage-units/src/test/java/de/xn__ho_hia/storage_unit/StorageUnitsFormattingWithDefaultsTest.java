@@ -64,7 +64,7 @@ public class StorageUnitsFormattingWithDefaultsTest {
         units.add(new Tuple3<>(StorageUnits::formatAsZebibyte, BYTES_IN_A_ZEBIBYTE, "1.00 ZiB"));
         units.add(new Tuple3<>(StorageUnits::formatAsYobibyte, BYTES_IN_A_YOBIBYTE, "1.00 YiB"));
 
-        units.add(new Tuple3<>(StorageUnits::formatAsMetricUnit, BYTES_IN_A_KILOBYTE, "1.00 kB"));
+        units.add(new Tuple3<>(StorageUnits::formatAsDecimalUnit, BYTES_IN_A_KILOBYTE, "1.00 kB"));
         units.add(new Tuple3<>(StorageUnits::formatAsKilobyte, BYTES_IN_A_KILOBYTE, "1.00 kB"));
         units.add(new Tuple3<>(StorageUnits::formatAsMegabyte, BYTES_IN_A_MEGABYTE, "1.00 MB"));
         units.add(new Tuple3<>(StorageUnits::formatAsGigabyte, BYTES_IN_A_GIGABYTE, "1.00 GB"));
@@ -104,7 +104,7 @@ public class StorageUnitsFormattingWithDefaultsTest {
         units.add(new Tuple3<>(StorageUnits::formatAsZebibyte, asLong(BYTES_IN_A_ZEBIBYTE), "0.00 ZiB"));
         units.add(new Tuple3<>(StorageUnits::formatAsYobibyte, asLong(BYTES_IN_A_YOBIBYTE), "0.00 YiB"));
 
-        units.add(new Tuple3<>(StorageUnits::formatAsMetricUnit, asLong(BYTES_IN_A_KILOBYTE), "1.00 kB"));
+        units.add(new Tuple3<>(StorageUnits::formatAsDecimalUnit, asLong(BYTES_IN_A_KILOBYTE), "1.00 kB"));
         units.add(new Tuple3<>(StorageUnits::formatAsKilobyte, asLong(BYTES_IN_A_KILOBYTE), "1.00 kB"));
         units.add(new Tuple3<>(StorageUnits::formatAsMegabyte, asLong(BYTES_IN_A_MEGABYTE), "1.00 MB"));
         units.add(new Tuple3<>(StorageUnits::formatAsGigabyte, asLong(BYTES_IN_A_GIGABYTE), "1.00 GB"));

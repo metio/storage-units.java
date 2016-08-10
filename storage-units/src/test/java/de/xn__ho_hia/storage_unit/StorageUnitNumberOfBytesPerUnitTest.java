@@ -24,32 +24,6 @@ import org.junit.runner.RunWith;
 
 import de.xn__ho_hia.quality.null_analysis.Nullsafe;
 import de.xn__ho_hia.quality.suppression.CompilerWarnings;
-import de.xn__ho_hia.storage_unit.Byte;
-import de.xn__ho_hia.storage_unit.CommonExabyte;
-import de.xn__ho_hia.storage_unit.CommonGigabyte;
-import de.xn__ho_hia.storage_unit.CommonKilobyte;
-import de.xn__ho_hia.storage_unit.CommonMegabyte;
-import de.xn__ho_hia.storage_unit.CommonPetabyte;
-import de.xn__ho_hia.storage_unit.CommonTerabyte;
-import de.xn__ho_hia.storage_unit.CommonYottabyte;
-import de.xn__ho_hia.storage_unit.CommonZettabyte;
-import de.xn__ho_hia.storage_unit.Exabyte;
-import de.xn__ho_hia.storage_unit.Exbibyte;
-import de.xn__ho_hia.storage_unit.Gibibyte;
-import de.xn__ho_hia.storage_unit.Gigabyte;
-import de.xn__ho_hia.storage_unit.Kibibyte;
-import de.xn__ho_hia.storage_unit.Kilobyte;
-import de.xn__ho_hia.storage_unit.Mebibyte;
-import de.xn__ho_hia.storage_unit.Megabyte;
-import de.xn__ho_hia.storage_unit.Pebibyte;
-import de.xn__ho_hia.storage_unit.Petabyte;
-import de.xn__ho_hia.storage_unit.StorageUnit;
-import de.xn__ho_hia.storage_unit.Tebibyte;
-import de.xn__ho_hia.storage_unit.Terabyte;
-import de.xn__ho_hia.storage_unit.Yobibyte;
-import de.xn__ho_hia.storage_unit.Yottabyte;
-import de.xn__ho_hia.storage_unit.Zebibyte;
-import de.xn__ho_hia.storage_unit.Zettabyte;
 
 /**
  * Test cases for the {@link StorageUnit} implementations of <code>getNumberOfBytesPerUnit()</code>.
@@ -73,7 +47,7 @@ public class StorageUnitNumberOfBytesPerUnitTest {
             new SimpleEntry<>(Exbibyte.class, new BigInteger("1152921504606846976")),
             new SimpleEntry<>(Zebibyte.class, new BigInteger("1180591620717411303424")),
             new SimpleEntry<>(Yobibyte.class, new BigInteger("1208925819614629174706176")),
-            // metric units
+            // decimal units
             new SimpleEntry<>(Kilobyte.class, new BigInteger("1000")),
             new SimpleEntry<>(Megabyte.class, new BigInteger("1000000")),
             new SimpleEntry<>(Gigabyte.class, new BigInteger("1000000000")),

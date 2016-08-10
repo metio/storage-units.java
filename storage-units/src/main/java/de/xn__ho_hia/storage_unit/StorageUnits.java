@@ -47,8 +47,7 @@ public final class StorageUnits {
     /**
      * @param bytes
      *            The amount to bytes to represent.
-     * @return The appropriate binary-prefixed unit for the given amount of
-     *         bytes.
+     * @return The appropriate binary-prefixed unit for the given amount of bytes.
      */
     @NonNull
     public static StorageUnit<?> binaryValueOf(final long bytes) {
@@ -58,8 +57,7 @@ public final class StorageUnits {
     /**
      * @param bytes
      *            The amount to bytes to represent.
-     * @return The appropriate binary-prefixed unit for the given amount of
-     *         bytes.
+     * @return The appropriate binary-prefixed unit for the given amount of bytes.
      */
     @NonNull
     public static StorageUnit<?> binaryValueOf(@NonNull final BigInteger bytes) {
@@ -91,22 +89,20 @@ public final class StorageUnits {
     /**
      * @param bytes
      *            The amount of bytes to represent.
-     * @return The appropriate metric-prefixed unit for the given amount of
-     *         bytes.
+     * @return The appropriate decimal unit for the given amount of bytes.
      */
     @NonNull
-    public static StorageUnit<?> metricValueOf(final long bytes) {
-        return metricValueOf(asBigInteger(bytes));
+    public static StorageUnit<?> decimalValueOf(final long bytes) {
+        return decimalValueOf(asBigInteger(bytes));
     }
 
     /**
      * @param bytes
      *            The amount of bytes to represent.
-     * @return The appropriate metric-prefixed unit for the given amount of
-     *         bytes.
+     * @return The appropriate decimal unit for the given amount of bytes.
      */
     @NonNull
-    public static StorageUnit<?> metricValueOf(@NonNull final BigInteger bytes) {
+    public static StorageUnit<?> decimalValueOf(@NonNull final BigInteger bytes) {
         StorageUnit<?> unit = Byte.valueOf(bytes);
         @NonNull
         final BigInteger positiveNumberOfBytes = bytes.signum() == -1 ? nonNull(bytes.negate()) : bytes;
@@ -1541,8 +1537,8 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsMetricUnit(@NonNull final Long numberOfBytes) {
-        return formatAsMetricUnit(numberOfBytes.longValue());
+    public static String formatAsDecimalUnit(@NonNull final Long numberOfBytes) {
+        return formatAsDecimalUnit(numberOfBytes.longValue());
     }
 
     /**
@@ -1551,8 +1547,8 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsMetricUnit(final long numberOfBytes) {
-        return formatAsMetricUnit(asBigInteger(numberOfBytes));
+    public static String formatAsDecimalUnit(final long numberOfBytes) {
+        return formatAsDecimalUnit(asBigInteger(numberOfBytes));
     }
 
     /**
@@ -1561,20 +1557,8 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsMetricUnit(@NonNull final BigInteger numberOfBytes) {
-        return formatAsMetricUnit(numberOfBytes, DEFAULT_FORMAT_PATTERN);
-    }
-
-    /**
-     * @param numberOfBytes
-     *            The amount of bytes to format.
-     * @param pattern
-     *            The formatting pattern to apply.
-     * @return The formatted bytes using the default pattern.
-     */
-    @NonNull
-    public static String formatAsMetricUnit(@NonNull final Long numberOfBytes, @NonNull final String pattern) {
-        return formatAsMetricUnit(numberOfBytes.longValue(), pattern);
+    public static String formatAsDecimalUnit(@NonNull final BigInteger numberOfBytes) {
+        return formatAsDecimalUnit(numberOfBytes, DEFAULT_FORMAT_PATTERN);
     }
 
     /**
@@ -1585,8 +1569,8 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsMetricUnit(final long numberOfBytes, @NonNull final String pattern) {
-        return formatAsMetricUnit(asBigInteger(numberOfBytes), pattern);
+    public static String formatAsDecimalUnit(@NonNull final Long numberOfBytes, @NonNull final String pattern) {
+        return formatAsDecimalUnit(numberOfBytes.longValue(), pattern);
     }
 
     /**
@@ -1597,8 +1581,8 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsMetricUnit(@NonNull final BigInteger numberOfBytes, @NonNull final String pattern) {
-        return formatAsMetricUnit(numberOfBytes, new DecimalFormat(pattern));
+    public static String formatAsDecimalUnit(final long numberOfBytes, @NonNull final String pattern) {
+        return formatAsDecimalUnit(asBigInteger(numberOfBytes), pattern);
     }
 
     /**
@@ -1606,14 +1590,11 @@ public final class StorageUnits {
      *            The amount of bytes to format.
      * @param pattern
      *            The formatting pattern to apply.
-     * @param locale
-     *            The locale to use.
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsMetricUnit(@NonNull final Long numberOfBytes, @NonNull final String pattern,
-            @NonNull final Locale locale) {
-        return formatAsMetricUnit(numberOfBytes.longValue(), pattern, locale);
+    public static String formatAsDecimalUnit(@NonNull final BigInteger numberOfBytes, @NonNull final String pattern) {
+        return formatAsDecimalUnit(numberOfBytes, new DecimalFormat(pattern));
     }
 
     /**
@@ -1626,9 +1607,9 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsMetricUnit(final long numberOfBytes, @NonNull final String pattern,
+    public static String formatAsDecimalUnit(@NonNull final Long numberOfBytes, @NonNull final String pattern,
             @NonNull final Locale locale) {
-        return formatAsMetricUnit(asBigInteger(numberOfBytes), pattern, locale);
+        return formatAsDecimalUnit(numberOfBytes.longValue(), pattern, locale);
     }
 
     /**
@@ -1641,9 +1622,24 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsMetricUnit(@NonNull final BigInteger numberOfBytes, @NonNull final String pattern,
+    public static String formatAsDecimalUnit(final long numberOfBytes, @NonNull final String pattern,
             @NonNull final Locale locale) {
-        return formatAsMetricUnit(numberOfBytes, asFormat(pattern, locale));
+        return formatAsDecimalUnit(asBigInteger(numberOfBytes), pattern, locale);
+    }
+
+    /**
+     * @param numberOfBytes
+     *            The amount of bytes to format.
+     * @param pattern
+     *            The formatting pattern to apply.
+     * @param locale
+     *            The locale to use.
+     * @return The formatted bytes using the default pattern.
+     */
+    @NonNull
+    public static String formatAsDecimalUnit(@NonNull final BigInteger numberOfBytes, @NonNull final String pattern,
+            @NonNull final Locale locale) {
+        return formatAsDecimalUnit(numberOfBytes, asFormat(pattern, locale));
     }
 
     /**
@@ -1654,8 +1650,8 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsMetricUnit(@NonNull final Long numberOfBytes, @NonNull final Format format) {
-        return formatAsMetricUnit(numberOfBytes.longValue(), format);
+    public static String formatAsDecimalUnit(@NonNull final Long numberOfBytes, @NonNull final Format format) {
+        return formatAsDecimalUnit(numberOfBytes.longValue(), format);
     }
 
     /**
@@ -1666,8 +1662,8 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsMetricUnit(final long numberOfBytes, @NonNull final Format format) {
-        return formatAsMetricUnit(asBigInteger(numberOfBytes), format);
+    public static String formatAsDecimalUnit(final long numberOfBytes, @NonNull final Format format) {
+        return formatAsDecimalUnit(asBigInteger(numberOfBytes), format);
     }
 
     /**
@@ -1678,8 +1674,8 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @NonNull
-    public static String formatAsMetricUnit(@NonNull final BigInteger numberOfBytes, @NonNull final Format format) {
-        return metricValueOf(numberOfBytes).toString(format);
+    public static String formatAsDecimalUnit(@NonNull final BigInteger numberOfBytes, @NonNull final Format format) {
+        return decimalValueOf(numberOfBytes).toString(format);
     }
 
     /**
