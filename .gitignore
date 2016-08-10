@@ -5,3 +5,4 @@ target/
 .pmd
 .pmdruleset.xml
 .ansible-git-mirror-*
+.flattened-pom.xml

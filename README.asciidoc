@@ -290,7 +290,7 @@ Additionally high-level factory methods are also available in the `StorageUnits`
 
 [source,java]
 ----
-import static de.xn__ho_hia.utils.storage_unit.StorageUnits.*;
+import static de.xn__ho_hia.storage_unit.StorageUnits.*;
 
 Kibibyte unit = kibibyte(1)   // 1 024 Byte
 Mebibyte unit = mebibyte(1)   // 1 048 576 Byte
@@ -326,7 +326,7 @@ Each unit implements the basic four math operations. All operations retain their
 
 [source,java]
 ----
-import static de.xn__ho_hia.utils.storage_unit.StorageUnits.*;
+import static de.xn__ho_hia.storage_unit.StorageUnits.*;
 
 kilobyte(4).add(kilobyte(8))        // 4 Kilobyte + 8 Kilobyte = 12 Kilobyte = 12 000 Byte
 kibibyte(1).add(1024)               // 1 Kibibyte + 1 024 Byte = 2 Kibibyte = 2 048 Byte
@@ -342,7 +342,7 @@ Each unit is comparable to each other unit.
 
 [source,java]
 ----
-import static de.xn__ho_hia.utils.storage_unit.StorageUnits.*;
+import static de.xn__ho_hia.storage_unit.StorageUnits.*;
 
 kibibyte(1024).compareTo(mebibyte(1)) == 0 // true
 kibibyte(1000).compareTo(mebibyte(1)) == 0 // false
@@ -359,7 +359,7 @@ Each unit prints a human-readable string, representing the amount of bytes in th
 
 [source,java]
 ----
-import static de.xn__ho_hia.utils.storage_unit.StorageUnits.*;
+import static de.xn__ho_hia.storage_unit.StorageUnits.*;
 
 // default pattern '0.00'
 terabyte(2).toString()                         // "2.00 TB"
@@ -404,7 +404,7 @@ Each unit can be converted to each other unit without loss of information.
 
 [source,java]
 ----
-import static de.xn__ho_hia.utils.storage_unit.StorageUnits.*;
+import static de.xn__ho_hia.storage_unit.StorageUnits.*;
 
 Megabyte unit = kilobyte(1000).asMegabyte() // "1.00 MB"
 Kilobyte unit = gigabyte(12).asKilobyte()   // "12000000.00 kB"
@@ -421,7 +421,7 @@ Each unit can be expressed as a fraction of another unit (precise up to 24 decim
 
 [source,java]
 ----
-import static de.xn__ho_hia.utils.storage_unit.StorageUnits.*;
+import static de.xn__ho_hia.storage_unit.StorageUnits.*;
 
 BigDecimal kilobytes = megabyte(1).inKilobyte()  // 1 000
 BigDecimal bytes = kibibyte(2).inByte()          // 2 048
