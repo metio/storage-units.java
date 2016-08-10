@@ -24,19 +24,18 @@
   <!--                               COORDINATES                               -->
   <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
   <!-- https://maven.apache.org/pom.html#Maven_Coordinates -->
-  <artifactId>storage-units-jackson</artifactId>
+  <artifactId>storage-units-mongodb</artifactId>
 
   <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
   <!--                               INFORMATIONS                              -->
   <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
   <!-- https://maven.apache.org/pom.html#More_Project_Information -->
-  <name>Storage Units :: Serialization :: Jackson</name>
+  <name>Storage Units :: Serialization :: MongoDB</name>
 
   <dependencies>
     <dependency>
       <groupId>de.xn--ho-hia.quality</groupId>
       <artifactId>suppress-warnings</artifactId>
-      <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>de.xn--ho-hia.quality</groupId>
@@ -48,19 +47,20 @@
       <version>${project.version}</version>
     </dependency>
     <dependency>
-     <groupId>com.fasterxml.jackson.core</groupId>
-     <artifactId>jackson-core</artifactId>
-     <version>2.7.5</version>
+      <groupId>org.mongodb</groupId>
+      <artifactId>mongodb-driver</artifactId>
+      <version>3.3.0</version>
     </dependency>
     <dependency>
-     <groupId>com.fasterxml.jackson.core</groupId>
-     <artifactId>jackson-databind</artifactId>
-     <version>2.7.5</version>
+      <groupId>org.mockito</groupId>
+      <artifactId>mockito-core</artifactId>
+      <scope>test</scope>
     </dependency>
     <dependency>
-     <groupId>com.fasterxml.jackson.core</groupId>
-     <artifactId>jackson-annotations</artifactId>
-     <version>2.7.5</version>
+      <groupId>org.jooq</groupId>
+      <artifactId>jool</artifactId>
+      <version>0.9.11</version>
+      <scope>test</scope>
     </dependency>
   </dependencies>
 </project>

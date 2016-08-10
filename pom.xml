@@ -45,6 +45,7 @@
   <modules>
    <module>storage-units</module>
    <module>storage-units-jackson</module>
+   <module>storage-units-mongodb</module>
   </modules>
 
   <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
