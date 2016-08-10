@@ -44,6 +44,7 @@
   <!-- https://maven.apache.org/pom.html#Aggregation -->
   <modules>
    <module>storage-units</module>
+   <module>storage-units-jackson</module>
   </modules>
 
   <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
