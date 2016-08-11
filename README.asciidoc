@@ -2,7 +2,7 @@
 Sebastian Hoß <http://seb.xn--ho-hia.de/[@sebhoss]>
 :github-org: sebhoss
 :project-name: storage-units
-:project-group: de.xn--ho-hia.utils.storage_units
+:project-group: de.xn--ho-hia.storage_units
 :coverity-project: 2658
 :codacy-project: d3cfbbc415c14b79a661d573ac11e68c
 :toc:
