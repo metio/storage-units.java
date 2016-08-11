@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 
 == link:++https://github.com/sebhoss/storage-units/compare/storage-units-3.1.0-20160809215257...master++[Unreleased]
 
+=== Added
+
+* Converters for EclipseLink
+* Codecs for MongoDB
+* Serializers for Jackson
+
 === Changed
 
 * Switch to groupId 'de.xn--ho-hia.utils.storage_units'
