@@ -438,9 +438,33 @@ To use this project just declare the following dependency inside your POM:
 <dependencies>
   <dependency>
     <groupId>{project-group}</groupId>
-    <artifactId>{project-name}</artifactId>
+    <artifactId>storage-units</artifactId>
     <version>${version.storage-units}</version>
   </dependency>
+
+  <!-- EclipseLink ONLY -->
+  <dependency>
+    <groupId>{project-group}</groupId>
+    <artifactId>storage-units-eclipselink</artifactId>
+    <version>${version.storage-units}</version>
+  </dependency>
+  <!-- EclipseLink ONLY -->
+
+  <!-- MongoDB ONLY -->
+  <dependency>
+    <groupId>{project-group}</groupId>
+    <artifactId>storage-units-mongodb</artifactId>
+    <version>${version.storage-units}</version>
+  </dependency>
+  <!-- MongoDB ONLY -->
+
+  <!-- Jackson ONLY -->
+  <dependency>
+    <groupId>{project-group}</groupId>
+    <artifactId>storage-units-jackson</artifactId>
+    <version>${version.storage-units}</version>
+  </dependency>
+  <!-- Jackson ONLY -->
 </dependencies>
 ----
 
