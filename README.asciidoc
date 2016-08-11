@@ -33,6 +33,7 @@ https://www.java.com[Java] library for storage-/byte-units. All units defined in
 * Lossless conversion between all units
 * Human readable text format, including custom formats
 * Compatible with any `java.lang.Number`
+* Custom serializers for Jackson, MongoDB & EclipseLink
 
 ==== Available Units
 
