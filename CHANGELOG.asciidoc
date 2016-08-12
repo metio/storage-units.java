@@ -5,6 +5,8 @@ All notable changes to this project will be documented in this file.
 
 == link:++https://github.com/sebhoss/storage-units/compare/storage-units-3.1.0-20160809215257...master++[Unreleased]
 
+== link:++https://github.com/sebhoss/storage-units/compare/storage-units-3.1.0-20160809215257...master++[4.0.0] - TBD
+
 === Added
 
 * Converters for EclipseLink
