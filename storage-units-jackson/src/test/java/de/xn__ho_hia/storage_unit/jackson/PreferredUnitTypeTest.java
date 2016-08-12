@@ -10,7 +10,6 @@ import java.util.function.Supplier;
 
 import com.fasterxml.jackson.databind.JsonDeserializer;
 
-import org.eclipse.jdt.annotation.NonNull;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -32,7 +31,6 @@ public class PreferredUnitTypeTest {
         final String type = "BINARY";
 
         // when
-        @NonNull
         final PreferredUnitType unitType = StorageUnitModule.PreferredUnitType.valueOf(type);
 
         // then
@@ -64,7 +62,6 @@ public class PreferredUnitTypeTest {
         final String type = "COMMON";
 
         // when
-        @NonNull
         final PreferredUnitType unitType = StorageUnitModule.PreferredUnitType.valueOf(type);
 
         // then
@@ -96,7 +93,6 @@ public class PreferredUnitTypeTest {
         final String type = "DECIMAL";
 
         // when
-        @NonNull
         final PreferredUnitType unitType = StorageUnitModule.PreferredUnitType.valueOf(type);
 
         // then
