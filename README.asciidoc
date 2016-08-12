@@ -246,7 +246,7 @@ Mebibyte unit = Mebibyte.valueOf(BigInteger.valueOf(1_048_576))             // 1
 CommonMegabyte unit = CommonMegabyte.valueOf(BigInteger.valueOf(1_048_576)) // 1 048 576 Byte or "1.00 MB"
 ----
 
-The `StorageUnits` class offers two factory methods that automatically pick the best-matching unit for a given number of bytes.
+The `StorageUnits` class offers three factory methods that automatically pick the best-matching unit for a given number of bytes.
 
 ==== Binary Units
 
