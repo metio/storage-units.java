@@ -18,6 +18,10 @@ All notable changes to this project will be documented in this file.
 * Switch to groupId 'de.xn--ho-hia.utils.storage_units'
 * Rename 'metric' to 'decimal'
 
+=== Issues closed
+
+link:{milestone}/2?closed=1[See list of closed issues].
+
 === Migration
 
 * Change the groupId of your Maven dependency to this project to 'de.xn--ho-hia.storage_units'.
