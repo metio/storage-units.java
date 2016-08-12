@@ -3,9 +3,9 @@
 
 All notable changes to this project will be documented in this file.
 
-== link:++https://github.com/sebhoss/storage-units/compare/storage-units-3.1.0-20160809215257...master++[Unreleased]
+== link:++https://github.com/sebhoss/storage-units/compare/storage-units.java-4.0.0-20160812154711...master++[Unreleased]
 
-== link:++https://github.com/sebhoss/storage-units/compare/storage-units-3.1.0-20160809215257...master++[4.0.0] - 2016-08-12
+== link:++https://github.com/sebhoss/storage-units/compare/storage-units-3.1.0-20160809215257...storage-units.java-4.0.0-20160812154711++[4.0.0] - 2016-08-12
 
 === Added
 
