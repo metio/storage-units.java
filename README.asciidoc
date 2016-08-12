@@ -429,6 +429,76 @@ BigDecimal bytes = kibibyte(2).inByte()          // 2 048
 BigDecimal terabytes = gigabyte(15).inTerabyte() // 0.015
 ----
 
+=== Serialization
+
+The storage-units-(eclipselink|mongodb|jackson) modules provide custom serializers to store storage units.
+
+==== EclipseLink
+
+Use any of the three converters like this:
+
+[source, java]
+----
+@Entity
+public class HardDisk implements Serializable {
+
+    @Basic
+    @Converter (
+        name="binaryConverter",
+        converterClass=de.xn__ho_hia.storage_unit.eclipselink.BinaryStorageUnitConverter.class
+    )
+    @Convert("binaryConverter")
+    public StorageUnit<?> getFreeSize() {
+        return freeSize;
+    }
+
+    @Basic
+    @Converter (
+        name="commonConverter",
+        converterClass=de.xn__ho_hia.storage_unit.eclipselink.CommonStorageUnitConverter.class
+    )
+    @Convert("commonConverter")
+    public StorageUnit<?> getUsedSize() {
+        return usedSize;
+    }
+
+    @Basic
+    @Converter (
+        name="decimalConverter",
+        converterClass=de.xn__ho_hia.storage_unit.eclipselink.DecimalyStorageUnitConverter.class
+    )
+    @Convert("decimalConverter")
+    public StorageUnit<?> getTotalSize() {
+        return totalSize;
+    }
+
+}
+----
+
+==== MongoDB
+
+Use any of the three codecs like this:
+
+[source, java]
+----
+CodecRegistry binaryRegistry = CodecRegistries.fromCodecs(new BinaryStorageUnitCodec(), ...);
+CodecRegistry commonRegistry = CodecRegistries.fromCodecs(new CommonStorageUnitCodec(), ...);
+CodecRegistry decimalRegistry = CodecRegistries.fromCodecs(new DecimalStorageUnitCodec(), ...);
+----
+
+==== Jackson
+
+Use the provided `StorageUnitModule` like this:
+
+[source, java]
+----
+ObjectMapper objectMapper = new ObjectMapper();
+objectMapper.registerModule(new StorageUnitModule()); // defaults to binary units
+objectMapper.registerModule(new StorageUnitModule(StorageUnitModule.PreferredUnitType.BINARY));
+objectMapper.registerModule(new StorageUnitModule(StorageUnitModule.PreferredUnitType.COMMON));
+objectMapper.registerModule(new StorageUnitModule(StorageUnitModule.PreferredUnitType.DECIMAL));
+----
+
 === Integration
 
 To use this project just declare the following dependency inside your POM:
