@@ -6,18 +6,16 @@
  */
 package de.xn__ho_hia.storage_unit;
 
+import java.text.DecimalFormat;
+import java.text.Format;
+import java.util.Locale;
+
 import org.eclipse.jdt.annotation.NonNull;
 import org.junit.Assert;
 import org.junit.Test;
 
+import de.xn__ho_hia.quality.null_analysis.Nullsafe;
 import de.xn__ho_hia.quality.suppression.CompilerWarnings;
-import de.xn__ho_hia.storage_unit.Gigabyte;
-import de.xn__ho_hia.storage_unit.Kibibyte;
-import de.xn__ho_hia.storage_unit.Kilobyte;
-import de.xn__ho_hia.storage_unit.Mebibyte;
-import de.xn__ho_hia.storage_unit.Megabyte;
-import de.xn__ho_hia.storage_unit.StorageUnit;
-import de.xn__ho_hia.storage_unit.StorageUnits;
 
 /**
  * Verifies that questions on Stack Overflow can be answered with this library.
@@ -33,18 +31,35 @@ public class StackOverflowTest {
     @Test
     public void shoildConvertByteSizeIntoHumanReadbleFormat() {
         // given
-        final long first = 1024;
-        final long second = first * first;
+        final long input1 = 1024;
+        final long input2 = 1024 * 1024;
+        final Format format = new DecimalFormat("#.#");
 
         // when
-        @NonNull
-        final StorageUnit<?> unit1 = StorageUnits.commonValueOf(first);
-        @NonNull
-        final StorageUnit<?> unit2 = StorageUnits.commonValueOf(second);
+        final String formattedUnit1 = StorageUnits.formatAsCommonUnit(input1, "#");
+        final String formattedUnit2 = StorageUnits.formatAsCommonUnit(input2, "#");
+        final String formattedUnit3 = StorageUnits.formatAsBinaryUnit(input1);
+        final String formattedUnit4 = StorageUnits.formatAsBinaryUnit(input2);
+        final String formattedUnit5 = StorageUnits.formatAsDecimalUnit(input1, "#.00",
+                Nullsafe.nonNull(Locale.GERMAN));
+        final String formattedUnit6 = StorageUnits.formatAsDecimalUnit(input2, "#.00",
+                Nullsafe.nonNull(Locale.GERMAN));
+        final String formattedUnit7 = StorageUnits.formatAsBinaryUnit(input1, format);
+        final String formattedUnit8 = StorageUnits.formatAsBinaryUnit(input2, format);
+        final String formattedUnit9 = StorageUnits.formatAsKibibyte(input2);
+        final String formattedUnit10 = StorageUnits.formatAsCommonMegabyte(input2);
 
         // then
-        Assert.assertEquals("1 kB", unit1.toString("#"));
-        Assert.assertEquals("1 MB", unit2.toString("#"));
+        Assert.assertEquals("1 kB", formattedUnit1);
+        Assert.assertEquals("1 MB", formattedUnit2);
+        Assert.assertEquals("1.00 KiB", formattedUnit3);
+        Assert.assertEquals("1.00 MiB", formattedUnit4);
+        Assert.assertEquals("1,02 kB", formattedUnit5);
+        Assert.assertEquals("1,05 MB", formattedUnit6);
+        Assert.assertEquals("1 KiB", formattedUnit7);
+        Assert.assertEquals("1 MiB", formattedUnit8);
+        Assert.assertEquals("1024.00 KiB", formattedUnit9);
+        Assert.assertEquals("1.00 MB", formattedUnit10);
     }
 
     /**
