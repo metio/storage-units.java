@@ -425,7 +425,7 @@ Each unit can be expressed as a fraction of another unit (precise up to 24 decim
 import static de.xn__ho_hia.storage_unit.StorageUnits.*;
 
 BigDecimal kilobytes = megabyte(1).inKilobyte()  // 1 000
-BigDecimal bytes = kibibyte(2).inByte()          // 2 048
+BigInteger bytes = kibibyte(2).inByte()          // 2 048
 BigDecimal terabytes = gigabyte(15).inTerabyte() // 0.015
 ----
 
