@@ -9,6 +9,7 @@ package de.xn__ho_hia.storage_unit;
 import java.text.DecimalFormat;
 import java.text.Format;
 import java.util.Locale;
+import java.util.concurrent.TimeUnit;
 
 import org.eclipse.jdt.annotation.NonNull;
 import org.junit.Assert;
@@ -172,17 +173,18 @@ public class StackOverflowTest {
     @Test
     public void shouldShowUserFriendlyFormattedOutput() {
         // given
-        final long input1 = 0L;
+        final long transferDurationInNanos = 2000000000L;
+        final long transferDurationInSeconds = TimeUnit.NANOSECONDS.toSeconds(transferDurationInNanos);
+        final long numberOfTransferredBytes = 4096L;
 
         // when
-        @NonNull
-        final Kibibyte unit1 = Kibibyte.valueOf(input1);
-        @NonNull
-        final StorageUnit<?> unit2 = unit1.add(1234L).asBestMatchingUnit();
+        final StorageUnit<?> totalTransferred = StorageUnits.binaryValueOf(numberOfTransferredBytes);
+        final StorageUnit<?> transferredPerSecond = totalTransferred.divide(transferDurationInSeconds);
 
         // then
-        Assert.assertEquals("0.00 KiB", unit1.toString());
-        Assert.assertEquals("1.21 KiB", unit2.toString());
+        Assert.assertEquals("2.00 KiB/s", transferredPerSecond + "/s");
+        Assert.assertEquals("4.00 KiB", totalTransferred.toString());
+        Assert.assertEquals("1.18 MiB", totalTransferred.add(1234567).asBestMatchingUnit().toString());
     }
 
     /**
