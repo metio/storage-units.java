@@ -10,7 +10,6 @@ import java.io.IOException;
 import java.math.BigInteger;
 
 import com.fasterxml.jackson.core.JsonParser;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonDeserializer;
 
@@ -27,7 +26,7 @@ public final class BinaryStorageUnitDeserializer extends JsonDeserializer<Storag
 
     @Override
     public StorageUnit<?> deserialize(final JsonParser jsonParser, final DeserializationContext context)
-            throws IOException, JsonProcessingException {
+            throws IOException {
         @NonNull
         final BigInteger value = Nullsafe.nonNull(jsonParser.getBigIntegerValue());
         return StorageUnits.binaryValueOf(value);
