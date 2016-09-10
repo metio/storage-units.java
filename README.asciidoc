@@ -230,7 +230,7 @@ Each unit implements a Byte-based static factory method (`valueOf(BigInteger)` o
 // 'long' based
 Kilobyte unit = Kilobyte.valueOf(500)               // 500 Byte or "0.50 kB"
 Kibibyte unit = Kibibyte.valueOf(512)               // 512 Byte or "0.50 KiB"
-CommonKilobyte unit = CommonKilobyte.valueOf(512)   // 500 Byte or "0.50 kB"
+CommonKilobyte unit = CommonKilobyte.valueOf(512)   // 512 Byte or "0.50 kB"
 
 Megabyte unit = Megabyte.valueOf(1_000_000)             // 1 000 000 Byte or "1.00 MB"
 Mebibyte unit = Mebibyte.valueOf(1_048_576)             // 1 048 576 Byte or "1.00 MiB"
