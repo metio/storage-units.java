@@ -33,7 +33,7 @@
   <!--                               INFORMATIONS                              -->
   <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
   <!-- https://maven.apache.org/pom.html#More_Project_Information -->
-  <name>Storage Units :: Parent</name>
+  <name>Storage Units</name>
   <description>Implementation of storage units according to ISO IEC 80000-13:2008.</description>
   <url>https://seb.xn--ho-hia.de/storage-units</url>
   <inceptionYear>2012</inceptionYear>
