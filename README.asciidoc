@@ -101,7 +101,7 @@ https://www.java.com[Java] library for storage-/byte-units. All units defined in
 | Name | Symbol | Exponential | Absolute | Class
 
 | Byte
-| kB
+| B
 | 10 ^0^ Byte
 | 1 Byte
 | `Byte`
@@ -160,7 +160,7 @@ https://www.java.com[Java] library for storage-/byte-units. All units defined in
 | Name | Symbol | Exponential | Absolute | Class
 
 | Byte
-| kB
+| B
 | 2 ^0^ Byte
 | 1 Byte
 | `Byte`
