@@ -614,8 +614,8 @@ public abstract class StorageUnit<T extends StorageUnit<T>> extends Number imple
 
     @NonNull
     private final BigDecimal calculate(final BigInteger base) {
-        return Nullsafe.nonNull(new BigDecimal(this.bytes.toString())
-                .divide(new BigDecimal(base.toString()), StorageUnit.DEFAULT_SCALE, RoundingMode.CEILING));
+        return Nullsafe.nonNull(new BigDecimal(this.bytes)
+                .divide(new BigDecimal(base), StorageUnit.DEFAULT_SCALE, RoundingMode.CEILING));
     }
 
     // Only exposed to be accessible by tests.
