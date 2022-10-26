@@ -155,70 +155,6 @@ https://www.java.com[Java] library for storage-/byte-units. All units defined in
 | `Yottabyte`
 |===
 
-.Common units
-|===
-| Name | Symbol | Exponential | Absolute | Class
-
-| Byte
-| B
-| 2 ^0^ Byte
-| 1 Byte
-| `Byte`
-
-| Kilobyte
-| kB
-| 2 ^10^ Byte
-| 1 024 Byte
-| `CommonKilobyte`
-
-| Megabyte
-| MB
-| 2 ^20^ Byte
-| 1 048 576 Byte
-| `CommonMegabyte`
-
-| Gigabyte
-| GB
-| 2 ^30^ Byte
-| 1 073 741 824 Byte
-| `CommonGigabyte`
-
-| Terabyte
-| TB
-| 2 ^40^ Byte
-| 1 099 511 627 776 Byte
-| `CommonTerabyte`
-
-| Petabyte
-| PB
-| 2 ^50^ Byte
-| 1 125 899 906 842 624 Byte
-| `CommonPetabyte`
-
-| Exabyte
-| EB
-| 2 ^60^ Byte
-| 1 152 921 504 606 846 976 Byte
-| `CommonExabyte`
-
-| Zettabyte
-| ZB
-| 2 ^70^ Byte
-| 1 180 591 620 717 411 303 424 Byte
-| `CommonZettabyte`
-
-| Yottabyte
-| YB
-| 2 ^80^ Byte
-| 1 208 925 819 614 629 174 706 176 Byte
-| `CommonYottabyte`
-|===
-
-=== Development Status
-
-All units are implemented. For future ideas, take a look at the link:https://github.com/sebhoss/storage-units/issues[open tickets] in case you are interested.
-
-
 == Usage
 
 === Factories
@@ -230,20 +166,16 @@ Each unit implements a Byte-based static factory method (`valueOf(BigInteger)` o
 // 'long' based
 Kilobyte unit = Kilobyte.valueOf(500)               // 500 Byte or "0.50 kB"
 Kibibyte unit = Kibibyte.valueOf(512)               // 512 Byte or "0.50 KiB"
-CommonKilobyte unit = CommonKilobyte.valueOf(512)   // 512 Byte or "0.50 kB"
 
 Megabyte unit = Megabyte.valueOf(1_000_000)             // 1 000 000 Byte or "1.00 MB"
 Mebibyte unit = Mebibyte.valueOf(1_048_576)             // 1 048 576 Byte or "1.00 MiB"
-CommonMegabyte unit = CommonMegabyte.valueOf(1_048_576) // 1 048 576 Byte or "1.00 MB"
 
 // 'BigInteger' based
 Kilobyte unit = Kilobyte.valueOf(BigInteger.valueOf(500))               // 500 Byte or "0.50 kB"
 Kibibyte unit = Kibibyte.valueOf(BigInteger.valueOf(512))               // 512 Byte or "0.50 KiB"
-CommonKilobyte unit = CommonKilobyte.valueOf(BigInteger.valueOf(512))   // 512 Byte or "0.50 KB"
 
 Megabyte unit = Megabyte.valueOf(BigInteger.valueOf(1000000))               // 1 000 000 Byte or "1.00 MB"
 Mebibyte unit = Mebibyte.valueOf(BigInteger.valueOf(1_048_576))             // 1 048 576 Byte or "1.00 MB"
-CommonMegabyte unit = CommonMegabyte.valueOf(BigInteger.valueOf(1_048_576)) // 1 048 576 Byte or "1.00 MB"
 ----
 
 The `StorageUnits` class offers three factory methods that automatically pick the best-matching unit for a given number of bytes.
@@ -274,24 +206,11 @@ StorageUnit<?> unit = StorageUnits.decimalValueOf(BigInteger.valueOf(120000))   
 StorageUnit<?> unit = StorageUnits.decimalValueOf(BigInteger.valueOf(1000000))   // Megabyte (1.00 MB)
 ----
 
-==== Common Units
-
-[source,java]
-----
-// 'long' based
-StorageUnit<?> unit = StorageUnits.commonValueOf(256)       // CommonKilobyte (0.25 kB)
-StorageUnit<?> unit = StorageUnits.commonValueOf(1048576)   // CommonMebibyte (1.00 MB)
-
-// 'BigInteger' based
-StorageUnit<?> unit = StorageUnits.commonValueOf(BigInteger.valueOf(256))     // CommonKilobyte (0.25 kB)
-StorageUnit<?> unit = StorageUnits.commonValueOf(BigInteger.valueOf(1048576)) // CommonMebibyte (1.00 MB)
-----
-
 Additionally high-level factory methods are also available in the `StorageUnits` class.
 
 [source,java]
 ----
-import static de.xn__ho_hia.storage_unit.StorageUnits.*;
+import static wtf.metio.storageunits.StorageUnits.*;
 
 Kibibyte unit = kibibyte(1)   // 1 024 Byte
 Mebibyte unit = mebibyte(1)   // 1 048 576 Byte
@@ -310,15 +229,6 @@ Petabyte unit = petabyte(1)   // 1 000 000 000 000 000 Byte
 Exabyte unit = exabyte(1)     // 1 000 000 000 000 000 000 Byte
 Zettabyte unit = zettabyte(1) // 1 000 000 000 000 000 000 000 Byte
 Yottabyte unit = yottabyte(1) // 1 000 000 000 000 000 000 000 000 Byte
-
-CommonKilobyte unit = commonKilobyte(1)   // 1 024 Byte
-CommonMegabyte unit = commonMegabyte(1)   // 1 048 576 Byte
-CommonGigabyte unit = commonGigabyte(1)   // 1 073 741 824 Byte
-CommonTerabyte unit = commonTerabyte(1)   // 1 099 511 627 776 Byte
-CommonPetabyte unit = commonPetabyte(1)   // 1 125 899 906 842 624 Byte
-CommonExabyte unit = commonExabyte(1)     // 1 152 921 504 606 846 976 Byte
-CommonZettabyte unit = commonZettabyte(1) // 1 180 591 620 717 411 303 424 Byte
-CommonYottabyte unit = commonYottabyte(1) // 1 208 925 819 614 629 174 706 176 Byte
 ----
 
 === Add, Subtract, Multiply, Divide
@@ -327,7 +237,7 @@ Each unit implements the basic four math operations. All operations retain their
 
 [source,java]
 ----
-import static de.xn__ho_hia.storage_unit.StorageUnits.*;
+import static wtf.metio.storageunits.StorageUnits.*;
 
 kilobyte(4).add(kilobyte(8))        // 4 Kilobyte + 8 Kilobyte = 12 Kilobyte = 12 000 Byte
 kibibyte(1).add(1024)               // 1 Kibibyte + 1 024 Byte = 2 Kibibyte = 2 048 Byte
@@ -343,7 +253,7 @@ Each unit is comparable to each other unit.
 
 [source,java]
 ----
-import static de.xn__ho_hia.storage_unit.StorageUnits.*;
+import static wtf.metio.storageunits.StorageUnits.*;
 
 kibibyte(1024).compareTo(mebibyte(1)) == 0 // true
 kibibyte(1000).compareTo(mebibyte(1)) == 0 // false
@@ -360,7 +270,7 @@ Each unit prints a human-readable string, representing the amount of bytes in th
 
 [source,java]
 ----
-import static de.xn__ho_hia.storage_unit.StorageUnits.*;
+import static wtf.metio.storageunits.StorageUnits.*;
 
 // default pattern '0.00'
 terabyte(2).toString()                         // "2.00 TB"
@@ -405,7 +315,7 @@ Each unit can be converted to each other unit without loss of information.
 
 [source,java]
 ----
-import static de.xn__ho_hia.storage_unit.StorageUnits.*;
+import static wtf.metio.storageunits.StorageUnits.*;
 
 Megabyte unit = kilobyte(1000).asMegabyte() // "1.00 MB"
 Kilobyte unit = gigabyte(12).asKilobyte()   // "12000000.00 kB"
@@ -418,11 +328,11 @@ kilobyte(1100).asBestMatchingDecimalUnit()   // "1.10 MB"
 kilobyte(1100).asBestMatchingCommonUnit()    // "1.05 MB"
 ----
 
-Each unit can be expressed as a fraction of another unit (precise up to 24 decimal places) 
+Each unit can be expressed as a fraction of another unit (precise up to 24 decimal places)
 
 [source,java]
 ----
-import static de.xn__ho_hia.storage_unit.StorageUnits.*;
+import static wtf.metio.storageunits.StorageUnits.*;
 
 BigDecimal kilobytes = megabyte(1).inKilobyte()  // 1 000
 BigInteger bytes = kibibyte(2).inByte()          // 2 048
@@ -538,28 +448,7 @@ To use this project just declare the following dependency inside your POM:
 </dependencies>
 ----
 
-Replace `${version.storage-units}` with the link:++http://search.maven.org/#search%7Cga%7C1%7Cg%3Ade.xn--ho-hia.storage_units++[latest release]. This project follows the link:http://semver.org/[semantic versioning guidelines].
-
-=== Compatibility
-
-This project is compatible with the following Java versions:
-
-.Java compatibility
-|===
-| | 1.X.Y | 2.X.Y | 3.X.Y | 4.X.Y
-
-| Java 8
-| ✓
-| ✓
-| ✓
-| ✓
-
-| Java 7
-| ✓
-| 
-| 
-| 
-|===
+Replace `${version.storage-units}` with the link:++http://search.maven.org/#search%7Cga%7C1%7Cg%3Ade.xn--ho-hia.storage_units++[latest release].
 
 == Reference
 
@@ -582,7 +471,4 @@ with this software. If not, see http://creativecommons.org/publicdomain/zero/1.0
 == Mirrors
 
 * https://github.com/sebhoss/{project-name}
-* https://bitbucket.org/sebhoss/{project-name}
-* https://gitlab.com/sebastian.hoss/{project-name}
-* http://v2.pikacode.com/sebhoss/{project-name}
 * http://repo.or.cz/{project-name}.git

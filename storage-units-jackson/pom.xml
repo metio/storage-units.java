@@ -15,9 +15,9 @@
   <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
   <!-- https://maven.apache.org/pom.html#Inheritance -->
   <parent>
-    <groupId>de.xn--ho-hia.storage_units</groupId>
+    <groupId>wtf.metio.storage-units</groupId>
     <artifactId>storage-units.java</artifactId>
-    <version>4.0.0-${revision}</version>
+    <version>${revision}</version>
   </parent>
 
   <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
@@ -34,33 +34,26 @@
 
   <dependencies>
     <dependency>
-      <groupId>de.xn--ho-hia.quality</groupId>
-      <artifactId>suppress-warnings</artifactId>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>de.xn--ho-hia.quality</groupId>
-      <artifactId>null-analysis</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>de.xn--ho-hia.storage_units</groupId>
-      <artifactId>storage-units</artifactId>
+      <groupId>wtf.metio.storage-units</groupId>
+      <artifactId>storage-units-model</artifactId>
       <version>${project.version}</version>
     </dependency>
     <dependency>
       <groupId>com.fasterxml.jackson.core</groupId>
       <artifactId>jackson-core</artifactId>
-      <version>2.7.5</version>
     </dependency>
     <dependency>
       <groupId>com.fasterxml.jackson.core</groupId>
       <artifactId>jackson-databind</artifactId>
-      <version>2.7.5</version>
     </dependency>
     <dependency>
       <groupId>com.fasterxml.jackson.core</groupId>
       <artifactId>jackson-annotations</artifactId>
-      <version>2.7.5</version>
+    </dependency>
+    <dependency>
+      <groupId>org.jspecify</groupId>
+      <artifactId>jspecify</artifactId>
+      <version>0.3.0-alpha-1</version>
     </dependency>
   </dependencies>
 </project>
