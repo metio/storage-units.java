@@ -30,7 +30,7 @@
   <!--                               INFORMATIONS                              -->
   <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
   <!-- https://maven.apache.org/pom.html#More_Project_Information -->
-  <name>Storage Units :: Serialization :: Jackson</name>
+  <name>Storage Units :: Jackson</name>
 
   <dependencies>
     <dependency>

@@ -30,7 +30,7 @@
   <!--                               INFORMATIONS                              -->
   <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
   <!-- https://maven.apache.org/pom.html#More_Project_Information -->
-  <name>Storage Units :: Serialization :: MongoDB</name>
+  <name>Storage Units :: MongoDB</name>
 
   <dependencies>
     <dependency>
@@ -41,7 +41,7 @@
     <dependency>
       <groupId>org.mongodb</groupId>
       <artifactId>mongodb-driver</artifactId>
-      <version>3.3.0</version>
+      <version>3.12.11</version>
     </dependency>
     <dependency>
       <groupId>org.jspecify</groupId>
