@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="storage-units-jakarta" />
+        <module name="storage-units-jackson" />
+        <module name="storage-units-mongodb" />
+        <module name="storage-units-mapstruct" />
+        <module name="storage-units-dozer" />
+        <module name="storage-units-modelmapper" />
+        <module name="storage-units-eclipselink" />
+        <module name="storage-units-model" />
+        <module name="storage-units-orika" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="storage-units-jpa" target="17" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

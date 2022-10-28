@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ClojureProjectResolveSettings">
+    <currentScheme>IDE</currentScheme>
+  </component>
+  <component name="ExternalStorageConfigurationManager" enabled="true" />
+  <component name="MavenProjectsManager">
+    <option name="originalFiles">
+      <list>
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/storage-units-jackson/pom.xml" />
+        <option value="$PROJECT_DIR$/storage-units-eclipselink/pom.xml" />
+        <option value="$PROJECT_DIR$/storage-units-mongodb/pom.xml" />
+        <option value="$PROJECT_DIR$/storage-units-jpa/pom.xml" />
+        <option value="$PROJECT_DIR$/storage-units-jakarta/pom.xml" />
+        <option value="$PROJECT_DIR$/storage-units-modelmapper/pom.xml" />
+        <option value="$PROJECT_DIR$/storage-units-mapstruct/pom.xml" />
+        <option value="$PROJECT_DIR$/storage-units-orika/pom.xml" />
+        <option value="$PROJECT_DIR$/storage-units-dozer/pom.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_17" default="true" project-jdk-name="temurin-17" project-jdk-type="JavaSDK" />
+</project>
