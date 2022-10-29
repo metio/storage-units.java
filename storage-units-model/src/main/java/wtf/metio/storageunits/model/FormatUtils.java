@@ -17,8 +17,7 @@ final class FormatUtils {
         // Hidden constructor.
     }
 
-    @NotNull
-    static Format asFormat(@NotNull final String pattern, @NotNull final Locale locale) {
+    static @NotNull Format asFormat(final @NotNull String pattern, final @NotNull Locale locale) {
         final var localizedFormat = NumberFormat.getNumberInstance(locale);
         final var outputFormat = (DecimalFormat) localizedFormat;
         outputFormat.applyPattern(pattern);

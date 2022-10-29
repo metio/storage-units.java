@@ -19,7 +19,7 @@ public final class Zettabyte extends StorageUnit<Zettabyte> {
     @Serial
     private static final long serialVersionUID = 8849006574018911826L;
 
-    Zettabyte(@NotNull final BigInteger bytes) {
+    Zettabyte(final @NotNull BigInteger bytes) {
         super(bytes);
     }
 
@@ -27,9 +27,8 @@ public final class Zettabyte extends StorageUnit<Zettabyte> {
      * @param numberOfBytes The amount of bytes the Zettabyte contains.
      * @return A new Zettabyte unit with the given value.
      */
-    @NotNull
     @CheckReturnValue
-    public static Zettabyte valueOf(@NotNull final BigInteger numberOfBytes) {
+    public static @NotNull Zettabyte valueOf(final @NotNull BigInteger numberOfBytes) {
         return new Zettabyte(numberOfBytes);
     }
 
@@ -37,9 +36,8 @@ public final class Zettabyte extends StorageUnit<Zettabyte> {
      * @param numberOfBytes The amount of bytes the Zettabyte contains.
      * @return A new Zettabyte unit with the given value.
      */
-    @NotNull
     @CheckReturnValue
-    public static Zettabyte valueOf(final long numberOfBytes) {
+    public static @NotNull Zettabyte valueOf(final long numberOfBytes) {
         return valueOf(BigInteger.valueOf(numberOfBytes));
     }
 
@@ -47,100 +45,86 @@ public final class Zettabyte extends StorageUnit<Zettabyte> {
      * @param numberOfBytes The amount of bytes the Zettabyte contains.
      * @return A new Zettabyte unit with the given value.
      */
-    @NotNull
     @CheckReturnValue
-    public static Zettabyte valueOf(@NotNull final Long numberOfBytes) {
+    public static @NotNull Zettabyte valueOf(final @NotNull Long numberOfBytes) {
         return valueOf(numberOfBytes.longValue());
     }
 
     @Override
-    @NotNull
     @CheckReturnValue
-    public Zettabyte add(final long bytesToAdd) {
+    public @NotNull Zettabyte add(final long bytesToAdd) {
         return add(BigInteger.valueOf(bytesToAdd));
     }
 
     @Override
-    @NotNull
     @CheckReturnValue
-    public Zettabyte add(@NotNull final BigInteger bytesToAdd) {
+    public @NotNull Zettabyte add(final @NotNull BigInteger bytesToAdd) {
         return new Zettabyte(bytes.add(bytesToAdd));
     }
 
     @Override
-    @NotNull
     @CheckReturnValue
-    public Zettabyte add(@NotNull final StorageUnit<?> storageAmount) {
+    public @NotNull Zettabyte add(final @NotNull StorageUnit<?> storageAmount) {
         return add(storageAmount.bytes);
     }
 
     @Override
-    @NotNull
     @CheckReturnValue
-    public Zettabyte divide(final long divisor) {
+    public @NotNull Zettabyte divide(final long divisor) {
         return divide(BigInteger.valueOf(divisor));
     }
 
     @Override
-    @NotNull
     @CheckReturnValue
-    public Zettabyte divide(@NotNull final BigInteger divisor) {
+    public @NotNull Zettabyte divide(final @NotNull BigInteger divisor) {
         return new Zettabyte(bytes.divide(divisor));
     }
 
     @Override
-    @NotNull
     @CheckReturnValue
-    public Zettabyte multiply(final long factor) {
+    public @NotNull Zettabyte multiply(final long factor) {
         return multiply(BigInteger.valueOf(factor));
     }
 
     @Override
-    @NotNull
     @CheckReturnValue
-    public Zettabyte multiply(@NotNull final BigInteger factor) {
+    public @NotNull Zettabyte multiply(final @NotNull BigInteger factor) {
         return new Zettabyte(bytes.multiply(factor));
     }
 
     @Override
-    @NotNull
     @CheckReturnValue
-    public Zettabyte subtract(final long bytesToSubtract) {
+    public @NotNull Zettabyte subtract(final long bytesToSubtract) {
         return subtract(BigInteger.valueOf(bytesToSubtract));
     }
 
     @Override
-    @NotNull
     @CheckReturnValue
-    public Zettabyte subtract(@NotNull final BigInteger bytesToSubtract) {
+    public @NotNull Zettabyte subtract(final @NotNull BigInteger bytesToSubtract) {
         return new Zettabyte(bytes.subtract(bytesToSubtract));
     }
 
     @Override
-    @NotNull
     @CheckReturnValue
-    public Zettabyte subtract(@NotNull final StorageUnit<?> storageAmount) {
+    public @NotNull Zettabyte subtract(final @NotNull StorageUnit<?> storageAmount) {
         return subtract(storageAmount.bytes);
     }
 
     @Override
-    @NotNull
     @CheckReturnValue
-    protected BigInteger getNumberOfBytesPerUnit() {
+    protected @NotNull BigInteger getNumberOfBytesPerUnit() {
         return BYTES_IN_A_ZETTABYTE;
     }
 
     @Override
-    @NotNull
     @CheckReturnValue
-    protected String getSymbol() {
+    protected @NotNull String getSymbol() {
         return "ZB";
     }
 
     @Override
-    @NotNull
     @CheckReturnValue
-    protected Function<@NotNull BigInteger, @NotNull StorageUnit<?>> converter() {
+    protected @NotNull Function<@NotNull BigInteger, @NotNull StorageUnit<?>> converter() {
         return StorageUnits::decimalValueOf;
     }
 

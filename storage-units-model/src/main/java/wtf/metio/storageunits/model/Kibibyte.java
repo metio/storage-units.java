@@ -19,7 +19,7 @@ public final class Kibibyte extends StorageUnit<Kibibyte> {
     @Serial
     private static final long serialVersionUID = 3798828851496657978L;
 
-    Kibibyte(@NotNull final BigInteger bytes) {
+    Kibibyte(final @NotNull BigInteger bytes) {
         super(bytes);
     }
 
@@ -27,9 +27,8 @@ public final class Kibibyte extends StorageUnit<Kibibyte> {
      * @param numberOfBytes The amount of bytes the Kibibyte contains.
      * @return A new Kibibyte unit with the given value.
      */
-    @NotNull
     @CheckReturnValue
-    public static Kibibyte valueOf(@NotNull final BigInteger numberOfBytes) {
+    public static @NotNull Kibibyte valueOf(final @NotNull BigInteger numberOfBytes) {
         return new Kibibyte(numberOfBytes);
     }
 
@@ -37,9 +36,8 @@ public final class Kibibyte extends StorageUnit<Kibibyte> {
      * @param numberOfBytes The amount of bytes the Kibibyte contains.
      * @return A new Kibibyte unit with the given value.
      */
-    @NotNull
     @CheckReturnValue
-    public static Kibibyte valueOf(final long numberOfBytes) {
+    public static @NotNull Kibibyte valueOf(final long numberOfBytes) {
         return valueOf(BigInteger.valueOf(numberOfBytes));
     }
 
@@ -47,100 +45,86 @@ public final class Kibibyte extends StorageUnit<Kibibyte> {
      * @param numberOfBytes The amount of bytes the Kibibyte contains.
      * @return A new Kibibyte unit with the given value.
      */
-    @NotNull
     @CheckReturnValue
-    public static Kibibyte valueOf(@NotNull final Long numberOfBytes) {
+    public static @NotNull Kibibyte valueOf(final @NotNull Long numberOfBytes) {
         return valueOf(numberOfBytes.longValue());
     }
 
     @Override
-    @NotNull
     @CheckReturnValue
-    public Kibibyte add(final long bytesToAdd) {
+    public @NotNull Kibibyte add(final long bytesToAdd) {
         return add(BigInteger.valueOf(bytesToAdd));
     }
 
     @Override
-    @NotNull
     @CheckReturnValue
-    public Kibibyte add(@NotNull final BigInteger bytesToAdd) {
+    public @NotNull Kibibyte add(final @NotNull BigInteger bytesToAdd) {
         return new Kibibyte(bytes.add(bytesToAdd));
     }
 
     @Override
-    @NotNull
     @CheckReturnValue
-    public Kibibyte add(@NotNull final StorageUnit<?> storageAmount) {
+    public @NotNull Kibibyte add(final @NotNull StorageUnit<?> storageAmount) {
         return add(storageAmount.bytes);
     }
 
     @Override
-    @NotNull
     @CheckReturnValue
-    public Kibibyte divide(final long divisor) {
+    public @NotNull Kibibyte divide(final long divisor) {
         return divide(BigInteger.valueOf(divisor));
     }
 
     @Override
-    @NotNull
     @CheckReturnValue
-    public Kibibyte divide(@NotNull final BigInteger divisor) {
+    public @NotNull Kibibyte divide(final @NotNull BigInteger divisor) {
         return new Kibibyte(bytes.divide(divisor));
     }
 
     @Override
-    @NotNull
     @CheckReturnValue
-    public Kibibyte multiply(final long factor) {
+    public @NotNull Kibibyte multiply(final long factor) {
         return multiply(BigInteger.valueOf(factor));
     }
 
     @Override
-    @NotNull
     @CheckReturnValue
-    public Kibibyte multiply(@NotNull final BigInteger factor) {
+    public @NotNull Kibibyte multiply(final @NotNull BigInteger factor) {
         return new Kibibyte(bytes.multiply(factor));
     }
 
     @Override
-    @NotNull
     @CheckReturnValue
-    public Kibibyte subtract(final long bytesToSubtract) {
+    public @NotNull Kibibyte subtract(final long bytesToSubtract) {
         return subtract(BigInteger.valueOf(bytesToSubtract));
     }
 
     @Override
-    @NotNull
     @CheckReturnValue
-    public Kibibyte subtract(@NotNull final BigInteger bytesToSubtract) {
+    public @NotNull Kibibyte subtract(final @NotNull BigInteger bytesToSubtract) {
         return new Kibibyte(bytes.subtract(bytesToSubtract));
     }
 
     @Override
-    @NotNull
     @CheckReturnValue
-    public Kibibyte subtract(final StorageUnit<?> storageAmount) {
+    public @NotNull Kibibyte subtract(final StorageUnit<?> storageAmount) {
         return subtract(storageAmount.bytes);
     }
 
     @Override
-    @NotNull
     @CheckReturnValue
-    protected BigInteger getNumberOfBytesPerUnit() {
+    protected @NotNull BigInteger getNumberOfBytesPerUnit() {
         return StorageUnit.BYTES_IN_A_KIBIBYTE;
     }
 
     @Override
-    @NotNull
     @CheckReturnValue
-    protected String getSymbol() {
+    protected @NotNull String getSymbol() {
         return "KiB";
     }
 
     @Override
-    @NotNull
     @CheckReturnValue
-    protected Function<@NotNull BigInteger, @NotNull StorageUnit<?>> converter() {
+    protected @NotNull Function<@NotNull BigInteger, @NotNull StorageUnit<?>> converter() {
         return StorageUnits::binaryValueOf;
     }
 

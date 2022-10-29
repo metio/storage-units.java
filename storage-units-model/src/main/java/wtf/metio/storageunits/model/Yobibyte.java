@@ -22,7 +22,7 @@ public final class Yobibyte extends StorageUnit<Yobibyte> {
     @Serial
     private static final long serialVersionUID = -5606322878020884194L;
 
-    Yobibyte(@NotNull final BigInteger bytes) {
+    Yobibyte(final @NotNull BigInteger bytes) {
         super(bytes);
     }
 
@@ -30,9 +30,8 @@ public final class Yobibyte extends StorageUnit<Yobibyte> {
      * @param numberOfBytes The amount of bytes the Yobibyte contains.
      * @return A new Yobibyte unit with the given value.
      */
-    @NotNull
     @CheckReturnValue
-    public static Yobibyte valueOf(@NotNull final BigInteger numberOfBytes) {
+    public static @NotNull Yobibyte valueOf(final @NotNull BigInteger numberOfBytes) {
         return new Yobibyte(numberOfBytes);
     }
 
@@ -40,9 +39,8 @@ public final class Yobibyte extends StorageUnit<Yobibyte> {
      * @param numberOfBytes The amount of bytes the Yobibyte contains.
      * @return A new Yobibyte unit with the given value.
      */
-    @NotNull
     @CheckReturnValue
-    public static Yobibyte valueOf(final long numberOfBytes) {
+    public static @NotNull Yobibyte valueOf(final long numberOfBytes) {
         return valueOf(BigInteger.valueOf(numberOfBytes));
     }
 
@@ -50,100 +48,86 @@ public final class Yobibyte extends StorageUnit<Yobibyte> {
      * @param numberOfBytes The amount of bytes the Yobibyte contains.
      * @return A new Yobibyte unit with the given value.
      */
-    @NotNull
     @CheckReturnValue
-    public static Yobibyte valueOf(@NotNull final Long numberOfBytes) {
+    public static @NotNull Yobibyte valueOf(final @NotNull Long numberOfBytes) {
         return valueOf(numberOfBytes.longValue());
     }
 
     @Override
-    @NotNull
     @CheckReturnValue
-    public Yobibyte add(final long bytesToAdd) {
+    public @NotNull Yobibyte add(final long bytesToAdd) {
         return add(BigInteger.valueOf(bytesToAdd));
     }
 
     @Override
-    @NotNull
     @CheckReturnValue
-    public Yobibyte add(@NotNull final BigInteger bytesToAdd) {
+    public @NotNull Yobibyte add(final @NotNull BigInteger bytesToAdd) {
         return new Yobibyte(bytes.add(bytesToAdd));
     }
 
     @Override
-    @NotNull
     @CheckReturnValue
-    public Yobibyte add(@NotNull final StorageUnit<?> storageAmount) {
+    public @NotNull Yobibyte add(final @NotNull StorageUnit<?> storageAmount) {
         return add(storageAmount.bytes);
     }
 
     @Override
-    @NotNull
     @CheckReturnValue
-    public Yobibyte divide(final long divisor) {
+    public @NotNull Yobibyte divide(final long divisor) {
         return divide(BigInteger.valueOf(divisor));
     }
 
     @Override
-    @NotNull
     @CheckReturnValue
-    public Yobibyte divide(@NotNull final BigInteger divisor) {
+    public @NotNull Yobibyte divide(final @NotNull BigInteger divisor) {
         return new Yobibyte(bytes.divide(divisor));
     }
 
     @Override
-    @NotNull
     @CheckReturnValue
-    public Yobibyte multiply(final long factor) {
+    public @NotNull Yobibyte multiply(final long factor) {
         return multiply(BigInteger.valueOf(factor));
     }
 
     @Override
-    @NotNull
     @CheckReturnValue
-    public Yobibyte multiply(@NotNull final BigInteger factor) {
+    public @NotNull Yobibyte multiply(final @NotNull BigInteger factor) {
         return new Yobibyte(bytes.multiply(factor));
     }
 
     @Override
-    @NotNull
     @CheckReturnValue
-    public Yobibyte subtract(final long bytesToSubtract) {
+    public @NotNull Yobibyte subtract(final long bytesToSubtract) {
         return subtract(BigInteger.valueOf(bytesToSubtract));
     }
 
     @Override
-    @NotNull
     @CheckReturnValue
-    public Yobibyte subtract(@NotNull final BigInteger bytesToSubtract) {
+    public @NotNull Yobibyte subtract(final @NotNull BigInteger bytesToSubtract) {
         return new Yobibyte(bytes.subtract(bytesToSubtract));
     }
 
     @Override
-    @NotNull
     @CheckReturnValue
-    public Yobibyte subtract(@NotNull final StorageUnit<?> storageAmount) {
+    public @NotNull Yobibyte subtract(final @NotNull StorageUnit<?> storageAmount) {
         return subtract(storageAmount.bytes);
     }
 
     @Override
-    @NotNull
     @CheckReturnValue
-    protected BigInteger getNumberOfBytesPerUnit() {
+    protected @NotNull BigInteger getNumberOfBytesPerUnit() {
         return StorageUnit.BYTES_IN_A_YOBIBYTE;
     }
 
     @Override
-    @NotNull
     @CheckReturnValue
-    protected String getSymbol() {
+    protected @NotNull String getSymbol() {
         return "YiB";
     }
 
     @Override
-    @NotNull
     @CheckReturnValue
-    protected Function<@NotNull BigInteger, @NotNull StorageUnit<?>> converter() {
+    protected @NotNull Function<@NotNull BigInteger, @NotNull StorageUnit<?>> converter() {
         return StorageUnits::binaryValueOf;
     }
 

@@ -19,7 +19,7 @@ public final class Pebibyte extends StorageUnit<Pebibyte> {
     @Serial
     private static final long serialVersionUID = -6112472064345339882L;
 
-    Pebibyte(@NotNull final BigInteger bytes) {
+    Pebibyte(final @NotNull BigInteger bytes) {
         super(bytes);
     }
 
@@ -27,9 +27,8 @@ public final class Pebibyte extends StorageUnit<Pebibyte> {
      * @param numberOfBytes The amount of bytes the Pebibyte contains.
      * @return A new Pebibyte unit with the given value.
      */
-    @NotNull
     @CheckReturnValue
-    public static Pebibyte valueOf(@NotNull final BigInteger numberOfBytes) {
+    public static @NotNull Pebibyte valueOf(final @NotNull BigInteger numberOfBytes) {
         return new Pebibyte(numberOfBytes);
     }
 
@@ -37,9 +36,8 @@ public final class Pebibyte extends StorageUnit<Pebibyte> {
      * @param numberOfBytes The amount of bytes the Pebibyte contains.
      * @return A new Pebibyte unit with the given value.
      */
-    @NotNull
     @CheckReturnValue
-    public static Pebibyte valueOf(final long numberOfBytes) {
+    public static @NotNull Pebibyte valueOf(final long numberOfBytes) {
         return valueOf(BigInteger.valueOf(numberOfBytes));
     }
 
@@ -47,100 +45,86 @@ public final class Pebibyte extends StorageUnit<Pebibyte> {
      * @param numberOfBytes The amount of bytes the Pebibyte contains.
      * @return A new Pebibyte unit with the given value.
      */
-    @NotNull
     @CheckReturnValue
-    public static Pebibyte valueOf(@NotNull final Long numberOfBytes) {
+    public static @NotNull Pebibyte valueOf(final @NotNull Long numberOfBytes) {
         return valueOf(numberOfBytes.longValue());
     }
 
     @Override
-    @NotNull
     @CheckReturnValue
-    public Pebibyte add(final long bytesToAdd) {
+    public @NotNull Pebibyte add(final long bytesToAdd) {
         return add(BigInteger.valueOf(bytesToAdd));
     }
 
     @Override
-    @NotNull
     @CheckReturnValue
-    public Pebibyte add(@NotNull final BigInteger bytesToAdd) {
+    public @NotNull Pebibyte add(final @NotNull BigInteger bytesToAdd) {
         return new Pebibyte(bytes.add(bytesToAdd));
     }
 
     @Override
-    @NotNull
     @CheckReturnValue
-    public Pebibyte add(@NotNull final StorageUnit<?> storageAmount) {
+    public @NotNull Pebibyte add(final @NotNull StorageUnit<?> storageAmount) {
         return add(storageAmount.bytes);
     }
 
     @Override
-    @NotNull
     @CheckReturnValue
-    public Pebibyte divide(final long divisor) {
+    public @NotNull Pebibyte divide(final long divisor) {
         return divide(BigInteger.valueOf(divisor));
     }
 
     @Override
-    @NotNull
     @CheckReturnValue
-    public Pebibyte divide(@NotNull final BigInteger divisor) {
+    public @NotNull Pebibyte divide(final @NotNull BigInteger divisor) {
         return new Pebibyte(bytes.divide(divisor));
     }
 
     @Override
-    @NotNull
     @CheckReturnValue
-    public Pebibyte multiply(final long factor) {
+    public @NotNull Pebibyte multiply(final long factor) {
         return multiply(BigInteger.valueOf(factor));
     }
 
     @Override
-    @NotNull
     @CheckReturnValue
-    public Pebibyte multiply(@NotNull final BigInteger factor) {
+    public @NotNull Pebibyte multiply(final @NotNull BigInteger factor) {
         return new Pebibyte(bytes.multiply(factor));
     }
 
     @Override
-    @NotNull
     @CheckReturnValue
-    public Pebibyte subtract(final long bytesToSubtract) {
+    public @NotNull Pebibyte subtract(final long bytesToSubtract) {
         return subtract(BigInteger.valueOf(bytesToSubtract));
     }
 
     @Override
-    @NotNull
     @CheckReturnValue
-    public Pebibyte subtract(@NotNull final BigInteger bytesToSubtract) {
+    public @NotNull Pebibyte subtract(final @NotNull BigInteger bytesToSubtract) {
         return new Pebibyte(bytes.subtract(bytesToSubtract));
     }
 
     @Override
-    @NotNull
     @CheckReturnValue
-    public Pebibyte subtract(@NotNull final StorageUnit<?> storageAmount) {
+    public @NotNull Pebibyte subtract(final @NotNull StorageUnit<?> storageAmount) {
         return subtract(storageAmount.bytes);
     }
 
     @Override
-    @NotNull
     @CheckReturnValue
-    protected BigInteger getNumberOfBytesPerUnit() {
+    protected @NotNull BigInteger getNumberOfBytesPerUnit() {
         return StorageUnit.BYTES_IN_A_PEBIBYTE;
     }
 
     @Override
-    @NotNull
     @CheckReturnValue
-    protected String getSymbol() {
+    protected @NotNull String getSymbol() {
         return "PiB";
     }
 
     @Override
-    @NotNull
     @CheckReturnValue
-    protected Function<@NotNull BigInteger, @NotNull StorageUnit<?>> converter() {
+    protected @NotNull Function<@NotNull BigInteger, @NotNull StorageUnit<?>> converter() {
         return StorageUnits::binaryValueOf;
     }
 

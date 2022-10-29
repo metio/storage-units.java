@@ -35,503 +35,436 @@ public abstract class StorageUnit<T extends StorageUnit<T>> extends Number imple
     /**
      * Default number format used within the library.
      */
-    @NotNull
-    static final String DEFAULT_FORMAT_PATTERN = "0.00"; //$NON-NLS-1$
+    static final @NotNull String DEFAULT_FORMAT_PATTERN = "0.00"; //$NON-NLS-1$
 
     /**
      * The storage unit base for binary numbers. Each step between the units dimensions is done with this base value.
      */
-    @NotNull
-    static final BigInteger BINARY_UNIT_BASE = BigInteger.valueOf(1024);
+    static final @NotNull BigInteger BINARY_UNIT_BASE = BigInteger.valueOf(1024);
 
-    @NotNull
-    static final BigInteger BYTES_IN_A_KIBIBYTE = BigInteger.ONE.multiply(StorageUnit.BINARY_UNIT_BASE);
+    static final @NotNull BigInteger BYTES_IN_A_KIBIBYTE = BigInteger.ONE.multiply(StorageUnit.BINARY_UNIT_BASE);
 
-    @NotNull
-    static final BigInteger BYTES_IN_A_MEBIBYTE = StorageUnit.BYTES_IN_A_KIBIBYTE.multiply(
+    static final @NotNull BigInteger BYTES_IN_A_MEBIBYTE = StorageUnit.BYTES_IN_A_KIBIBYTE.multiply(
             StorageUnit.BINARY_UNIT_BASE);
 
-    @NotNull
-    static final BigInteger BYTES_IN_A_GIBIBYTE = StorageUnit.BYTES_IN_A_MEBIBYTE.multiply(
+    static final @NotNull BigInteger BYTES_IN_A_GIBIBYTE = StorageUnit.BYTES_IN_A_MEBIBYTE.multiply(
             StorageUnit.BINARY_UNIT_BASE);
 
-    @NotNull
-    static final BigInteger BYTES_IN_A_TEBIBYTE = StorageUnit.BYTES_IN_A_GIBIBYTE.multiply(
+    static final @NotNull BigInteger BYTES_IN_A_TEBIBYTE = StorageUnit.BYTES_IN_A_GIBIBYTE.multiply(
             StorageUnit.BINARY_UNIT_BASE);
 
-    @NotNull
-    static final BigInteger BYTES_IN_A_PEBIBYTE = StorageUnit.BYTES_IN_A_TEBIBYTE.multiply(
+    static final @NotNull BigInteger BYTES_IN_A_PEBIBYTE = StorageUnit.BYTES_IN_A_TEBIBYTE.multiply(
             StorageUnit.BINARY_UNIT_BASE);
 
-    @NotNull
-    static final BigInteger BYTES_IN_A_EXBIBYTE = StorageUnit.BYTES_IN_A_PEBIBYTE.multiply(
+    static final @NotNull BigInteger BYTES_IN_A_EXBIBYTE = StorageUnit.BYTES_IN_A_PEBIBYTE.multiply(
             StorageUnit.BINARY_UNIT_BASE);
 
-    @NotNull
-    static final BigInteger BYTES_IN_A_ZEBIBYTE = StorageUnit.BYTES_IN_A_EXBIBYTE.multiply(
+    static final @NotNull BigInteger BYTES_IN_A_ZEBIBYTE = StorageUnit.BYTES_IN_A_EXBIBYTE.multiply(
             StorageUnit.BINARY_UNIT_BASE);
 
-    @NotNull
-    static final BigInteger BYTES_IN_A_YOBIBYTE = StorageUnit.BYTES_IN_A_ZEBIBYTE.multiply(
+    static final @NotNull BigInteger BYTES_IN_A_YOBIBYTE = StorageUnit.BYTES_IN_A_ZEBIBYTE.multiply(
             StorageUnit.BINARY_UNIT_BASE);
 
     /**
      * The storage unit base for decimal numbers. Each step between the units dimensions is done with this base value.
      */
-    @NotNull
-    static final BigInteger DECIMAL_UNIT_BASE = BigInteger.valueOf(1000);
+    static final @NotNull BigInteger DECIMAL_UNIT_BASE = BigInteger.valueOf(1000);
 
-    @NotNull
-    static final BigInteger BYTES_IN_A_KILOBYTE = BigInteger.ONE.multiply(
+    static final @NotNull BigInteger BYTES_IN_A_KILOBYTE = BigInteger.ONE.multiply(
             StorageUnit.DECIMAL_UNIT_BASE);
 
-    @NotNull
-    static final BigInteger BYTES_IN_A_MEGABYTE = StorageUnit.BYTES_IN_A_KILOBYTE.multiply(
+    static final @NotNull BigInteger BYTES_IN_A_MEGABYTE = StorageUnit.BYTES_IN_A_KILOBYTE.multiply(
             StorageUnit.DECIMAL_UNIT_BASE);
 
-    @NotNull
-    static final BigInteger BYTES_IN_A_GIGABYTE = StorageUnit.BYTES_IN_A_MEGABYTE.multiply(
+    static final @NotNull BigInteger BYTES_IN_A_GIGABYTE = StorageUnit.BYTES_IN_A_MEGABYTE.multiply(
             StorageUnit.DECIMAL_UNIT_BASE);
 
-    @NotNull
-    static final BigInteger BYTES_IN_A_TERABYTE = StorageUnit.BYTES_IN_A_GIGABYTE.multiply(
+    static final @NotNull BigInteger BYTES_IN_A_TERABYTE = StorageUnit.BYTES_IN_A_GIGABYTE.multiply(
             StorageUnit.DECIMAL_UNIT_BASE);
 
-    @NotNull
-    static final BigInteger BYTES_IN_A_PETABYTE = StorageUnit.BYTES_IN_A_TERABYTE.multiply(
+    static final @NotNull BigInteger BYTES_IN_A_PETABYTE = StorageUnit.BYTES_IN_A_TERABYTE.multiply(
             StorageUnit.DECIMAL_UNIT_BASE);
 
-    @NotNull
-    static final BigInteger BYTES_IN_A_EXABYTE = StorageUnit.BYTES_IN_A_PETABYTE.multiply(
+    static final @NotNull BigInteger BYTES_IN_A_EXABYTE = StorageUnit.BYTES_IN_A_PETABYTE.multiply(
             StorageUnit.DECIMAL_UNIT_BASE);
 
-    @NotNull
-    static final BigInteger BYTES_IN_A_ZETTABYTE = StorageUnit.BYTES_IN_A_EXABYTE.multiply(
+    static final @NotNull BigInteger BYTES_IN_A_ZETTABYTE = StorageUnit.BYTES_IN_A_EXABYTE.multiply(
             StorageUnit.DECIMAL_UNIT_BASE);
 
-    @NotNull
-    static final BigInteger BYTES_IN_A_YOTTABYTE = StorageUnit.BYTES_IN_A_ZETTABYTE.multiply(
+    static final @NotNull BigInteger BYTES_IN_A_YOTTABYTE = StorageUnit.BYTES_IN_A_ZETTABYTE.multiply(
             StorageUnit.DECIMAL_UNIT_BASE);
 
-    @NotNull
-    protected final BigInteger bytes;
+    protected final @NotNull BigInteger bytes;
 
-    protected StorageUnit(@NotNull final BigInteger bytes) {
+    protected StorageUnit(final @NotNull BigInteger bytes) {
         this.bytes = bytes;
     }
 
     /**
      * @return This storage unit as the best matching binary unit.
      */
-    @NotNull
     @CheckReturnValue
-    public final StorageUnit<?> asBestMatchingBinaryUnit() {
+    public final @NotNull StorageUnit<?> asBestMatchingBinaryUnit() {
         return StorageUnits.binaryValueOf(this.bytes);
     }
 
     /**
      * @return This storage unit as the best matching decimal unit.
      */
-    @NotNull
     @CheckReturnValue
-    public final StorageUnit<?> asBestMatchingDecimalUnit() {
+    public final @NotNull StorageUnit<?> asBestMatchingDecimalUnit() {
         return StorageUnits.decimalValueOf(this.bytes);
     }
 
     /**
      * @return This storage unit as the best matching unit, while keeping the current type (binary, decimal, common).
      */
-    @NotNull
     @CheckReturnValue
-    public final StorageUnit<?> asBestMatchingUnit() {
+    public final @NotNull StorageUnit<?> asBestMatchingUnit() {
         return converter().apply(this.bytes);
     }
 
-    @NotNull
-    protected abstract Function<@NotNull BigInteger, @NotNull StorageUnit<?>> converter();
+    protected abstract @NotNull Function<@NotNull BigInteger, @NotNull StorageUnit<?>> converter();
 
     /**
      * @return This storage unit as bytes.
      */
-    @NotNull
     @CheckReturnValue
-    public final Byte asByte() {
+    public final @NotNull Byte asByte() {
         return new Byte(this.bytes);
     }
 
     /**
      * @return This storage unit as a kibibyte.
      */
-    @NotNull
     @CheckReturnValue
-    public final Kibibyte asKibibyte() {
+    public final @NotNull Kibibyte asKibibyte() {
         return new Kibibyte(this.bytes);
     }
 
     /**
      * @return This storage unit as a mebibyte.
      */
-    @NotNull
     @CheckReturnValue
-    public final Mebibyte asMebibyte() {
+    public final @NotNull Mebibyte asMebibyte() {
         return new Mebibyte(this.bytes);
     }
 
     /**
      * @return This storage unit as a gibibyte.
      */
-    @NotNull
     @CheckReturnValue
-    public final Gibibyte asGibibyte() {
+    public final @NotNull Gibibyte asGibibyte() {
         return new Gibibyte(this.bytes);
     }
 
     /**
      * @return This storage unit as a tebibyte.
      */
-    @NotNull
     @CheckReturnValue
-    public final Tebibyte asTebibyte() {
+    public final @NotNull Tebibyte asTebibyte() {
         return new Tebibyte(this.bytes);
     }
 
     /**
      * @return This storage unit as a pebibyte.
      */
-    @NotNull
     @CheckReturnValue
-    public final Pebibyte asPebibyte() {
+    public final @NotNull Pebibyte asPebibyte() {
         return new Pebibyte(this.bytes);
     }
 
     /**
      * @return This storage unit as a exbibyte.
      */
-    @NotNull
     @CheckReturnValue
-    public final Exbibyte asExbibyte() {
+    public final @NotNull Exbibyte asExbibyte() {
         return new Exbibyte(this.bytes);
     }
 
     /**
      * @return This storage unit as a zebibyte.
      */
-    @NotNull
     @CheckReturnValue
-    public final Zebibyte asZebibyte() {
+    public final @NotNull Zebibyte asZebibyte() {
         return new Zebibyte(this.bytes);
     }
 
     /**
      * @return This storage unit as a yobibyte.
      */
-    @NotNull
     @CheckReturnValue
-    public final Yobibyte asYobibyte() {
+    public final @NotNull Yobibyte asYobibyte() {
         return new Yobibyte(this.bytes);
     }
 
     /**
      * @return This storage unit as a kilobyte.
      */
-    @NotNull
     @CheckReturnValue
-    public final Kilobyte asKilobyte() {
+    public final @NotNull Kilobyte asKilobyte() {
         return new Kilobyte(this.bytes);
     }
 
     /**
      * @return This storage unit as a megabyte.
      */
-    @NotNull
     @CheckReturnValue
-    public final Megabyte asMegabyte() {
+    public final @NotNull Megabyte asMegabyte() {
         return new Megabyte(this.bytes);
     }
 
     /**
      * @return This storage unit as a gigabyte.
      */
-    @NotNull
     @CheckReturnValue
-    public final Gigabyte asGigabyte() {
+    public final @NotNull Gigabyte asGigabyte() {
         return new Gigabyte(this.bytes);
     }
 
     /**
      * @return This storage unit as a terabyte.
      */
-    @NotNull
     @CheckReturnValue
-    public final Terabyte asTerabyte() {
+    public final @NotNull Terabyte asTerabyte() {
         return new Terabyte(this.bytes);
     }
 
     /**
      * @return This storage unit as a petabyte.
      */
-    @NotNull
     @CheckReturnValue
-    public final Petabyte asPetabyte() {
+    public final @NotNull Petabyte asPetabyte() {
         return new Petabyte(this.bytes);
     }
 
     /**
      * @return This storage unit as a exabyte.
      */
-    @NotNull
     @CheckReturnValue
-    public final Exabyte asExabyte() {
+    public final @NotNull Exabyte asExabyte() {
         return new Exabyte(this.bytes);
     }
 
     /**
      * @return This storage unit as a zettabyte.
      */
-    @NotNull
     @CheckReturnValue
-    public final Zettabyte asZettabyte() {
+    public final @NotNull Zettabyte asZettabyte() {
         return new Zettabyte(this.bytes);
     }
 
     /**
      * @return This storage unit as a yottabyte.
      */
-    @NotNull
     @CheckReturnValue
-    public final Yottabyte asYottabyte() {
+    public final @NotNull Yottabyte asYottabyte() {
         return new Yottabyte(this.bytes);
     }
 
     /**
      * @return The amount of bytes this storage unit encompasses.
      */
-    @NotNull
     @CheckReturnValue
-    public final BigInteger inByte() {
+    public final @NotNull BigInteger inByte() {
         return this.bytes;
     }
 
     /**
      * @return This storage unit quantified as kibibyte.
      */
-    @NotNull
     @CheckReturnValue
-    public final BigDecimal inKibibyte() {
+    public final @NotNull BigDecimal inKibibyte() {
         return this.calculate(StorageUnit.BYTES_IN_A_KIBIBYTE);
     }
 
     /**
      * @return This storage unit quantified as mebibyte.
      */
-    @NotNull
     @CheckReturnValue
-    public final BigDecimal inMebibyte() {
+    public final @NotNull BigDecimal inMebibyte() {
         return this.calculate(StorageUnit.BYTES_IN_A_MEBIBYTE);
     }
 
     /**
      * @return This storage unit quantified as gibibyte.
      */
-    @NotNull
     @CheckReturnValue
-    public final BigDecimal inGibibyte() {
+    public final @NotNull BigDecimal inGibibyte() {
         return this.calculate(StorageUnit.BYTES_IN_A_GIBIBYTE);
     }
 
     /**
      * @return This storage unit quantified as tebibyte.
      */
-    @NotNull
     @CheckReturnValue
-    public final BigDecimal inTebibyte() {
+    public final @NotNull BigDecimal inTebibyte() {
         return this.calculate(StorageUnit.BYTES_IN_A_TEBIBYTE);
     }
 
     /**
      * @return This storage unit quantified as pebibyte.
      */
-    @NotNull
     @CheckReturnValue
-    public final BigDecimal inPebibyte() {
+    public final @NotNull BigDecimal inPebibyte() {
         return this.calculate(StorageUnit.BYTES_IN_A_PEBIBYTE);
     }
 
     /**
      * @return This storage unit quantified as exbibyte.
      */
-    @NotNull
     @CheckReturnValue
-    public final BigDecimal inExbibyte() {
+    public final @NotNull BigDecimal inExbibyte() {
         return this.calculate(StorageUnit.BYTES_IN_A_EXBIBYTE);
     }
 
     /**
      * @return This storage unit quantified as zebibyte.
      */
-    @NotNull
     @CheckReturnValue
-    public final BigDecimal inZebibyte() {
+    public final @NotNull BigDecimal inZebibyte() {
         return this.calculate(StorageUnit.BYTES_IN_A_ZEBIBYTE);
     }
 
     /**
      * @return This storage unit quantified as yobibyte.
      */
-    @NotNull
     @CheckReturnValue
-    public final BigDecimal inYobibyte() {
+    public final @NotNull BigDecimal inYobibyte() {
         return this.calculate(StorageUnit.BYTES_IN_A_YOBIBYTE);
     }
 
     /**
      * @return This storage unit quantified as kilobyte.
      */
-    @NotNull
     @CheckReturnValue
-    public final BigDecimal inKilobyte() {
+    public final @NotNull BigDecimal inKilobyte() {
         return this.calculate(StorageUnit.BYTES_IN_A_KILOBYTE);
     }
 
     /**
      * @return This storage unit quantified as megabyte.
      */
-    @NotNull
     @CheckReturnValue
-    public final BigDecimal inMegabyte() {
+    public final @NotNull BigDecimal inMegabyte() {
         return this.calculate(StorageUnit.BYTES_IN_A_MEGABYTE);
     }
 
     /**
      * @return This storage unit quantified as gigabyte.
      */
-    @NotNull
     @CheckReturnValue
-    public final BigDecimal inGigabyte() {
+    public final @NotNull BigDecimal inGigabyte() {
         return this.calculate(StorageUnit.BYTES_IN_A_GIGABYTE);
     }
 
     /**
      * @return This storage unit quantified as terabyte.
      */
-    @NotNull
     @CheckReturnValue
-    public final BigDecimal inTerabyte() {
+    public final @NotNull BigDecimal inTerabyte() {
         return this.calculate(StorageUnit.BYTES_IN_A_TERABYTE);
     }
 
     /**
      * @return This storage unit quantified as petabyte.
      */
-    @NotNull
     @CheckReturnValue
-    public final BigDecimal inPetabyte() {
+    public final @NotNull BigDecimal inPetabyte() {
         return this.calculate(StorageUnit.BYTES_IN_A_PETABYTE);
     }
 
     /**
      * @return This storage unit quantified as exabyte.
      */
-    @NotNull
     @CheckReturnValue
-    public final BigDecimal inExabyte() {
+    public final @NotNull BigDecimal inExabyte() {
         return this.calculate(StorageUnit.BYTES_IN_A_EXABYTE);
     }
 
     /**
      * @return This storage unit quantified as zettabyte.
      */
-    @NotNull
     @CheckReturnValue
-    public final BigDecimal inZettabyte() {
+    public final @NotNull BigDecimal inZettabyte() {
         return this.calculate(StorageUnit.BYTES_IN_A_ZETTABYTE);
     }
 
     /**
      * @return This storage unit quantified as yottabyte.
      */
-    @NotNull
     @CheckReturnValue
-    public final BigDecimal inYottabyte() {
+    public final @NotNull BigDecimal inYottabyte() {
         return this.calculate(StorageUnit.BYTES_IN_A_YOTTABYTE);
     }
 
     /**
      * @return This storage unit quantified as common kibibyte.
      */
-    @NotNull
     @CheckReturnValue
-    public final BigDecimal inCommonKilobyte() {
+    public final @NotNull BigDecimal inCommonKilobyte() {
         return this.calculate(StorageUnit.BYTES_IN_A_KIBIBYTE);
     }
 
     /**
      * @return This storage unit quantified as common mebibyte.
      */
-    @NotNull
     @CheckReturnValue
-    public final BigDecimal inCommonMegabyte() {
+    public final @NotNull BigDecimal inCommonMegabyte() {
         return this.calculate(StorageUnit.BYTES_IN_A_MEBIBYTE);
     }
 
     /**
      * @return This storage unit quantified as common gibibyte.
      */
-    @NotNull
     @CheckReturnValue
-    public final BigDecimal inCommonGigabyte() {
+    public final @NotNull BigDecimal inCommonGigabyte() {
         return this.calculate(StorageUnit.BYTES_IN_A_GIBIBYTE);
     }
 
     /**
      * @return This storage unit quantified as common tebibyte.
      */
-    @NotNull
     @CheckReturnValue
-    public final BigDecimal inCommonTerabyte() {
+    public final @NotNull BigDecimal inCommonTerabyte() {
         return this.calculate(StorageUnit.BYTES_IN_A_TEBIBYTE);
     }
 
     /**
      * @return This storage unit quantified as common pebibyte.
      */
-    @NotNull
     @CheckReturnValue
-    public final BigDecimal inCommonPetabyte() {
+    public final @NotNull BigDecimal inCommonPetabyte() {
         return this.calculate(StorageUnit.BYTES_IN_A_PEBIBYTE);
     }
 
     /**
      * @return This storage unit quantified as common exbibyte.
      */
-    @NotNull
     @CheckReturnValue
-    public final BigDecimal inCommonExabyte() {
+    public final @NotNull BigDecimal inCommonExabyte() {
         return this.calculate(StorageUnit.BYTES_IN_A_EXBIBYTE);
     }
 
     /**
      * @return This storage unit quantified as common zebibyte.
      */
-    @NotNull
     @CheckReturnValue
-    public final BigDecimal inCommonZettabyte() {
+    public final @NotNull BigDecimal inCommonZettabyte() {
         return this.calculate(StorageUnit.BYTES_IN_A_ZEBIBYTE);
     }
 
     /**
      * @return This storage unit quantified as common yottabyte.
      */
-    @NotNull
     @CheckReturnValue
-    public final BigDecimal inCommonYottabyte() {
+    public final @NotNull BigDecimal inCommonYottabyte() {
         return this.calculate(StorageUnit.BYTES_IN_A_YOBIBYTE);
     }
 
-    @NotNull
     @Override
     @CheckReturnValue
-    public final String toString() {
+    public final @NotNull String toString() {
         return this.toString(DEFAULT_FORMAT_PATTERN);
     }
 
@@ -541,9 +474,8 @@ public abstract class StorageUnit<T extends StorageUnit<T>> extends Number imple
      * @param pattern The {@link Format} pattern to apply.
      * @return The formatted representation of this storage unit.
      */
-    @NotNull
     @CheckReturnValue
-    public final String toString(final String pattern) {
+    public final @NotNull String toString(final String pattern) {
         return this.toString(new DecimalFormat(pattern));
     }
 
@@ -554,9 +486,8 @@ public abstract class StorageUnit<T extends StorageUnit<T>> extends Number imple
      * @param locale  The locale to use.
      * @return The formatted representation of this storage unit.
      */
-    @NotNull
     @CheckReturnValue
-    public final String toString(final String pattern, final Locale locale) {
+    public final @NotNull String toString(final String pattern, final Locale locale) {
         return this.toString(asFormat(pattern, locale));
     }
 
@@ -568,17 +499,15 @@ public abstract class StorageUnit<T extends StorageUnit<T>> extends Number imple
      * @param format The custom format to use.
      * @return The formatted representation of this storage unit.
      */
-    @NotNull
     @CheckReturnValue
-    public final String toString(final Format format) {
+    public final @NotNull String toString(final Format format) {
         final BigDecimal amount = this.calculate(this.getNumberOfBytesPerUnit());
         final String formattedAmount = format.format(amount);
         return String.format("%s %s", formattedAmount, getSymbol());
     }
 
-    @NotNull
     @CheckReturnValue
-    private BigDecimal calculate(final BigInteger base) {
+    private @NotNull BigDecimal calculate(final BigInteger base) {
         return new BigDecimal(this.bytes)
                 .divide(new BigDecimal(base), StorageUnit.DEFAULT_SCALE, RoundingMode.CEILING);
     }
@@ -626,76 +555,64 @@ public abstract class StorageUnit<T extends StorageUnit<T>> extends Number imple
      * @param bytesToAdd The amount of bytes to add.
      * @return The new amount of storage in the appropriate type.
      */
-    @NotNull
-    public abstract T add(long bytesToAdd);
+    public abstract @NotNull T add(long bytesToAdd);
 
     /**
      * @param bytesToAdd The amount of bytes to add.
      * @return The new amount of storage in the appropriate type.
      */
-    @NotNull
-    public abstract T add(@NotNull BigInteger bytesToAdd);
+    public abstract @NotNull T add(@NotNull BigInteger bytesToAdd);
 
     /**
      * @param storageAmount The amount of storage to add.
      * @return The new amount of storage in the appropriate type.
      */
-    @NotNull
-    public abstract T add(@NotNull StorageUnit<?> storageAmount);
+    public abstract @NotNull T add(@NotNull StorageUnit<?> storageAmount);
 
     /**
      * @param divisor The divisor to apply.
      * @return The new amount of storage in the appropriate type.
      */
-    @NotNull
-    public abstract T divide(long divisor);
+    public abstract @NotNull T divide(long divisor);
 
     /**
      * @param divisor The divisor to apply.
      * @return The new amount of storage in the appropriate type.
      */
-    @NotNull
-    public abstract T divide(@NotNull BigInteger divisor);
+    public abstract @NotNull T divide(@NotNull BigInteger divisor);
 
     /**
      * @param factor The factor to apply.
      * @return The new amount of storage in the appropriate type.
      */
-    @NotNull
-    public abstract T multiply(long factor);
+    public abstract @NotNull T multiply(long factor);
 
     /**
      * @param factor The factor to apply.
      * @return The new amount of storage in the appropriate type.
      */
-    @NotNull
-    public abstract T multiply(@NotNull BigInteger factor);
+    public abstract @NotNull T multiply(@NotNull BigInteger factor);
 
     /**
      * @param bytesToSubtract The amount of bytes to subtract.
      * @return The new amount of storage in the appropriate type.
      */
-    @NotNull
-    public abstract T subtract(long bytesToSubtract);
+    public abstract @NotNull T subtract(long bytesToSubtract);
 
     /**
      * @param bytesToSubtract The amount of bytes to subtract.
      * @return The new amount of storage in the appropriate type.
      */
-    @NotNull
-    public abstract T subtract(@NotNull BigInteger bytesToSubtract);
+    public abstract @NotNull T subtract(@NotNull BigInteger bytesToSubtract);
 
     /**
      * @param storageAmount The amount of storage to subtract.
      * @return The new amount of storage in the appropriate type.
      */
-    @NotNull
-    public abstract T subtract(@NotNull StorageUnit<?> storageAmount);
+    public abstract @NotNull T subtract(@NotNull StorageUnit<?> storageAmount);
 
-    @NotNull
-    protected abstract BigInteger getNumberOfBytesPerUnit();
+    protected abstract @NotNull BigInteger getNumberOfBytesPerUnit();
 
-    @NotNull
-    protected abstract String getSymbol();
+    protected abstract @NotNull String getSymbol();
 
 }

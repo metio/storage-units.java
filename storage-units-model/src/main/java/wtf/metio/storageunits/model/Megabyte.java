@@ -19,7 +19,7 @@ public final class Megabyte extends StorageUnit<Megabyte> {
     @Serial
     private static final long serialVersionUID = 5901923092058760111L;
 
-    Megabyte(@NotNull final BigInteger bytes) {
+    Megabyte(final @NotNull BigInteger bytes) {
         super(bytes);
     }
 
@@ -27,9 +27,8 @@ public final class Megabyte extends StorageUnit<Megabyte> {
      * @param numberOfBytes The amount of bytes the Megabyte contains.
      * @return A new Megabyte unit with the given value.
      */
-    @NotNull
     @CheckReturnValue
-    public static Megabyte valueOf(@NotNull final BigInteger numberOfBytes) {
+    public static @NotNull Megabyte valueOf(final @NotNull BigInteger numberOfBytes) {
         return new Megabyte(numberOfBytes);
     }
 
@@ -37,9 +36,8 @@ public final class Megabyte extends StorageUnit<Megabyte> {
      * @param numberOfBytes The amount of bytes the Megabyte contains.
      * @return A new Megabyte unit with the given value.
      */
-    @NotNull
     @CheckReturnValue
-    public static Megabyte valueOf(final long numberOfBytes) {
+    public static @NotNull Megabyte valueOf(final long numberOfBytes) {
         return valueOf(BigInteger.valueOf(numberOfBytes));
     }
 
@@ -47,100 +45,86 @@ public final class Megabyte extends StorageUnit<Megabyte> {
      * @param numberOfBytes The amount of bytes the Megabyte contains.
      * @return A new Megabyte unit with the given value.
      */
-    @NotNull
     @CheckReturnValue
-    public static Megabyte valueOf(@NotNull final Long numberOfBytes) {
+    public static @NotNull Megabyte valueOf(final @NotNull Long numberOfBytes) {
         return valueOf(numberOfBytes.longValue());
     }
 
     @Override
-    @NotNull
     @CheckReturnValue
-    public Megabyte add(final long bytesToAdd) {
+    public @NotNull Megabyte add(final long bytesToAdd) {
         return add(BigInteger.valueOf(bytesToAdd));
     }
 
     @Override
-    @NotNull
     @CheckReturnValue
-    public Megabyte add(@NotNull final BigInteger bytesToAdd) {
+    public @NotNull Megabyte add(final @NotNull BigInteger bytesToAdd) {
         return new Megabyte(bytes.add(bytesToAdd));
     }
 
     @Override
-    @NotNull
     @CheckReturnValue
-    public Megabyte add(@NotNull final StorageUnit<?> storageAmount) {
+    public @NotNull Megabyte add(final @NotNull StorageUnit<?> storageAmount) {
         return add(storageAmount.bytes);
     }
 
     @Override
-    @NotNull
     @CheckReturnValue
-    public Megabyte divide(final long divisor) {
+    public @NotNull Megabyte divide(final long divisor) {
         return divide(BigInteger.valueOf(divisor));
     }
 
     @Override
-    @NotNull
     @CheckReturnValue
-    public Megabyte divide(@NotNull final BigInteger divisor) {
+    public @NotNull Megabyte divide(final @NotNull BigInteger divisor) {
         return new Megabyte(bytes.divide(divisor));
     }
 
     @Override
-    @NotNull
     @CheckReturnValue
-    public Megabyte multiply(final long factor) {
+    public @NotNull Megabyte multiply(final long factor) {
         return multiply(BigInteger.valueOf(factor));
     }
 
     @Override
-    @NotNull
     @CheckReturnValue
-    public Megabyte multiply(@NotNull final BigInteger factor) {
+    public @NotNull Megabyte multiply(final @NotNull BigInteger factor) {
         return new Megabyte(bytes.multiply(factor));
     }
 
     @Override
-    @NotNull
     @CheckReturnValue
-    public Megabyte subtract(final long bytesToSubtract) {
+    public @NotNull Megabyte subtract(final long bytesToSubtract) {
         return subtract(BigInteger.valueOf(bytesToSubtract));
     }
 
     @Override
-    @NotNull
     @CheckReturnValue
-    public Megabyte subtract(@NotNull final BigInteger bytesToSubtract) {
+    public @NotNull Megabyte subtract(final @NotNull BigInteger bytesToSubtract) {
         return new Megabyte(bytes.subtract(bytesToSubtract));
     }
 
     @Override
-    @NotNull
     @CheckReturnValue
-    public Megabyte subtract(@NotNull final StorageUnit<?> storageAmount) {
+    public @NotNull Megabyte subtract(final @NotNull StorageUnit<?> storageAmount) {
         return subtract(storageAmount.bytes);
     }
 
     @Override
-    @NotNull
     @CheckReturnValue
-    protected BigInteger getNumberOfBytesPerUnit() {
+    protected @NotNull BigInteger getNumberOfBytesPerUnit() {
         return StorageUnit.BYTES_IN_A_MEGABYTE;
     }
 
     @Override
-    @NotNull
     @CheckReturnValue
-    protected String getSymbol() {
+    protected @NotNull String getSymbol() {
         return "MB";
     }
 
     @Override
-    @NotNull
     @CheckReturnValue
-    protected Function<@NotNull BigInteger, @NotNull StorageUnit<?>> converter() {
+    protected @NotNull Function<@NotNull BigInteger, @NotNull StorageUnit<?>> converter() {
         return StorageUnits::decimalValueOf;
     }
 

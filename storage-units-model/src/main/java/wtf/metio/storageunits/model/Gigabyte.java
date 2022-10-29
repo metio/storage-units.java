@@ -19,7 +19,7 @@ public final class Gigabyte extends StorageUnit<Gigabyte> {
     @Serial
     private static final long serialVersionUID = 7581075190529125530L;
 
-    Gigabyte(@NotNull final BigInteger bytes) {
+    Gigabyte(final @NotNull BigInteger bytes) {
         super(bytes);
     }
 
@@ -27,9 +27,8 @@ public final class Gigabyte extends StorageUnit<Gigabyte> {
      * @param numberOfBytes The amount of bytes the Gigabyte contains.
      * @return A new Gigabyte unit with the given value.
      */
-    @NotNull
     @CheckReturnValue
-    public static Gigabyte valueOf(@NotNull final BigInteger numberOfBytes) {
+    public static @NotNull Gigabyte valueOf(final @NotNull BigInteger numberOfBytes) {
         return new Gigabyte(numberOfBytes);
     }
 
@@ -37,9 +36,8 @@ public final class Gigabyte extends StorageUnit<Gigabyte> {
      * @param numberOfBytes The amount of bytes the Gigabyte contains.
      * @return A new Gigabyte unit with the given value.
      */
-    @NotNull
     @CheckReturnValue
-    public static Gigabyte valueOf(final long numberOfBytes) {
+    public static @NotNull Gigabyte valueOf(final long numberOfBytes) {
         return valueOf(BigInteger.valueOf(numberOfBytes));
     }
 
@@ -47,100 +45,86 @@ public final class Gigabyte extends StorageUnit<Gigabyte> {
      * @param numberOfBytes The amount of bytes the Gigabyte contains.
      * @return A new Gigabyte unit with the given value.
      */
-    @NotNull
     @CheckReturnValue
-    public static Gigabyte valueOf(@NotNull final Long numberOfBytes) {
+    public static @NotNull Gigabyte valueOf(final @NotNull Long numberOfBytes) {
         return valueOf(numberOfBytes.longValue());
     }
 
     @Override
-    @NotNull
     @CheckReturnValue
-    public Gigabyte add(final long bytesToAdd) {
+    public @NotNull Gigabyte add(final long bytesToAdd) {
         return add(BigInteger.valueOf(bytesToAdd));
     }
 
     @Override
-    @NotNull
     @CheckReturnValue
-    public Gigabyte add(@NotNull final BigInteger bytesToAdd) {
+    public @NotNull Gigabyte add(final @NotNull BigInteger bytesToAdd) {
         return new Gigabyte(bytes.add(bytesToAdd));
     }
 
     @Override
-    @NotNull
     @CheckReturnValue
-    public Gigabyte add(@NotNull final StorageUnit<?> storageAmount) {
+    public @NotNull Gigabyte add(final @NotNull StorageUnit<?> storageAmount) {
         return add(storageAmount.bytes);
     }
 
     @Override
-    @NotNull
     @CheckReturnValue
-    public Gigabyte divide(final long divisor) {
+    public @NotNull Gigabyte divide(final long divisor) {
         return divide(BigInteger.valueOf(divisor));
     }
 
     @Override
-    @NotNull
     @CheckReturnValue
-    public Gigabyte divide(@NotNull final BigInteger divisor) {
+    public @NotNull Gigabyte divide(final @NotNull BigInteger divisor) {
         return new Gigabyte(bytes.divide(divisor));
     }
 
     @Override
-    @NotNull
     @CheckReturnValue
-    public Gigabyte multiply(final long factor) {
+    public @NotNull Gigabyte multiply(final long factor) {
         return multiply(BigInteger.valueOf(factor));
     }
 
     @Override
-    @NotNull
     @CheckReturnValue
-    public Gigabyte multiply(@NotNull final BigInteger factor) {
+    public @NotNull Gigabyte multiply(final @NotNull BigInteger factor) {
         return new Gigabyte(bytes.multiply(factor));
     }
 
     @Override
-    @NotNull
     @CheckReturnValue
-    public Gigabyte subtract(final long bytesToSubtract) {
+    public @NotNull Gigabyte subtract(final long bytesToSubtract) {
         return subtract(BigInteger.valueOf(bytesToSubtract));
     }
 
     @Override
-    @NotNull
     @CheckReturnValue
-    public Gigabyte subtract(@NotNull final BigInteger bytesToSubtract) {
+    public @NotNull Gigabyte subtract(final @NotNull BigInteger bytesToSubtract) {
         return new Gigabyte(bytes.subtract(bytesToSubtract));
     }
 
     @Override
-    @NotNull
     @CheckReturnValue
-    public Gigabyte subtract(@NotNull final StorageUnit<?> storageAmount) {
+    public @NotNull Gigabyte subtract(final @NotNull StorageUnit<?> storageAmount) {
         return subtract(storageAmount.bytes);
     }
 
     @Override
-    @NotNull
     @CheckReturnValue
-    protected BigInteger getNumberOfBytesPerUnit() {
+    protected @NotNull BigInteger getNumberOfBytesPerUnit() {
         return BYTES_IN_A_GIGABYTE;
     }
 
     @Override
-    @NotNull
     @CheckReturnValue
-    protected String getSymbol() {
+    protected @NotNull String getSymbol() {
         return "GB";
     }
 
     @Override
-    @NotNull
     @CheckReturnValue
-    protected Function<@NotNull BigInteger, @NotNull StorageUnit<?>> converter() {
+    protected @NotNull Function<@NotNull BigInteger, @NotNull StorageUnit<?>> converter() {
         return StorageUnits::decimalValueOf;
     }
 

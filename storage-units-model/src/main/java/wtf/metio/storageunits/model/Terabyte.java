@@ -19,7 +19,7 @@ public final class Terabyte extends StorageUnit<Terabyte> {
     @Serial
     private static final long serialVersionUID = 2160488069631638952L;
 
-    Terabyte(@NotNull final BigInteger bytes) {
+    Terabyte(final @NotNull BigInteger bytes) {
         super(bytes);
     }
 
@@ -27,9 +27,8 @@ public final class Terabyte extends StorageUnit<Terabyte> {
      * @param numberOfBytes The amount of bytes the Terabyte contains.
      * @return A new Kilobyte unit with the given value.
      */
-    @NotNull
     @CheckReturnValue
-    public static Terabyte valueOf(@NotNull final BigInteger numberOfBytes) {
+    public static @NotNull Terabyte valueOf(final @NotNull BigInteger numberOfBytes) {
         return new Terabyte(numberOfBytes);
     }
 
@@ -37,9 +36,8 @@ public final class Terabyte extends StorageUnit<Terabyte> {
      * @param numberOfBytes The amount of bytes the Terabyte contains.
      * @return A new Terabyte unit with the given value.
      */
-    @NotNull
     @CheckReturnValue
-    public static Terabyte valueOf(final long numberOfBytes) {
+    public static @NotNull Terabyte valueOf(final long numberOfBytes) {
         return valueOf(BigInteger.valueOf(numberOfBytes));
     }
 
@@ -47,100 +45,86 @@ public final class Terabyte extends StorageUnit<Terabyte> {
      * @param numberOfBytes The amount of bytes the Terabyte contains.
      * @return A new Terabyte unit with the given value.
      */
-    @NotNull
     @CheckReturnValue
-    public static Terabyte valueOf(@NotNull final Long numberOfBytes) {
+    public static @NotNull Terabyte valueOf(final @NotNull Long numberOfBytes) {
         return valueOf(numberOfBytes.longValue());
     }
 
     @Override
-    @NotNull
     @CheckReturnValue
-    public Terabyte add(final long bytesToAdd) {
+    public @NotNull Terabyte add(final long bytesToAdd) {
         return add(BigInteger.valueOf(bytesToAdd));
     }
 
     @Override
-    @NotNull
     @CheckReturnValue
-    public Terabyte add(@NotNull final BigInteger bytesToAdd) {
+    public @NotNull Terabyte add(final @NotNull BigInteger bytesToAdd) {
         return new Terabyte(bytes.add(bytesToAdd));
     }
 
     @Override
-    @NotNull
     @CheckReturnValue
-    public Terabyte add(@NotNull final StorageUnit<?> storageAmount) {
+    public @NotNull Terabyte add(final @NotNull StorageUnit<?> storageAmount) {
         return add(storageAmount.bytes);
     }
 
     @Override
-    @NotNull
     @CheckReturnValue
-    public Terabyte divide(final long divisor) {
+    public @NotNull Terabyte divide(final long divisor) {
         return divide(BigInteger.valueOf(divisor));
     }
 
     @Override
-    @NotNull
     @CheckReturnValue
-    public Terabyte divide(@NotNull final BigInteger divisor) {
+    public @NotNull Terabyte divide(final @NotNull BigInteger divisor) {
         return new Terabyte(bytes.divide(divisor));
     }
 
     @Override
-    @NotNull
     @CheckReturnValue
-    public Terabyte multiply(final long factor) {
+    public @NotNull Terabyte multiply(final long factor) {
         return multiply(BigInteger.valueOf(factor));
     }
 
     @Override
-    @NotNull
     @CheckReturnValue
-    public Terabyte multiply(@NotNull final BigInteger factor) {
+    public @NotNull Terabyte multiply(final @NotNull BigInteger factor) {
         return new Terabyte(bytes.multiply(factor));
     }
 
     @Override
-    @NotNull
     @CheckReturnValue
-    public Terabyte subtract(final long bytesToSubtract) {
+    public @NotNull Terabyte subtract(final long bytesToSubtract) {
         return subtract(BigInteger.valueOf(bytesToSubtract));
     }
 
     @Override
-    @NotNull
     @CheckReturnValue
-    public Terabyte subtract(@NotNull final BigInteger bytesToSubtract) {
+    public @NotNull Terabyte subtract(final @NotNull BigInteger bytesToSubtract) {
         return new Terabyte(bytes.subtract(bytesToSubtract));
     }
 
     @Override
-    @NotNull
     @CheckReturnValue
-    public Terabyte subtract(@NotNull final StorageUnit<?> storageAmount) {
+    public @NotNull Terabyte subtract(final @NotNull StorageUnit<?> storageAmount) {
         return subtract(storageAmount.bytes);
     }
 
     @Override
-    @NotNull
     @CheckReturnValue
-    protected BigInteger getNumberOfBytesPerUnit() {
+    protected @NotNull BigInteger getNumberOfBytesPerUnit() {
         return StorageUnit.BYTES_IN_A_TERABYTE;
     }
 
     @Override
-    @NotNull
     @CheckReturnValue
-    protected String getSymbol() {
+    protected @NotNull String getSymbol() {
         return "TB";
     }
 
     @Override
-    @NotNull
     @CheckReturnValue
-    protected Function<@NotNull BigInteger, @NotNull StorageUnit<?>> converter() {
+    protected @NotNull Function<@NotNull BigInteger, @NotNull StorageUnit<?>> converter() {
         return StorageUnits::decimalValueOf;
     }
 

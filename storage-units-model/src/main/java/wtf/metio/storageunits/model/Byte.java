@@ -19,7 +19,7 @@ public final class Byte extends StorageUnit<Byte> {
     @Serial
     private static final long serialVersionUID = 6952239416014811456L;
 
-    Byte(@NotNull final BigInteger numberOfBytes) {
+    Byte(final @NotNull BigInteger numberOfBytes) {
         super(numberOfBytes);
     }
 
@@ -27,9 +27,8 @@ public final class Byte extends StorageUnit<Byte> {
      * @param numberOfBytes The amount of bytes the Byte contains.
      * @return A new Byte unit with the given value.
      */
-    @NotNull
     @CheckReturnValue
-    public static Byte valueOf(@NotNull final BigInteger numberOfBytes) {
+    public static @NotNull Byte valueOf(final @NotNull BigInteger numberOfBytes) {
         return new Byte(numberOfBytes);
     }
 
@@ -37,9 +36,8 @@ public final class Byte extends StorageUnit<Byte> {
      * @param numberOfBytes The amount of bytes the Byte contains.
      * @return A new Byte unit with the given value.
      */
-    @NotNull
     @CheckReturnValue
-    public static Byte valueOf(final long numberOfBytes) {
+    public static @NotNull Byte valueOf(final long numberOfBytes) {
         return valueOf(BigInteger.valueOf(numberOfBytes));
     }
 
@@ -47,91 +45,81 @@ public final class Byte extends StorageUnit<Byte> {
      * @param numberOfBytes The amount of bytes the Byte contains.
      * @return A new Byte unit with the given value.
      */
-    @NotNull
     @CheckReturnValue
-    public static Byte valueOf(@NotNull final Long numberOfBytes) {
+    public static @NotNull Byte valueOf(final @NotNull Long numberOfBytes) {
         return valueOf(numberOfBytes.longValue());
     }
 
     @Override
-    @NotNull
     @CheckReturnValue
-    public Byte add(final long bytesToAdd) {
+    public @NotNull Byte add(final long bytesToAdd) {
         return add(BigInteger.valueOf(bytesToAdd));
     }
 
     @Override
-    public @NotNull Byte add(@NotNull final BigInteger bytesToAdd) {
+    public @NotNull Byte add(final @NotNull BigInteger bytesToAdd) {
         return new Byte(bytes.add(bytesToAdd));
     }
 
     @Override
-    @NotNull
     @CheckReturnValue
-    public Byte add(@NotNull final StorageUnit<?> storageAmount) {
+    public @NotNull Byte add(final @NotNull StorageUnit<?> storageAmount) {
         return add(storageAmount.bytes);
     }
 
     @Override
-    @NotNull
     @CheckReturnValue
-    public Byte divide(final long divisor) {
+    public @NotNull Byte divide(final long divisor) {
         return divide(BigInteger.valueOf(divisor));
     }
 
     @Override
-    public @NotNull Byte divide(@NotNull final BigInteger divisor) {
+    public @NotNull Byte divide(final @NotNull BigInteger divisor) {
         return new Byte(bytes.divide(divisor));
     }
 
     @Override
-    @NotNull
     @CheckReturnValue
-    public Byte multiply(final long factor) {
+    public @NotNull Byte multiply(final long factor) {
         return new Byte(bytes.multiply(BigInteger.valueOf(factor)));
     }
 
     @Override
-    public @NotNull Byte multiply(@NotNull final BigInteger factor) {
+    public @NotNull Byte multiply(final @NotNull BigInteger factor) {
         return new Byte(bytes.multiply(factor));
     }
 
     @Override
-    @NotNull
     @CheckReturnValue
-    public Byte subtract(final long bytesToSubtract) {
+    public @NotNull Byte subtract(final long bytesToSubtract) {
         return new Byte(bytes.subtract(BigInteger.valueOf(bytesToSubtract)));
     }
 
     @Override
-    public @NotNull Byte subtract(@NotNull final BigInteger bytesToSubtract) {
+    public @NotNull Byte subtract(final @NotNull BigInteger bytesToSubtract) {
         return new Byte(bytes.subtract(bytesToSubtract));
     }
 
     @Override
-    @NotNull
     @CheckReturnValue
-    public Byte subtract(@NotNull final StorageUnit<?> storageAmount) {
+    public @NotNull Byte subtract(final @NotNull StorageUnit<?> storageAmount) {
         return new Byte(bytes.subtract(storageAmount.bytes));
     }
 
     @Override
-    @NotNull
-    protected BigInteger getNumberOfBytesPerUnit() {
+    protected @NotNull BigInteger getNumberOfBytesPerUnit() {
         return BigInteger.ONE;
     }
 
     @Override
-    @NotNull
     @CheckReturnValue
-    protected String getSymbol() {
+    protected @NotNull String getSymbol() {
         return "B";
     }
 
     @Override
-    @NotNull
     @CheckReturnValue
-    protected Function<@NotNull BigInteger, @NotNull StorageUnit<?>> converter() {
+    protected @NotNull Function<@NotNull BigInteger, @NotNull StorageUnit<?>> converter() {
         return StorageUnits::binaryValueOf;
     }
 

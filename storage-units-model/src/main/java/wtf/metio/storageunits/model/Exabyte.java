@@ -19,7 +19,7 @@ public final class Exabyte extends StorageUnit<Exabyte> {
     @Serial
     private static final long serialVersionUID = 6846441733771841250L;
 
-    Exabyte(@NotNull final BigInteger bytes) {
+    Exabyte(final @NotNull BigInteger bytes) {
         super(bytes);
     }
 
@@ -27,9 +27,8 @@ public final class Exabyte extends StorageUnit<Exabyte> {
      * @param numberOfBytes The amount of bytes the Exabyte contains.
      * @return A new Exabyte unit with the given value.
      */
-    @NotNull
     @CheckReturnValue
-    public static Exabyte valueOf(@NotNull final BigInteger numberOfBytes) {
+    public static @NotNull Exabyte valueOf(final @NotNull BigInteger numberOfBytes) {
         return new Exabyte(numberOfBytes);
     }
 
@@ -37,9 +36,8 @@ public final class Exabyte extends StorageUnit<Exabyte> {
      * @param numberOfBytes The amount of bytes the Exabyte contains.
      * @return A new Exabyte unit with the given value.
      */
-    @NotNull
     @CheckReturnValue
-    public static Exabyte valueOf(final long numberOfBytes) {
+    public static @NotNull Exabyte valueOf(final long numberOfBytes) {
         return valueOf(BigInteger.valueOf(numberOfBytes));
     }
 
@@ -47,100 +45,86 @@ public final class Exabyte extends StorageUnit<Exabyte> {
      * @param numberOfBytes The amount of bytes the Exabyte contains.
      * @return A new Exabyte unit with the given value.
      */
-    @NotNull
     @CheckReturnValue
-    public static Exabyte valueOf(@NotNull final Long numberOfBytes) {
+    public static @NotNull Exabyte valueOf(final @NotNull Long numberOfBytes) {
         return valueOf(numberOfBytes.longValue());
     }
 
     @Override
-    @NotNull
     @CheckReturnValue
-    public Exabyte add(final long bytesToAdd) {
+    public @NotNull Exabyte add(final long bytesToAdd) {
         return add(BigInteger.valueOf(bytesToAdd));
     }
 
     @Override
-    @NotNull
     @CheckReturnValue
-    public Exabyte add(@NotNull final BigInteger bytesToAdd) {
+    public @NotNull Exabyte add(final @NotNull BigInteger bytesToAdd) {
         return new Exabyte(bytes.add(bytesToAdd));
     }
 
     @Override
-    @NotNull
     @CheckReturnValue
-    public Exabyte add(@NotNull final StorageUnit<?> storageAmount) {
+    public @NotNull Exabyte add(final @NotNull StorageUnit<?> storageAmount) {
         return add(storageAmount.bytes);
     }
 
     @Override
-    @NotNull
     @CheckReturnValue
-    public Exabyte divide(final long divisor) {
+    public @NotNull Exabyte divide(final long divisor) {
         return divide(BigInteger.valueOf(divisor));
     }
 
     @Override
-    @NotNull
     @CheckReturnValue
-    public Exabyte divide(@NotNull final BigInteger divisor) {
+    public @NotNull Exabyte divide(final @NotNull BigInteger divisor) {
         return new Exabyte(bytes.divide(divisor));
     }
 
     @Override
-    @NotNull
     @CheckReturnValue
-    public Exabyte multiply(final long factor) {
+    public @NotNull Exabyte multiply(final long factor) {
         return new Exabyte(bytes.multiply(BigInteger.valueOf(factor)));
     }
 
     @Override
-    @NotNull
     @CheckReturnValue
-    public Exabyte multiply(@NotNull final BigInteger factor) {
+    public @NotNull Exabyte multiply(final @NotNull BigInteger factor) {
         return new Exabyte(bytes.multiply(factor));
     }
 
     @Override
-    @NotNull
     @CheckReturnValue
-    public Exabyte subtract(final long bytesToSubtract) {
+    public @NotNull Exabyte subtract(final long bytesToSubtract) {
         return new Exabyte(bytes.subtract(BigInteger.valueOf(bytesToSubtract)));
     }
 
     @Override
-    @NotNull
     @CheckReturnValue
-    public Exabyte subtract(@NotNull final BigInteger bytesToSubtract) {
+    public @NotNull Exabyte subtract(final @NotNull BigInteger bytesToSubtract) {
         return new Exabyte(bytes.subtract(bytesToSubtract));
     }
 
     @Override
-    @NotNull
     @CheckReturnValue
-    public Exabyte subtract(@NotNull final StorageUnit<?> storageAmount) {
+    public @NotNull Exabyte subtract(final @NotNull StorageUnit<?> storageAmount) {
         return new Exabyte(bytes.subtract(storageAmount.bytes));
     }
 
     @Override
-    @NotNull
     @CheckReturnValue
-    protected BigInteger getNumberOfBytesPerUnit() {
+    protected @NotNull BigInteger getNumberOfBytesPerUnit() {
         return StorageUnit.BYTES_IN_A_EXABYTE;
     }
 
     @Override
-    @NotNull
     @CheckReturnValue
-    protected String getSymbol() {
+    protected @NotNull String getSymbol() {
         return "EB";
     }
 
     @Override
-    @NotNull
     @CheckReturnValue
-    protected Function<@NotNull BigInteger, @NotNull StorageUnit<?>> converter() {
+    protected @NotNull Function<@NotNull BigInteger, @NotNull StorageUnit<?>> converter() {
         return StorageUnits::decimalValueOf;
     }
 
