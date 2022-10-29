@@ -9,7 +9,7 @@ authors:
 - family-names: Hoß
   given-names: Sebastian
   email: seb@hoß.de
-url: https://github.com/metio/storage-units
+url: https://github.com/metio/storage-units.java
 license: 0BSD
 keywords:
   - converter

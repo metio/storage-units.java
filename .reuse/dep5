@@ -1,7 +1,7 @@
 Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Upstream-Name: Storage-Units
 Upstream-Contact: Sebastian Hoß <seb@hoß.de>
-Source: https://github.com/metio/storage-units
+Source: https://github.com/metio/storage-units.java
 
 Files: .idea/*
 Copyright: The Storage-Units Authors

@@ -1,7 +1,7 @@
 <component name="CopyrightManager">
-  <settings default="storage-units">
+  <settings default="storage-units.java">
     <module2copyright>
-      <element module="Project Files" copyright="storage-units" />
+      <element module="Project Files" copyright="storage-units.java" />
     </module2copyright>
     <LanguageOptions name="JAVA">
       <option name="addBlankBefore" value="true" />
