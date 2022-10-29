@@ -5,6 +5,7 @@ name: Automated Release
 on:
   schedule:
     - cron:  27 4 * * TUE
+  workflow_dispatch:
 jobs:
   build:
     runs-on: ubuntu-latest
