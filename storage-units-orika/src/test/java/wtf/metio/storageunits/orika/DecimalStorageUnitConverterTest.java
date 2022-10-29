@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: 0BSD
  */
 
-package wtf.metio.storageunits.jakarta;
+package wtf.metio.storageunits.orika;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -11,22 +11,22 @@ import wtf.metio.storageunits.model.StorageUnits;
 
 import java.math.BigInteger;
 
-class BinaryStorageUnitConverterTest {
+class DecimalStorageUnitConverterTest {
 
     @Test
     void shouldConvertBigIntegerToStorageUnit() {
-        final var converter = new BinaryStorageUnitConverter();
-        final var unit = converter.convertToEntityAttribute(BigInteger.valueOf(1024L));
+        final var converter = new DecimalStorageUnitConverter();
+        final var unit = converter.convertFrom(BigInteger.valueOf(1000L), null, null);
 
-        Assertions.assertEquals(StorageUnits.kibibyte(1), unit);
+        Assertions.assertEquals(StorageUnits.kilobyte(1), unit);
     }
 
     @Test
     void shouldConvertStorageUnitToBigInteger() {
         final var converter = new BinaryStorageUnitConverter();
-        final var value = converter.convertToDatabaseColumn(StorageUnits.kibibyte(1));
+        final var value = converter.convertTo(StorageUnits.kilobyte(1), null, null);
 
-        Assertions.assertEquals(BigInteger.valueOf(1024L), value);
+        Assertions.assertEquals(BigInteger.valueOf(1000L), value);
     }
 
 }

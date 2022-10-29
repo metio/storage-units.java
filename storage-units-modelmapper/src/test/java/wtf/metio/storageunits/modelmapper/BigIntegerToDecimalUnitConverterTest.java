@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: 0BSD
  */
 
-package wtf.metio.storageunits.mapstruct;
+package wtf.metio.storageunits.modelmapper;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -11,14 +11,14 @@ import wtf.metio.storageunits.model.StorageUnits;
 
 import java.math.BigInteger;
 
-class BigIntegerToBinaryUnitMapperTest {
+class BigIntegerToDecimalUnitConverterTest {
 
     @Test
     void shouldConvertBigIntegerToStorageUnit() {
-        final var mapper = new BigIntegerToBinaryUnitMapper();
-        final var unit = mapper.convert(BigInteger.valueOf(1024L));
+        final var converter = new BigIntegerToDecimalUnitConverter();
+        final var unit = converter.convert(BigInteger.valueOf(1000L));
 
-        Assertions.assertEquals(StorageUnits.kibibyte(1), unit);
+        Assertions.assertEquals(StorageUnits.kilobyte(1), unit);
     }
 
 }

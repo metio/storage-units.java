@@ -9,16 +9,14 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import wtf.metio.storageunits.model.StorageUnits;
 
-import java.math.BigInteger;
-
-class BigIntegerToBinaryUnitConverterTest {
+class LongToDecimalUnitConverterTest {
 
     @Test
     void shouldConvertBigIntegerToStorageUnit() {
-        final var converter = new BigIntegerToBinaryUnitConverter();
-        final var unit = converter.convert(BigInteger.valueOf(1024L));
+        final var converter = new LongToDecimalUnitConverter();
+        final var unit = converter.convert(1000L);
 
-        Assertions.assertEquals(StorageUnits.kibibyte(1), unit);
+        Assertions.assertEquals(StorageUnits.kilobyte(1), unit);
     }
 
 }

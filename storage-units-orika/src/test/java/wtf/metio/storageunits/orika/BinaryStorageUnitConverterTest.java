@@ -7,6 +7,7 @@ package wtf.metio.storageunits.orika;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import wtf.metio.storageunits.model.StorageUnits;
 
 import java.math.BigInteger;
 
@@ -17,7 +18,15 @@ class BinaryStorageUnitConverterTest {
         final var converter = new BinaryStorageUnitConverter();
         final var unit = converter.convertFrom(BigInteger.valueOf(1024L), null, null);
 
-        Assertions.assertNotNull(unit);
+        Assertions.assertEquals(StorageUnits.kibibyte(1), unit);
+    }
+
+    @Test
+    void shouldConvertStorageUnitToBigInteger() {
+        final var converter = new BinaryStorageUnitConverter();
+        final var value = converter.convertTo(StorageUnits.kibibyte(1), null, null);
+
+        Assertions.assertEquals(BigInteger.valueOf(1024L), value);
     }
 
 }

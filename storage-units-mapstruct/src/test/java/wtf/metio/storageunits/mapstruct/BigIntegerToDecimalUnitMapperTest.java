@@ -11,14 +11,14 @@ import wtf.metio.storageunits.model.StorageUnits;
 
 import java.math.BigInteger;
 
-class BigIntegerToBinaryUnitMapperTest {
+class BigIntegerToDecimalUnitMapperTest {
 
     @Test
     void shouldConvertBigIntegerToStorageUnit() {
-        final var mapper = new BigIntegerToBinaryUnitMapper();
-        final var unit = mapper.convert(BigInteger.valueOf(1024L));
+        final var mapper = new BigIntegerToDecimalUnitMapper();
+        final var unit = mapper.convert(BigInteger.valueOf(1000L));
 
-        Assertions.assertEquals(StorageUnits.kibibyte(1), unit);
+        Assertions.assertEquals(StorageUnits.kilobyte(1), unit);
     }
 
 }
