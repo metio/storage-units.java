@@ -13,9 +13,9 @@ import wtf.metio.storageunits.model.StorageUnits;
  */
 public final class LongToBinaryUnitConverter extends AbstractConverter<Long, StorageUnit<?>> {
 
-  @Override
-  protected StorageUnit<?> convert(final Long value) {
-    return StorageUnits.binaryValueOf(value);
-  }
+    @Override
+    protected StorageUnit<?> convert(final Long value) {
+        return StorageUnits.binaryValueOf(value);
+    }
 
 }

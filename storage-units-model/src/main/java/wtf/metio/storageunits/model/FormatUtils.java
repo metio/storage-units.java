@@ -4,12 +4,12 @@
  */
 package wtf.metio.storageunits.model;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.text.DecimalFormat;
 import java.text.Format;
 import java.text.NumberFormat;
 import java.util.Locale;
-
-import org.jetbrains.annotations.NotNull;
 
 final class FormatUtils {
 

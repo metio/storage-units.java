@@ -4,20 +4,14 @@
  */
 package wtf.metio.storageunits.jackson;
 
-import java.util.function.Supplier;
-
 import com.fasterxml.jackson.core.Version;
-import com.fasterxml.jackson.databind.BeanDescription;
-import com.fasterxml.jackson.databind.DeserializationConfig;
-import com.fasterxml.jackson.databind.JavaType;
-import com.fasterxml.jackson.databind.JsonDeserializer;
-import com.fasterxml.jackson.databind.JsonMappingException;
-import com.fasterxml.jackson.databind.JsonSerializer;
 import com.fasterxml.jackson.databind.Module;
-import com.fasterxml.jackson.databind.SerializationConfig;
+import com.fasterxml.jackson.databind.*;
 import com.fasterxml.jackson.databind.deser.Deserializers;
 import com.fasterxml.jackson.databind.ser.Serializers;
 import wtf.metio.storageunits.model.StorageUnit;
+
+import java.util.function.Supplier;
 
 /**
  * High-level Jackson module to configure de-/serialization of storage units.
@@ -39,8 +33,7 @@ public class StorageUnitModule extends Module {
     }
 
     /**
-     * @param preferredUnitType
-     *            The preferred de-serialization unit type.
+     * @param preferredUnitType The preferred de-serialization unit type.
      */
     public StorageUnitModule(final PreferredUnitType preferredUnitType) {
         this.preferredUnitType = preferredUnitType;
@@ -67,13 +60,19 @@ public class StorageUnitModule extends Module {
      */
     public enum PreferredUnitType {
 
-        /** Deserializes values as binary units. */
+        /**
+         * Deserializes values as binary units.
+         */
         BINARY(BinaryStorageUnitDeserializer::new),
 
-        /** Deserializes values as decimal units. */
+        /**
+         * Deserializes values as decimal units.
+         */
         DECIMAL(DecimalStorageUnitDeserializer::new);
 
-        /** The deserializer to use. */
+        /**
+         * The deserializer to use.
+         */
         final Supplier<JsonDeserializer<?>> deserializer;
 
         PreferredUnitType(final Supplier<JsonDeserializer<?>> deserializer) {

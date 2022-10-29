@@ -12,8 +12,8 @@ import wtf.metio.storageunits.model.StorageUnits;
  */
 public final class LongToDecimalUnitMapper {
 
-  public StorageUnit<?> convert(final Long value) {
-    return StorageUnits.decimalValueOf(value);
-  }
+    public StorageUnit<?> convert(final Long value) {
+        return StorageUnits.decimalValueOf(value);
+    }
 
 }

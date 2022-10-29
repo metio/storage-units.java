@@ -4,113 +4,99 @@
  */
 package wtf.metio.storageunits.model;
 
-import static wtf.metio.storageunits.model.StorageUnit.BYTES_IN_A_EXABYTE;
-import static wtf.metio.storageunits.model.StorageUnit.BYTES_IN_A_EXBIBYTE;
-import static wtf.metio.storageunits.model.StorageUnit.BYTES_IN_A_GIBIBYTE;
-import static wtf.metio.storageunits.model.StorageUnit.BYTES_IN_A_GIGABYTE;
-import static wtf.metio.storageunits.model.StorageUnit.BYTES_IN_A_KIBIBYTE;
-import static wtf.metio.storageunits.model.StorageUnit.BYTES_IN_A_KILOBYTE;
-import static wtf.metio.storageunits.model.StorageUnit.BYTES_IN_A_MEBIBYTE;
-import static wtf.metio.storageunits.model.StorageUnit.BYTES_IN_A_MEGABYTE;
-import static wtf.metio.storageunits.model.StorageUnit.BYTES_IN_A_PEBIBYTE;
-import static wtf.metio.storageunits.model.StorageUnit.BYTES_IN_A_PETABYTE;
-import static wtf.metio.storageunits.model.StorageUnit.BYTES_IN_A_TEBIBYTE;
-import static wtf.metio.storageunits.model.StorageUnit.BYTES_IN_A_TERABYTE;
-import static wtf.metio.storageunits.model.StorageUnit.BYTES_IN_A_YOBIBYTE;
-import static wtf.metio.storageunits.model.StorageUnit.BYTES_IN_A_YOTTABYTE;
-import static wtf.metio.storageunits.model.StorageUnit.BYTES_IN_A_ZEBIBYTE;
-import static wtf.metio.storageunits.model.StorageUnit.BYTES_IN_A_ZETTABYTE;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.DynamicTest;
+import org.junit.jupiter.api.TestFactory;
 
 import java.math.BigInteger;
 import java.util.List;
 import java.util.function.BiFunction;
 import java.util.stream.Stream;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.DynamicTest;
-import org.junit.jupiter.api.TestFactory;
+
+import static wtf.metio.storageunits.model.StorageUnit.*;
 
 /**
  * Formatting test cases for the {@link StorageUnits} class.
  */
 public class StorageUnitsFormattingWithPatternTest {
 
-  private static final String PATTERN = "#0.0";
+    private static final String PATTERN = "#0.0";
 
-  private static final List<BigInteger> BYTES = List.of(
-      BYTES_IN_A_KIBIBYTE,
-      BYTES_IN_A_MEBIBYTE,
-      BYTES_IN_A_GIBIBYTE,
-      BYTES_IN_A_TEBIBYTE,
-      BYTES_IN_A_PEBIBYTE,
-      BYTES_IN_A_EXBIBYTE,
-      BYTES_IN_A_ZEBIBYTE,
-      BYTES_IN_A_YOBIBYTE,
-      BYTES_IN_A_KILOBYTE,
-      BYTES_IN_A_MEGABYTE,
-      BYTES_IN_A_GIGABYTE,
-      BYTES_IN_A_TERABYTE,
-      BYTES_IN_A_PETABYTE,
-      BYTES_IN_A_EXABYTE,
-      BYTES_IN_A_ZETTABYTE,
-      BYTES_IN_A_YOTTABYTE
-  );
+    private static final List<BigInteger> BYTES = List.of(
+            BYTES_IN_A_KIBIBYTE,
+            BYTES_IN_A_MEBIBYTE,
+            BYTES_IN_A_GIBIBYTE,
+            BYTES_IN_A_TEBIBYTE,
+            BYTES_IN_A_PEBIBYTE,
+            BYTES_IN_A_EXBIBYTE,
+            BYTES_IN_A_ZEBIBYTE,
+            BYTES_IN_A_YOBIBYTE,
+            BYTES_IN_A_KILOBYTE,
+            BYTES_IN_A_MEGABYTE,
+            BYTES_IN_A_GIGABYTE,
+            BYTES_IN_A_TERABYTE,
+            BYTES_IN_A_PETABYTE,
+            BYTES_IN_A_EXABYTE,
+            BYTES_IN_A_ZETTABYTE,
+            BYTES_IN_A_YOTTABYTE
+    );
 
-  private static final List<BiFunction<BigInteger, String, String>> BIG_INTEGER_FORMATTERS = List.of(
-      StorageUnits::formatAsBinaryUnit,
-      StorageUnits::formatAsKibibyte,
-      StorageUnits::formatAsMebibyte,
-      StorageUnits::formatAsGibibyte,
-      StorageUnits::formatAsTebibyte,
-      StorageUnits::formatAsPebibyte,
-      StorageUnits::formatAsExbibyte,
-      StorageUnits::formatAsZebibyte,
-      StorageUnits::formatAsYobibyte,
-      StorageUnits::formatAsDecimalUnit,
-      StorageUnits::formatAsKilobyte,
-      StorageUnits::formatAsMegabyte,
-      StorageUnits::formatAsGigabyte,
-      StorageUnits::formatAsTerabyte,
-      StorageUnits::formatAsPetabyte,
-      StorageUnits::formatAsExabyte,
-      StorageUnits::formatAsZettabyte,
-      StorageUnits::formatAsYottabyte
-  );
+    private static final List<BiFunction<BigInteger, String, String>> BIG_INTEGER_FORMATTERS = List.of(
+            StorageUnits::formatAsBinaryUnit,
+            StorageUnits::formatAsKibibyte,
+            StorageUnits::formatAsMebibyte,
+            StorageUnits::formatAsGibibyte,
+            StorageUnits::formatAsTebibyte,
+            StorageUnits::formatAsPebibyte,
+            StorageUnits::formatAsExbibyte,
+            StorageUnits::formatAsZebibyte,
+            StorageUnits::formatAsYobibyte,
+            StorageUnits::formatAsDecimalUnit,
+            StorageUnits::formatAsKilobyte,
+            StorageUnits::formatAsMegabyte,
+            StorageUnits::formatAsGigabyte,
+            StorageUnits::formatAsTerabyte,
+            StorageUnits::formatAsPetabyte,
+            StorageUnits::formatAsExabyte,
+            StorageUnits::formatAsZettabyte,
+            StorageUnits::formatAsYottabyte
+    );
 
-  private static final List<BiFunction<Long, String, String>> LONG_FORMATTERS = List.of(
-      StorageUnits::formatAsBinaryUnit,
-      StorageUnits::formatAsKibibyte,
-      StorageUnits::formatAsMebibyte,
-      StorageUnits::formatAsGibibyte,
-      StorageUnits::formatAsTebibyte,
-      StorageUnits::formatAsPebibyte,
-      StorageUnits::formatAsExbibyte,
-      StorageUnits::formatAsZebibyte,
-      StorageUnits::formatAsYobibyte,
-      StorageUnits::formatAsDecimalUnit,
-      StorageUnits::formatAsKilobyte,
-      StorageUnits::formatAsMegabyte,
-      StorageUnits::formatAsGigabyte,
-      StorageUnits::formatAsTerabyte,
-      StorageUnits::formatAsPetabyte,
-      StorageUnits::formatAsExabyte,
-      StorageUnits::formatAsZettabyte,
-      StorageUnits::formatAsYottabyte
-  );
+    private static final List<BiFunction<Long, String, String>> LONG_FORMATTERS = List.of(
+            StorageUnits::formatAsBinaryUnit,
+            StorageUnits::formatAsKibibyte,
+            StorageUnits::formatAsMebibyte,
+            StorageUnits::formatAsGibibyte,
+            StorageUnits::formatAsTebibyte,
+            StorageUnits::formatAsPebibyte,
+            StorageUnits::formatAsExbibyte,
+            StorageUnits::formatAsZebibyte,
+            StorageUnits::formatAsYobibyte,
+            StorageUnits::formatAsDecimalUnit,
+            StorageUnits::formatAsKilobyte,
+            StorageUnits::formatAsMegabyte,
+            StorageUnits::formatAsGigabyte,
+            StorageUnits::formatAsTerabyte,
+            StorageUnits::formatAsPetabyte,
+            StorageUnits::formatAsExabyte,
+            StorageUnits::formatAsZettabyte,
+            StorageUnits::formatAsYottabyte
+    );
 
-  @TestFactory
-  Stream<DynamicTest> shouldFormatBigIntegerAsStorageUnitWithPattern() {
-    return BIG_INTEGER_FORMATTERS.stream()
-        .flatMap(formatter -> BYTES.stream()
-            .map(bytes -> DynamicTest.dynamicTest(String.format("%s formatted", bytes),
-                () -> Assertions.assertNotNull(formatter.apply(bytes, PATTERN)))));
-  }
+    @TestFactory
+    Stream<DynamicTest> shouldFormatBigIntegerAsStorageUnitWithPattern() {
+        return BIG_INTEGER_FORMATTERS.stream()
+                .flatMap(formatter -> BYTES.stream()
+                        .map(bytes -> DynamicTest.dynamicTest(String.format("%s formatted", bytes),
+                                () -> Assertions.assertNotNull(formatter.apply(bytes, PATTERN)))));
+    }
 
-  @TestFactory
-  Stream<DynamicTest> shouldFormatLongAsStorageUnitWithPattern() {
-    return LONG_FORMATTERS.stream()
-        .flatMap(formatter -> BYTES.stream()
-            .map(bytes -> DynamicTest.dynamicTest(String.format("%s formatted", bytes),
-                () -> Assertions.assertNotNull(formatter.apply(bytes.longValue(), PATTERN)))));
-  }
+    @TestFactory
+    Stream<DynamicTest> shouldFormatLongAsStorageUnitWithPattern() {
+        return LONG_FORMATTERS.stream()
+                .flatMap(formatter -> BYTES.stream()
+                        .map(bytes -> DynamicTest.dynamicTest(String.format("%s formatted", bytes),
+                                () -> Assertions.assertNotNull(formatter.apply(bytes.longValue(), PATTERN)))));
+    }
 
 }

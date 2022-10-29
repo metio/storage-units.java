@@ -12,8 +12,8 @@ import wtf.metio.storageunits.model.StorageUnits;
  */
 public final class LongToBinaryUnitMapper {
 
-  public StorageUnit<?> convert(final Long value) {
-    return StorageUnits.binaryValueOf(value);
-  }
+    public StorageUnit<?> convert(final Long value) {
+        return StorageUnits.binaryValueOf(value);
+    }
 
 }

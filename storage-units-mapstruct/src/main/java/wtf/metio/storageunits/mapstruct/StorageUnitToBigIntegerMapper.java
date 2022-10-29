@@ -4,16 +4,17 @@
  */
 package wtf.metio.storageunits.mapstruct;
 
-import java.math.BigInteger;
 import wtf.metio.storageunits.model.StorageUnit;
+
+import java.math.BigInteger;
 
 /**
  * Maps storage units to {@link BigInteger}s.
  */
 public final class StorageUnitToBigIntegerMapper {
 
-  public BigInteger convert(final StorageUnit<?> storageUnit) {
-    return storageUnit.inByte();
-  }
+    public BigInteger convert(final StorageUnit<?> storageUnit) {
+        return storageUnit.inByte();
+    }
 
 }

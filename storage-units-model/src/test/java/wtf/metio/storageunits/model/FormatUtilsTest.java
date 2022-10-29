@@ -4,40 +4,41 @@
  */
 package wtf.metio.storageunits.model;
 
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Modifier;
-import java.util.Locale;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Modifier;
+import java.util.Locale;
+
 class FormatUtilsTest {
 
-  @Test
-  void shouldDeclarePrivateConstructor()
-      throws NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
-    // Given
-    final var constructor = FormatUtils.class.getDeclaredConstructor();
+    @Test
+    void shouldDeclarePrivateConstructor()
+            throws NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
+        // Given
+        final var constructor = FormatUtils.class.getDeclaredConstructor();
 
-    // When
-    final var isPrivate = Modifier.isPrivate(constructor.getModifiers());
+        // When
+        final var isPrivate = Modifier.isPrivate(constructor.getModifiers());
 
-    // Then
-    Assertions.assertTrue(isPrivate, "Constructor is not private");
-    constructor.setAccessible(true);
-    constructor.newInstance();
-  }
+        // Then
+        Assertions.assertTrue(isPrivate, "Constructor is not private");
+        constructor.setAccessible(true);
+        constructor.newInstance();
+    }
 
-  @Test
-  void shouldCreateFormat() {
-    // given
-    final var pattern = "#.#";
-    final var locale = Locale.GERMAN;
+    @Test
+    void shouldCreateFormat() {
+        // given
+        final var pattern = "#.#";
+        final var locale = Locale.GERMAN;
 
-    // when
-    final var format = FormatUtils.asFormat(pattern, locale);
+        // when
+        final var format = FormatUtils.asFormat(pattern, locale);
 
-    // then
-    Assertions.assertNotNull(format);
-  }
+        // then
+        Assertions.assertNotNull(format);
+    }
 
 }

@@ -4,13 +4,14 @@
  */
 package wtf.metio.storageunits.mongodb;
 
-import java.math.BigInteger;
 import org.bson.BsonReader;
 import org.bson.BsonWriter;
 import org.bson.codecs.Codec;
 import org.bson.codecs.DecoderContext;
 import org.bson.codecs.EncoderContext;
 import wtf.metio.storageunits.model.StorageUnit;
+
+import java.math.BigInteger;
 
 /**
  * Abstract implementation of a MongoDB {@link Codec} for {@link StorageUnit StorageUnits}.
@@ -19,21 +20,21 @@ import wtf.metio.storageunits.model.StorageUnit;
  */
 abstract class AbstractStorageUnitCodec implements Codec<StorageUnit<?>> {
 
-  @Override
-  public final void encode(final BsonWriter writer, final StorageUnit<?> value, final EncoderContext encoderContext) {
-    writer.writeString(value.inByte().toString());
-  }
+    @Override
+    public final void encode(final BsonWriter writer, final StorageUnit<?> value, final EncoderContext encoderContext) {
+        writer.writeString(value.inByte().toString());
+    }
 
-  @Override
-  public final Class<StorageUnit<?>> getEncoderClass() {
-    return (Class<StorageUnit<?>>) (Object) StorageUnit.class;
-  }
+    @Override
+    public final Class<StorageUnit<?>> getEncoderClass() {
+        return (Class<StorageUnit<?>>) (Object) StorageUnit.class;
+    }
 
-  @Override
-  public final StorageUnit<?> decode(final BsonReader reader, final DecoderContext decoderContext) {
-    return convertToStorageUnit(new BigInteger(reader.readString()));
-  }
+    @Override
+    public final StorageUnit<?> decode(final BsonReader reader, final DecoderContext decoderContext) {
+        return convertToStorageUnit(new BigInteger(reader.readString()));
+    }
 
-  protected abstract StorageUnit<?> convertToStorageUnit(BigInteger value);
+    protected abstract StorageUnit<?> convertToStorageUnit(BigInteger value);
 
 }

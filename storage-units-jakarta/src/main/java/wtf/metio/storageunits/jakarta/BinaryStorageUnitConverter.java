@@ -5,9 +5,10 @@
 package wtf.metio.storageunits.jakarta;
 
 import jakarta.persistence.Converter;
-import java.math.BigInteger;
 import wtf.metio.storageunits.model.StorageUnit;
 import wtf.metio.storageunits.model.StorageUnits;
+
+import java.math.BigInteger;
 
 /**
  * Converts database values to binary storage units.
@@ -15,9 +16,9 @@ import wtf.metio.storageunits.model.StorageUnits;
 @Converter
 public final class BinaryStorageUnitConverter extends AbstractStorageUnitConverter {
 
-  @Override
-  public StorageUnit<?> convertToEntityAttribute(final BigInteger value) {
-    return StorageUnits.binaryValueOf(value);
-  }
+    @Override
+    public StorageUnit<?> convertToEntityAttribute(final BigInteger value) {
+        return StorageUnits.binaryValueOf(value);
+    }
 
 }

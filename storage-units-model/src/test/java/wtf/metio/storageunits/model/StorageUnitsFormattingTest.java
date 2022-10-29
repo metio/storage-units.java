@@ -9,40 +9,40 @@ import org.junit.jupiter.api.Test;
 
 class StorageUnitsFormattingTest {
 
-  @Test
-  void shouldFormatReadmeExample() {
-    // given
-    final long numberOfBytes = 1_000_000_000_000_000L;
+    @Test
+    void shouldFormatReadmeExample() {
+        // given
+        final long numberOfBytes = 1_000_000_000_000_000L;
 
-    // when
-    final String formatted = StorageUnits.formatAsTerabyte(numberOfBytes, "#0.#####");
+        // when
+        final String formatted = StorageUnits.formatAsTerabyte(numberOfBytes, "#0.#####");
 
-    // then
-    Assertions.assertEquals("1000 TB", formatted);
-  }
+        // then
+        Assertions.assertEquals("1000 TB", formatted);
+    }
 
-  @Test
-  void shouldFormatNumberAsBytes() {
-    // given
-    final Long numberOfBytes = 123456L;
+    @Test
+    void shouldFormatNumberAsBytes() {
+        // given
+        final Long numberOfBytes = 123456L;
 
-    // when
-    final String formatted = StorageUnits.formatAsByte(numberOfBytes);
+        // when
+        final String formatted = StorageUnits.formatAsByte(numberOfBytes);
 
-    // then
-    Assertions.assertEquals("123456 B", formatted);
-  }
+        // then
+        Assertions.assertEquals("123456 B", formatted);
+    }
 
-  @Test
-  void shouldFormatPrimitiveLongAsBytes() {
-    // given
-    final long numberOfBytes = 123456L;
+    @Test
+    void shouldFormatPrimitiveLongAsBytes() {
+        // given
+        final long numberOfBytes = 123456L;
 
-    // when
-    final String formatted = StorageUnits.formatAsByte(numberOfBytes);
+        // when
+        final String formatted = StorageUnits.formatAsByte(numberOfBytes);
 
-    // then
-    Assertions.assertEquals("123456 B", formatted);
-  }
+        // then
+        Assertions.assertEquals("123456 B", formatted);
+    }
 
 }

@@ -4,13 +4,13 @@
  */
 package wtf.metio.storageunits.jackson;
 
-import com.fasterxml.jackson.databind.JsonDeserializer;
-import java.io.IOException;
-
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.DeserializationContext;
+import com.fasterxml.jackson.databind.JsonDeserializer;
 import wtf.metio.storageunits.model.StorageUnit;
 import wtf.metio.storageunits.model.StorageUnits;
+
+import java.io.IOException;
 
 /**
  * Deserializes value back into decimal storage units.

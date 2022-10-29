@@ -17,15 +17,19 @@ import java.util.stream.Stream;
  */
 final class TestObjects {
 
-    /** Multiplier for decimal based units. */
+    /**
+     * Multiplier for decimal based units.
+     */
     public static final long DECIMAL_MULTIPLIER = 1000L;
 
-    /** Multiplier for binary based units. */
+    /**
+     * Multiplier for binary based units.
+     */
     public static final long BINARY_MULTIPLIER = 1024;
 
     /**
      * @return A list of constructor functions that take in a {@link Long} and produce a binary-based
-     *         {@link StorageUnit}.
+     * {@link StorageUnit}.
      */
     public static List<Function<Long, StorageUnit<?>>> highLevelBinaryLongBasedConstructors() {
         final List<Function<Long, StorageUnit<?>>> units = new ArrayList<>();
@@ -43,7 +47,7 @@ final class TestObjects {
 
     /**
      * @return A list of constructor functions that take in a {@link BigInteger} and produce a binary-based
-     *         {@link StorageUnit}.
+     * {@link StorageUnit}.
      */
     public static List<Function<BigInteger, StorageUnit<?>>> highLevelBinaryBigIntegerBasedConstructors() {
         final List<Function<BigInteger, StorageUnit<?>>> units = new ArrayList<>();
@@ -78,7 +82,7 @@ final class TestObjects {
 
     /**
      * @return A list of constructor functions that take in a {@link BigInteger} and produce a decimal
-     *         {@link StorageUnit}.
+     * {@link StorageUnit}.
      */
     public static List<Function<BigInteger, StorageUnit<?>>> highLevelDecimalBigIntegerBasedConstructors() {
         final List<Function<BigInteger, StorageUnit<?>>> units = new ArrayList<>();
@@ -99,24 +103,24 @@ final class TestObjects {
      */
     public static List<Function<Long, StorageUnit<?>>> highLevelLongBasedConstructors() {
         return Stream.concat(
-                highLevelBinaryLongBasedConstructors().stream(), highLevelDecimalLongBasedConstructors().stream())
+                        highLevelBinaryLongBasedConstructors().stream(), highLevelDecimalLongBasedConstructors().stream())
                 .toList();
     }
 
     /**
      * @return A list of constructor functions that take in a {@link BigInteger} and produce any kind of
-     *         {@link StorageUnit}.
+     * {@link StorageUnit}.
      */
     public static List<Function<BigInteger, StorageUnit<?>>> highLevelBigIntegerBasedConstructors() {
         return Stream.concat(
-                highLevelBinaryBigIntegerBasedConstructors().stream(),
-                highLevelDecimalBigIntegerBasedConstructors().stream())
+                        highLevelBinaryBigIntegerBasedConstructors().stream(),
+                        highLevelDecimalBigIntegerBasedConstructors().stream())
                 .toList();
     }
 
     /**
      * @return A list of constructor functions that take in a {@link BigInteger} and produce a decimal
-     *         {@link StorageUnit}.
+     * {@link StorageUnit}.
      */
     public static List<Function<BigInteger, StorageUnit<?>>> bigIntegerBasedConstructors() {
         final List<Function<BigInteger, StorageUnit<?>>> units = new ArrayList<>();
