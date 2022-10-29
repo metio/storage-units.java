@@ -41,19 +41,19 @@ public final class StorageUnits {
         StorageUnit<?> unit = Byte.valueOf(bytes);
         final @NotNull BigInteger positiveNumberOfBytes = bytes.signum() == -1 ? bytes.negate() : bytes;
 
-        if (inbetween(StorageUnit.BYTES_IN_A_KIBIBYTE, positiveNumberOfBytes, StorageUnit.BYTES_IN_A_MEBIBYTE)) {
+        if (inBetween(StorageUnit.BYTES_IN_A_KIBIBYTE, positiveNumberOfBytes, StorageUnit.BYTES_IN_A_MEBIBYTE)) {
             unit = unit.asKibibyte();
-        } else if (inbetween(StorageUnit.BYTES_IN_A_MEBIBYTE, positiveNumberOfBytes, StorageUnit.BYTES_IN_A_GIBIBYTE)) {
+        } else if (inBetween(StorageUnit.BYTES_IN_A_MEBIBYTE, positiveNumberOfBytes, StorageUnit.BYTES_IN_A_GIBIBYTE)) {
             unit = unit.asMebibyte();
-        } else if (inbetween(StorageUnit.BYTES_IN_A_GIBIBYTE, positiveNumberOfBytes, StorageUnit.BYTES_IN_A_TEBIBYTE)) {
+        } else if (inBetween(StorageUnit.BYTES_IN_A_GIBIBYTE, positiveNumberOfBytes, StorageUnit.BYTES_IN_A_TEBIBYTE)) {
             unit = unit.asGibibyte();
-        } else if (inbetween(StorageUnit.BYTES_IN_A_TEBIBYTE, positiveNumberOfBytes, StorageUnit.BYTES_IN_A_PEBIBYTE)) {
+        } else if (inBetween(StorageUnit.BYTES_IN_A_TEBIBYTE, positiveNumberOfBytes, StorageUnit.BYTES_IN_A_PEBIBYTE)) {
             unit = unit.asTebibyte();
-        } else if (inbetween(StorageUnit.BYTES_IN_A_PEBIBYTE, positiveNumberOfBytes, StorageUnit.BYTES_IN_A_EXBIBYTE)) {
+        } else if (inBetween(StorageUnit.BYTES_IN_A_PEBIBYTE, positiveNumberOfBytes, StorageUnit.BYTES_IN_A_EXBIBYTE)) {
             unit = unit.asPebibyte();
-        } else if (inbetween(StorageUnit.BYTES_IN_A_EXBIBYTE, positiveNumberOfBytes, StorageUnit.BYTES_IN_A_ZEBIBYTE)) {
+        } else if (inBetween(StorageUnit.BYTES_IN_A_EXBIBYTE, positiveNumberOfBytes, StorageUnit.BYTES_IN_A_ZEBIBYTE)) {
             unit = unit.asExbibyte();
-        } else if (inbetween(StorageUnit.BYTES_IN_A_ZEBIBYTE, positiveNumberOfBytes, StorageUnit.BYTES_IN_A_YOBIBYTE)) {
+        } else if (inBetween(StorageUnit.BYTES_IN_A_ZEBIBYTE, positiveNumberOfBytes, StorageUnit.BYTES_IN_A_YOBIBYTE)) {
             unit = unit.asZebibyte();
         } else if (greaterThanEquals(positiveNumberOfBytes, StorageUnit.BYTES_IN_A_YOBIBYTE)) {
             unit = unit.asYobibyte();
@@ -80,19 +80,19 @@ public final class StorageUnits {
         StorageUnit<?> unit = Byte.valueOf(bytes);
         final @NotNull BigInteger positiveNumberOfBytes = bytes.signum() == -1 ? bytes.negate() : bytes;
 
-        if (inbetween(StorageUnit.BYTES_IN_A_KILOBYTE, positiveNumberOfBytes, StorageUnit.BYTES_IN_A_MEGABYTE)) {
+        if (inBetween(StorageUnit.BYTES_IN_A_KILOBYTE, positiveNumberOfBytes, StorageUnit.BYTES_IN_A_MEGABYTE)) {
             unit = unit.asKilobyte();
-        } else if (inbetween(StorageUnit.BYTES_IN_A_MEGABYTE, positiveNumberOfBytes, StorageUnit.BYTES_IN_A_GIGABYTE)) {
+        } else if (inBetween(StorageUnit.BYTES_IN_A_MEGABYTE, positiveNumberOfBytes, StorageUnit.BYTES_IN_A_GIGABYTE)) {
             unit = unit.asMegabyte();
-        } else if (inbetween(StorageUnit.BYTES_IN_A_GIGABYTE, positiveNumberOfBytes, StorageUnit.BYTES_IN_A_TERABYTE)) {
+        } else if (inBetween(StorageUnit.BYTES_IN_A_GIGABYTE, positiveNumberOfBytes, StorageUnit.BYTES_IN_A_TERABYTE)) {
             unit = unit.asGigabyte();
-        } else if (inbetween(StorageUnit.BYTES_IN_A_TERABYTE, positiveNumberOfBytes, StorageUnit.BYTES_IN_A_PETABYTE)) {
+        } else if (inBetween(StorageUnit.BYTES_IN_A_TERABYTE, positiveNumberOfBytes, StorageUnit.BYTES_IN_A_PETABYTE)) {
             unit = unit.asTerabyte();
-        } else if (inbetween(StorageUnit.BYTES_IN_A_PETABYTE, positiveNumberOfBytes, StorageUnit.BYTES_IN_A_EXABYTE)) {
+        } else if (inBetween(StorageUnit.BYTES_IN_A_PETABYTE, positiveNumberOfBytes, StorageUnit.BYTES_IN_A_EXABYTE)) {
             unit = unit.asPetabyte();
-        } else if (inbetween(StorageUnit.BYTES_IN_A_EXABYTE, positiveNumberOfBytes, StorageUnit.BYTES_IN_A_ZETTABYTE)) {
+        } else if (inBetween(StorageUnit.BYTES_IN_A_EXABYTE, positiveNumberOfBytes, StorageUnit.BYTES_IN_A_ZETTABYTE)) {
             unit = unit.asExabyte();
-        } else if (inbetween(StorageUnit.BYTES_IN_A_ZETTABYTE, positiveNumberOfBytes, StorageUnit.BYTES_IN_A_YOTTABYTE)) {
+        } else if (inBetween(StorageUnit.BYTES_IN_A_ZETTABYTE, positiveNumberOfBytes, StorageUnit.BYTES_IN_A_YOTTABYTE)) {
             unit = unit.asZettabyte();
         } else if (greaterThanEquals(positiveNumberOfBytes, StorageUnit.BYTES_IN_A_YOTTABYTE)) {
             unit = unit.asYottabyte();
@@ -102,7 +102,7 @@ public final class StorageUnits {
     }
 
     @CheckReturnValue
-    private static boolean inbetween(final BigInteger start, final BigInteger value, final BigInteger endExclusive) {
+    private static boolean inBetween(final BigInteger start, final BigInteger value, final BigInteger endExclusive) {
         return greaterThanEquals(value, start) && value.compareTo(endExclusive) < 0;
     }
 
