@@ -3,13 +3,16 @@
  * SPDX-License-Identifier: 0BSD
  */
 
-package wtf.metio.storageunits.orika;
+package wtf.metio.storageunits.simple;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mockito.BDDMockito;
+import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.simpleframework.xml.stream.InputNode;
+import org.simpleframework.xml.stream.OutputNode;
+import wtf.metio.storageunits.model.StorageUnits;
 
 class StorageUnitConverterTest {
 
@@ -21,6 +24,16 @@ class StorageUnitConverterTest {
         final var unit = converter.read(input);
 
         Assertions.assertNotNull(unit);
+    }
+
+    @Test
+    void shouldConvertStorageUnitToString() throws Exception {
+        final var converter = new StorageUnitConverter();
+        final var output = Mockito.mock(OutputNode.class);
+        final var unit = StorageUnits.kibibyte(2);
+        converter.write(output, unit);
+
+        Mockito.verify(output).setValue("2 KiB");
     }
 
 }

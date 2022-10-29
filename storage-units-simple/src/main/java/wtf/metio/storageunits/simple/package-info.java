@@ -5,4 +5,4 @@
 /**
  * Serialization support for Orika.
  */
-package wtf.metio.storageunits.orika;
+package wtf.metio.storageunits.simple;

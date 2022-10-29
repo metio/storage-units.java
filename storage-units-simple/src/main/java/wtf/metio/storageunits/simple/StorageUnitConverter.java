@@ -2,7 +2,7 @@
  * SPDX-FileCopyrightText: The Storage-Units Authors
  * SPDX-License-Identifier: 0BSD
  */
-package wtf.metio.storageunits.orika;
+package wtf.metio.storageunits.simple;
 
 import org.simpleframework.xml.convert.Converter;
 import org.simpleframework.xml.stream.InputNode;
