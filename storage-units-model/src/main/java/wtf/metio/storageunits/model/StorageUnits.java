@@ -72,7 +72,7 @@ public final class StorageUnits {
     }
 
     private static @NotNull BigInteger parseValue(final @NotNull String value, final @NotNull String unit) {
-        return new BigDecimal(value.replace(unit, "").trim()).toBigInteger();
+        return new BigInteger(value.replace(unit, "").trim());
     }
 
     /**
