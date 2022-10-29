@@ -53,17 +53,17 @@ Each unit implements a Byte-based static factory method (`valueOf(BigInteger)` o
 ```java
 // 'long' based
 Kilobyte unit = Kilobyte.valueOf(500)                                       // 500 Byte or "0.50 kB"
-        Kibibyte unit = Kibibyte.valueOf(512)                                       // 512 Byte or "0.50 KiB"
+Kibibyte unit = Kibibyte.valueOf(512)                                       // 512 Byte or "0.50 KiB"
 
-        Megabyte unit = Megabyte.valueOf(1_000_000)                                 // 1 000 000 Byte or "1.00 MB"
-        Mebibyte unit = Mebibyte.valueOf(1_048_576)                                 // 1 048 576 Byte or "1.00 MiB"
+Megabyte unit = Megabyte.valueOf(1_000_000)                                 // 1 000 000 Byte or "1.00 MB"
+Mebibyte unit = Mebibyte.valueOf(1_048_576)                                 // 1 048 576 Byte or "1.00 MiB"
 
 // 'BigInteger' based
-        Kilobyte unit = Kilobyte.valueOf(BigInteger.valueOf(500))                   // 500 Byte or "0.50 kB"
-        Kibibyte unit = Kibibyte.valueOf(BigInteger.valueOf(512))                   // 512 Byte or "0.50 KiB"
+Kilobyte unit = Kilobyte.valueOf(BigInteger.valueOf(500))                   // 500 Byte or "0.50 kB"
+Kibibyte unit = Kibibyte.valueOf(BigInteger.valueOf(512))                   // 512 Byte or "0.50 KiB"
 
-        Megabyte unit = Megabyte.valueOf(BigInteger.valueOf(1000000))               // 1 000 000 Byte or "1.00 MB"
-        Mebibyte unit = Mebibyte.valueOf(BigInteger.valueOf(1_048_576))             // 1 048 576 Byte or "1.00 MB"
+Megabyte unit = Megabyte.valueOf(BigInteger.valueOf(1000000))               // 1 000 000 Byte or "1.00 MB"
+Mebibyte unit = Mebibyte.valueOf(BigInteger.valueOf(1_048_576))             // 1 048 576 Byte or "1.00 MB"
 ```
 
 The `StorageUnits` class offers three factory methods that automatically pick the best-matching unit for a given number of bytes.
@@ -73,11 +73,11 @@ The `StorageUnits` class offers three factory methods that automatically pick th
 ```java
 // 'long' based
 StorageUnit<?> unit = StorageUnits.binaryValueOf(256)                         // Kibibyte (0.25 KiB)
-        StorageUnit<?> unit = StorageUnits.binaryValueOf(1048576)                     // Mebibyte (1.00 MiB)
+StorageUnit<?> unit = StorageUnits.binaryValueOf(1048576)                     // Mebibyte (1.00 MiB)
 
 // 'BigInteger' based
-        StorageUnit<?> unit = StorageUnits.binaryValueOf(BigInteger.valueOf(256))     // Kibibyte (0.25 MiB)
-        StorageUnit<?> unit = StorageUnits.binaryValueOf(BigInteger.valueOf(1048576)) // Mebibyte (1.00 MiB)
+StorageUnit<?> unit = StorageUnits.binaryValueOf(BigInteger.valueOf(256))     // Kibibyte (0.25 MiB)
+StorageUnit<?> unit = StorageUnits.binaryValueOf(BigInteger.valueOf(1048576)) // Mebibyte (1.00 MiB)
 ```
 
 #### Decimal Units
@@ -85,11 +85,11 @@ StorageUnit<?> unit = StorageUnits.binaryValueOf(256)                         //
 ```java
 // 'long' based
 StorageUnit<?> unit = StorageUnits.decimalValueOf(120000)                      // Kilobyte (120.00 kB)
-        StorageUnit<?> unit = StorageUnits.decimalValueOf(1000000)                     // Megabyte (1.00 MB)
+StorageUnit<?> unit = StorageUnits.decimalValueOf(1000000)                     // Megabyte (1.00 MB)
 
 // 'BigInteger' based
-        StorageUnit<?> unit = StorageUnits.decimalValueOf(BigInteger.valueOf(120000))  // Kilobyte (120.00 kB)
-        StorageUnit<?> unit = StorageUnits.decimalValueOf(BigInteger.valueOf(1000000)) // Megabyte (1.00 MB)
+StorageUnit<?> unit = StorageUnits.decimalValueOf(BigInteger.valueOf(120000))  // Kilobyte (120.00 kB)
+StorageUnit<?> unit = StorageUnits.decimalValueOf(BigInteger.valueOf(1000000)) // Megabyte (1.00 MB)
 ```
 
 Additionally high-level factory methods are also available in the `StorageUnits` class.
@@ -98,22 +98,22 @@ Additionally high-level factory methods are also available in the `StorageUnits`
 import static wtf.metio.storageunits.model.StorageUnits.*;
 
 Kibibyte unit = kibibyte(1)   // 1 024 Byte
-        Mebibyte unit = mebibyte(1)   // 1 048 576 Byte
-        Gibibyte unit = gibibyte(1)   // 1 073 741 824 Byte
-        Tebibyte unit = tebibyte(1)   // 1 099 511 627 776 Byte
-        Pebibyte unit = pebibyte(1)   // 1 125 899 906 842 624 Byte
-        Exbibyte unit = exbibyte(1)   // 1 152 921 504 606 846 976 Byte
-        Zebibyte unit = zebibyte(1)   // 1 180 591 620 717 411 303 424 Byte
-        Yobibyte unit = yobibyte(1)   // 1 208 925 819 614 629 174 706 176 Byte
+Mebibyte unit = mebibyte(1)   // 1 048 576 Byte
+Gibibyte unit = gibibyte(1)   // 1 073 741 824 Byte
+Tebibyte unit = tebibyte(1)   // 1 099 511 627 776 Byte
+Pebibyte unit = pebibyte(1)   // 1 125 899 906 842 624 Byte
+Exbibyte unit = exbibyte(1)   // 1 152 921 504 606 846 976 Byte
+Zebibyte unit = zebibyte(1)   // 1 180 591 620 717 411 303 424 Byte
+Yobibyte unit = yobibyte(1)   // 1 208 925 819 614 629 174 706 176 Byte
 
-        Kilobyte unit = kilobyte(1)   // 1 000 Byte
-        Megabyte unit = megabyte(1)   // 1 000 000 Byte
-        Gigabyte unit = gigabyte(1)   // 1 000 000 000 Byte
-        Terabyte unit = terabyte(1)   // 1 000 000 000 000 Byte
-        Petabyte unit = petabyte(1)   // 1 000 000 000 000 000 Byte
-        Exabyte unit = exabyte(1)     // 1 000 000 000 000 000 000 Byte
-        Zettabyte unit = zettabyte(1) // 1 000 000 000 000 000 000 000 Byte
-        Yottabyte unit = yottabyte(1) // 1 000 000 000 000 000 000 000 000 Byte
+Kilobyte unit = kilobyte(1)   // 1 000 Byte
+Megabyte unit = megabyte(1)   // 1 000 000 Byte
+Gigabyte unit = gigabyte(1)   // 1 000 000 000 Byte
+Terabyte unit = terabyte(1)   // 1 000 000 000 000 Byte
+Petabyte unit = petabyte(1)   // 1 000 000 000 000 000 Byte
+Exabyte unit = exabyte(1)     // 1 000 000 000 000 000 000 Byte
+Zettabyte unit = zettabyte(1) // 1 000 000 000 000 000 000 000 Byte
+Yottabyte unit = yottabyte(1) // 1 000 000 000 000 000 000 000 000 Byte
 ```
 
 ### Add, Subtract, Multiply, Divide
@@ -124,11 +124,11 @@ Each unit implements the basic four math operations. All operations retain their
 import static wtf.metio.storageunits.model.StorageUnits.*;
 
 kilobyte(4).add(kilobyte(8))        // 4 Kilobyte + 8 Kilobyte = 12 Kilobyte = 12 000 Byte
-        kibibyte(1).add(1024)               // 1 Kibibyte + 1 024 Byte = 2 Kibibyte = 2 048 Byte
-        kibibyte(1).subtract(24)            // 1 024 Byte - 24 Byte = 1 000 Byte
-        megabyte(5).subtract(kilobyte(500)) // 5 Megabyte - 500 Kilobyte = 4.5 Megabyte = 4 500 Kilobyte = 4 500 000 Byte
-        gigabyte(1).multiply(5)             // 1 Gigabyte times 5 = 5 Gigabyte
-        terabyte(1).divide(5)               // 1 Terabyte divided by 5 = 0.2 Terabyte = 200 Gigabyte
+kibibyte(1).add(1024)               // 1 Kibibyte + 1 024 Byte = 2 Kibibyte = 2 048 Byte
+kibibyte(1).subtract(24)            // 1 024 Byte - 24 Byte = 1 000 Byte
+megabyte(5).subtract(kilobyte(500)) // 5 Megabyte - 500 Kilobyte = 4.5 Megabyte = 4 500 Kilobyte = 4 500 000 Byte
+gigabyte(1).multiply(5)             // 1 Gigabyte times 5 = 5 Gigabyte
+terabyte(1).divide(5)               // 1 Terabyte divided by 5 = 0.2 Terabyte = 200 Gigabyte
 ```
 
 ### Comparison & Equality
@@ -139,12 +139,12 @@ Each unit is comparable to each other unit.
 import static wtf.metio.storageunits.model.StorageUnits.*;
 
 kibibyte(1024).compareTo(mebibyte(1)) == 0 // true
-        kibibyte(1000).compareTo(mebibyte(1)) == 0 // false
-        petabyte(3).compareTo(terabyte(3000)) == 0 // true
+kibibyte(1000).compareTo(mebibyte(1)) == 0 // false
+petabyte(3).compareTo(terabyte(3000)) == 0 // true
 
-        megabyte(1000).equals(gigabyte(1))         // true
-        megabyte(1024).equals(gigabyte(1))         // false
-        terabyte(12).equals(gigabyte(12000))       // true
+megabyte(1000).equals(gigabyte(1))         // true
+megabyte(1024).equals(gigabyte(1))         // false
+terabyte(12).equals(gigabyte(12000))       // true
 ```
 
 ### Formatting
@@ -156,39 +156,39 @@ import static wtf.metio.storageunits.model.StorageUnits.*;
 
 // default pattern '0.00'
 terabyte(2).toString()                         // "2.00 TB"
-        gigabyte(1).add(megabyte(200)).toString()      // "1.20 GB"
-        petabyte(1).subtract(terabyte(250)).toString() // "0.75 PB"
+gigabyte(1).add(megabyte(200)).toString()      // "1.20 GB"
+petabyte(1).subtract(terabyte(250)).toString() // "0.75 PB"
 
 // use custom pattern
-        kilobyte(212345).toString("0.0")                                    // "212345.0 kB"
-        gibibyte(2123458).asTebibyte().toString("#,###.000")                // "2,073.689 TiB"
-        kilobyte(120).asMegabyte().add(gigabyte(1)).toString("#,##0.00000") // "1,000.12000 MB"
+kilobyte(212345).toString("0.0")                                    // "212345.0 kB"
+gibibyte(2123458).asTebibyte().toString("#,###.000")                // "2,073.689 TiB"
+kilobyte(120).asMegabyte().add(gigabyte(1)).toString("#,##0.00000") // "1,000.12000 MB"
 
 // use custom pattern with specific Locale
-        kilobyte(212345).toString("0.0", Locale.GERMAN)                     // "212345,0 kB"
-        gibibyte(2123458).asTebibyte().toString("#,###.000", Locale.GERMAN) // "2.073,689 TiB"
+kilobyte(212345).toString("0.0", Locale.GERMAN)                     // "212345,0 kB"
+gibibyte(2123458).asTebibyte().toString("#,###.000", Locale.GERMAN) // "2.073,689 TiB"
 
 // use custom format
-        Format customFormat = new DecimalFormat("#.00000");
-        terabyte(4).asTebibyte().toString(customFormat) // "3.63798 TiB"
+Format customFormat = new DecimalFormat("#.00000");
+terabyte(4).asTebibyte().toString(customFormat) // "3.63798 TiB"
 
 // without creating unit type first
-        long numberOfBytes = 1_000_000_000_000_000L;
-        formatAsPetabyte(numberOfBytes) // "1.00 PB"
-        formatAsTerabyte(numberOfBytes) // "1000.00 TB"
-        formatAsPebibyte(numberOfBytes) // "0.89 PiB"
+long numberOfBytes = 1_000_000_000_000_000L;
+formatAsPetabyte(numberOfBytes) // "1.00 PB"
+formatAsTerabyte(numberOfBytes) // "1000.00 TB"
+formatAsPebibyte(numberOfBytes) // "0.89 PiB"
 
 // use custom pattern
-        formatAsTerabyte(numberOfBytes, "#0.#####") // "1000 TB"
-        formatAsPebibyte(numberOfBytes, "#0.#####") // "0.88818 PiB"
+formatAsTerabyte(numberOfBytes, "#0.#####") // "1000 TB"
+formatAsPebibyte(numberOfBytes, "#0.#####") // "0.88818 PiB"
 
 // use custom pattern with specific Locale
-        formatAsTerabyte(numberOfBytes, "#0.#####", Locale.GERMAN) // "1000 TB"
-        formatAsPebibyte(numberOfBytes, "#0.#####", Locale.GERMAN) // "0,88818 PiB"
+formatAsTerabyte(numberOfBytes, "#0.#####", Locale.GERMAN) // "1000 TB"
+formatAsPebibyte(numberOfBytes, "#0.#####", Locale.GERMAN) // "0,88818 PiB"
 
 // use custom format
-        formatAsTerabyte(numberOfBytes, customFormat) // "1000.00000 TB"
-        formatAsPebibyte(numberOfBytes, customFormat) // ".88818 PiB"
+formatAsTerabyte(numberOfBytes, customFormat) // "1000.00000 TB"
+formatAsPebibyte(numberOfBytes, customFormat) // ".88818 PiB"
 ```
 
 ### Conversions
@@ -199,14 +199,14 @@ Each unit can be converted to each other unit without loss of information.
 import static wtf.metio.storageunits.model.StorageUnits.*;
 
 Megabyte unit = kilobyte(1000).asMegabyte() // "1.00 MB"
-        Kilobyte unit = gigabyte(12).asKilobyte()   // "12000000.00 kB"
-        Gigabyte unit = terabyte(1).asGigabyte()    // "1000.00 GB"
+Kilobyte unit = gigabyte(12).asKilobyte()   // "12000000.00 kB"
+Gigabyte unit = terabyte(1).asGigabyte()    // "1000.00 GB"
 
 // convert to best-match
-        kilobyte(1100).asBestMatchingUnit()          // "1.10 MB"
-        kilobyte(1100).asBestMatchingBinaryUnit()    // "1.05 MiB"
-        kilobyte(1100).asBestMatchingDecimalUnit()   // "1.10 MB"
-        kilobyte(1100).asBestMatchingCommonUnit()    // "1.05 MB"
+kilobyte(1100).asBestMatchingUnit()          // "1.10 MB"
+kilobyte(1100).asBestMatchingBinaryUnit()    // "1.05 MiB"
+kilobyte(1100).asBestMatchingDecimalUnit()   // "1.10 MB"
+kilobyte(1100).asBestMatchingCommonUnit()    // "1.05 MB"
 ```
 
 Each unit can be expressed as a fraction of another unit (precise up to 24 decimal places)
@@ -215,8 +215,8 @@ Each unit can be expressed as a fraction of another unit (precise up to 24 decim
 import static wtf.metio.storageunits.model.StorageUnits.*;
 
 BigDecimal kilobytes = megabyte(1).inKilobyte()  // 1 000
-        BigInteger bytes = kibibyte(2).inByte()          // 2 048
-        BigDecimal terabytes = gigabyte(15).inTerabyte() // 0.015
+BigInteger bytes = kibibyte(2).inByte()          // 2 048
+BigDecimal terabytes = gigabyte(15).inTerabyte() // 0.015
 ```
 
 ### Serialization/Converters/Mappers
