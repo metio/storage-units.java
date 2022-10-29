@@ -7,6 +7,7 @@ package wtf.metio.storageunits.model;
 import edu.umd.cs.findbugs.annotations.CheckReturnValue;
 import org.jetbrains.annotations.NotNull;
 
+import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.text.DecimalFormat;
 import java.text.Format;
@@ -21,6 +22,57 @@ public final class StorageUnits {
 
     private StorageUnits() {
         // Hidden constructor.
+    }
+
+    /**
+     * @param value The storage unit as string
+     * @return The best matching binary- or decimal-prefixed unit for the given input.
+     */
+    @CheckReturnValue
+    public static @NotNull StorageUnit<?> parse(final @NotNull String value) {
+        final var trimmed = value.trim();
+
+        if (trimmed.endsWith("kB")) {
+            return kilobyte(parseValue(value, "kB"));
+        } else if (trimmed.endsWith("MB")) {
+            return megabyte(parseValue(value, "MB"));
+        } else if (trimmed.endsWith("GB")) {
+            return gigabyte(parseValue(value, "GB"));
+        } else if (trimmed.endsWith("TB")) {
+            return terabyte(parseValue(value, "TB"));
+        } else if (trimmed.endsWith("PB")) {
+            return petabyte(parseValue(value, "PB"));
+        } else if (trimmed.endsWith("EB")) {
+            return exabyte(parseValue(value, "EB"));
+        } else if (trimmed.endsWith("ZB")) {
+            return zettabyte(parseValue(value, "ZB"));
+        } else if (trimmed.endsWith("YB")) {
+            return yottabyte(parseValue(value, "YB"));
+        }
+
+        if (trimmed.endsWith("KiB")) {
+            return kibibyte(parseValue(value, "KiB"));
+        } else if (trimmed.endsWith("MiB")) {
+            return mebibyte(parseValue(value, "MiB"));
+        } else if (trimmed.endsWith("GiB")) {
+            return gibibyte(parseValue(value, "GiB"));
+        } else if (trimmed.endsWith("TiB")) {
+            return tebibyte(parseValue(value, "TiB"));
+        } else if (trimmed.endsWith("PiB")) {
+            return pebibyte(parseValue(value, "PiB"));
+        } else if (trimmed.endsWith("EiB")) {
+            return exbibyte(parseValue(value, "EiB"));
+        } else if (trimmed.endsWith("ZiB")) {
+            return zebibyte(parseValue(value, "ZiB"));
+        } else if (trimmed.endsWith("YiB")) {
+            return yobibyte(parseValue(value, "YiB"));
+        }
+
+        return bytes(parseValue(value, "b"));
+    }
+
+    private static @NotNull BigInteger parseValue(final @NotNull String value, final @NotNull String unit) {
+        return new BigDecimal(value.replace(unit, "").trim()).toBigInteger();
     }
 
     /**
