@@ -1,73 +1,106 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-  <modelVersion>4.0.0</modelVersion>
+<!--
+  ~ SPDX-FileCopyrightText: The Storage-Units Authors
+  ~ SPDX-License-Identifier: 0BSD
+  -->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
 
-  <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
-  <!--                                  PARENT                                 -->
-  <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
-  <!-- https://maven.apache.org/pom.html#Inheritance -->
-  <parent>
-    <groupId>wtf.metio.maven.parents</groupId>
-    <artifactId>maven-parents-java-stable</artifactId>
-    <version>2022.9.30</version>
-  </parent>
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <!--                                  PARENT                                 -->
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <!-- https://maven.apache.org/pom.html#Inheritance -->
+    <parent>
+        <groupId>wtf.metio.maven.parents</groupId>
+        <artifactId>maven-parents-java-stable</artifactId>
+        <version>2022.9.30</version>
+    </parent>
 
-  <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
-  <!--                               COORDINATES                               -->
-  <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
-  <!-- https://maven.apache.org/pom.html#Maven_Coordinates -->
-  <groupId>wtf.metio.storage-units</groupId>
-  <artifactId>storage-units.java</artifactId>
-  <version>${revision}</version>
-  <packaging>pom</packaging>
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <!--                               COORDINATES                               -->
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <!-- https://maven.apache.org/pom.html#Maven_Coordinates -->
+    <groupId>wtf.metio.storage-units</groupId>
+    <artifactId>storage-units.java</artifactId>
+    <version>9999.99.99-SNAPSHOT</version>
+    <packaging>pom</packaging>
 
-  <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
-  <!--                               INFORMATIONS                              -->
-  <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
-  <!-- https://maven.apache.org/pom.html#More_Project_Information -->
-  <name>Storage Units</name>
-  <description>Implementation of storage units according to ISO IEC 80000-13:2008.</description>
-  <url>https://storage-units.projects.metio.wtf/</url>
-  <inceptionYear>2012</inceptionYear>
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <!--                               INFORMATIONS                              -->
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <!-- https://maven.apache.org/pom.html#More_Project_Information -->
+    <name>Storage Units</name>
+    <description>Implementation of storage units according to ISO IEC 80000-13:2008.</description>
+    <url>https://storage-units.projects.metio.wtf/</url>
+    <inceptionYear>2012</inceptionYear>
 
-  <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
-  <!--                                 MODULES                                 -->
-  <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
-  <!-- https://maven.apache.org/pom.html#Aggregation -->
-  <modules>
-   <module>storage-units-model</module>
-<!--   <module>storage-units-eclipselink</module>-->
-<!--   <module>storage-units-jackson</module>-->
-<!--   <module>storage-units-mongodb</module>-->
-  </modules>
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <!--                                 MODULES                                 -->
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <!-- https://maven.apache.org/pom.html#Aggregation -->
+    <modules>
+        <module>storage-units-dozer</module>
+        <module>storage-units-eclipselink</module>
+        <module>storage-units-jackson</module>
+        <module>storage-units-jakarta</module>
+        <module>storage-units-mapstruct</module>
+        <module>storage-units-model</module>
+        <module>storage-units-modelmapper</module>
+        <module>storage-units-mongodb</module>
+        <module>storage-units-orika</module>
+    </modules>
 
-  <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
-  <!--                                    SCM                                  -->
-  <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
-  <!-- https://maven.apache.org/pom.html#SCM -->
-  <scm>
-    <connection>scm:git:git://github.com/metio/storage-units.java.git</connection>
-    <developerConnection>scm:git:git@github.com:metio/storage-units.java.git</developerConnection>
-    <tag>main</tag>
-    <url>${project.url}</url>
-  </scm>
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <!--                                    SCM                                  -->
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <!-- https://maven.apache.org/pom.html#SCM -->
+    <scm>
+        <connection>scm:git:git://github.com/metio/storage-units.java.git</connection>
+        <developerConnection>scm:git:git@github.com:metio/storage-units.java.git</developerConnection>
+        <tag>main</tag>
+        <url>${project.url}</url>
+    </scm>
 
-  <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
-  <!--                             ISSUE MANAGEMENT                            -->
-  <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
-  <!-- https://maven.apache.org/pom.html#Issue_Management -->
-  <issueManagement>
-    <system>GitHub</system>
-    <url>https://github.com/metio/storage-units.java/issues</url>
-  </issueManagement>
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <!--                             ISSUE MANAGEMENT                            -->
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <!-- https://maven.apache.org/pom.html#Issue_Management -->
+    <issueManagement>
+        <system>GitHub</system>
+        <url>https://github.com/metio/storage-units.java/issues</url>
+    </issueManagement>
 
-  <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
-  <!--                                PROPERTIES                               -->
-  <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
-  <!-- https://maven.apache.org/pom.html#Properties -->
-  <properties>
-    <revision>9999-99-99-SNAPSHOT</revision>
-    <version.jdk>17</version.jdk>
-  </properties>
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <!--                                PROPERTIES                               -->
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <!-- https://maven.apache.org/pom.html#Properties -->
+    <properties>
+        <version.jdk>${javaVersion}</version.jdk>
+    </properties>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>properties-maven-plugin</artifactId>
+                <version>1.1.0</version>
+                <executions>
+                    <execution>
+                        <phase>initialize</phase>
+                        <goals>
+                            <goal>read-project-properties</goal>
+                        </goals>
+                        <configuration>
+                            <quiet>true</quiet>
+                            <files>
+                                <file>java.properties</file>
+                            </files>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>

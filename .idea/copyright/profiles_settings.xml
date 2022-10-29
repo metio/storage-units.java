@@ -1,0 +1,10 @@
+<component name="CopyrightManager">
+  <settings default="storage-units">
+    <module2copyright>
+      <element module="Project Files" copyright="storage-units" />
+    </module2copyright>
+    <LanguageOptions name="JAVA">
+      <option name="addBlankBefore" value="true" />
+    </LanguageOptions>
+  </settings>
+</component>
