@@ -3,53 +3,54 @@
   ~ SPDX-FileCopyrightText: The Storage-Units Authors
   ~ SPDX-License-Identifier: 0BSD
   -->
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-  <modelVersion>4.0.0</modelVersion>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
 
-  <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
-  <!--                                  PARENT                                 -->
-  <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
-  <!-- https://maven.apache.org/pom.html#Inheritance -->
-  <parent>
-    <groupId>wtf.metio.storage-units</groupId>
-    <artifactId>storage-units.java</artifactId>
-    <version>9999.99.99-SNAPSHOT</version>
-  </parent>
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <!--                                  PARENT                                 -->
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <!-- https://maven.apache.org/pom.html#Inheritance -->
+    <parent>
+        <groupId>wtf.metio.storage-units</groupId>
+        <artifactId>storage-units.java</artifactId>
+        <version>9999.99.99-SNAPSHOT</version>
+    </parent>
 
-  <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
-  <!--                               COORDINATES                               -->
-  <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
-  <!-- https://maven.apache.org/pom.html#Maven_Coordinates -->
-  <artifactId>storage-units-jackson</artifactId>
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <!--                               COORDINATES                               -->
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <!-- https://maven.apache.org/pom.html#Maven_Coordinates -->
+    <artifactId>storage-units-jackson</artifactId>
 
-  <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
-  <!--                               INFORMATIONS                              -->
-  <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
-  <!-- https://maven.apache.org/pom.html#More_Project_Information -->
-  <name>Storage Units :: Jackson</name>
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <!--                               INFORMATIONS                              -->
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <!-- https://maven.apache.org/pom.html#More_Project_Information -->
+    <name>Storage Units :: Jackson</name>
 
-  <dependencies>
-    <dependency>
-      <groupId>wtf.metio.storage-units</groupId>
-      <artifactId>storage-units-model</artifactId>
-      <version>${project.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>com.fasterxml.jackson.core</groupId>
-      <artifactId>jackson-core</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>com.fasterxml.jackson.core</groupId>
-      <artifactId>jackson-databind</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>com.fasterxml.jackson.core</groupId>
-      <artifactId>jackson-annotations</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.jspecify</groupId>
-      <artifactId>jspecify</artifactId>
-      <version>0.3.0-alpha-1</version>
-    </dependency>
-  </dependencies>
+    <dependencies>
+        <dependency>
+            <groupId>wtf.metio.storage-units</groupId>
+            <artifactId>storage-units-model</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-annotations</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.jspecify</groupId>
+            <artifactId>jspecify</artifactId>
+            <version>0.3.0-alpha-1</version>
+        </dependency>
+    </dependencies>
 </project>
