@@ -49,6 +49,7 @@
         <module>storage-units-modelmapper</module>
         <module>storage-units-mongodb</module>
         <module>storage-units-orika</module>
+        <module>storage-units-simple</module>
     </modules>
 
     <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
