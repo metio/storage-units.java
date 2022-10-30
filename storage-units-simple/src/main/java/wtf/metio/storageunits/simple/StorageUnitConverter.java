@@ -17,7 +17,7 @@ public final class StorageUnitConverter implements Converter<StorageUnit<?>> {
 
     @Override
     public void write(final OutputNode outputNode, final StorageUnit<?> storageUnit) throws Exception {
-        outputNode.setValue(storageUnit.toString());
+        outputNode.setValue(storageUnit.inByte().toString());
     }
 
     @Override

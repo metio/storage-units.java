@@ -33,7 +33,7 @@ class StorageUnitConverterTest {
         final var unit = StorageUnits.kibibyte(2);
         converter.write(output, unit);
 
-        Mockito.verify(output).setValue("2 KiB");
+        Mockito.verify(output).setValue("2048");
     }
 
 }
