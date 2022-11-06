@@ -437,7 +437,7 @@ To use this project just declare the following dependency inside your POM:
 </dependencies>
 ```
 
-Replace `${version.storage-units}` with the [latest release](https://search.maven.org/search?q=g:wtf.metio.storageunits).
+Replace `${version.storage-units}` with the [latest release](https://search.maven.org/search?q=g:wtf.metio.storage-units).
 
 ## Reference
 
