@@ -25,6 +25,8 @@ class StorageUnitNumberOfBytesPerUnitTest {
             Map.entry(Exbibyte.class, new BigInteger("1152921504606846976")),
             Map.entry(Zebibyte.class, new BigInteger("1180591620717411303424")),
             Map.entry(Yobibyte.class, new BigInteger("1208925819614629174706176")),
+            Map.entry(Robibyte.class, new BigInteger("1237940039285380274899124224")),
+            Map.entry(Qubibyte.class, new BigInteger("1267650600228229401496703205376")),
             // decimal units
             Map.entry(Kilobyte.class, new BigInteger("1000")),
             Map.entry(Megabyte.class, new BigInteger("1000000")),
@@ -33,7 +35,9 @@ class StorageUnitNumberOfBytesPerUnitTest {
             Map.entry(Petabyte.class, new BigInteger("1000000000000000")),
             Map.entry(Exabyte.class, new BigInteger("1000000000000000000")),
             Map.entry(Zettabyte.class, new BigInteger("1000000000000000000000")),
-            Map.entry(Yottabyte.class, new BigInteger("1000000000000000000000000"))
+            Map.entry(Yottabyte.class, new BigInteger("1000000000000000000000000")),
+            Map.entry(Ronnabyte.class, new BigInteger("1000000000000000000000000000")),
+            Map.entry(Quettabyte.class, new BigInteger("1000000000000000000000000000000"))
     );
 
     @TestFactory
@@ -47,9 +51,8 @@ class StorageUnitNumberOfBytesPerUnitTest {
                             final BigInteger numberOfBytesPerUnit = unit.getNumberOfBytesPerUnit();
                             final BigInteger expectedNumberOfBytesPerUnit = EXPECTED_NUMBERS.get(unit.getClass());
 
-                            return DynamicTest.dynamicTest(unit.toString(), () -> {
-                                Assertions.assertEquals(expectedNumberOfBytesPerUnit, numberOfBytesPerUnit);
-                            });
+                            return DynamicTest.dynamicTest(unit.toString(), () ->
+                                    Assertions.assertEquals(expectedNumberOfBytesPerUnit, numberOfBytesPerUnit));
                         }));
     }
 

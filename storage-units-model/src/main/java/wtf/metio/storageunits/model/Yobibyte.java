@@ -16,9 +16,6 @@ import java.util.function.Function;
  */
 public final class Yobibyte extends StorageUnit<Yobibyte> {
 
-    /**
-     * Generated
-     */
     @Serial
     private static final long serialVersionUID = -5606322878020884194L;
 

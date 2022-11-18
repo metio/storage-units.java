@@ -30,6 +30,8 @@ class StorageUnitsFormattingWithAnyFormatTest {
             BYTES_IN_A_EXBIBYTE,
             BYTES_IN_A_ZEBIBYTE,
             BYTES_IN_A_YOBIBYTE,
+            BYTES_IN_A_ROBIBYTE,
+            BYTES_IN_A_QUBIBYTE,
             BYTES_IN_A_KILOBYTE,
             BYTES_IN_A_MEGABYTE,
             BYTES_IN_A_GIGABYTE,
@@ -37,7 +39,9 @@ class StorageUnitsFormattingWithAnyFormatTest {
             BYTES_IN_A_PETABYTE,
             BYTES_IN_A_EXABYTE,
             BYTES_IN_A_ZETTABYTE,
-            BYTES_IN_A_YOTTABYTE
+            BYTES_IN_A_YOTTABYTE,
+            BYTES_IN_A_RONNABYTE,
+            BYTES_IN_A_QUETTABYTE
     );
 
     private static final List<BiFunction<BigInteger, Format, String>> BIG_INTEGER_FORMATTERS = List.of(
@@ -50,6 +54,8 @@ class StorageUnitsFormattingWithAnyFormatTest {
             StorageUnits::formatAsExbibyte,
             StorageUnits::formatAsZebibyte,
             StorageUnits::formatAsYobibyte,
+            StorageUnits::formatAsRobibyte,
+            StorageUnits::formatAsQubibyte,
             StorageUnits::formatAsDecimalUnit,
             StorageUnits::formatAsKilobyte,
             StorageUnits::formatAsMegabyte,
@@ -58,7 +64,9 @@ class StorageUnitsFormattingWithAnyFormatTest {
             StorageUnits::formatAsPetabyte,
             StorageUnits::formatAsExabyte,
             StorageUnits::formatAsZettabyte,
-            StorageUnits::formatAsYottabyte
+            StorageUnits::formatAsYottabyte,
+            StorageUnits::formatAsRonnabyte,
+            StorageUnits::formatAsQuettabyte
     );
 
     private static final List<BiFunction<Long, Format, String>> LONG_FORMATTERS = List.of(
@@ -71,6 +79,8 @@ class StorageUnitsFormattingWithAnyFormatTest {
             StorageUnits::formatAsExbibyte,
             StorageUnits::formatAsZebibyte,
             StorageUnits::formatAsYobibyte,
+            StorageUnits::formatAsRobibyte,
+            StorageUnits::formatAsQubibyte,
             StorageUnits::formatAsDecimalUnit,
             StorageUnits::formatAsKilobyte,
             StorageUnits::formatAsMegabyte,
@@ -79,7 +89,9 @@ class StorageUnitsFormattingWithAnyFormatTest {
             StorageUnits::formatAsPetabyte,
             StorageUnits::formatAsExabyte,
             StorageUnits::formatAsZettabyte,
-            StorageUnits::formatAsYottabyte
+            StorageUnits::formatAsYottabyte,
+            StorageUnits::formatAsRonnabyte,
+            StorageUnits::formatAsQuettabyte
     );
 
     @TestFactory

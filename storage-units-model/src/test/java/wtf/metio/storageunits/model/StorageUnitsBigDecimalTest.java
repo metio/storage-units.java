@@ -13,11 +13,12 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Stream;
 
+import static wtf.metio.storageunits.model.TestObjects.DECIMAL_MULTIPLIER;
 import static wtf.metio.storageunits.model.TestUtils.logIncorrectCreation;
 
 class StorageUnitsBigDecimalTest {
 
-    private static final BigInteger MULTIPLIER = BigInteger.valueOf(1000);
+    private static final BigInteger MULTIPLIER = BigInteger.valueOf(DECIMAL_MULTIPLIER);
 
     private static final List<Map.Entry<BigInteger, Class<? extends StorageUnit<?>>>> INPUTS = List.of(
             Map.entry(BigInteger.ONE, Byte.class),
@@ -29,7 +30,9 @@ class StorageUnitsBigDecimalTest {
             Map.entry(MULTIPLIER.pow(6), Exabyte.class),
             Map.entry(MULTIPLIER.pow(7), Zettabyte.class),
             Map.entry(MULTIPLIER.pow(8), Yottabyte.class),
-            Map.entry(MULTIPLIER.pow(9), Yottabyte.class)
+            Map.entry(MULTIPLIER.pow(9), Ronnabyte.class),
+            Map.entry(MULTIPLIER.pow(10), Quettabyte.class),
+            Map.entry(MULTIPLIER.pow(11), Quettabyte.class)
     );
 
     @TestFactory

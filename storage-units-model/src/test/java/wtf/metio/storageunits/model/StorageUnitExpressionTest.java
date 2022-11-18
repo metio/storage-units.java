@@ -18,19 +18,16 @@ import static wtf.metio.storageunits.model.TestObjects.highLevelLongBasedConstru
 
 class StorageUnitExpressionTest {
 
-    public static final List<Function<Long, StorageUnit<?>>> UNITS = highLevelLongBasedConstructors();
-
     @TestFactory
     Stream<DynamicTest> shouldConvertUnitIntoAnotherUnit() {
-        return TestObjects.highLevelLongBasedConstructors().stream()
+        return highLevelLongBasedConstructors().stream()
                 .flatMap(constructor -> expressions().stream()
                         .map(expression -> {
                             final var original = constructor.apply(1L);
                             final var result = expression.apply(original);
 
-                            return DynamicTest.dynamicTest(String.format("%s -> %s", original.toString(), result.toString()), () -> {
-                                Assertions.assertNotNull(result, "Could not expression one unit as another");
-                            });
+                            return DynamicTest.dynamicTest(String.format("%s -> %s", original.toString(), result.toString()), () ->
+                                    Assertions.assertNotNull(result, "Could not expression one unit as another"));
                         }));
     }
 
@@ -45,6 +42,8 @@ class StorageUnitExpressionTest {
         units.add(StorageUnit::inExbibyte);
         units.add(StorageUnit::inZebibyte);
         units.add(StorageUnit::inYobibyte);
+        units.add(StorageUnit::inRobibyte);
+        units.add(StorageUnit::inQubibyte);
 
         units.add(StorageUnit::inKilobyte);
         units.add(StorageUnit::inMegabyte);
@@ -54,6 +53,8 @@ class StorageUnitExpressionTest {
         units.add(StorageUnit::inExabyte);
         units.add(StorageUnit::inZettabyte);
         units.add(StorageUnit::inYottabyte);
+        units.add(StorageUnit::inRonnabyte);
+        units.add(StorageUnit::inQuettabyte);
 
         return units;
     }

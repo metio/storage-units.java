@@ -23,13 +23,12 @@ class StorageUnitConversionTest {
                             final var original = constructor.apply(1L);
                             final var result = expression.apply(original);
 
-                            return DynamicTest.dynamicTest(String.format("%s -> %s", original.toString(), result.toString()), () -> {
-                                Assertions.assertAll(
-                                        () -> Assertions.assertNotNull(result, "Could not convert one unit into another"),
-                                        () -> Assertions.assertEquals(original.inByte(), result.inByte(),
-                                                "Amounts should be the same after conversion")
-                                );
-                            });
+                            return DynamicTest.dynamicTest(String.format("%s -> %s", original.toString(), result.toString()), () ->
+                                    Assertions.assertAll(
+                                            () -> Assertions.assertNotNull(result, "Could not convert one unit into another"),
+                                            () -> Assertions.assertEquals(original.inByte(), result.inByte(),
+                                                    "Amounts should be the same after conversion")
+                                    ));
                         }));
     }
 
@@ -50,6 +49,8 @@ class StorageUnitConversionTest {
         units.add(StorageUnit::asExbibyte);
         units.add(StorageUnit::asZebibyte);
         units.add(StorageUnit::asYobibyte);
+        units.add(StorageUnit::asRobibyte);
+        units.add(StorageUnit::asQubibyte);
 
         units.add(StorageUnit::asKilobyte);
         units.add(StorageUnit::asMegabyte);
@@ -59,6 +60,8 @@ class StorageUnitConversionTest {
         units.add(StorageUnit::asExabyte);
         units.add(StorageUnit::asZettabyte);
         units.add(StorageUnit::asYottabyte);
+        units.add(StorageUnit::asRonnabyte);
+        units.add(StorageUnit::asQuettabyte);
 
         return units;
     }

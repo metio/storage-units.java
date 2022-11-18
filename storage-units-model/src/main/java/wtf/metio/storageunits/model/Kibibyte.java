@@ -106,7 +106,7 @@ public final class Kibibyte extends StorageUnit<Kibibyte> {
 
     @Override
     @CheckReturnValue
-    public @NotNull Kibibyte subtract(final StorageUnit<?> storageAmount) {
+    public @NotNull Kibibyte subtract(final @NotNull StorageUnit<?> storageAmount) {
         return subtract(storageAmount.bytes);
     }
 

@@ -13,11 +13,12 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Stream;
 
+import static wtf.metio.storageunits.model.TestObjects.BINARY_MULTIPLIER;
 import static wtf.metio.storageunits.model.TestUtils.logIncorrectCreation;
 
 public class StorageUnitsBigBinaryTest {
 
-    private static final BigInteger MULTIPLIER = BigInteger.valueOf(1024);
+    private static final BigInteger MULTIPLIER = BigInteger.valueOf(BINARY_MULTIPLIER);
 
     public static List<Map.Entry<BigInteger, Class<? extends StorageUnit<?>>>> INPUTS = List.of(
             Map.entry(BigInteger.ONE, Byte.class),
@@ -29,7 +30,9 @@ public class StorageUnitsBigBinaryTest {
             Map.entry(MULTIPLIER.pow(6), Exbibyte.class),
             Map.entry(MULTIPLIER.pow(7), Zebibyte.class),
             Map.entry(MULTIPLIER.pow(8), Yobibyte.class),
-            Map.entry(MULTIPLIER.pow(9), Yobibyte.class)
+            Map.entry(MULTIPLIER.pow(9), Robibyte.class),
+            Map.entry(MULTIPLIER.pow(10), Qubibyte.class),
+            Map.entry(MULTIPLIER.pow(11), Qubibyte.class)
     );
 
     @TestFactory

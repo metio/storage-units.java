@@ -23,6 +23,8 @@ class StorageUnitToStringTest {
             Map.entry(Exbibyte.class, "EiB"),
             Map.entry(Zebibyte.class, "ZiB"),
             Map.entry(Yobibyte.class, "YiB"),
+            Map.entry(Robibyte.class, "RiB"),
+            Map.entry(Qubibyte.class, "QiB"),
             Map.entry(Kilobyte.class, "kB"),
             Map.entry(Megabyte.class, "MB"),
             Map.entry(Gigabyte.class, "GB"),
@@ -30,7 +32,9 @@ class StorageUnitToStringTest {
             Map.entry(Petabyte.class, "PB"),
             Map.entry(Exabyte.class, "EB"),
             Map.entry(Zettabyte.class, "ZB"),
-            Map.entry(Yottabyte.class, "YB"));
+            Map.entry(Yottabyte.class, "YB"),
+            Map.entry(Ronnabyte.class, "RB"),
+            Map.entry(Quettabyte.class, "QB"));
 
     @TestFactory
     Stream<DynamicTest> shouldPrintCorrectUnit() {
