@@ -16,33 +16,37 @@ Storage units according to ISO IEC 80000-13:2008 implemented in Java.
 * Lossless conversion between all units
 * Human-readable text format, including custom formats
 * Compatible with any `java.lang.Number`
-* Custom serializers for Jackson, MongoDB & EclipseLink
+* Custom serializers for Jackson, MongoDB, EclipseLink, and others
 
 ### Available Units
 
-| Name     | Symbol | Exponential         | Absolute                               |
-|----------|--------|---------------------|----------------------------------------|
-| Byte     | B      | 2<sup>0</sup> Byte  | 1 Byte                                 |
-| Kibibyte | KiB    | 2<sup>10</sup> Byte | 1 024 Byte                             |
-| Mebibyte | MiB    | 2<sup>20</sup> Byte | 1 048 576 Byte                         |
-| Gibibyte | GiB    | 2<sup>30</sup> Byte | 1 073 741 824 Byte                     |
-| Tebibyte | TiB    | 2<sup>40</sup> Byte | 1 099 511 627 776 Byte                 |
-| Pebibyte | PiB    | 2<sup>50</sup> Byte | 1 125 899 906 842 624 Byte             |
-| Exbibyte | EiB    | 2<sup>60</sup> Byte | 1 152 921 504 606 846 976 Byte         |
-| Zebibyte | ZiB    | 2<sup>70</sup> Byte | 1 180 591 620 717 411 303 424 Byte     |
-| Yobibyte | YiB    | 2<sup>80</sup> Byte | 1 208 925 819 614 629 174 706 176 Byte |
+| Name     | Symbol | Exponential          | Absolute                                       |
+|----------|--------|----------------------|------------------------------------------------|
+| Byte     | B      | 2<sup>0</sup> Byte   | 1 Byte                                         |
+| Kibibyte | KiB    | 2<sup>10</sup> Byte  | 1 024 Byte                                     |
+| Mebibyte | MiB    | 2<sup>20</sup> Byte  | 1 048 576 Byte                                 |
+| Gibibyte | GiB    | 2<sup>30</sup> Byte  | 1 073 741 824 Byte                             |
+| Tebibyte | TiB    | 2<sup>40</sup> Byte  | 1 099 511 627 776 Byte                         |
+| Pebibyte | PiB    | 2<sup>50</sup> Byte  | 1 125 899 906 842 624 Byte                     |
+| Exbibyte | EiB    | 2<sup>60</sup> Byte  | 1 152 921 504 606 846 976 Byte                 |
+| Zebibyte | ZiB    | 2<sup>70</sup> Byte  | 1 180 591 620 717 411 303 424 Byte             |
+| Yobibyte | YiB    | 2<sup>80</sup> Byte  | 1 208 925 819 614 629 174 706 176 Byte         |
+| Robibyte | RiB    | 2<sup>90</sup> Byte  | 1 237 940 039 285 380 274 899 124 224 Byte     |
+| Qubibyte | QiB    | 2<sup>100</sup> Byte | 1 267 650 600 228 229 401 496 703 205 376 Byte |
 
-| Name      | Symbol | Exponential          | Absolute                               |
-|-----------|--------|----------------------|----------------------------------------|
-| Byte      | B      | 10<sup>0</sup> Byte  | 1 Byte                                 |
-| Kilobyte  | KB     | 10<sup>3</sup> Byte  | 1 000 Byte                             |
-| Megabyte  | MB     | 10<sup>6</sup> Byte  | 1 000 000 Byte                         |
-| Gigabyte  | GB     | 10<sup>9</sup> Byte  | 1 000 000 000 Byte                     |
-| Terabyte  | TB     | 10<sup>12</sup> Byte | 1 000 000 000 000 Byte                 |
-| Petabyte  | PB     | 10<sup>15</sup> Byte | 1 000 000 000 000 000 Byte             |
-| Exabyte   | EB     | 10<sup>18</sup> Byte | 1 000 000 000 000 000 000 Byte         |
-| Zettabyte | ZB     | 10<sup>21</sup> Byte | 1 000 000 000 000 000 000 000 Byte     |
-| Yottabyte | YB     | 10<sup>24</sup> Byte | 1 000 000 000 000 000 000 000 000 Byte |
+| Name       | Symbol | Exponential          | Absolute                                       |
+|------------|--------|----------------------|------------------------------------------------|
+| Byte       | B      | 10<sup>0</sup> Byte  | 1 Byte                                         |
+| Kilobyte   | KB     | 10<sup>3</sup> Byte  | 1 000 Byte                                     |
+| Megabyte   | MB     | 10<sup>6</sup> Byte  | 1 000 000 Byte                                 |
+| Gigabyte   | GB     | 10<sup>9</sup> Byte  | 1 000 000 000 Byte                             |
+| Terabyte   | TB     | 10<sup>12</sup> Byte | 1 000 000 000 000 Byte                         |
+| Petabyte   | PB     | 10<sup>15</sup> Byte | 1 000 000 000 000 000 Byte                     |
+| Exabyte    | EB     | 10<sup>18</sup> Byte | 1 000 000 000 000 000 000 Byte                 |
+| Zettabyte  | ZB     | 10<sup>21</sup> Byte | 1 000 000 000 000 000 000 000 Byte             |
+| Yottabyte  | YB     | 10<sup>24</sup> Byte | 1 000 000 000 000 000 000 000 000 Byte         |
+| Ronnabyte  | RB     | 10<sup>27</sup> Byte | 1 000 000 000 000 000 000 000 000 000 Byte     |
+| Quettabyte | QB     | 10<sup>30</sup> Byte | 1 000 000 000 000 000 000 000 000 000 000 Byte |
 
 ## Usage
 
@@ -52,18 +56,18 @@ Each unit implements a Byte-based static factory method (`valueOf(BigInteger)` o
 
 ```java
 // 'long' based
-Kilobyte unit = Kilobyte.valueOf(500)                                       // 500 Byte or "0.50 kB"
-Kibibyte unit = Kibibyte.valueOf(512)                                       // 512 Byte or "0.50 KiB"
+Kilobyte unit = Kilobyte.valueOf(500)                           // 500 Byte or "0.50 kB"
+Kibibyte unit = Kibibyte.valueOf(512)                           // 512 Byte or "0.50 KiB"
 
-Megabyte unit = Megabyte.valueOf(1_000_000)                                 // 1 000 000 Byte or "1.00 MB"
-Mebibyte unit = Mebibyte.valueOf(1_048_576)                                 // 1 048 576 Byte or "1.00 MiB"
+Megabyte unit = Megabyte.valueOf(1_000_000)                     // 1 000 000 Byte or "1.00 MB"
+Mebibyte unit = Mebibyte.valueOf(1_048_576)                     // 1 048 576 Byte or "1.00 MiB"
 
 // 'BigInteger' based
-Kilobyte unit = Kilobyte.valueOf(BigInteger.valueOf(500))                   // 500 Byte or "0.50 kB"
-Kibibyte unit = Kibibyte.valueOf(BigInteger.valueOf(512))                   // 512 Byte or "0.50 KiB"
+Kilobyte unit = Kilobyte.valueOf(BigInteger.valueOf(500))       // 500 Byte or "0.50 kB"
+Kibibyte unit = Kibibyte.valueOf(BigInteger.valueOf(512))       // 512 Byte or "0.50 KiB"
 
-Megabyte unit = Megabyte.valueOf(BigInteger.valueOf(1000000))               // 1 000 000 Byte or "1.00 MB"
-Mebibyte unit = Mebibyte.valueOf(BigInteger.valueOf(1_048_576))             // 1 048 576 Byte or "1.00 MB"
+Megabyte unit = Megabyte.valueOf(BigInteger.valueOf(1000000))   // 1 000 000 Byte or "1.00 MB"
+Mebibyte unit = Mebibyte.valueOf(BigInteger.valueOf(1_048_576)) // 1 048 576 Byte or "1.00 MB"
 ```
 
 The `StorageUnits` class offers three factory methods that automatically pick the best-matching unit for a given number of bytes.
@@ -105,15 +109,19 @@ Pebibyte unit = pebibyte(1)   // 1 125 899 906 842 624 Byte
 Exbibyte unit = exbibyte(1)   // 1 152 921 504 606 846 976 Byte
 Zebibyte unit = zebibyte(1)   // 1 180 591 620 717 411 303 424 Byte
 Yobibyte unit = yobibyte(1)   // 1 208 925 819 614 629 174 706 176 Byte
+Robibyte unit = robibyte(1)   // 1 237 940 039 285 380 274 899 124 224 Byte
+Qubibyte unit = qubibyte(1)   // 1 267 650 600 228 229 401 496 703 205 376 Byte
 
-Kilobyte unit = kilobyte(1)   // 1 000 Byte
-Megabyte unit = megabyte(1)   // 1 000 000 Byte
-Gigabyte unit = gigabyte(1)   // 1 000 000 000 Byte
-Terabyte unit = terabyte(1)   // 1 000 000 000 000 Byte
-Petabyte unit = petabyte(1)   // 1 000 000 000 000 000 Byte
-Exabyte unit = exabyte(1)     // 1 000 000 000 000 000 000 Byte
-Zettabyte unit = zettabyte(1) // 1 000 000 000 000 000 000 000 Byte
-Yottabyte unit = yottabyte(1) // 1 000 000 000 000 000 000 000 000 Byte
+Kilobyte unit = kilobyte(1)     // 1 000 Byte
+Megabyte unit = megabyte(1)     // 1 000 000 Byte
+Gigabyte unit = gigabyte(1)     // 1 000 000 000 Byte
+Terabyte unit = terabyte(1)     // 1 000 000 000 000 Byte
+Petabyte unit = petabyte(1)     // 1 000 000 000 000 000 Byte
+Exabyte unit = exabyte(1)       // 1 000 000 000 000 000 000 Byte
+Zettabyte unit = zettabyte(1)   // 1 000 000 000 000 000 000 000 Byte
+Yottabyte unit = yottabyte(1)   // 1 000 000 000 000 000 000 000 000 Byte
+Ronnabyte unit = ronnabyte(1)   // 1 000 000 000 000 000 000 000 000 000 Byte
+Quettabyte unit = quettabyte(1) // 1 000 000 000 000 000 000 000 000 000 000 Byte
 ```
 
 ### Add, Subtract, Multiply, Divide

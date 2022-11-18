@@ -106,7 +106,7 @@ public final class Kilobyte extends StorageUnit<Kilobyte> {
 
     @Override
     @CheckReturnValue
-    public @NotNull Kilobyte subtract(final StorageUnit<?> storageAmount) {
+    public @NotNull Kilobyte subtract(final @NotNull StorageUnit<?> storageAmount) {
         return subtract(storageAmount.bytes);
     }
 

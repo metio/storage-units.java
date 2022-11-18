@@ -42,6 +42,8 @@ final class TestObjects {
         units.add(StorageUnits::exbibyte);
         units.add(StorageUnits::zebibyte);
         units.add(StorageUnits::yobibyte);
+        units.add(StorageUnits::robibyte);
+        units.add(StorageUnits::qubibyte);
         return units;
     }
 
@@ -60,6 +62,8 @@ final class TestObjects {
         units.add(StorageUnits::exbibyte);
         units.add(StorageUnits::zebibyte);
         units.add(StorageUnits::yobibyte);
+        units.add(StorageUnits::robibyte);
+        units.add(StorageUnits::qubibyte);
         return units;
     }
 
@@ -77,6 +81,8 @@ final class TestObjects {
         units.add(StorageUnits::exabyte);
         units.add(StorageUnits::zettabyte);
         units.add(StorageUnits::yottabyte);
+        units.add(StorageUnits::ronnabyte);
+        units.add(StorageUnits::quettabyte);
         return units;
     }
 
@@ -95,6 +101,8 @@ final class TestObjects {
         units.add(StorageUnits::exabyte);
         units.add(StorageUnits::zettabyte);
         units.add(StorageUnits::yottabyte);
+        units.add(StorageUnits::ronnabyte);
+        units.add(StorageUnits::quettabyte);
         return units;
     }
 
@@ -141,6 +149,10 @@ final class TestObjects {
         units.add(Yottabyte::valueOf);
         units.add(Zebibyte::valueOf);
         units.add(Zettabyte::valueOf);
+        units.add(Robibyte::valueOf);
+        units.add(Ronnabyte::valueOf);
+        units.add(Qubibyte::valueOf);
+        units.add(Quettabyte::valueOf);
         return units;
     }
 
@@ -166,6 +178,10 @@ final class TestObjects {
         units.add(Yottabyte::valueOf);
         units.add(Zebibyte::valueOf);
         units.add(Zettabyte::valueOf);
+        units.add(Robibyte::valueOf);
+        units.add(Ronnabyte::valueOf);
+        units.add(Qubibyte::valueOf);
+        units.add(Quettabyte::valueOf);
         return units;
     }
 

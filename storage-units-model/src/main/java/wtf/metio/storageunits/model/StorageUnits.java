@@ -7,7 +7,6 @@ package wtf.metio.storageunits.model;
 import edu.umd.cs.findbugs.annotations.CheckReturnValue;
 import org.jetbrains.annotations.NotNull;
 
-import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.text.DecimalFormat;
 import java.text.Format;
@@ -48,6 +47,10 @@ public final class StorageUnits {
             return zettabyte(parseValue(value, "ZB"));
         } else if (trimmed.endsWith("YB")) {
             return yottabyte(parseValue(value, "YB"));
+        } else if (trimmed.endsWith("RB")) {
+            return ronnabyte(parseValue(value, "RB"));
+        } else if (trimmed.endsWith("QB")) {
+            return quettabyte(parseValue(value, "QB"));
         }
 
         if (trimmed.endsWith("KiB")) {
@@ -66,6 +69,10 @@ public final class StorageUnits {
             return zebibyte(parseValue(value, "ZiB"));
         } else if (trimmed.endsWith("YiB")) {
             return yobibyte(parseValue(value, "YiB"));
+        } else if (trimmed.endsWith("RiB")) {
+            return robibyte(parseValue(value, "RiB"));
+        } else if (trimmed.endsWith("QiB")) {
+            return robibyte(parseValue(value, "QiB"));
         }
 
         return bytes(parseValue(value, "b"));
@@ -107,8 +114,12 @@ public final class StorageUnits {
             unit = unit.asExbibyte();
         } else if (inBetween(StorageUnit.BYTES_IN_A_ZEBIBYTE, positiveNumberOfBytes, StorageUnit.BYTES_IN_A_YOBIBYTE)) {
             unit = unit.asZebibyte();
-        } else if (greaterThanEquals(positiveNumberOfBytes, StorageUnit.BYTES_IN_A_YOBIBYTE)) {
+        } else if (inBetween(StorageUnit.BYTES_IN_A_YOBIBYTE, positiveNumberOfBytes, StorageUnit.BYTES_IN_A_ROBIBYTE)) {
             unit = unit.asYobibyte();
+        } else if (inBetween(StorageUnit.BYTES_IN_A_ROBIBYTE, positiveNumberOfBytes, StorageUnit.BYTES_IN_A_QUBIBYTE)) {
+            unit = unit.asRobibyte();
+        } else if (greaterThanEquals(positiveNumberOfBytes, StorageUnit.BYTES_IN_A_QUBIBYTE)) {
+            unit = unit.asQubibyte();
         }
 
         return unit;
@@ -146,8 +157,12 @@ public final class StorageUnits {
             unit = unit.asExabyte();
         } else if (inBetween(StorageUnit.BYTES_IN_A_ZETTABYTE, positiveNumberOfBytes, StorageUnit.BYTES_IN_A_YOTTABYTE)) {
             unit = unit.asZettabyte();
-        } else if (greaterThanEquals(positiveNumberOfBytes, StorageUnit.BYTES_IN_A_YOTTABYTE)) {
+        } else if (inBetween(StorageUnit.BYTES_IN_A_YOTTABYTE, positiveNumberOfBytes, StorageUnit.BYTES_IN_A_RONNABYTE)) {
             unit = unit.asYottabyte();
+        } else if (inBetween(StorageUnit.BYTES_IN_A_RONNABYTE, positiveNumberOfBytes, StorageUnit.BYTES_IN_A_QUETTABYTE)) {
+            unit = unit.asRonnabyte();
+        } else if (greaterThanEquals(positiveNumberOfBytes, StorageUnit.BYTES_IN_A_QUETTABYTE)) {
+            unit = unit.asQuettabyte();
         }
 
         return unit;
@@ -1356,6 +1371,264 @@ public final class StorageUnits {
      * @return The formatted bytes using the default pattern.
      */
     @CheckReturnValue
+    public static @NotNull String formatAsRobibyte(final @NotNull Long numberOfBytes) {
+        return formatAsRobibyte(numberOfBytes.longValue());
+    }
+
+    /**
+     * @param numberOfBytes The amount of bytes to format.
+     * @return The formatted bytes using the default pattern.
+     */
+    @CheckReturnValue
+    public static @NotNull String formatAsRobibyte(final long numberOfBytes) {
+        return formatAsRobibyte(BigInteger.valueOf(numberOfBytes));
+    }
+
+    /**
+     * @param numberOfBytes The amount of bytes to format.
+     * @return The formatted bytes using the default pattern.
+     */
+    @CheckReturnValue
+    public static @NotNull String formatAsRobibyte(final @NotNull BigInteger numberOfBytes) {
+        return formatAsRobibyte(numberOfBytes, StorageUnit.DEFAULT_FORMAT_PATTERN);
+    }
+
+    /**
+     * @param numberOfBytes The amount of bytes to format.
+     * @param pattern       The formatting pattern to apply.
+     * @return The formatted bytes using the default pattern.
+     */
+    @CheckReturnValue
+    public static @NotNull String formatAsRobibyte(final @NotNull Long numberOfBytes, final @NotNull String pattern) {
+        return formatAsRobibyte(numberOfBytes.longValue(), pattern);
+    }
+
+    /**
+     * @param numberOfBytes The amount of bytes to format.
+     * @param pattern       The formatting pattern to apply.
+     * @return The formatted bytes using the default pattern.
+     */
+    @CheckReturnValue
+    public static @NotNull String formatAsRobibyte(final long numberOfBytes, final @NotNull String pattern) {
+        return formatAsRobibyte(BigInteger.valueOf(numberOfBytes), pattern);
+    }
+
+    /**
+     * @param numberOfBytes The amount of bytes to format.
+     * @param pattern       The formatting pattern to apply.
+     * @return The formatted bytes using the default pattern.
+     */
+    @CheckReturnValue
+    public static @NotNull String formatAsRobibyte(final @NotNull BigInteger numberOfBytes, final @NotNull String pattern) {
+        return formatAsRobibyte(numberOfBytes, new DecimalFormat(pattern));
+    }
+
+    /**
+     * @param numberOfBytes The amount of bytes to format.
+     * @param pattern       The formatting pattern to apply.
+     * @param locale        The locale to use.
+     * @return The formatted bytes using the default pattern.
+     */
+    @CheckReturnValue
+    public static @NotNull String formatAsRobibyte(
+            final @NotNull Long numberOfBytes,
+            final @NotNull String pattern,
+            final @NotNull Locale locale) {
+        return formatAsRobibyte(numberOfBytes.longValue(), pattern, locale);
+    }
+
+    /**
+     * @param numberOfBytes The amount of bytes to format.
+     * @param pattern       The formatting pattern to apply.
+     * @param locale        The locale to use.
+     * @return The formatted bytes using the default pattern.
+     */
+    @CheckReturnValue
+    public static @NotNull String formatAsRobibyte(
+            final long numberOfBytes,
+            final @NotNull String pattern,
+            final @NotNull Locale locale) {
+        return formatAsRobibyte(BigInteger.valueOf(numberOfBytes), pattern, locale);
+    }
+
+    /**
+     * @param numberOfBytes The amount of bytes to format.
+     * @param pattern       The formatting pattern to apply.
+     * @param locale        The locale to use.
+     * @return The formatted bytes using the default pattern.
+     */
+    @CheckReturnValue
+    public static @NotNull String formatAsRobibyte(
+            final @NotNull BigInteger numberOfBytes,
+            final @NotNull String pattern,
+            final @NotNull Locale locale) {
+        return formatAsRobibyte(numberOfBytes, asFormat(pattern, locale));
+    }
+
+    /**
+     * @param numberOfBytes The amount of bytes to format.
+     * @param format        The formatting pattern to apply.
+     * @return The formatted bytes using the default pattern.
+     */
+    @CheckReturnValue
+    public static @NotNull String formatAsRobibyte(final @NotNull Long numberOfBytes, final @NotNull Format format) {
+        return formatAsRobibyte(numberOfBytes.longValue(), format);
+    }
+
+    /**
+     * @param numberOfBytes The amount of bytes to format.
+     * @param format        The formatting pattern to apply.
+     * @return The formatted bytes using the default pattern.
+     */
+    @CheckReturnValue
+    public static @NotNull String formatAsRobibyte(final long numberOfBytes, final @NotNull Format format) {
+        return formatAsRobibyte(BigInteger.valueOf(numberOfBytes), format);
+    }
+
+    /**
+     * @param numberOfBytes The amount of bytes to format.
+     * @param format        The formatting pattern to apply.
+     * @return The formatted bytes using the default pattern.
+     */
+    @CheckReturnValue
+    public static @NotNull String formatAsRobibyte(final @NotNull BigInteger numberOfBytes, final @NotNull Format format) {
+        return Robibyte.valueOf(numberOfBytes).toString(format);
+    }
+
+    /**
+     * @param numberOfBytes The amount of bytes to format.
+     * @return The formatted bytes using the default pattern.
+     */
+    @CheckReturnValue
+    public static @NotNull String formatAsQubibyte(final @NotNull Long numberOfBytes) {
+        return formatAsQubibyte(numberOfBytes.longValue());
+    }
+
+    /**
+     * @param numberOfBytes The amount of bytes to format.
+     * @return The formatted bytes using the default pattern.
+     */
+    @CheckReturnValue
+    public static @NotNull String formatAsQubibyte(final long numberOfBytes) {
+        return formatAsQubibyte(BigInteger.valueOf(numberOfBytes));
+    }
+
+    /**
+     * @param numberOfBytes The amount of bytes to format.
+     * @return The formatted bytes using the default pattern.
+     */
+    @CheckReturnValue
+    public static @NotNull String formatAsQubibyte(final @NotNull BigInteger numberOfBytes) {
+        return formatAsQubibyte(numberOfBytes, StorageUnit.DEFAULT_FORMAT_PATTERN);
+    }
+
+    /**
+     * @param numberOfBytes The amount of bytes to format.
+     * @param pattern       The formatting pattern to apply.
+     * @return The formatted bytes using the default pattern.
+     */
+    @CheckReturnValue
+    public static @NotNull String formatAsQubibyte(final @NotNull Long numberOfBytes, final @NotNull String pattern) {
+        return formatAsQubibyte(numberOfBytes.longValue(), pattern);
+    }
+
+    /**
+     * @param numberOfBytes The amount of bytes to format.
+     * @param pattern       The formatting pattern to apply.
+     * @return The formatted bytes using the default pattern.
+     */
+    @CheckReturnValue
+    public static @NotNull String formatAsQubibyte(final long numberOfBytes, final @NotNull String pattern) {
+        return formatAsQubibyte(BigInteger.valueOf(numberOfBytes), pattern);
+    }
+
+    /**
+     * @param numberOfBytes The amount of bytes to format.
+     * @param pattern       The formatting pattern to apply.
+     * @return The formatted bytes using the default pattern.
+     */
+    @CheckReturnValue
+    public static @NotNull String formatAsQubibyte(final @NotNull BigInteger numberOfBytes, final @NotNull String pattern) {
+        return formatAsQubibyte(numberOfBytes, new DecimalFormat(pattern));
+    }
+
+    /**
+     * @param numberOfBytes The amount of bytes to format.
+     * @param pattern       The formatting pattern to apply.
+     * @param locale        The locale to use.
+     * @return The formatted bytes using the default pattern.
+     */
+    @CheckReturnValue
+    public static @NotNull String formatAsQubibyte(
+            final @NotNull Long numberOfBytes,
+            final @NotNull String pattern,
+            final @NotNull Locale locale) {
+        return formatAsQubibyte(numberOfBytes.longValue(), pattern, locale);
+    }
+
+    /**
+     * @param numberOfBytes The amount of bytes to format.
+     * @param pattern       The formatting pattern to apply.
+     * @param locale        The locale to use.
+     * @return The formatted bytes using the default pattern.
+     */
+    @CheckReturnValue
+    public static @NotNull String formatAsQubibyte(
+            final long numberOfBytes,
+            final @NotNull String pattern,
+            final @NotNull Locale locale) {
+        return formatAsQubibyte(BigInteger.valueOf(numberOfBytes), pattern, locale);
+    }
+
+    /**
+     * @param numberOfBytes The amount of bytes to format.
+     * @param pattern       The formatting pattern to apply.
+     * @param locale        The locale to use.
+     * @return The formatted bytes using the default pattern.
+     */
+    @CheckReturnValue
+    public static @NotNull String formatAsQubibyte(
+            final @NotNull BigInteger numberOfBytes,
+            final @NotNull String pattern,
+            final @NotNull Locale locale) {
+        return formatAsQubibyte(numberOfBytes, asFormat(pattern, locale));
+    }
+
+    /**
+     * @param numberOfBytes The amount of bytes to format.
+     * @param format        The formatting pattern to apply.
+     * @return The formatted bytes using the default pattern.
+     */
+    @CheckReturnValue
+    public static @NotNull String formatAsQubibyte(final @NotNull Long numberOfBytes, final @NotNull Format format) {
+        return formatAsQubibyte(numberOfBytes.longValue(), format);
+    }
+
+    /**
+     * @param numberOfBytes The amount of bytes to format.
+     * @param format        The formatting pattern to apply.
+     * @return The formatted bytes using the default pattern.
+     */
+    @CheckReturnValue
+    public static @NotNull String formatAsQubibyte(final long numberOfBytes, final @NotNull Format format) {
+        return formatAsQubibyte(BigInteger.valueOf(numberOfBytes), format);
+    }
+
+    /**
+     * @param numberOfBytes The amount of bytes to format.
+     * @param format        The formatting pattern to apply.
+     * @return The formatted bytes using the default pattern.
+     */
+    @CheckReturnValue
+    public static @NotNull String formatAsQubibyte(final @NotNull BigInteger numberOfBytes, final @NotNull Format format) {
+        return Qubibyte.valueOf(numberOfBytes).toString(format);
+    }
+
+    /**
+     * @param numberOfBytes The amount of bytes to format.
+     * @return The formatted bytes using the default pattern.
+     */
+    @CheckReturnValue
     public static @NotNull String formatAsDecimalUnit(final @NotNull Long numberOfBytes) {
         return formatAsDecimalUnit(numberOfBytes.longValue());
     }
@@ -2513,6 +2786,264 @@ public final class StorageUnits {
     }
 
     /**
+     * @param numberOfBytes The amount of bytes to format.
+     * @return The formatted bytes using the default pattern.
+     */
+    @CheckReturnValue
+    public static @NotNull String formatAsRonnabyte(final @NotNull Long numberOfBytes) {
+        return formatAsRonnabyte(numberOfBytes.longValue());
+    }
+
+    /**
+     * @param numberOfBytes The amount of bytes to format.
+     * @return The formatted bytes using the default pattern.
+     */
+    @CheckReturnValue
+    public static @NotNull String formatAsRonnabyte(final long numberOfBytes) {
+        return formatAsRonnabyte(BigInteger.valueOf(numberOfBytes));
+    }
+
+    /**
+     * @param numberOfBytes The amount of bytes to format.
+     * @return The formatted bytes using the default pattern.
+     */
+    @CheckReturnValue
+    public static @NotNull String formatAsRonnabyte(final @NotNull BigInteger numberOfBytes) {
+        return formatAsRonnabyte(numberOfBytes, StorageUnit.DEFAULT_FORMAT_PATTERN);
+    }
+
+    /**
+     * @param numberOfBytes The amount of bytes to format.
+     * @param pattern       The formatting pattern to apply.
+     * @return The formatted bytes using the default pattern.
+     */
+    @CheckReturnValue
+    public static @NotNull String formatAsRonnabyte(final @NotNull Long numberOfBytes, final @NotNull String pattern) {
+        return formatAsRonnabyte(numberOfBytes.longValue(), pattern);
+    }
+
+    /**
+     * @param numberOfBytes The amount of bytes to format.
+     * @param pattern       The formatting pattern to apply.
+     * @return The formatted bytes using the default pattern.
+     */
+    @CheckReturnValue
+    public static @NotNull String formatAsRonnabyte(final long numberOfBytes, final @NotNull String pattern) {
+        return formatAsRonnabyte(BigInteger.valueOf(numberOfBytes), pattern);
+    }
+
+    /**
+     * @param numberOfBytes The amount of bytes to format.
+     * @param pattern       The formatting pattern to apply.
+     * @param locale        The locale to use.
+     * @return The formatted bytes using the default pattern.
+     */
+    @CheckReturnValue
+    public static @NotNull String formatAsRonnabyte(
+            final @NotNull BigInteger numberOfBytes,
+            final @NotNull String pattern,
+            final @NotNull Locale locale) {
+        return formatAsRonnabyte(numberOfBytes, asFormat(pattern, locale));
+    }
+
+    /**
+     * @param numberOfBytes The amount of bytes to format.
+     * @param pattern       The formatting pattern to apply.
+     * @param locale        The locale to use.
+     * @return The formatted bytes using the default pattern.
+     */
+    @CheckReturnValue
+    public static @NotNull String formatAsRonnabyte(
+            final @NotNull Long numberOfBytes,
+            final @NotNull String pattern,
+            final @NotNull Locale locale) {
+        return formatAsRonnabyte(numberOfBytes.longValue(), pattern, locale);
+    }
+
+    /**
+     * @param numberOfBytes The amount of bytes to format.
+     * @param pattern       The formatting pattern to apply.
+     * @param locale        The locale to use.
+     * @return The formatted bytes using the default pattern.
+     */
+    @CheckReturnValue
+    public static @NotNull String formatAsRonnabyte(
+            final long numberOfBytes,
+            final @NotNull String pattern,
+            final @NotNull Locale locale) {
+        return formatAsRonnabyte(BigInteger.valueOf(numberOfBytes), pattern, locale);
+    }
+
+    /**
+     * @param numberOfBytes The amount of bytes to format.
+     * @param pattern       The formatting pattern to apply.
+     * @return The formatted bytes using the default pattern.
+     */
+    @CheckReturnValue
+    public static @NotNull String formatAsRonnabyte(final @NotNull BigInteger numberOfBytes, final @NotNull String pattern) {
+        return formatAsRonnabyte(numberOfBytes, new DecimalFormat(pattern));
+    }
+
+    /**
+     * @param numberOfBytes The amount of bytes to format.
+     * @param format        The formatting pattern to apply.
+     * @return The formatted bytes using the default pattern.
+     */
+    @CheckReturnValue
+    public static @NotNull String formatAsRonnabyte(final @NotNull Long numberOfBytes, final @NotNull Format format) {
+        return formatAsRonnabyte(numberOfBytes.longValue(), format);
+    }
+
+    /**
+     * @param numberOfBytes The amount of bytes to format.
+     * @param format        The formatting pattern to apply.
+     * @return The formatted bytes using the default pattern.
+     */
+    @CheckReturnValue
+    public static @NotNull String formatAsRonnabyte(final long numberOfBytes, final @NotNull Format format) {
+        return formatAsRonnabyte(BigInteger.valueOf(numberOfBytes), format);
+    }
+
+    /**
+     * @param numberOfBytes The amount of bytes to format.
+     * @param format        The formatting pattern to apply.
+     * @return The formatted bytes using the default pattern.
+     */
+    @CheckReturnValue
+    public static @NotNull String formatAsRonnabyte(final @NotNull BigInteger numberOfBytes, final @NotNull Format format) {
+        return Ronnabyte.valueOf(numberOfBytes).toString(format);
+    }
+
+    /**
+     * @param numberOfBytes The amount of bytes to format.
+     * @return The formatted bytes using the default pattern.
+     */
+    @CheckReturnValue
+    public static @NotNull String formatAsQuettabyte(final @NotNull Long numberOfBytes) {
+        return formatAsQuettabyte(numberOfBytes.longValue());
+    }
+
+    /**
+     * @param numberOfBytes The amount of bytes to format.
+     * @return The formatted bytes using the default pattern.
+     */
+    @CheckReturnValue
+    public static @NotNull String formatAsQuettabyte(final long numberOfBytes) {
+        return formatAsQuettabyte(BigInteger.valueOf(numberOfBytes));
+    }
+
+    /**
+     * @param numberOfBytes The amount of bytes to format.
+     * @return The formatted bytes using the default pattern.
+     */
+    @CheckReturnValue
+    public static @NotNull String formatAsQuettabyte(final @NotNull BigInteger numberOfBytes) {
+        return formatAsQuettabyte(numberOfBytes, StorageUnit.DEFAULT_FORMAT_PATTERN);
+    }
+
+    /**
+     * @param numberOfBytes The amount of bytes to format.
+     * @param pattern       The formatting pattern to apply.
+     * @return The formatted bytes using the default pattern.
+     */
+    @CheckReturnValue
+    public static @NotNull String formatAsQuettabyte(final @NotNull Long numberOfBytes, final @NotNull String pattern) {
+        return formatAsQuettabyte(numberOfBytes.longValue(), pattern);
+    }
+
+    /**
+     * @param numberOfBytes The amount of bytes to format.
+     * @param pattern       The formatting pattern to apply.
+     * @return The formatted bytes using the default pattern.
+     */
+    @CheckReturnValue
+    public static @NotNull String formatAsQuettabyte(final long numberOfBytes, final @NotNull String pattern) {
+        return formatAsQuettabyte(BigInteger.valueOf(numberOfBytes), pattern);
+    }
+
+    /**
+     * @param numberOfBytes The amount of bytes to format.
+     * @param pattern       The formatting pattern to apply.
+     * @param locale        The locale to use.
+     * @return The formatted bytes using the default pattern.
+     */
+    @CheckReturnValue
+    public static @NotNull String formatAsQuettabyte(
+            final @NotNull BigInteger numberOfBytes,
+            final @NotNull String pattern,
+            final @NotNull Locale locale) {
+        return formatAsQuettabyte(numberOfBytes, asFormat(pattern, locale));
+    }
+
+    /**
+     * @param numberOfBytes The amount of bytes to format.
+     * @param pattern       The formatting pattern to apply.
+     * @param locale        The locale to use.
+     * @return The formatted bytes using the default pattern.
+     */
+    @CheckReturnValue
+    public static @NotNull String formatAsQuettabyte(
+            final @NotNull Long numberOfBytes,
+            final @NotNull String pattern,
+            final @NotNull Locale locale) {
+        return formatAsQuettabyte(numberOfBytes.longValue(), pattern, locale);
+    }
+
+    /**
+     * @param numberOfBytes The amount of bytes to format.
+     * @param pattern       The formatting pattern to apply.
+     * @param locale        The locale to use.
+     * @return The formatted bytes using the default pattern.
+     */
+    @CheckReturnValue
+    public static @NotNull String formatAsQuettabyte(
+            final long numberOfBytes,
+            final @NotNull String pattern,
+            final @NotNull Locale locale) {
+        return formatAsQuettabyte(BigInteger.valueOf(numberOfBytes), pattern, locale);
+    }
+
+    /**
+     * @param numberOfBytes The amount of bytes to format.
+     * @param pattern       The formatting pattern to apply.
+     * @return The formatted bytes using the default pattern.
+     */
+    @CheckReturnValue
+    public static @NotNull String formatAsQuettabyte(final @NotNull BigInteger numberOfBytes, final @NotNull String pattern) {
+        return formatAsQuettabyte(numberOfBytes, new DecimalFormat(pattern));
+    }
+
+    /**
+     * @param numberOfBytes The amount of bytes to format.
+     * @param format        The formatting pattern to apply.
+     * @return The formatted bytes using the default pattern.
+     */
+    @CheckReturnValue
+    public static @NotNull String formatAsQuettabyte(final @NotNull Long numberOfBytes, final @NotNull Format format) {
+        return formatAsQuettabyte(numberOfBytes.longValue(), format);
+    }
+
+    /**
+     * @param numberOfBytes The amount of bytes to format.
+     * @param format        The formatting pattern to apply.
+     * @return The formatted bytes using the default pattern.
+     */
+    @CheckReturnValue
+    public static @NotNull String formatAsQuettabyte(final long numberOfBytes, final @NotNull Format format) {
+        return formatAsQuettabyte(BigInteger.valueOf(numberOfBytes), format);
+    }
+
+    /**
+     * @param numberOfBytes The amount of bytes to format.
+     * @param format        The formatting pattern to apply.
+     * @return The formatted bytes using the default pattern.
+     */
+    @CheckReturnValue
+    public static @NotNull String formatAsQuettabyte(final @NotNull BigInteger numberOfBytes, final @NotNull Format format) {
+        return Quettabyte.valueOf(numberOfBytes).toString(format);
+    }
+
+    /**
      * @param numberOfBytes The amount of bytes to create.
      * @return A new unit representing the given amount of bytes.
      */
@@ -2756,6 +3287,60 @@ public final class StorageUnits {
     }
 
     /**
+     * @param numberOfRobibytes The amount of robibytes to create.
+     * @return A new unit representing the given amount of robibytes.
+     */
+    @CheckReturnValue
+    public static @NotNull Robibyte robibyte(final @NotNull Long numberOfRobibytes) {
+        return robibyte(numberOfRobibytes.longValue());
+    }
+
+    /**
+     * @param numberOfRobibytes The amount of robibytes to create.
+     * @return A new unit representing the given amount of robibytes.
+     */
+    @CheckReturnValue
+    public static @NotNull Robibyte robibyte(final long numberOfRobibytes) {
+        return robibyte(BigInteger.valueOf(numberOfRobibytes));
+    }
+
+    /**
+     * @param numberOfRobibytes The amount of robibytes to create.
+     * @return A new unit representing the given amount of robibytes.
+     */
+    @CheckReturnValue
+    public static @NotNull Robibyte robibyte(final @NotNull BigInteger numberOfRobibytes) {
+        return new Robibyte(StorageUnit.BYTES_IN_A_ROBIBYTE.multiply(numberOfRobibytes));
+    }
+
+    /**
+     * @param numberOfQubibytes The amount of qubibytes to create.
+     * @return A new unit representing the given amount of qubibytes.
+     */
+    @CheckReturnValue
+    public static @NotNull Qubibyte qubibyte(final @NotNull Long numberOfQubibytes) {
+        return qubibyte(numberOfQubibytes.longValue());
+    }
+
+    /**
+     * @param numberOfQubibytes The amount of qubibytes to create.
+     * @return A new unit representing the given amount of qubibytes.
+     */
+    @CheckReturnValue
+    public static @NotNull Qubibyte qubibyte(final long numberOfQubibytes) {
+        return qubibyte(BigInteger.valueOf(numberOfQubibytes));
+    }
+
+    /**
+     * @param numberOfQubibytes The amount of qubibytes to create.
+     * @return A new unit representing the given amount of qubibytes.
+     */
+    @CheckReturnValue
+    public static @NotNull Qubibyte qubibyte(final @NotNull BigInteger numberOfQubibytes) {
+        return new Qubibyte(StorageUnit.BYTES_IN_A_QUBIBYTE.multiply(numberOfQubibytes));
+    }
+
+    /**
      * @param numberOfKilobytes The number of kilobytes to create.
      * @return A new unit representing the given amount of kilobytes.
      */
@@ -2969,6 +3554,60 @@ public final class StorageUnits {
     @CheckReturnValue
     public static @NotNull Yottabyte yottabyte(final @NotNull BigInteger numberOfYottabytes) {
         return new Yottabyte(StorageUnit.BYTES_IN_A_YOTTABYTE.multiply(numberOfYottabytes));
+    }
+
+    /**
+     * @param numberOfRonnabytes The number of ronnabytes to create.
+     * @return A new unit representing the given amount of ronnabytes.
+     */
+    @CheckReturnValue
+    public static @NotNull Ronnabyte ronnabyte(final @NotNull Long numberOfRonnabytes) {
+        return ronnabyte(numberOfRonnabytes.longValue());
+    }
+
+    /**
+     * @param numberOfRonnabytes The number of ronnabytes to create.
+     * @return A new unit representing the given amount of ronnabytes.
+     */
+    @CheckReturnValue
+    public static @NotNull Ronnabyte ronnabyte(final long numberOfRonnabytes) {
+        return ronnabyte(BigInteger.valueOf(numberOfRonnabytes));
+    }
+
+    /**
+     * @param numberOfRonnabytes The number of ronnabytes to create.
+     * @return A new unit representing the given amount of ronnabytes.
+     */
+    @CheckReturnValue
+    public static @NotNull Ronnabyte ronnabyte(final @NotNull BigInteger numberOfRonnabytes) {
+        return new Ronnabyte(StorageUnit.BYTES_IN_A_RONNABYTE.multiply(numberOfRonnabytes));
+    }
+
+    /**
+     * @param numberOfQuettabytes The number of quettabytes to create.
+     * @return A new unit representing the given amount of quettabytes.
+     */
+    @CheckReturnValue
+    public static @NotNull Quettabyte quettabyte(final @NotNull Long numberOfQuettabytes) {
+        return quettabyte(numberOfQuettabytes.longValue());
+    }
+
+    /**
+     * @param numberOfQuettabytes The number of quettabytes to create.
+     * @return A new unit representing the given amount of quettabytes.
+     */
+    @CheckReturnValue
+    public static @NotNull Quettabyte quettabyte(final long numberOfQuettabytes) {
+        return quettabyte(BigInteger.valueOf(numberOfQuettabytes));
+    }
+
+    /**
+     * @param numberOfQuettabytes The number of quettabytes to create.
+     * @return A new unit representing the given amount of quettabytes.
+     */
+    @CheckReturnValue
+    public static @NotNull Quettabyte quettabyte(final @NotNull BigInteger numberOfQuettabytes) {
+        return new Quettabyte(StorageUnit.BYTES_IN_A_QUETTABYTE.multiply(numberOfQuettabytes));
     }
 
 }

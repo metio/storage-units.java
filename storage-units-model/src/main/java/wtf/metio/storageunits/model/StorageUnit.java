@@ -65,6 +65,12 @@ public abstract class StorageUnit<T extends StorageUnit<T>> extends Number imple
     static final @NotNull BigInteger BYTES_IN_A_YOBIBYTE = StorageUnit.BYTES_IN_A_ZEBIBYTE.multiply(
             StorageUnit.BINARY_UNIT_BASE);
 
+    static final @NotNull BigInteger BYTES_IN_A_ROBIBYTE = StorageUnit.BYTES_IN_A_YOBIBYTE.multiply(
+            StorageUnit.BINARY_UNIT_BASE);
+
+    static final @NotNull BigInteger BYTES_IN_A_QUBIBYTE = StorageUnit.BYTES_IN_A_ROBIBYTE.multiply(
+            StorageUnit.BINARY_UNIT_BASE);
+
     /**
      * The storage unit base for decimal numbers. Each step between the units dimensions is done with this base value.
      */
@@ -92,6 +98,12 @@ public abstract class StorageUnit<T extends StorageUnit<T>> extends Number imple
             StorageUnit.DECIMAL_UNIT_BASE);
 
     static final @NotNull BigInteger BYTES_IN_A_YOTTABYTE = StorageUnit.BYTES_IN_A_ZETTABYTE.multiply(
+            StorageUnit.DECIMAL_UNIT_BASE);
+
+    static final @NotNull BigInteger BYTES_IN_A_RONNABYTE = StorageUnit.BYTES_IN_A_YOTTABYTE.multiply(
+            StorageUnit.DECIMAL_UNIT_BASE);
+
+    static final @NotNull BigInteger BYTES_IN_A_QUETTABYTE = StorageUnit.BYTES_IN_A_RONNABYTE.multiply(
             StorageUnit.DECIMAL_UNIT_BASE);
 
     protected final @NotNull BigInteger bytes;
@@ -199,6 +211,22 @@ public abstract class StorageUnit<T extends StorageUnit<T>> extends Number imple
     }
 
     /**
+     * @return This storage unit as a robibyte.
+     */
+    @CheckReturnValue
+    public final @NotNull Robibyte asRobibyte() {
+        return new Robibyte(this.bytes);
+    }
+
+    /**
+     * @return This storage unit as a qubibyte.
+     */
+    @CheckReturnValue
+    public final @NotNull Qubibyte asQubibyte() {
+        return new Qubibyte(this.bytes);
+    }
+
+    /**
      * @return This storage unit as a kilobyte.
      */
     @CheckReturnValue
@@ -260,6 +288,22 @@ public abstract class StorageUnit<T extends StorageUnit<T>> extends Number imple
     @CheckReturnValue
     public final @NotNull Yottabyte asYottabyte() {
         return new Yottabyte(this.bytes);
+    }
+
+    /**
+     * @return This storage unit as a ronnabyte.
+     */
+    @CheckReturnValue
+    public final @NotNull Ronnabyte asRonnabyte() {
+        return new Ronnabyte(this.bytes);
+    }
+
+    /**
+     * @return This storage unit as a quettabyte.
+     */
+    @CheckReturnValue
+    public final @NotNull Quettabyte asQuettabyte() {
+        return new Quettabyte(this.bytes);
     }
 
     /**
@@ -335,6 +379,22 @@ public abstract class StorageUnit<T extends StorageUnit<T>> extends Number imple
     }
 
     /**
+     * @return This storage unit quantified as robibyte.
+     */
+    @CheckReturnValue
+    public final @NotNull BigDecimal inRobibyte() {
+        return this.calculate(StorageUnit.BYTES_IN_A_ROBIBYTE);
+    }
+
+    /**
+     * @return This storage unit quantified as qubibyte.
+     */
+    @CheckReturnValue
+    public final @NotNull BigDecimal inQubibyte() {
+        return this.calculate(StorageUnit.BYTES_IN_A_QUBIBYTE);
+    }
+
+    /**
      * @return This storage unit quantified as kilobyte.
      */
     @CheckReturnValue
@@ -399,67 +459,19 @@ public abstract class StorageUnit<T extends StorageUnit<T>> extends Number imple
     }
 
     /**
-     * @return This storage unit quantified as common kibibyte.
+     * @return This storage unit quantified as ronnabyte.
      */
     @CheckReturnValue
-    public final @NotNull BigDecimal inCommonKilobyte() {
-        return this.calculate(StorageUnit.BYTES_IN_A_KIBIBYTE);
+    public final @NotNull BigDecimal inRonnabyte() {
+        return this.calculate(StorageUnit.BYTES_IN_A_RONNABYTE);
     }
 
     /**
-     * @return This storage unit quantified as common mebibyte.
+     * @return This storage unit quantified as quettabyte.
      */
     @CheckReturnValue
-    public final @NotNull BigDecimal inCommonMegabyte() {
-        return this.calculate(StorageUnit.BYTES_IN_A_MEBIBYTE);
-    }
-
-    /**
-     * @return This storage unit quantified as common gibibyte.
-     */
-    @CheckReturnValue
-    public final @NotNull BigDecimal inCommonGigabyte() {
-        return this.calculate(StorageUnit.BYTES_IN_A_GIBIBYTE);
-    }
-
-    /**
-     * @return This storage unit quantified as common tebibyte.
-     */
-    @CheckReturnValue
-    public final @NotNull BigDecimal inCommonTerabyte() {
-        return this.calculate(StorageUnit.BYTES_IN_A_TEBIBYTE);
-    }
-
-    /**
-     * @return This storage unit quantified as common pebibyte.
-     */
-    @CheckReturnValue
-    public final @NotNull BigDecimal inCommonPetabyte() {
-        return this.calculate(StorageUnit.BYTES_IN_A_PEBIBYTE);
-    }
-
-    /**
-     * @return This storage unit quantified as common exbibyte.
-     */
-    @CheckReturnValue
-    public final @NotNull BigDecimal inCommonExabyte() {
-        return this.calculate(StorageUnit.BYTES_IN_A_EXBIBYTE);
-    }
-
-    /**
-     * @return This storage unit quantified as common zebibyte.
-     */
-    @CheckReturnValue
-    public final @NotNull BigDecimal inCommonZettabyte() {
-        return this.calculate(StorageUnit.BYTES_IN_A_ZEBIBYTE);
-    }
-
-    /**
-     * @return This storage unit quantified as common yottabyte.
-     */
-    @CheckReturnValue
-    public final @NotNull BigDecimal inCommonYottabyte() {
-        return this.calculate(StorageUnit.BYTES_IN_A_YOBIBYTE);
+    public final @NotNull BigDecimal inQuettabyte() {
+        return this.calculate(StorageUnit.BYTES_IN_A_QUETTABYTE);
     }
 
     @Override
