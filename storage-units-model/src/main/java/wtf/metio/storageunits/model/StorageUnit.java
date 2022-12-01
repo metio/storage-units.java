@@ -129,7 +129,7 @@ public abstract class StorageUnit<T extends StorageUnit<T>> extends Number imple
     }
 
     /**
-     * @return This storage unit as the best matching unit, while keeping the current type (binary, decimal, common).
+     * @return This storage unit as the best matching unit, while keeping the current type (binary or decimal).
      */
     @CheckReturnValue
     public final @NotNull StorageUnit<?> asBestMatchingUnit() {
