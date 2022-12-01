@@ -214,7 +214,6 @@ Gigabyte unit = terabyte(1).asGigabyte()    // "1000.00 GB"
 kilobyte(1100).asBestMatchingUnit()          // "1.10 MB"
 kilobyte(1100).asBestMatchingBinaryUnit()    // "1.05 MiB"
 kilobyte(1100).asBestMatchingDecimalUnit()   // "1.10 MB"
-kilobyte(1100).asBestMatchingCommonUnit()    // "1.05 MB"
 ```
 
 Each unit can be expressed as a fraction of another unit (precise up to 24 decimal places)
