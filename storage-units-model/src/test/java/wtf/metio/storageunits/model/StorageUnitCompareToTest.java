@@ -16,7 +16,7 @@ import java.util.stream.Stream;
 final class StorageUnitCompareToTest {
 
     @TestFactory
-    Stream<DynamicTest> shouldCompareSmallerToBiggerUnit() {
+    Stream<DynamicTest> compareSmallerToBiggerUnit() {
         return TestObjects.longBasedConstructors().stream()
                 .flatMap(first -> TestObjects.longBasedConstructors().stream()
                         .map(second -> {
@@ -32,7 +32,7 @@ final class StorageUnitCompareToTest {
     }
 
     @TestFactory
-    Stream<DynamicTest> shouldCompareBiggerToSmallerUnit() {
+    Stream<DynamicTest> compareBiggerToSmallerUnit() {
         return TestObjects.longBasedConstructors().stream()
                 .flatMap(first -> TestObjects.longBasedConstructors().stream()
                         .map(second -> {
@@ -48,7 +48,7 @@ final class StorageUnitCompareToTest {
     }
 
     @TestFactory
-    Stream<DynamicTest> shouldCompareEqualSizedUnit() {
+    Stream<DynamicTest> compareEqualSizedUnit() {
         return TestObjects.longBasedConstructors().stream()
                 .flatMap(first -> TestObjects.longBasedConstructors().stream()
                         .map(second -> {
@@ -57,7 +57,7 @@ final class StorageUnitCompareToTest {
                             final StorageUnit<?> secondUnit = second.apply(amount);
 
                             return DynamicTest.dynamicTest(String.format("%s = %s", firstUnit, secondUnit), () ->
-                                    Assertions.assertTrue(firstUnit.compareTo(secondUnit) == 0,
+                                    Assertions.assertEquals(0, firstUnit.compareTo(secondUnit),
                                             "The equally sized units where not detected as such."));
                         }));
     }

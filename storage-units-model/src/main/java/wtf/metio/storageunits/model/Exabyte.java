@@ -19,8 +19,8 @@ public final class Exabyte extends StorageUnit<Exabyte> {
     @Serial
     private static final long serialVersionUID = 6846441733771841250L;
 
-    Exabyte(final @NotNull BigInteger bytes) {
-        super(bytes);
+    Exabyte(final @NotNull BigInteger numberOfBytes) {
+        super(numberOfBytes);
     }
 
     /**

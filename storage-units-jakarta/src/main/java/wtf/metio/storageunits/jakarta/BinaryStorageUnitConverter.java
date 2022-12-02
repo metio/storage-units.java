@@ -17,8 +17,8 @@ import java.math.BigInteger;
 public final class BinaryStorageUnitConverter extends AbstractStorageUnitConverter {
 
     @Override
-    public StorageUnit<?> convertToEntityAttribute(final BigInteger value) {
-        return StorageUnits.binaryValueOf(value);
+    public StorageUnit<?> convertToEntityAttribute(final BigInteger y) {
+        return StorageUnits.binaryValueOf(y);
     }
 
 }

@@ -20,13 +20,13 @@ public final class BigIntegerBinaryStorageUnitConverter extends DozerConverter<B
     }
 
     @Override
-    public StorageUnit<?> convertTo(final BigInteger value, final StorageUnit unit) {
-        return StorageUnits.binaryValueOf(value);
+    public StorageUnit<?> convertTo(final BigInteger source, final StorageUnit destination) {
+        return StorageUnits.binaryValueOf(source);
     }
 
     @Override
-    public BigInteger convertFrom(final StorageUnit unit, final BigInteger value) {
-        return unit.inByte();
+    public BigInteger convertFrom(final StorageUnit source, final BigInteger destination) {
+        return source.inByte();
     }
 
 }

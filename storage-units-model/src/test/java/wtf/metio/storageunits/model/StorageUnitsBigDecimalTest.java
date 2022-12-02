@@ -36,7 +36,7 @@ class StorageUnitsBigDecimalTest {
     );
 
     @TestFactory
-    Stream<DynamicTest> shouldCreateCorrectDecimalUnit() {
+    Stream<DynamicTest> createDecimalUnit() {
         return INPUTS.stream()
                 .map(entry -> {
                     final BigInteger bytes = entry.getKey();
@@ -52,7 +52,7 @@ class StorageUnitsBigDecimalTest {
     }
 
     @TestFactory
-    Stream<DynamicTest> shouldCreateCorrectDecimalUnitNegated() {
+    Stream<DynamicTest> createDecimalUnitNegated() {
         return INPUTS.stream()
                 .map(entry -> {
                     final BigInteger bytes = entry.getKey();

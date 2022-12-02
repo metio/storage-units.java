@@ -14,7 +14,7 @@ import java.math.BigInteger;
 class BigIntegerToDecimalUnitConverterTest {
 
     @Test
-    void shouldConvertBigIntegerToStorageUnit() {
+    void convertBigIntegerToStorageUnit() {
         final var converter = new BigIntegerToDecimalUnitConverter();
         final var unit = converter.convert(BigInteger.valueOf(1000L));
 

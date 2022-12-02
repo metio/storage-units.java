@@ -19,8 +19,8 @@ public final class Petabyte extends StorageUnit<Petabyte> {
     @Serial
     private static final long serialVersionUID = 5889808368085688387L;
 
-    Petabyte(final @NotNull BigInteger bytes) {
-        super(bytes);
+    Petabyte(final @NotNull BigInteger numberOfBytes) {
+        super(numberOfBytes);
     }
 
     /**

@@ -15,7 +15,7 @@ import java.util.stream.Stream;
 class StorageUnitsParseTest {
 
     @TestFactory
-    Stream<DynamicTest> shouldParseStrings() {
+    Stream<DynamicTest> parseStrings() {
         return Map.ofEntries(
                         Map.entry("100", BigInteger.valueOf(100L)),
                         Map.entry("100 b", BigInteger.valueOf(100L)),

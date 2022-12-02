@@ -3,6 +3,6 @@
  * SPDX-License-Identifier: 0BSD
  */
 /**
- * Serialization support for Orika.
+ * Serialization support for SimpleXML.
  */
 package wtf.metio.storageunits.simple;

@@ -108,8 +108,8 @@ public abstract class StorageUnit<T extends StorageUnit<T>> extends Number imple
 
     protected final @NotNull BigInteger bytes;
 
-    protected StorageUnit(final @NotNull BigInteger bytes) {
-        this.bytes = bytes;
+    protected StorageUnit(final @NotNull BigInteger numberOfBytes) {
+        bytes = numberOfBytes;
     }
 
     /**
@@ -117,7 +117,7 @@ public abstract class StorageUnit<T extends StorageUnit<T>> extends Number imple
      */
     @CheckReturnValue
     public final @NotNull StorageUnit<?> asBestMatchingBinaryUnit() {
-        return StorageUnits.binaryValueOf(this.bytes);
+        return StorageUnits.binaryValueOf(bytes);
     }
 
     /**
@@ -125,7 +125,7 @@ public abstract class StorageUnit<T extends StorageUnit<T>> extends Number imple
      */
     @CheckReturnValue
     public final @NotNull StorageUnit<?> asBestMatchingDecimalUnit() {
-        return StorageUnits.decimalValueOf(this.bytes);
+        return StorageUnits.decimalValueOf(bytes);
     }
 
     /**
@@ -133,7 +133,7 @@ public abstract class StorageUnit<T extends StorageUnit<T>> extends Number imple
      */
     @CheckReturnValue
     public final @NotNull StorageUnit<?> asBestMatchingUnit() {
-        return converter().apply(this.bytes);
+        return converter().apply(bytes);
     }
 
     protected abstract @NotNull Function<@NotNull BigInteger, @NotNull StorageUnit<?>> converter();
@@ -143,7 +143,7 @@ public abstract class StorageUnit<T extends StorageUnit<T>> extends Number imple
      */
     @CheckReturnValue
     public final @NotNull Byte asByte() {
-        return new Byte(this.bytes);
+        return new Byte(bytes);
     }
 
     /**
@@ -151,7 +151,7 @@ public abstract class StorageUnit<T extends StorageUnit<T>> extends Number imple
      */
     @CheckReturnValue
     public final @NotNull Kibibyte asKibibyte() {
-        return new Kibibyte(this.bytes);
+        return new Kibibyte(bytes);
     }
 
     /**
@@ -159,7 +159,7 @@ public abstract class StorageUnit<T extends StorageUnit<T>> extends Number imple
      */
     @CheckReturnValue
     public final @NotNull Mebibyte asMebibyte() {
-        return new Mebibyte(this.bytes);
+        return new Mebibyte(bytes);
     }
 
     /**
@@ -167,7 +167,7 @@ public abstract class StorageUnit<T extends StorageUnit<T>> extends Number imple
      */
     @CheckReturnValue
     public final @NotNull Gibibyte asGibibyte() {
-        return new Gibibyte(this.bytes);
+        return new Gibibyte(bytes);
     }
 
     /**
@@ -175,7 +175,7 @@ public abstract class StorageUnit<T extends StorageUnit<T>> extends Number imple
      */
     @CheckReturnValue
     public final @NotNull Tebibyte asTebibyte() {
-        return new Tebibyte(this.bytes);
+        return new Tebibyte(bytes);
     }
 
     /**
@@ -183,15 +183,15 @@ public abstract class StorageUnit<T extends StorageUnit<T>> extends Number imple
      */
     @CheckReturnValue
     public final @NotNull Pebibyte asPebibyte() {
-        return new Pebibyte(this.bytes);
+        return new Pebibyte(bytes);
     }
 
     /**
-     * @return This storage unit as a exbibyte.
+     * @return This storage unit as an exbibyte.
      */
     @CheckReturnValue
     public final @NotNull Exbibyte asExbibyte() {
-        return new Exbibyte(this.bytes);
+        return new Exbibyte(bytes);
     }
 
     /**
@@ -199,7 +199,7 @@ public abstract class StorageUnit<T extends StorageUnit<T>> extends Number imple
      */
     @CheckReturnValue
     public final @NotNull Zebibyte asZebibyte() {
-        return new Zebibyte(this.bytes);
+        return new Zebibyte(bytes);
     }
 
     /**
@@ -207,7 +207,7 @@ public abstract class StorageUnit<T extends StorageUnit<T>> extends Number imple
      */
     @CheckReturnValue
     public final @NotNull Yobibyte asYobibyte() {
-        return new Yobibyte(this.bytes);
+        return new Yobibyte(bytes);
     }
 
     /**
@@ -215,7 +215,7 @@ public abstract class StorageUnit<T extends StorageUnit<T>> extends Number imple
      */
     @CheckReturnValue
     public final @NotNull Robibyte asRobibyte() {
-        return new Robibyte(this.bytes);
+        return new Robibyte(bytes);
     }
 
     /**
@@ -223,7 +223,7 @@ public abstract class StorageUnit<T extends StorageUnit<T>> extends Number imple
      */
     @CheckReturnValue
     public final @NotNull Qubibyte asQubibyte() {
-        return new Qubibyte(this.bytes);
+        return new Qubibyte(bytes);
     }
 
     /**
@@ -231,7 +231,7 @@ public abstract class StorageUnit<T extends StorageUnit<T>> extends Number imple
      */
     @CheckReturnValue
     public final @NotNull Kilobyte asKilobyte() {
-        return new Kilobyte(this.bytes);
+        return new Kilobyte(bytes);
     }
 
     /**
@@ -239,7 +239,7 @@ public abstract class StorageUnit<T extends StorageUnit<T>> extends Number imple
      */
     @CheckReturnValue
     public final @NotNull Megabyte asMegabyte() {
-        return new Megabyte(this.bytes);
+        return new Megabyte(bytes);
     }
 
     /**
@@ -247,7 +247,7 @@ public abstract class StorageUnit<T extends StorageUnit<T>> extends Number imple
      */
     @CheckReturnValue
     public final @NotNull Gigabyte asGigabyte() {
-        return new Gigabyte(this.bytes);
+        return new Gigabyte(bytes);
     }
 
     /**
@@ -255,7 +255,7 @@ public abstract class StorageUnit<T extends StorageUnit<T>> extends Number imple
      */
     @CheckReturnValue
     public final @NotNull Terabyte asTerabyte() {
-        return new Terabyte(this.bytes);
+        return new Terabyte(bytes);
     }
 
     /**
@@ -263,15 +263,15 @@ public abstract class StorageUnit<T extends StorageUnit<T>> extends Number imple
      */
     @CheckReturnValue
     public final @NotNull Petabyte asPetabyte() {
-        return new Petabyte(this.bytes);
+        return new Petabyte(bytes);
     }
 
     /**
-     * @return This storage unit as a exabyte.
+     * @return This storage unit as an exabyte.
      */
     @CheckReturnValue
     public final @NotNull Exabyte asExabyte() {
-        return new Exabyte(this.bytes);
+        return new Exabyte(bytes);
     }
 
     /**
@@ -279,7 +279,7 @@ public abstract class StorageUnit<T extends StorageUnit<T>> extends Number imple
      */
     @CheckReturnValue
     public final @NotNull Zettabyte asZettabyte() {
-        return new Zettabyte(this.bytes);
+        return new Zettabyte(bytes);
     }
 
     /**
@@ -287,7 +287,7 @@ public abstract class StorageUnit<T extends StorageUnit<T>> extends Number imple
      */
     @CheckReturnValue
     public final @NotNull Yottabyte asYottabyte() {
-        return new Yottabyte(this.bytes);
+        return new Yottabyte(bytes);
     }
 
     /**
@@ -295,7 +295,7 @@ public abstract class StorageUnit<T extends StorageUnit<T>> extends Number imple
      */
     @CheckReturnValue
     public final @NotNull Ronnabyte asRonnabyte() {
-        return new Ronnabyte(this.bytes);
+        return new Ronnabyte(bytes);
     }
 
     /**
@@ -303,7 +303,7 @@ public abstract class StorageUnit<T extends StorageUnit<T>> extends Number imple
      */
     @CheckReturnValue
     public final @NotNull Quettabyte asQuettabyte() {
-        return new Quettabyte(this.bytes);
+        return new Quettabyte(bytes);
     }
 
     /**
@@ -311,7 +311,7 @@ public abstract class StorageUnit<T extends StorageUnit<T>> extends Number imple
      */
     @CheckReturnValue
     public final @NotNull BigInteger inByte() {
-        return this.bytes;
+        return bytes;
     }
 
     /**
@@ -319,7 +319,7 @@ public abstract class StorageUnit<T extends StorageUnit<T>> extends Number imple
      */
     @CheckReturnValue
     public final @NotNull BigDecimal inKibibyte() {
-        return this.calculate(StorageUnit.BYTES_IN_A_KIBIBYTE);
+        return calculate(StorageUnit.BYTES_IN_A_KIBIBYTE);
     }
 
     /**
@@ -327,7 +327,7 @@ public abstract class StorageUnit<T extends StorageUnit<T>> extends Number imple
      */
     @CheckReturnValue
     public final @NotNull BigDecimal inMebibyte() {
-        return this.calculate(StorageUnit.BYTES_IN_A_MEBIBYTE);
+        return calculate(StorageUnit.BYTES_IN_A_MEBIBYTE);
     }
 
     /**
@@ -335,7 +335,7 @@ public abstract class StorageUnit<T extends StorageUnit<T>> extends Number imple
      */
     @CheckReturnValue
     public final @NotNull BigDecimal inGibibyte() {
-        return this.calculate(StorageUnit.BYTES_IN_A_GIBIBYTE);
+        return calculate(StorageUnit.BYTES_IN_A_GIBIBYTE);
     }
 
     /**
@@ -343,7 +343,7 @@ public abstract class StorageUnit<T extends StorageUnit<T>> extends Number imple
      */
     @CheckReturnValue
     public final @NotNull BigDecimal inTebibyte() {
-        return this.calculate(StorageUnit.BYTES_IN_A_TEBIBYTE);
+        return calculate(StorageUnit.BYTES_IN_A_TEBIBYTE);
     }
 
     /**
@@ -351,7 +351,7 @@ public abstract class StorageUnit<T extends StorageUnit<T>> extends Number imple
      */
     @CheckReturnValue
     public final @NotNull BigDecimal inPebibyte() {
-        return this.calculate(StorageUnit.BYTES_IN_A_PEBIBYTE);
+        return calculate(StorageUnit.BYTES_IN_A_PEBIBYTE);
     }
 
     /**
@@ -359,7 +359,7 @@ public abstract class StorageUnit<T extends StorageUnit<T>> extends Number imple
      */
     @CheckReturnValue
     public final @NotNull BigDecimal inExbibyte() {
-        return this.calculate(StorageUnit.BYTES_IN_A_EXBIBYTE);
+        return calculate(StorageUnit.BYTES_IN_A_EXBIBYTE);
     }
 
     /**
@@ -367,7 +367,7 @@ public abstract class StorageUnit<T extends StorageUnit<T>> extends Number imple
      */
     @CheckReturnValue
     public final @NotNull BigDecimal inZebibyte() {
-        return this.calculate(StorageUnit.BYTES_IN_A_ZEBIBYTE);
+        return calculate(StorageUnit.BYTES_IN_A_ZEBIBYTE);
     }
 
     /**
@@ -375,7 +375,7 @@ public abstract class StorageUnit<T extends StorageUnit<T>> extends Number imple
      */
     @CheckReturnValue
     public final @NotNull BigDecimal inYobibyte() {
-        return this.calculate(StorageUnit.BYTES_IN_A_YOBIBYTE);
+        return calculate(StorageUnit.BYTES_IN_A_YOBIBYTE);
     }
 
     /**
@@ -383,7 +383,7 @@ public abstract class StorageUnit<T extends StorageUnit<T>> extends Number imple
      */
     @CheckReturnValue
     public final @NotNull BigDecimal inRobibyte() {
-        return this.calculate(StorageUnit.BYTES_IN_A_ROBIBYTE);
+        return calculate(StorageUnit.BYTES_IN_A_ROBIBYTE);
     }
 
     /**
@@ -391,7 +391,7 @@ public abstract class StorageUnit<T extends StorageUnit<T>> extends Number imple
      */
     @CheckReturnValue
     public final @NotNull BigDecimal inQubibyte() {
-        return this.calculate(StorageUnit.BYTES_IN_A_QUBIBYTE);
+        return calculate(StorageUnit.BYTES_IN_A_QUBIBYTE);
     }
 
     /**
@@ -399,7 +399,7 @@ public abstract class StorageUnit<T extends StorageUnit<T>> extends Number imple
      */
     @CheckReturnValue
     public final @NotNull BigDecimal inKilobyte() {
-        return this.calculate(StorageUnit.BYTES_IN_A_KILOBYTE);
+        return calculate(StorageUnit.BYTES_IN_A_KILOBYTE);
     }
 
     /**
@@ -407,7 +407,7 @@ public abstract class StorageUnit<T extends StorageUnit<T>> extends Number imple
      */
     @CheckReturnValue
     public final @NotNull BigDecimal inMegabyte() {
-        return this.calculate(StorageUnit.BYTES_IN_A_MEGABYTE);
+        return calculate(StorageUnit.BYTES_IN_A_MEGABYTE);
     }
 
     /**
@@ -415,7 +415,7 @@ public abstract class StorageUnit<T extends StorageUnit<T>> extends Number imple
      */
     @CheckReturnValue
     public final @NotNull BigDecimal inGigabyte() {
-        return this.calculate(StorageUnit.BYTES_IN_A_GIGABYTE);
+        return calculate(StorageUnit.BYTES_IN_A_GIGABYTE);
     }
 
     /**
@@ -423,7 +423,7 @@ public abstract class StorageUnit<T extends StorageUnit<T>> extends Number imple
      */
     @CheckReturnValue
     public final @NotNull BigDecimal inTerabyte() {
-        return this.calculate(StorageUnit.BYTES_IN_A_TERABYTE);
+        return calculate(StorageUnit.BYTES_IN_A_TERABYTE);
     }
 
     /**
@@ -431,7 +431,7 @@ public abstract class StorageUnit<T extends StorageUnit<T>> extends Number imple
      */
     @CheckReturnValue
     public final @NotNull BigDecimal inPetabyte() {
-        return this.calculate(StorageUnit.BYTES_IN_A_PETABYTE);
+        return calculate(StorageUnit.BYTES_IN_A_PETABYTE);
     }
 
     /**
@@ -439,7 +439,7 @@ public abstract class StorageUnit<T extends StorageUnit<T>> extends Number imple
      */
     @CheckReturnValue
     public final @NotNull BigDecimal inExabyte() {
-        return this.calculate(StorageUnit.BYTES_IN_A_EXABYTE);
+        return calculate(StorageUnit.BYTES_IN_A_EXABYTE);
     }
 
     /**
@@ -447,7 +447,7 @@ public abstract class StorageUnit<T extends StorageUnit<T>> extends Number imple
      */
     @CheckReturnValue
     public final @NotNull BigDecimal inZettabyte() {
-        return this.calculate(StorageUnit.BYTES_IN_A_ZETTABYTE);
+        return calculate(StorageUnit.BYTES_IN_A_ZETTABYTE);
     }
 
     /**
@@ -455,7 +455,7 @@ public abstract class StorageUnit<T extends StorageUnit<T>> extends Number imple
      */
     @CheckReturnValue
     public final @NotNull BigDecimal inYottabyte() {
-        return this.calculate(StorageUnit.BYTES_IN_A_YOTTABYTE);
+        return calculate(StorageUnit.BYTES_IN_A_YOTTABYTE);
     }
 
     /**
@@ -463,7 +463,7 @@ public abstract class StorageUnit<T extends StorageUnit<T>> extends Number imple
      */
     @CheckReturnValue
     public final @NotNull BigDecimal inRonnabyte() {
-        return this.calculate(StorageUnit.BYTES_IN_A_RONNABYTE);
+        return calculate(StorageUnit.BYTES_IN_A_RONNABYTE);
     }
 
     /**
@@ -471,13 +471,13 @@ public abstract class StorageUnit<T extends StorageUnit<T>> extends Number imple
      */
     @CheckReturnValue
     public final @NotNull BigDecimal inQuettabyte() {
-        return this.calculate(StorageUnit.BYTES_IN_A_QUETTABYTE);
+        return calculate(StorageUnit.BYTES_IN_A_QUETTABYTE);
     }
 
     @Override
     @CheckReturnValue
     public final @NotNull String toString() {
-        return this.toString(DEFAULT_FORMAT_PATTERN);
+        return toString(DEFAULT_FORMAT_PATTERN);
     }
 
     /**
@@ -488,7 +488,7 @@ public abstract class StorageUnit<T extends StorageUnit<T>> extends Number imple
      */
     @CheckReturnValue
     public final @NotNull String toString(final String pattern) {
-        return this.toString(new DecimalFormat(pattern));
+        return toString(new DecimalFormat(pattern));
     }
 
     /**
@@ -500,67 +500,67 @@ public abstract class StorageUnit<T extends StorageUnit<T>> extends Number imple
      */
     @CheckReturnValue
     public final @NotNull String toString(final String pattern, final Locale locale) {
-        return this.toString(asFormat(pattern, locale));
+        return toString(asFormat(pattern, locale));
     }
 
     /**
      * Formats this storage unit according to a specified {@link Format}. The storage unit's symbol will be automatically
      * added at the end of the formatted string together with a single whitespace character in front of it. Use the
-     * <code>asOtherUnit</code> methods before printing in order to change the symbol.
+     * {@code asOtherUnit} methods before printing in order to change the symbol.
      *
      * @param format The custom format to use.
      * @return The formatted representation of this storage unit.
      */
     @CheckReturnValue
     public final @NotNull String toString(final Format format) {
-        final BigDecimal amount = this.calculate(this.getNumberOfBytesPerUnit());
+        final BigDecimal amount = calculate(getNumberOfBytesPerUnit());
         final String formattedAmount = format.format(amount);
         return String.format("%s %s", formattedAmount, getSymbol());
     }
 
     @CheckReturnValue
     private @NotNull BigDecimal calculate(final BigInteger base) {
-        return new BigDecimal(this.bytes)
+        return new BigDecimal(bytes)
                 .divide(new BigDecimal(base), StorageUnit.DEFAULT_SCALE, RoundingMode.CEILING);
     }
 
     @Override
     public final int hashCode() {
-        return Objects.hashCode(this.bytes);
+        return Objects.hashCode(bytes);
     }
 
     @Override
-    public final boolean equals(final Object other) {
-        if (other instanceof final StorageUnit<?> that) {
-            return Objects.equals(this.bytes, that.bytes);
+    public final boolean equals(final Object obj) {
+        if (obj instanceof final StorageUnit<?> other) {
+            return Objects.equals(bytes, other.bytes);
         }
 
         return false;
     }
 
     @Override
-    public final int compareTo(final StorageUnit<?> that) {
-        return this.bytes.compareTo(that.bytes);
+    public final int compareTo(final StorageUnit<?> o) {
+        return bytes.compareTo(o.bytes);
     }
 
     @Override
     public final double doubleValue() {
-        return this.bytes.doubleValue();
+        return bytes.doubleValue();
     }
 
     @Override
     public final float floatValue() {
-        return this.bytes.floatValue();
+        return bytes.floatValue();
     }
 
     @Override
     public final int intValue() {
-        return this.bytes.intValue();
+        return bytes.intValue();
     }
 
     @Override
     public final long longValue() {
-        return this.bytes.longValue();
+        return bytes.longValue();
     }
 
     /**

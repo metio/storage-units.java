@@ -14,7 +14,7 @@ import java.math.BigInteger;
 class StorageUnitToBigIntegerMapperTest {
 
     @Test
-    void shouldConvertStorageUnitToBigInteger() {
+    void convertStorageUnitToBigInteger() {
         final var mapper = new StorageUnitToBigIntegerMapper();
         final var value = mapper.convert(StorageUnits.kibibyte(1));
 

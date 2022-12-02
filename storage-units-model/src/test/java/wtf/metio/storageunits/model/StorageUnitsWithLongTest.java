@@ -13,7 +13,7 @@ import java.util.stream.Stream;
 final class StorageUnitsWithLongTest {
 
     @TestFactory
-    Stream<DynamicTest> shouldCreateNotNullUnit() {
+    Stream<DynamicTest> createNotNullUnit() {
         return TestObjects.highLevelLongBasedConstructors().stream()
                 .map(constructor -> {
                     final var unit = constructor.apply(1L);

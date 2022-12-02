@@ -14,12 +14,12 @@ import java.util.stream.Stream;
 
 class StorageUnitArithmeticLongTest {
 
-    private LongStream numberOfBytes() {
+    private static LongStream numberOfBytes() {
         return LongStream.of(1, 2, 3, 5, 8, 13, 100, 500, -500, 123456789);
     }
 
     @TestFactory
-    Stream<DynamicTest> shouldAddNumberOfBytes() {
+    Stream<DynamicTest> addNumberOfBytes() {
         return TestObjects.longBasedConstructors().stream()
                 .flatMap(constructor -> numberOfBytes()
                         .mapToObj(bytes -> {
@@ -38,7 +38,7 @@ class StorageUnitArithmeticLongTest {
     }
 
     @TestFactory
-    Stream<DynamicTest> shouldAddStorageUnit() {
+    Stream<DynamicTest> addStorageUnit() {
         return TestObjects.longBasedConstructors().stream()
                 .flatMap(constructor -> numberOfBytes()
                         .mapToObj(bytes -> {
@@ -57,7 +57,7 @@ class StorageUnitArithmeticLongTest {
     }
 
     @TestFactory
-    Stream<DynamicTest> shouldReturnNewInstanceAfterAddLong() {
+    Stream<DynamicTest> returnNewInstanceAfterAddLong() {
         return TestObjects.longBasedConstructors().stream()
                 .map(constructor -> {
                     final var initialAmount = 1L;
@@ -73,7 +73,7 @@ class StorageUnitArithmeticLongTest {
     }
 
     @TestFactory
-    Stream<DynamicTest> shouldReturnNewInstanceAfterDivide() {
+    Stream<DynamicTest> returnNewInstanceAfterDivide() {
         return TestObjects.longBasedConstructors().stream()
                 .map(constructor -> {
                     final var initialAmount = 1000L;
@@ -89,7 +89,7 @@ class StorageUnitArithmeticLongTest {
     }
 
     @TestFactory
-    Stream<DynamicTest> shouldReturnNewInstanceAfterMultiply() {
+    Stream<DynamicTest> returnNewInstanceAfterMultiply() {
         return TestObjects.longBasedConstructors().stream()
                 .map(constructor -> {
                     final var initialAmount = 1000L;
@@ -105,7 +105,7 @@ class StorageUnitArithmeticLongTest {
     }
 
     @TestFactory
-    Stream<DynamicTest> shouldReturnNewInstanceAfterSubtractLong() {
+    Stream<DynamicTest> returnNewInstanceAfterSubtractLong() {
         return TestObjects.longBasedConstructors().stream()
                 .map(constructor -> {
                     final var initialAmount = 1000L;
@@ -121,7 +121,7 @@ class StorageUnitArithmeticLongTest {
     }
 
     @TestFactory
-    Stream<DynamicTest> shouldSubtractStorageUnit() {
+    Stream<DynamicTest> subtractStorageUnit() {
         return TestObjects.longBasedConstructors().stream()
                 .flatMap(constructor -> numberOfBytes()
                         .mapToObj(bytes -> {
@@ -140,7 +140,7 @@ class StorageUnitArithmeticLongTest {
     }
 
     @TestFactory
-    Stream<DynamicTest> shouldSubtractLong() {
+    Stream<DynamicTest> subtractLong() {
         return TestObjects.longBasedConstructors().stream()
                 .flatMap(constructor -> numberOfBytes()
                         .mapToObj(bytes -> {
@@ -158,7 +158,7 @@ class StorageUnitArithmeticLongTest {
     }
 
     @TestFactory
-    Stream<DynamicTest> shouldDivideLong() {
+    Stream<DynamicTest> divideLong() {
         return TestObjects.longBasedConstructors().stream()
                 .flatMap(constructor -> numberOfBytes()
                         .mapToObj(bytes -> {
@@ -175,7 +175,7 @@ class StorageUnitArithmeticLongTest {
     }
 
     @TestFactory
-    Stream<DynamicTest> shouldMultiplyLong() {
+    Stream<DynamicTest> multiplyLong() {
         return TestObjects.longBasedConstructors().stream()
                 .flatMap(constructor -> numberOfBytes()
                         .mapToObj(bytes -> {

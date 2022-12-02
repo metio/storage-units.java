@@ -19,8 +19,8 @@ public final class Exbibyte extends StorageUnit<Exbibyte> {
     @Serial
     private static final long serialVersionUID = 5993490571003918471L;
 
-    Exbibyte(final @NotNull BigInteger bytes) {
-        super(bytes);
+    Exbibyte(final @NotNull BigInteger numberOfBytes) {
+        super(numberOfBytes);
     }
 
     /**

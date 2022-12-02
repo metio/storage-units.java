@@ -17,8 +17,8 @@ import java.math.BigInteger;
 public final class BinaryStorageUnitConverter extends AbstractStorageUnitConverter {
 
     @Override
-    public StorageUnit<?> convertFrom(final BigInteger value, final Type<StorageUnit<?>> destinationType, final MappingContext mappingContext) {
-        return StorageUnits.binaryValueOf(value);
+    public StorageUnit<?> convertFrom(final BigInteger source, final Type<StorageUnit<?>> destinationType, final MappingContext mappingContext) {
+        return StorageUnits.binaryValueOf(source);
     }
 
 }

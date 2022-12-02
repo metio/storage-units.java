@@ -19,8 +19,8 @@ public final class Mebibyte extends StorageUnit<Mebibyte> {
     @Serial
     private static final long serialVersionUID = 7697583678146919524L;
 
-    Mebibyte(final @NotNull BigInteger bytes) {
-        super(bytes);
+    Mebibyte(final @NotNull BigInteger numberOfBytes) {
+        super(numberOfBytes);
     }
 
     /**

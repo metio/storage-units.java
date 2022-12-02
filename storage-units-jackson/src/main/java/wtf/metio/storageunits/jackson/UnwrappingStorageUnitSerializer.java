@@ -18,10 +18,11 @@ import java.math.BigInteger;
 public final class UnwrappingStorageUnitSerializer extends JsonSerializer<StorageUnit<?>> {
 
     @Override
-    public void serialize(final StorageUnit<?> value, final JsonGenerator jsonGenerator,
-                          final SerializerProvider serializers)
-            throws IOException {
-        jsonGenerator.writeNumber(value.inByte());
+    public void serialize(
+            final StorageUnit<?> t,
+            final JsonGenerator jsonGenerator,
+            final SerializerProvider serializerProvider) throws IOException {
+        jsonGenerator.writeNumber(t.inByte());
     }
 
 }

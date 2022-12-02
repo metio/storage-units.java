@@ -50,9 +50,9 @@ public class StorageUnitModule extends Module {
     }
 
     @Override
-    public void setupModule(final SetupContext context) {
-        context.addSerializers(new StorageUnitSerializers());
-        context.addDeserializers(new StorageUnitDeserializers(preferredUnitType));
+    public void setupModule(final SetupContext setupContext) {
+        setupContext.addSerializers(new StorageUnitSerializers());
+        setupContext.addDeserializers(new StorageUnitDeserializers(preferredUnitType));
     }
 
     /**

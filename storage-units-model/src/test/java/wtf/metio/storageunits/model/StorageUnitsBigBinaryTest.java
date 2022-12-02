@@ -16,11 +16,11 @@ import java.util.stream.Stream;
 import static wtf.metio.storageunits.model.TestObjects.BINARY_MULTIPLIER;
 import static wtf.metio.storageunits.model.TestUtils.logIncorrectCreation;
 
-public class StorageUnitsBigBinaryTest {
+class StorageUnitsBigBinaryTest {
 
     private static final BigInteger MULTIPLIER = BigInteger.valueOf(BINARY_MULTIPLIER);
 
-    public static List<Map.Entry<BigInteger, Class<? extends StorageUnit<?>>>> INPUTS = List.of(
+    private static final List<Map.Entry<BigInteger, Class<? extends StorageUnit<?>>>> INPUTS = List.of(
             Map.entry(BigInteger.ONE, Byte.class),
             Map.entry(MULTIPLIER, Kibibyte.class),
             Map.entry(MULTIPLIER.pow(2), Mebibyte.class),
@@ -36,7 +36,7 @@ public class StorageUnitsBigBinaryTest {
     );
 
     @TestFactory
-    Stream<DynamicTest> shouldCreateCorrectBinaryUnit() {
+    Stream<DynamicTest> createBinaryUnit() {
         return INPUTS.stream()
                 .map(entry -> {
                     final BigInteger bytes = entry.getKey();
@@ -52,7 +52,7 @@ public class StorageUnitsBigBinaryTest {
     }
 
     @TestFactory
-    Stream<DynamicTest> shouldCreateCorrectBinaryUnitNegated() {
+    Stream<DynamicTest> createBinaryUnitNegated() {
         return INPUTS.stream()
                 .map(entry -> {
                     final BigInteger bytes = entry.getKey();

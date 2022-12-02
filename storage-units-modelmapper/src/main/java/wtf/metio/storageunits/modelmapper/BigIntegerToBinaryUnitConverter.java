@@ -16,8 +16,8 @@ import java.math.BigInteger;
 public final class BigIntegerToBinaryUnitConverter extends AbstractConverter<BigInteger, StorageUnit<?>> {
 
     @Override
-    protected StorageUnit<?> convert(final BigInteger value) {
-        return StorageUnits.binaryValueOf(value);
+    protected StorageUnit<?> convert(final BigInteger s) {
+        return StorageUnits.binaryValueOf(s);
     }
 
 }

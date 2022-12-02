@@ -14,7 +14,7 @@ import java.math.BigInteger;
 class BigIntegerToBinaryUnitMapperTest {
 
     @Test
-    void shouldConvertBigIntegerToStorageUnit() {
+    void convertBigIntegerToStorageUnit() {
         final var mapper = new BigIntegerToBinaryUnitMapper();
         final var unit = mapper.convert(BigInteger.valueOf(1024L));
 

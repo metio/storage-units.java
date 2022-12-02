@@ -14,7 +14,7 @@ import java.util.stream.Stream;
 class StorageUnitTest {
 
     @TestFactory
-    Stream<DynamicTest> shouldThrowNPEForNullCompareToCheck() {
+    Stream<DynamicTest> throwNPEForNullCompareToCheck() {
         return TestObjects.highLevelLongBasedConstructors().stream()
                 .map(constructor -> constructor.apply(1L))
                 .map(unit -> DynamicTest.dynamicTest(String.format("%s compared to null", unit),
@@ -22,7 +22,7 @@ class StorageUnitTest {
     }
 
     @TestFactory
-    Stream<DynamicTest> shouldBeEqualToItself() {
+    Stream<DynamicTest> beEqualToItself() {
         return TestObjects.highLevelLongBasedConstructors().stream()
                 .map(constructor -> constructor.apply(1L))
                 .map(unit -> DynamicTest.dynamicTest(String.format("%s compared to null", unit),
@@ -30,7 +30,7 @@ class StorageUnitTest {
     }
 
     @TestFactory
-    Stream<DynamicTest> shouldNotBeEqualToSomethingElse() {
+    Stream<DynamicTest> notBeEqualToSomethingElse() {
         return TestObjects.highLevelLongBasedConstructors().stream()
                 .map(constructor -> constructor.apply(1L))
                 .map(unit -> DynamicTest.dynamicTest(String.format("%s compared to some object", unit),
@@ -38,7 +38,7 @@ class StorageUnitTest {
     }
 
     @Test
-    void shouldCalculateHashCode() {
+    void calculateHashCode() {
         // Given
         final var unit = StorageUnits.kibibyte(1);
 

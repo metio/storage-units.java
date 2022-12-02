@@ -18,20 +18,7 @@ import static wtf.metio.storageunits.model.TestObjects.highLevelLongBasedConstru
 
 class StorageUnitExpressionTest {
 
-    @TestFactory
-    Stream<DynamicTest> shouldConvertUnitIntoAnotherUnit() {
-        return highLevelLongBasedConstructors().stream()
-                .flatMap(constructor -> expressions().stream()
-                        .map(expression -> {
-                            final var original = constructor.apply(1L);
-                            final var result = expression.apply(original);
-
-                            return DynamicTest.dynamicTest(String.format("%s -> %s", original.toString(), result.toString()), () ->
-                                    Assertions.assertNotNull(result, "Could not expression one unit as another"));
-                        }));
-    }
-
-    public static List<Function<StorageUnit<?>, BigDecimal>> expressions() {
+    public static List<Function<StorageUnit<?>, BigDecimal>> expressions() { // TODO: change to field
         final List<Function<StorageUnit<?>, BigDecimal>> units = new ArrayList<>();
 
         units.add(StorageUnit::inKibibyte);
@@ -57,6 +44,19 @@ class StorageUnitExpressionTest {
         units.add(StorageUnit::inQuettabyte);
 
         return units;
+    }
+
+    @TestFactory
+    Stream<DynamicTest> convertUnitIntoAnotherUnit() {
+        return highLevelLongBasedConstructors().stream()
+                .flatMap(constructor -> expressions().stream()
+                        .map(expression -> {
+                            final var original = constructor.apply(1L);
+                            final var result = expression.apply(original);
+
+                            return DynamicTest.dynamicTest(String.format("%s -> %s", original.toString(), result.toString()), () ->
+                                    Assertions.assertNotNull(result, "Could not expression one unit as another"));
+                        }));
     }
 
 }

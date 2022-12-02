@@ -21,18 +21,18 @@ import java.math.BigInteger;
 abstract class AbstractStorageUnitCodec implements Codec<StorageUnit<?>> {
 
     @Override
-    public final void encode(final BsonWriter writer, final StorageUnit<?> value, final EncoderContext encoderContext) {
-        writer.writeString(value.inByte().toString());
+    public final void encode(final BsonWriter bsonWriter, final StorageUnit<?> t, final EncoderContext encoderContext) {
+        bsonWriter.writeString(t.inByte().toString());
     }
 
     @Override
-    public final Class<StorageUnit<?>> getEncoderClass() {
-        return (Class<StorageUnit<?>>) (Object) StorageUnit.class;
+    public Class getEncoderClass() {
+        return StorageUnit.class;
     }
 
     @Override
-    public final StorageUnit<?> decode(final BsonReader reader, final DecoderContext decoderContext) {
-        return convertToStorageUnit(new BigInteger(reader.readString()));
+    public final StorageUnit<?> decode(final BsonReader bsonReader, final DecoderContext decoderContext) {
+        return convertToStorageUnit(new BigInteger(bsonReader.readString()));
     }
 
     protected abstract StorageUnit<?> convertToStorageUnit(BigInteger value);

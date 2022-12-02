@@ -12,13 +12,13 @@ import wtf.metio.storageunits.model.StorageUnit;
 import java.math.BigInteger;
 
 /**
- * Abstract implementation of a Orika {@link BidirectionalConverter} for {@link StorageUnit StorageUnits}.
+ * Abstract implementation of an Orika {@link BidirectionalConverter} for {@link StorageUnit StorageUnits}.
  */
 abstract class AbstractStorageUnitConverter extends BidirectionalConverter<StorageUnit<?>, BigInteger> {
 
     @Override
-    public final BigInteger convertTo(final StorageUnit<?> storageUnit, final Type<BigInteger> destinationType, final MappingContext mappingContext) {
-        return storageUnit.inByte();
+    public final BigInteger convertTo(final StorageUnit<?> source, final Type<BigInteger> destinationType, final MappingContext mappingContext) {
+        return source.inByte();
     }
 
 }

@@ -12,38 +12,26 @@ import wtf.metio.storageunits.model.StorageUnit;
 
 import java.io.IOException;
 
-class JacksonDefaultDeserializationTest {
+class DecimalDeserializationTest {
 
     private ObjectMapper mapper;
 
     @BeforeEach
     void setUp() {
         mapper = new ObjectMapper();
-        mapper.registerModule(new StorageUnitModule());
+        mapper.registerModule(new StorageUnitModule(StorageUnitModule.PreferredUnitType.DECIMAL));
     }
 
     @Test
-    void shouldDeserializeStorageUnit() throws IOException {
+    void deserializeStorageUnit() throws IOException {
         // given
-        final String input = "1024";
+        final String input = "1000";
 
         // when
         final StorageUnit<?> unit = mapper.readValue(input, StorageUnit.class);
 
         // then
-        Assertions.assertEquals("1.00 KiB", unit.toString());
-    }
-
-    @Test
-    void shouldDeserializeNonStorageUnit() throws IOException {
-        // given
-        final String input = "1024";
-
-        // when
-        final String output = mapper.readValue(input, String.class);
-
-        // then
-        Assertions.assertEquals("1024", output);
+        Assertions.assertEquals("1.00 kB", unit.toString());
     }
 
 }

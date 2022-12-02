@@ -12,8 +12,8 @@ import wtf.metio.storageunits.model.StorageUnits;
 class LongToDecimalUnitMapperTest {
 
     @Test
-    void shouldConvertLongToStorageUnit() {
-        final var mapper = new LongToBinaryUnitMapper();
+    void convertLongToStorageUnit() {
+        final var mapper = new LongToDecimalUnitMapper();
         final var unit = mapper.convert(1000L);
 
         Assertions.assertEquals(StorageUnits.kilobyte(1), unit);

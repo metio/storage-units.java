@@ -19,8 +19,8 @@ public final class Tebibyte extends StorageUnit<Tebibyte> {
     @Serial
     private static final long serialVersionUID = 3614537130129620881L;
 
-    Tebibyte(final @NotNull BigInteger bytes) {
-        super(bytes);
+    Tebibyte(final @NotNull BigInteger numberOfBytes) {
+        super(numberOfBytes);
     }
 
     /**

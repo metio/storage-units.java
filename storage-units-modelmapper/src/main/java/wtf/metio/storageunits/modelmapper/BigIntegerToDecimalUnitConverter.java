@@ -16,8 +16,8 @@ import java.math.BigInteger;
 public final class BigIntegerToDecimalUnitConverter extends AbstractConverter<BigInteger, StorageUnit<?>> {
 
     @Override
-    protected StorageUnit<?> convert(final BigInteger value) {
-        return StorageUnits.decimalValueOf(value);
+    protected StorageUnit<?> convert(final BigInteger s) {
+        return StorageUnits.decimalValueOf(s);
     }
 
 }

@@ -19,8 +19,8 @@ public final class Quettabyte extends StorageUnit<Quettabyte> {
     @Serial
     private static final long serialVersionUID = -7866123408102424489L;
 
-    Quettabyte(final @NotNull BigInteger bytes) {
-        super(bytes);
+    Quettabyte(final @NotNull BigInteger numberOfBytes) {
+        super(numberOfBytes);
     }
 
     /**

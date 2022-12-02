@@ -19,8 +19,8 @@ public final class Gibibyte extends StorageUnit<Gibibyte> {
     @Serial
     private static final long serialVersionUID = -1104749948510944566L;
 
-    Gibibyte(final @NotNull BigInteger bytes) {
-        super(bytes);
+    Gibibyte(final @NotNull BigInteger numberOfBytes) {
+        super(numberOfBytes);
     }
 
     /**

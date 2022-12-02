@@ -14,7 +14,7 @@ import java.util.stream.Stream;
 class StorageUnitsWithBigIntegerTest {
 
     @TestFactory
-    Stream<DynamicTest> shouldCreateNotNullUnit() {
+    Stream<DynamicTest> createNotNullUnit() {
         return TestObjects.highLevelBigIntegerBasedConstructors().stream()
                 .map(constructor -> {
                     final var unit = constructor.apply(BigInteger.ONE);

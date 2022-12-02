@@ -19,8 +19,8 @@ public final class Zebibyte extends StorageUnit<Zebibyte> {
     @Serial
     private static final long serialVersionUID = 2192254824473341887L;
 
-    Zebibyte(final @NotNull BigInteger bytes) {
-        super(bytes);
+    Zebibyte(final @NotNull BigInteger numberOfBytes) {
+        super(numberOfBytes);
     }
 
     /**

@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
 class StorageUnitsFormattingTest {
 
     @Test
-    void shouldFormatReadmeExample() {
+    void formatReadmeExample() {
         // given
         final long numberOfBytes = 1_000_000_000_000_000L;
 
@@ -22,7 +22,7 @@ class StorageUnitsFormattingTest {
     }
 
     @Test
-    void shouldFormatNumberAsBytes() {
+    void formatNumberAsBytes() {
         // given
         final Long numberOfBytes = 123456L;
 
@@ -34,7 +34,7 @@ class StorageUnitsFormattingTest {
     }
 
     @Test
-    void shouldFormatPrimitiveLongAsBytes() {
+    void formatPrimitiveLongAsBytes() {
         // given
         final long numberOfBytes = 123456L;
 

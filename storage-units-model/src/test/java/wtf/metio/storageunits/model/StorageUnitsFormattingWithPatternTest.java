@@ -96,7 +96,7 @@ public class StorageUnitsFormattingWithPatternTest {
     );
 
     @TestFactory
-    Stream<DynamicTest> shouldFormatBigIntegerAsStorageUnitWithPattern() {
+    Stream<DynamicTest> formatBigIntegerAsStorageUnitWithPattern() {
         return BIG_INTEGER_FORMATTERS.stream()
                 .flatMap(formatter -> BYTES.stream()
                         .map(bytes -> DynamicTest.dynamicTest(String.format("%s formatted", bytes),
@@ -104,7 +104,7 @@ public class StorageUnitsFormattingWithPatternTest {
     }
 
     @TestFactory
-    Stream<DynamicTest> shouldFormatLongAsStorageUnitWithPattern() {
+    Stream<DynamicTest> formatLongAsStorageUnitWithPattern() {
         return LONG_FORMATTERS.stream()
                 .flatMap(formatter -> BYTES.stream()
                         .map(bytes -> DynamicTest.dynamicTest(String.format("%s formatted", bytes),

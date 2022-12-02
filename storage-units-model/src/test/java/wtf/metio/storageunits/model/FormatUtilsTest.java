@@ -14,7 +14,7 @@ import java.util.Locale;
 class FormatUtilsTest {
 
     @Test
-    void shouldDeclarePrivateConstructor()
+    void declarePrivateConstructor()
             throws NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
         // Given
         final var constructor = FormatUtils.class.getDeclaredConstructor();
@@ -29,7 +29,7 @@ class FormatUtilsTest {
     }
 
     @Test
-    void shouldCreateFormat() {
+    void createFormat() {
         // given
         final var pattern = "#.#";
         final var locale = Locale.GERMAN;

@@ -14,7 +14,7 @@ import java.util.function.Supplier;
 class PreferredUnitTypeTest {
 
     @Test
-    void shouldSupportBinaryUnitsFromString() {
+    void supportBinaryUnitsFromString() {
         // given
         final String type = "BINARY";
 
@@ -26,7 +26,7 @@ class PreferredUnitTypeTest {
     }
 
     @Test
-    void shouldSupportBinaryUnits() {
+    void supportBinaryUnits() {
         // given
         final PreferredUnitType type = StorageUnitModule.PreferredUnitType.BINARY;
 
@@ -39,7 +39,7 @@ class PreferredUnitTypeTest {
     }
 
     @Test
-    void shouldSupportDecimalUnitsFromString() {
+    void supportDecimalUnitsFromString() {
         // given
         final String type = "DECIMAL";
 
@@ -51,7 +51,7 @@ class PreferredUnitTypeTest {
     }
 
     @Test
-    void shouldSupportDecimalUnits() {
+    void supportDecimalUnits() {
         // given
         final PreferredUnitType type = StorageUnitModule.PreferredUnitType.DECIMAL;
 
