@@ -18,13 +18,13 @@ public final class LongDecimalStorageUnitConverter extends DozerConverter<Long, 
     }
 
     @Override
-    public StorageUnit<?> convertTo(final Long value, final StorageUnit unit) {
-        return StorageUnits.decimalValueOf(value);
+    public StorageUnit<?> convertTo(final Long source, final StorageUnit destination) {
+        return StorageUnits.decimalValueOf(source);
     }
 
     @Override
-    public Long convertFrom(final StorageUnit unit, final Long value) {
-        return unit.inByte().longValue();
+    public Long convertFrom(final StorageUnit source, final Long destination) {
+        return source.inByte().longValue();
     }
 
 }

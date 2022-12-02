@@ -12,7 +12,7 @@ import wtf.metio.storageunits.model.StorageUnits;
 class LongToDecimalUnitConverterTest {
 
     @Test
-    void shouldConvertBigIntegerToStorageUnit() {
+    void convertBigIntegerToStorageUnit() {
         final var converter = new LongToDecimalUnitConverter();
         final var unit = converter.convert(1000L);
 

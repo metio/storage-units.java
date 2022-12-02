@@ -18,7 +18,7 @@ import java.io.IOException;
 public final class DecimalStorageUnitDeserializer extends JsonDeserializer<StorageUnit<?>> {
 
     @Override
-    public StorageUnit<?> deserialize(final JsonParser jsonParser, final DeserializationContext context)
+    public StorageUnit<?> deserialize(final JsonParser jsonParser, final DeserializationContext deserializationContext)
             throws IOException {
         return StorageUnits.decimalValueOf(jsonParser.getBigIntegerValue());
     }

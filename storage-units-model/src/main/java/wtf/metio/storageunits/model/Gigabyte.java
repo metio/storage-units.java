@@ -19,8 +19,8 @@ public final class Gigabyte extends StorageUnit<Gigabyte> {
     @Serial
     private static final long serialVersionUID = 7581075190529125530L;
 
-    Gigabyte(final @NotNull BigInteger bytes) {
-        super(bytes);
+    Gigabyte(final @NotNull BigInteger numberOfBytes) {
+        super(numberOfBytes);
     }
 
     /**

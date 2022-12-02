@@ -19,8 +19,8 @@ public final class Yottabyte extends StorageUnit<Yottabyte> {
     @Serial
     private static final long serialVersionUID = 2482152459842042316L;
 
-    Yottabyte(final @NotNull BigInteger bytes) {
-        super(bytes);
+    Yottabyte(final @NotNull BigInteger numberOfBytes) {
+        super(numberOfBytes);
     }
 
     /**

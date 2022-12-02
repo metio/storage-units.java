@@ -19,8 +19,8 @@ public final class Kibibyte extends StorageUnit<Kibibyte> {
     @Serial
     private static final long serialVersionUID = 3798828851496657978L;
 
-    Kibibyte(final @NotNull BigInteger bytes) {
-        super(bytes);
+    Kibibyte(final @NotNull BigInteger numberOfBytes) {
+        super(numberOfBytes);
     }
 
     /**

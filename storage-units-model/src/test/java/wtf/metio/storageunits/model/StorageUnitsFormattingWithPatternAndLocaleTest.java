@@ -102,7 +102,7 @@ class StorageUnitsFormattingWithPatternAndLocaleTest {
     );
 
     @TestFactory
-    Stream<DynamicTest> shouldFormatBigIntegerAsStorageUnitWithPatternAndLocale() {
+    Stream<DynamicTest> formatBigIntegerAsStorageUnitWithPatternAndLocale() {
         return BIG_INTEGER_FORMATTERS.stream()
                 .flatMap(formatter -> BYTES.stream()
                         .map(bytes -> DynamicTest.dynamicTest(String.format("%s formatted", bytes),
@@ -110,7 +110,7 @@ class StorageUnitsFormattingWithPatternAndLocaleTest {
     }
 
     @TestFactory
-    Stream<DynamicTest> shouldFormatLongAsStorageUnitWithPatternAndLocale() {
+    Stream<DynamicTest> formatLongAsStorageUnitWithPatternAndLocale() {
         return LONG_FORMATTERS.stream()
                 .flatMap(formatter -> BYTES.stream()
                         .map(bytes -> DynamicTest.dynamicTest(String.format("%s formatted", bytes),

@@ -15,8 +15,8 @@ import java.math.BigInteger;
 abstract class AbstractStorageUnitConverter implements AttributeConverter<StorageUnit<?>, BigInteger> {
 
     @Override
-    public final BigInteger convertToDatabaseColumn(final StorageUnit<?> storageUnit) {
-        return storageUnit.inByte();
+    public final BigInteger convertToDatabaseColumn(final StorageUnit<?> x) {
+        return x.inByte();
     }
 
 }

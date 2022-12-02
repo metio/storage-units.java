@@ -19,8 +19,8 @@ public final class Ronnabyte extends StorageUnit<Ronnabyte> {
     @Serial
     private static final long serialVersionUID = -7866123408102424489L;
 
-    Ronnabyte(final @NotNull BigInteger bytes) {
-        super(bytes);
+    Ronnabyte(final @NotNull BigInteger numberOfBytes) {
+        super(numberOfBytes);
     }
 
     /**

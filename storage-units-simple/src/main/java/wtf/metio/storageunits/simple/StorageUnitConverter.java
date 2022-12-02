@@ -16,8 +16,8 @@ import wtf.metio.storageunits.model.StorageUnits;
 public final class StorageUnitConverter implements Converter<StorageUnit<?>> {
 
     @Override
-    public void write(final OutputNode outputNode, final StorageUnit<?> storageUnit) throws Exception {
-        outputNode.setValue(storageUnit.inByte().toString());
+    public void write(final OutputNode outputNode, final StorageUnit<?> t) throws Exception {
+        outputNode.setValue(t.inByte().toString());
     }
 
     @Override

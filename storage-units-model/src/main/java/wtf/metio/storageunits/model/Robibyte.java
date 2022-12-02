@@ -19,8 +19,8 @@ public final class Robibyte extends StorageUnit<Robibyte> {
     @Serial
     private static final long serialVersionUID = 3553336770900659080L;
 
-    Robibyte(final @NotNull BigInteger bytes) {
-        super(bytes);
+    Robibyte(final @NotNull BigInteger numberOfBytes) {
+        super(numberOfBytes);
     }
 
     /**

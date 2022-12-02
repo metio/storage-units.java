@@ -19,8 +19,8 @@ public final class Qubibyte extends StorageUnit<Qubibyte> {
     @Serial
     private static final long serialVersionUID = 8611754914470986560L;
 
-    Qubibyte(final @NotNull BigInteger bytes) {
-        super(bytes);
+    Qubibyte(final @NotNull BigInteger numberOfBytes) {
+        super(numberOfBytes);
     }
 
     /**

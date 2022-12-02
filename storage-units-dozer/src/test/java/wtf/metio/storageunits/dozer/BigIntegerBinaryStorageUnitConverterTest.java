@@ -14,7 +14,7 @@ import java.math.BigInteger;
 class BigIntegerBinaryStorageUnitConverterTest {
 
     @Test
-    void shouldConvertLongToStorageUnit() {
+    void convertLongToStorageUnit() {
         final var converter = new BigIntegerBinaryStorageUnitConverter();
         final var unit = converter.convertTo(BigInteger.valueOf(1024L));
 

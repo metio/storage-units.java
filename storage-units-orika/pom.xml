@@ -38,12 +38,10 @@
         <dependency>
             <groupId>org.jspecify</groupId>
             <artifactId>jspecify</artifactId>
-            <version>0.3.0-alpha-1</version>
         </dependency>
         <dependency>
             <groupId>ma.glasnost.orika</groupId>
             <artifactId>orika-core</artifactId>
-            <version>1.5.4</version>
         </dependency>
     </dependencies>
 </project>

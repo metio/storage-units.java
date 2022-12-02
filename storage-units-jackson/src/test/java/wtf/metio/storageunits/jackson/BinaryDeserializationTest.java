@@ -12,7 +12,7 @@ import wtf.metio.storageunits.model.StorageUnit;
 
 import java.io.IOException;
 
-class JacksonBinaryDeserializationTest {
+class BinaryDeserializationTest {
 
     private ObjectMapper mapper;
 
@@ -23,7 +23,7 @@ class JacksonBinaryDeserializationTest {
     }
 
     @Test
-    void shouldDeserializeStorageUnit() throws IOException {
+    void deserializeStorageUnit() throws IOException {
         // given
         final String input = "1024";
 

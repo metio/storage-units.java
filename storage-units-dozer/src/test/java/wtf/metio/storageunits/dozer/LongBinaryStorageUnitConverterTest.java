@@ -12,7 +12,7 @@ import wtf.metio.storageunits.model.StorageUnits;
 class LongBinaryStorageUnitConverterTest {
 
     @Test
-    void shouldConvertLongToStorageUnit() {
+    void convertLongToStorageUnit() {
         final var converter = new LongBinaryStorageUnitConverter();
         final var unit = converter.convertTo(1024L);
 

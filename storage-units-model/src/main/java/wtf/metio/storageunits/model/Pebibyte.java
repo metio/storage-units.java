@@ -19,8 +19,8 @@ public final class Pebibyte extends StorageUnit<Pebibyte> {
     @Serial
     private static final long serialVersionUID = -6112472064345339882L;
 
-    Pebibyte(final @NotNull BigInteger bytes) {
-        super(bytes);
+    Pebibyte(final @NotNull BigInteger numberOfBytes) {
+        super(numberOfBytes);
     }
 
     /**

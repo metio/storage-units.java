@@ -38,12 +38,10 @@
         <dependency>
             <groupId>org.jspecify</groupId>
             <artifactId>jspecify</artifactId>
-            <version>0.3.0-alpha-1</version>
         </dependency>
         <dependency>
             <groupId>com.github.dozermapper</groupId>
             <artifactId>dozer-core</artifactId>
-            <version>6.5.2</version>
         </dependency>
     </dependencies>
 </project>

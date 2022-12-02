@@ -111,7 +111,8 @@ final class TestObjects {
      */
     public static List<Function<Long, StorageUnit<?>>> highLevelLongBasedConstructors() {
         return Stream.concat(
-                        highLevelBinaryLongBasedConstructors().stream(), highLevelDecimalLongBasedConstructors().stream())
+                        highLevelBinaryLongBasedConstructors().stream(),
+                        highLevelDecimalLongBasedConstructors().stream())
                 .toList();
     }
 

@@ -12,7 +12,7 @@ import static wtf.metio.storageunits.model.StorageUnits.kilobyte;
 class ReadmeConversionsTest {
 
     @Test
-    void shouldFormatUnitWithDefaults() {
+    void formatUnitWithDefaults() {
         Assertions.assertAll(
                 () -> Assertions.assertEquals("1.10 MB",
                         kilobyte(900).add(kilobyte(200)).asBestMatchingUnit().toString()),

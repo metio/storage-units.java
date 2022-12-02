@@ -20,12 +20,12 @@ import java.util.stream.Stream;
 
 class StorageUnitCodecTest {
 
-    private Stream<AbstractStorageUnitCodec> codecs() {
+    private static Stream<AbstractStorageUnitCodec> codecs() {
         return Stream.of(new BinaryStorageUnitCodec(), new DecimalStorageUnitCodec());
     }
 
     @TestFactory
-    Stream<DynamicTest> shouldEncodeStorageUnitClass() {
+    Stream<DynamicTest> encodeStorageUnitClass() {
         return codecs()
                 .map(AbstractStorageUnitCodec::getEncoderClass)
                 .map(encoderClass -> DynamicTest.dynamicTest("should use correct encoder class",
@@ -33,7 +33,7 @@ class StorageUnitCodecTest {
     }
 
     @TestFactory
-    Stream<DynamicTest> shouldEncodeStorageUnit() {
+    Stream<DynamicTest> encodeStorageUnit() {
         return codecs()
                 .map(codec -> DynamicTest.dynamicTest("should encode storage unit", () -> {
                     final var writer = Mockito.mock(BsonWriter.class);
@@ -47,7 +47,7 @@ class StorageUnitCodecTest {
     }
 
     @TestFactory
-    Stream<DynamicTest> shouldDecodeStorageUnit() {
+    Stream<DynamicTest> decodeStorageUnit() {
         return codecs()
                 .map(codec -> DynamicTest.dynamicTest("should encode storage unit", () -> {
                     final var reader = Mockito.mock(BsonReader.class);

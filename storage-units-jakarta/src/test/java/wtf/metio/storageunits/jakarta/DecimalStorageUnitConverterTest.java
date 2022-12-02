@@ -14,7 +14,7 @@ import java.math.BigInteger;
 class DecimalStorageUnitConverterTest {
 
     @Test
-    void shouldConvertBigIntegerToStorageUnit() {
+    void convertBigIntegerToStorageUnit() {
         final var converter = new DecimalStorageUnitConverter();
         final var unit = converter.convertToEntityAttribute(BigInteger.valueOf(1000L));
 
@@ -22,7 +22,7 @@ class DecimalStorageUnitConverterTest {
     }
 
     @Test
-    void shouldConvertStorageUnitToBigInteger() {
+    void convertStorageUnitToBigInteger() {
         final var converter = new DecimalStorageUnitConverter();
         final var value = converter.convertToDatabaseColumn(StorageUnits.kilobyte(1));
 

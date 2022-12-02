@@ -18,7 +18,7 @@ import java.math.BigInteger;
  * Abstract implementation of a EclipseLink {@link Converter} for {@link StorageUnit StorageUnits}.
  *
  * @see <a href=
- * "https://www.eclipse.org/eclipselink/documentation/2.6/jpa/extensions/annotations_ref.htm#CHDEHJEB">EclipseLink
+ * "https://www.eclipse.org/eclipselink/documentation/4.0/jpa/extensions/annotations_ref.htm#CHDEHJEB">EclipseLink
  * documentation</a>
  */
 abstract class AbstractStorageUnitConverter implements Converter {
@@ -27,13 +27,13 @@ abstract class AbstractStorageUnitConverter implements Converter {
     private static final long serialVersionUID = 1696764872656233871L;
 
     @Override
-    public Object convertObjectValueToDataValue(final Object objectValue, final Session session) {
-        return ((StorageUnit<?>) objectValue).inByte();
+    public Object convertObjectValueToDataValue(final Object o, final Session session) {
+        return ((StorageUnit<?>) o).inByte();
     }
 
     @Override
-    public Object convertDataValueToObjectValue(final Object dataValue, final Session session) {
-        return convertToStorageUnit(new BigInteger(dataValue.toString()));
+    public Object convertDataValueToObjectValue(final Object o, final Session session) {
+        return convertToStorageUnit(new BigInteger(o.toString()));
     }
 
     protected abstract StorageUnit<?> convertToStorageUnit(BigInteger value);
@@ -44,12 +44,12 @@ abstract class AbstractStorageUnitConverter implements Converter {
     }
 
     @Override
-    public void initialize(final DatabaseMapping mapping, final Session session) {
+    public void initialize(final DatabaseMapping databaseMapping, final Session session) {
         final DatabaseField field;
-        if (mapping instanceof DirectCollectionMapping) {
-            field = ((DirectCollectionMapping) mapping).getDirectField();
+        if (databaseMapping instanceof DirectCollectionMapping) {
+            field = ((DirectCollectionMapping) databaseMapping).getDirectField();
         } else {
-            field = mapping.getField();
+            field = databaseMapping.getField();
         }
         field.setSqlType(java.sql.Types.BIGINT);
     }

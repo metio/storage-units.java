@@ -19,8 +19,8 @@ public final class Yobibyte extends StorageUnit<Yobibyte> {
     @Serial
     private static final long serialVersionUID = -5606322878020884194L;
 
-    Yobibyte(final @NotNull BigInteger bytes) {
-        super(bytes);
+    Yobibyte(final @NotNull BigInteger numberOfBytes) {
+        super(numberOfBytes);
     }
 
     /**

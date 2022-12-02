@@ -19,8 +19,8 @@ public final class Terabyte extends StorageUnit<Terabyte> {
     @Serial
     private static final long serialVersionUID = 2160488069631638952L;
 
-    Terabyte(final @NotNull BigInteger bytes) {
-        super(bytes);
+    Terabyte(final @NotNull BigInteger numberOfBytes) {
+        super(numberOfBytes);
     }
 
     /**

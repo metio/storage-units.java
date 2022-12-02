@@ -19,8 +19,8 @@ public final class Megabyte extends StorageUnit<Megabyte> {
     @Serial
     private static final long serialVersionUID = 5901923092058760111L;
 
-    Megabyte(final @NotNull BigInteger bytes) {
-        super(bytes);
+    Megabyte(final @NotNull BigInteger numberOfBytes) {
+        super(numberOfBytes);
     }
 
     /**

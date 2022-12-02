@@ -19,8 +19,8 @@ public final class Zettabyte extends StorageUnit<Zettabyte> {
     @Serial
     private static final long serialVersionUID = 8849006574018911826L;
 
-    Zettabyte(final @NotNull BigInteger bytes) {
-        super(bytes);
+    Zettabyte(final @NotNull BigInteger numberOfBytes) {
+        super(numberOfBytes);
     }
 
     /**

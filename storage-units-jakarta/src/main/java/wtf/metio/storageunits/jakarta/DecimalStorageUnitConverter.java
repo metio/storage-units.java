@@ -17,8 +17,8 @@ import java.math.BigInteger;
 public final class DecimalStorageUnitConverter extends AbstractStorageUnitConverter {
 
     @Override
-    public StorageUnit<?> convertToEntityAttribute(final BigInteger value) {
-        return StorageUnits.decimalValueOf(value);
+    public StorageUnit<?> convertToEntityAttribute(final BigInteger y) {
+        return StorageUnits.decimalValueOf(y);
     }
 
 }

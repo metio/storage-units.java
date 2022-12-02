@@ -13,7 +13,7 @@ import java.util.Locale;
 class StorageUnitFormattingTest {
 
     @Test
-    void shouldUseDefaultUnitFormat() {
+    void useDefaultUnitFormat() {
         // given
         final StorageUnit<?> unit = StorageUnits.kilobyte(2);
 
@@ -25,7 +25,7 @@ class StorageUnitFormattingTest {
     }
 
     @Test
-    void shouldFormatUnitIndirectly() {
+    void formatUnitIndirectly() {
         // given
         final DecimalFormat format = new DecimalFormat("#,###.00 ");
         final StorageUnit<?> unit = StorageUnits.kilobyte(2);
@@ -38,7 +38,7 @@ class StorageUnitFormattingTest {
     }
 
     @Test
-    void shouldFormatUnitDirectly() {
+    void formatUnitDirectly() {
         // given
         final DecimalFormat format = new DecimalFormat("#,##0.00000");
         final StorageUnit<?> unit = StorageUnits.kilobyte(120);
@@ -51,7 +51,7 @@ class StorageUnitFormattingTest {
     }
 
     @Test
-    void shouldFormatBigUnitDirectly() {
+    void formatBigUnitDirectly() {
         // given
         final DecimalFormat format = new DecimalFormat("0.0");
         final StorageUnit<?> unit = StorageUnits.kilobyte(212345);
@@ -64,7 +64,7 @@ class StorageUnitFormattingTest {
     }
 
     @Test
-    void shouldFormatBiggerUnitDirectly() {
+    void formatBiggerUnitDirectly() {
         // given
         final DecimalFormat format = new DecimalFormat("#,###.000");
         final StorageUnit<?> unit = StorageUnits.gibibyte(2123458);
@@ -77,7 +77,7 @@ class StorageUnitFormattingTest {
     }
 
     @Test
-    void shouldFormatUnitWithImplicitFormat() {
+    void formatUnitWithImplicitFormat() {
         // given
         final StorageUnit<?> unit = StorageUnits.kilobyte(120);
 
@@ -89,7 +89,7 @@ class StorageUnitFormattingTest {
     }
 
     @Test
-    void shouldFormatBiggestUnitWithImplicitFormat() {
+    void formatBiggestUnitWithImplicitFormat() {
         // given
         final StorageUnit<?> unit = StorageUnits.yobibyte(1);
 
@@ -101,7 +101,7 @@ class StorageUnitFormattingTest {
     }
 
     @Test
-    void shouldFormatBiggestUnitWithImplicitFormatAndLocale() {
+    void formatBiggestUnitWithImplicitFormatAndLocale() {
         // given
         final StorageUnit<?> unit = StorageUnits.yobibyte(1);
 
@@ -113,20 +113,20 @@ class StorageUnitFormattingTest {
     }
 
     @Test
-    void shouldCalculateMissingBytes() {
+    void calculateMissingBytes() {
         // given
-        final Terabyte advertized = StorageUnits.terabyte(4);
+        final Terabyte advertised = StorageUnits.terabyte(4);
         final Tebibyte expected = StorageUnits.tebibyte(4);
 
         // when
-        final Tebibyte difference = expected.subtract(advertized);
+        final Tebibyte difference = expected.subtract(advertised);
 
         // then
         Assertions.assertEquals("370.71 GiB", difference.asGibibyte().toString());
     }
 
     @Test
-    void shouldCalculateMissingBytesWithCustomFormat() {
+    void calculateMissingBytesWithCustomFormat() {
         // given
         final DecimalFormat format = new DecimalFormat("#0.00000");
         final Terabyte advertised = StorageUnits.terabyte(4);
@@ -140,7 +140,7 @@ class StorageUnitFormattingTest {
     }
 
     @Test
-    void shouldShowMissingBytes() {
+    void showMissingBytes() {
         // given
         final DecimalFormat format = new DecimalFormat("#0.00000");
         final Terabyte advertised = StorageUnits.terabyte(4);

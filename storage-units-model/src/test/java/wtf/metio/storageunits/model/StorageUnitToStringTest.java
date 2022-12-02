@@ -37,7 +37,7 @@ class StorageUnitToStringTest {
             Map.entry(Quettabyte.class, "QB"));
 
     @TestFactory
-    Stream<DynamicTest> shouldPrintCorrectUnit() {
+    Stream<DynamicTest> printCorrectUnit() {
         return TestObjects.highLevelLongBasedConstructors().stream()
                 .map(constructor -> constructor.apply(1L))
                 .map(unit -> DynamicTest.dynamicTest(unit.toString(), () ->

@@ -14,7 +14,7 @@ import java.math.BigInteger;
 class BinaryStorageUnitConverterTest {
 
     @Test
-    void shouldConvertBigIntegerToStorageUnit() {
+    void convertBigIntegerToStorageUnit() {
         final var converter = new BinaryStorageUnitConverter();
         final var unit = converter.convertFrom(BigInteger.valueOf(1024L), null, null);
 
@@ -22,7 +22,7 @@ class BinaryStorageUnitConverterTest {
     }
 
     @Test
-    void shouldConvertStorageUnitToBigInteger() {
+    void convertStorageUnitToBigInteger() {
         final var converter = new BinaryStorageUnitConverter();
         final var value = converter.convertTo(StorageUnits.kibibyte(1), null, null);
 

@@ -41,7 +41,7 @@ class StorageUnitNumberOfBytesPerUnitTest {
     );
 
     @TestFactory
-    Stream<DynamicTest> shouldReturnNumberOfBytesPerUnit() {
+    Stream<DynamicTest> returnNumberOfBytesPerUnit() {
         return TestObjects.bigIntegerBasedConstructors().stream()
                 .flatMap(constructor -> EXPECTED_NUMBERS.entrySet().stream()
                         .map(entry -> {

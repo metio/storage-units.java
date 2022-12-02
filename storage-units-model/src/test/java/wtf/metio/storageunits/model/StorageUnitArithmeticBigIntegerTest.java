@@ -14,12 +14,12 @@ import java.util.stream.Stream;
 
 class StorageUnitArithmeticBigIntegerTest {
 
-    private LongStream numberOfBytes() {
+    private static LongStream numberOfBytes() {
         return LongStream.of(1, 2, 3, 5, 8, 13, 100, 500, -500, 123456789);
     }
 
     @TestFactory
-    Stream<DynamicTest> shouldAddNumberOfBytes() {
+    Stream<DynamicTest> addNumberOfBytes() {
         return TestObjects.bigIntegerBasedConstructors().stream()
                 .flatMap(constructor -> numberOfBytes()
                         .mapToObj(bytes -> {
@@ -29,7 +29,7 @@ class StorageUnitArithmeticBigIntegerTest {
 
                             return DynamicTest.dynamicTest(
                                     String.format("%s %s %s Bytes", unit.toString(), operation, Math.abs(bytes)), () -> {
-                                        final var calculatedResult = unit.add(bytes);
+                                        final var calculatedResult = unit.add(BigInteger.valueOf(bytes));
                                         final var expectedResult = initialAmount.add(BigInteger.valueOf(bytes));
 
                                         Assertions.assertEquals(expectedResult, calculatedResult.inByte());
@@ -38,7 +38,7 @@ class StorageUnitArithmeticBigIntegerTest {
     }
 
     @TestFactory
-    Stream<DynamicTest> shouldAddStorageUnit() {
+    Stream<DynamicTest> addStorageUnit() {
         return TestObjects.bigIntegerBasedConstructors().stream()
                 .flatMap(constructor -> numberOfBytes()
                         .mapToObj(bytes -> {
@@ -57,7 +57,7 @@ class StorageUnitArithmeticBigIntegerTest {
     }
 
     @TestFactory
-    Stream<DynamicTest> shouldSubtractStorageUnit() {
+    Stream<DynamicTest> subtractStorageUnit() {
         return TestObjects.bigIntegerBasedConstructors().stream()
                 .flatMap(constructor -> numberOfBytes()
                         .mapToObj(bytes -> {
@@ -76,14 +76,14 @@ class StorageUnitArithmeticBigIntegerTest {
     }
 
     @TestFactory
-    Stream<DynamicTest> shouldReturnNewInstanceAfterAddLong() {
+    Stream<DynamicTest> returnNewInstanceAfterAddBigInteger() {
         return TestObjects.bigIntegerBasedConstructors().stream()
                 .map(constructor -> {
                     final var initialAmount = BigInteger.ONE;
                     final var first = constructor.apply(initialAmount);
 
                     return DynamicTest.dynamicTest(String.format("%s + 1000 Bytes", first.toString()), () -> {
-                        final var second = first.add(1000);
+                        final var second = first.add(BigInteger.valueOf(1000));
 
                         Assertions.assertNotSame(first, second, "The add(long) method must return a new instance.");
                     });
@@ -91,14 +91,14 @@ class StorageUnitArithmeticBigIntegerTest {
     }
 
     @TestFactory
-    Stream<DynamicTest> shouldReturnNewInstanceAfterDivide() {
+    Stream<DynamicTest> returnNewInstanceAfterDivide() {
         return TestObjects.bigIntegerBasedConstructors().stream()
                 .map(constructor -> {
                     final var initialAmount = BigInteger.valueOf(1000);
                     final var first = constructor.apply(initialAmount);
 
                     return DynamicTest.dynamicTest(String.format("%s / 5", first.toString()), () -> {
-                        final var second = first.divide(5);
+                        final var second = first.divide(BigInteger.valueOf(5));
 
                         Assertions.assertNotSame(first, second, "The divide(long) method must return a new instance.");
                     });
@@ -106,14 +106,14 @@ class StorageUnitArithmeticBigIntegerTest {
     }
 
     @TestFactory
-    Stream<DynamicTest> shouldReturnNewInstanceAfterMultiply() {
+    Stream<DynamicTest> returnNewInstanceAfterMultiply() {
         return TestObjects.bigIntegerBasedConstructors().stream()
                 .map(constructor -> {
                     final var initialAmount = BigInteger.valueOf(1000);
                     final var first = constructor.apply(initialAmount);
 
                     return DynamicTest.dynamicTest(String.format("%s * 5", first.toString()), () -> {
-                        final var second = first.multiply(5);
+                        final var second = first.multiply(BigInteger.valueOf(5));
 
                         Assertions.assertNotSame(first, second, "The multiply(long) method must return a new instance.");
                     });
@@ -121,14 +121,14 @@ class StorageUnitArithmeticBigIntegerTest {
     }
 
     @TestFactory
-    Stream<DynamicTest> shouldReturnNewInstanceAfterSubtractLong() {
+    Stream<DynamicTest> returnNewInstanceAfterSubtractBigInteger() {
         return TestObjects.bigIntegerBasedConstructors().stream()
                 .map(constructor -> {
                     final var initialAmount = BigInteger.valueOf(1000);
                     final var first = constructor.apply(initialAmount);
 
                     return DynamicTest.dynamicTest(String.format("%s - 100 Bytes", first.toString()), () -> {
-                        final var second = first.subtract(100);
+                        final var second = first.subtract(BigInteger.valueOf(100));
 
                         Assertions.assertNotSame(first, second, "The subtract(long) method must return a new instance.");
                     });

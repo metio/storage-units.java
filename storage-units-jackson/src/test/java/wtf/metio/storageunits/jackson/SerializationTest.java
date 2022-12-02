@@ -12,7 +12,7 @@ import org.junit.jupiter.api.Test;
 import wtf.metio.storageunits.model.StorageUnit;
 import wtf.metio.storageunits.model.StorageUnits;
 
-class JacksonSerializationTest {
+class SerializationTest {
 
     private ObjectMapper mapper;
 
@@ -23,7 +23,7 @@ class JacksonSerializationTest {
     }
 
     @Test
-    void shouldSerializeStorageUnit() throws JsonProcessingException {
+    void serializeStorageUnit() throws JsonProcessingException {
         // given
         final StorageUnit<?> unit = StorageUnits.kibibyte(1L);
 
@@ -35,7 +35,7 @@ class JacksonSerializationTest {
     }
 
     @Test
-    void shouldSerializeNonStorageUnit() throws JsonProcessingException {
+    void serializeNonStorageUnit() throws JsonProcessingException {
         // given
         final String input = "abc";
 

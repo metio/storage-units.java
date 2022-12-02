@@ -8,8 +8,6 @@ import com.github.dozermapper.core.DozerConverter;
 import wtf.metio.storageunits.model.StorageUnit;
 import wtf.metio.storageunits.model.StorageUnits;
 
-import java.math.BigInteger;
-
 /**
  * Converter for {@link Long} values to binary storage units.
  */
@@ -20,13 +18,13 @@ public final class LongBinaryStorageUnitConverter extends DozerConverter<Long, S
     }
 
     @Override
-    public StorageUnit<?> convertTo(final Long value, final StorageUnit unit) {
-        return StorageUnits.binaryValueOf(value);
+    public StorageUnit<?> convertTo(final Long source, final StorageUnit destination) {
+        return StorageUnits.binaryValueOf(source);
     }
 
     @Override
-    public Long convertFrom(final StorageUnit unit, final Long value) {
-        return unit.inByte().longValue();
+    public Long convertFrom(final StorageUnit source, final Long destination) {
+        return source.inByte().longValue();
     }
 
 }

@@ -38,9 +38,4 @@ final class TestUtils {
                 unitClass.getSimpleName());
     }
 
-    static Long pow(final Long value, final int power) {
-        return LongStream.range(1, power + 1)
-                .reduce(1L, (a, b) -> a * value);
-    }
-
 }

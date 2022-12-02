@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
 class StorageUnitNumberTest {
 
     @Test
-    void shouldReturnDoubleValue() {
+    void returnDoubleValue() {
         // Given
         final var unit = StorageUnits.kibibyte(1);
 
@@ -22,7 +22,7 @@ class StorageUnitNumberTest {
     }
 
     @Test
-    void shouldReturnLongValue() {
+    void returnLongValue() {
         // Given
         final var unit = StorageUnits.kibibyte(1);
 
@@ -34,7 +34,7 @@ class StorageUnitNumberTest {
     }
 
     @Test
-    void shouldReturnFloatValue() {
+    void returnFloatValue() {
         // Given
         final var unit = StorageUnits.kibibyte(1);
 
@@ -46,7 +46,7 @@ class StorageUnitNumberTest {
     }
 
     @Test
-    void shouldReturnIntValue() {
+    void returnIntValue() {
         // Given
         final var unit = StorageUnits.kibibyte(1);
 

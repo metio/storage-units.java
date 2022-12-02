@@ -13,7 +13,7 @@ import java.lang.reflect.Modifier;
 class StorageUnitsTest {
 
     @Test
-    void shouldDeclarePrivateConstructor()
+    void declarePrivateConstructor()
             throws NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
         // Given
         final var constructor = StorageUnits.class.getDeclaredConstructor();

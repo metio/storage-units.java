@@ -15,8 +15,8 @@ import java.math.BigInteger;
 public final class StorageUnitToBigIntegerConverter extends AbstractConverter<StorageUnit<?>, BigInteger> {
 
     @Override
-    protected BigInteger convert(final StorageUnit<?> storageUnit) {
-        return storageUnit.inByte();
+    protected BigInteger convert(final StorageUnit<?> s) {
+        return s.inByte();
     }
 
 }

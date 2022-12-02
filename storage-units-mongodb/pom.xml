@@ -38,12 +38,10 @@
         <dependency>
             <groupId>org.mongodb</groupId>
             <artifactId>mongodb-driver</artifactId>
-            <version>3.12.11</version>
         </dependency>
         <dependency>
             <groupId>org.jspecify</groupId>
             <artifactId>jspecify</artifactId>
-            <version>0.3.0-alpha-1</version>
         </dependency>
         <dependency>
             <groupId>org.mockito</groupId>
