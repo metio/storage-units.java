@@ -278,6 +278,20 @@ public class HardDisk implements Serializable {
 }
 ```
 
+#### GSON
+
+Use a [GSON](https://github.com/google/gson) serializer/deserializer like this:
+
+```java
+import static wtf.metio.storageunits.gson.*;
+
+new GsonBuilder()
+        .registerTypeHierarchyAdapter(StorageUnit.class, new StorageUnitSerializer())
+        .registerTypeHierarchyAdapter(StorageUnit.class, new BinaryStorageUnitDeserializer())
+        .registerTypeHierarchyAdapter(StorageUnit.class, new DecimalStorageUnitDeserializer())
+        .create();
+```
+
 #### Jackson
 
 Use the provided `StorageUnitModule` like this:
@@ -393,6 +407,14 @@ To use this project just declare the following dependency inside your POM:
         <version>${version.storage-units}</version>
     </dependency>
     <!-- EclipseLink ONLY -->
+
+    <!-- GSON ONLY -->
+    <dependency>
+        <groupId>wtf.metio.storage-units</groupId>
+        <artifactId>storage-units-gson</artifactId>
+        <version>${version.storage-units}</version>
+    </dependency>
+    <!-- GSON ONLY -->
 
     <!-- Jackson ONLY -->
     <dependency>

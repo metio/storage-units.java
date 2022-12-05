@@ -42,6 +42,7 @@
     <modules>
         <module>storage-units-dozer</module>
         <module>storage-units-eclipselink</module>
+        <module>storage-units-gson</module>
         <module>storage-units-jackson</module>
         <module>storage-units-jakarta</module>
         <module>storage-units-mapstruct</module>
