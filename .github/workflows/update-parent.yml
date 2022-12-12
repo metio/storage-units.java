@@ -6,17 +6,12 @@ on:
   schedule:
     - cron: 0 1 5 * *
 jobs:
-  build:
+  parent:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - name: Set up Java
-        uses: actions/setup-java@v3
-        with:
-          java-version: 17
-          java-package: jdk
-          architecture: x64
-          distribution: temurin
+      - name: Clone Git Repository
+        uses: actions/checkout@v3
+      - uses: ./.github/actions/managed-java
       - uses: actions/cache@v3
         with:
           path: ~/.m2/repository
@@ -24,7 +19,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-maven-
       - name: Update Parent
-        run: mvn --batch-mode versions:update-parent --define generateBackupPoms=false
+        run: mvn --batch-mode --define generateBackupPoms=false versions:update-parent
       - id: cpr
         name: Create Pull Request
         uses: peter-evans/create-pull-request@v4
@@ -35,7 +30,7 @@ jobs:
           author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
           title: Update parent to latest version
           body: |
-            `mvn --batch-mode versions:update-parent -DgenerateBackupPoms=false`
+            `mvn --batch-mode --define generateBackupPoms=false versions:update-parent`
           assignees: |
             sebhoss
           draft: false

@@ -491,3 +491,10 @@ LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
 OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
 PERFORMANCE OF THIS SOFTWARE.
 ```
+
+## Mirrors
+
+- https://github.com/metio/storage-units.java
+- https://gitlab.com/metio.wtf/storage-units.java
+- https://bitbucket.org/metio-wtf/storage-units.java
+- https://codeberg.org/metio.wtf/storage-units.java
