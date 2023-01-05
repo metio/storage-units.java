@@ -5,7 +5,7 @@
 /**
  * Module for Dozer support.
  */
-@org.jspecify.nullness.NullMarked
+@org.jspecify.annotations.NullMarked
 module wtf.metio.storageunits.dozer {
 
     requires wtf.metio.storageunits.model;

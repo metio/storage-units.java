@@ -5,7 +5,7 @@
 /**
  * Module for MongoDB support.
  */
-@org.jspecify.nullness.NullMarked
+@org.jspecify.annotations.NullMarked
 module wtf.metio.storageunits.mongodb {
 
     requires wtf.metio.storageunits.model;

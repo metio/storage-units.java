@@ -5,7 +5,7 @@
 /**
  * Module for MapStruct support.
  */
-@org.jspecify.nullness.NullMarked
+@org.jspecify.annotations.NullMarked
 module wtf.metio.storageunits.mapstruct {
 
     requires wtf.metio.storageunits.model;
