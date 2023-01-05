@@ -5,7 +5,7 @@
 /**
  * Module for EclipseLink support.
  */
-@org.jspecify.nullness.NullMarked
+@org.jspecify.annotations.NullMarked
 module wtf.metio.storageunits.eclipselink {
 
     requires wtf.metio.storageunits.model;

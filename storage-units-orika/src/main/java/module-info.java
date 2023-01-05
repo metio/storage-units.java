@@ -5,7 +5,7 @@
 /**
  * Module for Orika support.
  */
-@org.jspecify.nullness.NullMarked
+@org.jspecify.annotations.NullMarked
 module wtf.metio.storageunits.orika {
 
     requires wtf.metio.storageunits.model;

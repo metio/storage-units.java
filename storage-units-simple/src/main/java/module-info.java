@@ -5,7 +5,7 @@
 /**
  * Module for SimpleXML support.
  */
-@org.jspecify.nullness.NullMarked
+@org.jspecify.annotations.NullMarked
 module wtf.metio.storageunits.simple {
 
     requires wtf.metio.storageunits.model;

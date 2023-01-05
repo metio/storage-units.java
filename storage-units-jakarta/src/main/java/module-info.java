@@ -5,7 +5,7 @@
 /**
  * Module for Jakarta Persistence support.
  */
-@org.jspecify.nullness.NullMarked
+@org.jspecify.annotations.NullMarked
 module wtf.metio.storageunits.jakarta {
 
     requires wtf.metio.storageunits.model;

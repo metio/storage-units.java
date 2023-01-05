@@ -5,7 +5,7 @@
 /**
  * Module for the core data model.
  */
-@org.jspecify.nullness.NullMarked
+@org.jspecify.annotations.NullMarked
 module wtf.metio.storageunits.model {
 
     requires org.jetbrains.annotations;

@@ -5,7 +5,7 @@
 /**
  * Module for GSON support.
  */
-@org.jspecify.nullness.NullMarked
+@org.jspecify.annotations.NullMarked
 module wtf.metio.storageunits.gson {
 
     requires wtf.metio.storageunits.model;

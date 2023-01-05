@@ -5,7 +5,7 @@
 /**
  * Module for ModelMapper support.
  */
-@org.jspecify.nullness.NullMarked
+@org.jspecify.annotations.NullMarked
 module wtf.metio.storageunits.modelmapper {
 
     requires wtf.metio.storageunits.model;
