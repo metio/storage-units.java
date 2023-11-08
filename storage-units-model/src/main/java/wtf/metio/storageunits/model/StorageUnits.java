@@ -4,7 +4,7 @@
  */
 package wtf.metio.storageunits.model;
 
-import edu.umd.cs.findbugs.annotations.CheckReturnValue;
+import com.google.errorprone.annotations.CheckReturnValue;
 import org.jetbrains.annotations.NotNull;
 
 import java.math.BigInteger;

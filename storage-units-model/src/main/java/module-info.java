@@ -8,9 +8,9 @@
 @org.jspecify.annotations.NullMarked
 module wtf.metio.storageunits.model {
 
-    requires org.jetbrains.annotations;
-    requires com.github.spotbugs.annotations;
-    requires org.jspecify;
+    requires static org.jetbrains.annotations;
+    requires static com.google.errorprone.annotations;
+    requires static org.jspecify;
 
     exports wtf.metio.storageunits.model;
 
