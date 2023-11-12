@@ -13,11 +13,18 @@ jobs:
       contents: write
     steps:
       - id: checkout
-        name: Clone Git Repository
-        uses: actions/checkout@v3
+        name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - id: last_release
+        name: Fetch last release info
+        run: echo "tag=$(gh release view --json tagName --jq '.tagName')" >> $GITHUB_OUTPUT
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - id: commits
         name: Count Commits
-        run: echo "count=$(git rev-list --count HEAD --since='last Tuesday')" >> $GITHUB_OUTPUT
+        run: echo "count=$(git rev-list --count ${{ steps.last_release.outputs.tag }}..HEAD)" >> $GITHUB_OUTPUT
       - id: release
         name: Create Release Version
         if: steps.commits.outputs.count > 0
@@ -66,15 +73,15 @@ jobs:
       - id: deploy-maven
         name: Deploy Maven Artifact
         if: steps.commits.outputs.count > 0
-        run: |
-          mvn \
-            --batch-mode \
-            --activate-profiles release \
-            --define scmTag=${{ steps.sha.outputs.sha }} \
-            --define pgp.secretkey=keyfile:${{ steps.gpg.outputs.filePath }} \
-            --define pgp.passphrase=literal:${{ secrets.GPG_SECRET_KEY_PASSWORD }} \
-            --define project.build.outputTimestamp=${{ steps.timestamp.outputs.iso8601 }} \
-            deploy
+        run: >
+          mvn
+          --batch-mode
+          --activate-profiles release
+          --define scmTag=${{ steps.sha.outputs.sha }}
+          --define pgp.secretkey=keyfile:${{ steps.gpg.outputs.filePath }}
+          --define pgp.passphrase=literal:${{ secrets.GPG_SECRET_KEY_PASSWORD }}
+          --define project.build.outputTimestamp=${{ steps.timestamp.outputs.iso8601 }}
+          deploy
         env:
           MAVEN_CENTRAL_USERNAME: ${{ secrets.MAVEN_CENTRAL_USERNAME }}
           MAVEN_CENTRAL_TOKEN: ${{ secrets.MAVEN_CENTRAL_TOKEN }}
@@ -93,7 +100,7 @@ jobs:
       - id: mail
         name: Send Mail
         if: steps.commits.outputs.count > 0
-        uses: dawidd6/action-send-mail@v3.7.1
+        uses: dawidd6/action-send-mail@v3
         with:
           server_address: ${{ secrets.MAIL_SERVER }}
           server_port: ${{ secrets.MAIL_PORT }}

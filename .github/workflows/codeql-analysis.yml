@@ -18,8 +18,9 @@ jobs:
       matrix:
         language: [ java ]
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v3
+    - id: checkout
+      name: Checkout
+      uses: actions/checkout@v4
     - name: Set up Java
       uses: actions/setup-java@v3
       with:
