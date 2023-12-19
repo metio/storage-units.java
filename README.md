@@ -3,7 +3,7 @@ SPDX-FileCopyrightText: The Storage-Units Authors
 SPDX-License-Identifier: 0BSD
  -->
 
-# Storage-Units
+# Storage-Units [![Chat](https://img.shields.io/badge/matrix-%23talk.metio:matrix.org-brightgreen.svg?style=social&label=Matrix)](https://matrix.to/#/#talk.metio:matrix.org)
 
 Storage units according to ISO IEC 80000-13:2008 implemented in Java.
 
@@ -466,7 +466,7 @@ To use this project just declare the following dependency inside your POM:
 </dependencies>
 ```
 
-Replace `${version.storage-units}` with the [latest release](https://search.maven.org/search?q=g:wtf.metio.storage-units).
+Replace `${version.storage-units}` with the [latest release](https://central.sonatype.com/namespace/wtf.metio.storage-units).
 
 ## Reference
 
@@ -476,25 +476,3 @@ Originally inspired by [Twitters util](https://github.com/twitter/util#space) pa
 
 * [Byte Units](https://github.com/JakeWharton/byteunits)
 * [triava](https://github.com/trivago/triava)
-
-## License
-
-```
-Permission to use, copy, modify, and/or distribute this software for any
-purpose with or without fee is hereby granted.
-
-THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
-REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY AND
-FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
-INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
-LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
-OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
-PERFORMANCE OF THIS SOFTWARE.
-```
-
-## Mirrors
-
-- https://github.com/metio/storage-units.java
-- https://gitlab.com/metio.wtf/storage-units.java
-- https://bitbucket.org/metio-wtf/storage-units.java
-- https://codeberg.org/metio.wtf/storage-units.java
