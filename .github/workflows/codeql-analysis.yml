@@ -18,23 +18,9 @@ jobs:
       matrix:
         language: [ java ]
     steps:
-    - id: checkout
-      name: Checkout
+    - name: Checkout repository
       uses: actions/checkout@v4
-    - name: Set up Java
-      uses: actions/setup-java@v4
-      with:
-        java-version: 17
-        java-package: jdk
-        architecture: x64
-        distribution: temurin
-    - name: Cache Maven Artifacts
-      uses: actions/cache@v3
-      with:
-        path: ~/.m2/repository
-        key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
-        restore-keys: |
-          ${{ runner.os }}-maven-
+    - uses: ./.github/actions/managed-java
     - name: Initialize CodeQL
       uses: github/codeql-action/init@v3
       with:

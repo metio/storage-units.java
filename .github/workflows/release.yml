@@ -4,7 +4,7 @@
 name: Automated Release
 on:
   schedule:
-    - cron: 27 4 * * TUE
+    - cron: 35 3 * * WED
   workflow_dispatch:
 jobs:
   publish:
@@ -13,7 +13,7 @@ jobs:
       contents: write
     steps:
       - id: checkout
-        name: Checkout
+        name: Clone Git Repository
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
@@ -24,7 +24,7 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - id: commits
         name: Count Commits
-        run: echo "count=$(git rev-list --count ${{ steps.last_release.outputs.tag }}..HEAD)" >> $GITHUB_OUTPUT
+        run: echo "count=$(git rev-list --count ${{ steps.last_release.outputs.tag }}..HEAD -- pom.xml storage-units-dozer storage-units-eclipselink storage-units-gson storage-units-jackson storage-units-jakarta storage-units-mapstruct storage-units-model storage-units-modelmapper storage-units-mongodb storage-units-orika storage-units-simple)" >> $GITHUB_OUTPUT
       - id: release
         name: Create Release Version
         if: steps.commits.outputs.count > 0
@@ -38,33 +38,15 @@ jobs:
         if: steps.commits.outputs.count > 0
         run: echo "iso8601=$(date --utc --iso-8601=seconds)" >> $GITHUB_OUTPUT
       - id: setup-java
-        name: Set up Java
+        uses: ./.github/actions/managed-maven
         if: steps.commits.outputs.count > 0
-        uses: actions/setup-java@v4
-        with:
-          java-version: 17
-          java-package: jdk
-          architecture: x64
-          distribution: temurin
-          server-id: ossrh
-          server-username: MAVEN_CENTRAL_USERNAME
-          server-password: MAVEN_CENTRAL_TOKEN
-      - id: cache
-        name: Cache Dependencies
-        if: steps.commits.outputs.count > 0
-        uses: actions/cache@v3
-        with:
-          path: ~/.m2/repository
-          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
-          restore-keys: |
-            ${{ runner.os }}-maven-
       - id: gpg
         name: GPG Key
         if: steps.commits.outputs.count > 0
-        uses: timheuer/base64-to-file@v1.2
+        uses: timheuer/base64-to-file@v1
         with:
           fileName: signing.key.asc
-          fileDir: ${{ github.workspace}}
+          fileDir: ${{ github.workspace }}
           encodedString: ${{ secrets.GPG_SECRET_KEY_BASE64 }}
       - id: pom-version
         name: Set Release Version
@@ -108,7 +90,7 @@ jobs:
           password: ${{ secrets.MAIL_PASSWORD }}
           subject: ${{ github.event.repository.name }} version ${{ steps.release.outputs.version }} published
           body: See ${{ steps.create_release.outputs.url }} for details.
-          to: announcements@metio.groups.io
+          to: ${{ secrets.MAIL_RECIPIENT }}
           from: ${{ secrets.MAIL_SENDER }}
       - id: matrix
         name: Send Matrix Message
@@ -118,4 +100,4 @@ jobs:
           room_id: ${{ secrets.MATRIX_ROOM_ID }}
           access_token: ${{ secrets.MATRIX_ACCESS_TOKEN }}
           message: ${{ github.event.repository.name }} version [${{ steps.release.outputs.version }}](${{ steps.create_release.outputs.url }}) published
-          server: matrix.org
+          server: ${{ secrets.MATRIX_SERVER }}

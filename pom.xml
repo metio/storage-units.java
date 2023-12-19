@@ -32,7 +32,7 @@
     <!-- https://maven.apache.org/pom.html#More_Project_Information -->
     <name>Storage Units</name>
     <description>Implementation of storage units according to ISO IEC 80000-13:2008.</description>
-    <url>https://storage-units.projects.metio.wtf/</url>
+    <url>https://github.com/metio/storage-units.java</url>
     <inceptionYear>2012</inceptionYear>
 
     <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
