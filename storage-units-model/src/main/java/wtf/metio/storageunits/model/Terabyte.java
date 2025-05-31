@@ -19,6 +19,8 @@ public final class Terabyte extends StorageUnit<Terabyte> {
     @Serial
     private static final long serialVersionUID = 2160488069631638952L;
 
+    private static final int conversionScale = computeFiniteConversionScale(StorageUnit.BYTES_IN_A_TERABYTE);
+
     Terabyte(final @NotNull BigInteger numberOfBytes) {
         super(numberOfBytes);
     }
@@ -112,7 +114,7 @@ public final class Terabyte extends StorageUnit<Terabyte> {
 
     @Override
     @CheckReturnValue
-    protected @NotNull BigInteger getNumberOfBytesPerUnit() {
+    public @NotNull BigInteger getNumberOfBytesPerUnit() {
         return StorageUnit.BYTES_IN_A_TERABYTE;
     }
 
@@ -126,6 +128,11 @@ public final class Terabyte extends StorageUnit<Terabyte> {
     @CheckReturnValue
     protected @NotNull Function<@NotNull BigInteger, @NotNull StorageUnit<?>> converter() {
         return StorageUnits::decimalValueOf;
+    }
+
+    @Override
+    protected int conversionScale() {
+        return conversionScale;
     }
 
 }

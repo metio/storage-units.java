@@ -107,7 +107,7 @@ public final class Byte extends StorageUnit<Byte> {
     }
 
     @Override
-    protected @NotNull BigInteger getNumberOfBytesPerUnit() {
+    public @NotNull BigInteger getNumberOfBytesPerUnit() {
         return BigInteger.ONE;
     }
 
@@ -121,6 +121,11 @@ public final class Byte extends StorageUnit<Byte> {
     @CheckReturnValue
     protected @NotNull Function<@NotNull BigInteger, @NotNull StorageUnit<?>> converter() {
         return StorageUnits::binaryValueOf;
+    }
+
+    @Override
+    protected int conversionScale() {
+        return 0;
     }
 
 }

@@ -19,6 +19,8 @@ public final class Kilobyte extends StorageUnit<Kilobyte> {
     @Serial
     private static final long serialVersionUID = 6952239416014811456L;
 
+    private static final int conversionScale = computeFiniteConversionScale(StorageUnit.BYTES_IN_A_KILOBYTE);
+
     Kilobyte(final @NotNull BigInteger numberOfBytes) {
         super(numberOfBytes);
     }
@@ -112,7 +114,7 @@ public final class Kilobyte extends StorageUnit<Kilobyte> {
 
     @Override
     @CheckReturnValue
-    protected @NotNull BigInteger getNumberOfBytesPerUnit() {
+    public @NotNull BigInteger getNumberOfBytesPerUnit() {
         return BYTES_IN_A_KILOBYTE;
     }
 
@@ -126,6 +128,11 @@ public final class Kilobyte extends StorageUnit<Kilobyte> {
     @CheckReturnValue
     protected @NotNull Function<@NotNull BigInteger, @NotNull StorageUnit<?>> converter() {
         return StorageUnits::decimalValueOf;
+    }
+
+    @Override
+    protected int conversionScale() {
+        return conversionScale;
     }
 
 }

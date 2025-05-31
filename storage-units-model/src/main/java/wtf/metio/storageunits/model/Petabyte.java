@@ -19,6 +19,8 @@ public final class Petabyte extends StorageUnit<Petabyte> {
     @Serial
     private static final long serialVersionUID = 5889808368085688387L;
 
+    private static final int conversionScale = computeFiniteConversionScale(StorageUnit.BYTES_IN_A_PETABYTE);
+
     Petabyte(final @NotNull BigInteger numberOfBytes) {
         super(numberOfBytes);
     }
@@ -112,7 +114,7 @@ public final class Petabyte extends StorageUnit<Petabyte> {
 
     @Override
     @CheckReturnValue
-    protected @NotNull BigInteger getNumberOfBytesPerUnit() {
+    public @NotNull BigInteger getNumberOfBytesPerUnit() {
         return StorageUnit.BYTES_IN_A_PETABYTE;
     }
 
@@ -126,6 +128,11 @@ public final class Petabyte extends StorageUnit<Petabyte> {
     @CheckReturnValue
     protected @NotNull Function<@NotNull BigInteger, @NotNull StorageUnit<?>> converter() {
         return StorageUnits::decimalValueOf;
+    }
+
+    @Override
+    protected int conversionScale() {
+        return conversionScale;
     }
 
 }

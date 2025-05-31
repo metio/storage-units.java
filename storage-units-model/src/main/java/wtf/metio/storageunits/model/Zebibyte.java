@@ -19,6 +19,8 @@ public final class Zebibyte extends StorageUnit<Zebibyte> {
     @Serial
     private static final long serialVersionUID = 2192254824473341887L;
 
+    private static final int conversionScale = computeFiniteConversionScale(StorageUnit.BYTES_IN_A_ZEBIBYTE);
+
     Zebibyte(final @NotNull BigInteger numberOfBytes) {
         super(numberOfBytes);
     }
@@ -112,7 +114,7 @@ public final class Zebibyte extends StorageUnit<Zebibyte> {
 
     @Override
     @CheckReturnValue
-    protected @NotNull BigInteger getNumberOfBytesPerUnit() {
+    public @NotNull BigInteger getNumberOfBytesPerUnit() {
         return StorageUnit.BYTES_IN_A_ZEBIBYTE;
     }
 
@@ -126,6 +128,11 @@ public final class Zebibyte extends StorageUnit<Zebibyte> {
     @CheckReturnValue
     protected @NotNull Function<@NotNull BigInteger, @NotNull StorageUnit<?>> converter() {
         return StorageUnits::binaryValueOf;
+    }
+
+    @Override
+    protected int conversionScale() {
+        return conversionScale;
     }
 
 }

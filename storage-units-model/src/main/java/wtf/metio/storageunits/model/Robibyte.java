@@ -19,6 +19,8 @@ public final class Robibyte extends StorageUnit<Robibyte> {
     @Serial
     private static final long serialVersionUID = 3553336770900659080L;
 
+    private static final int conversionScale = computeFiniteConversionScale(StorageUnit.BYTES_IN_A_ROBIBYTE);
+
     Robibyte(final @NotNull BigInteger numberOfBytes) {
         super(numberOfBytes);
     }
@@ -112,7 +114,7 @@ public final class Robibyte extends StorageUnit<Robibyte> {
 
     @Override
     @CheckReturnValue
-    protected @NotNull BigInteger getNumberOfBytesPerUnit() {
+    public @NotNull BigInteger getNumberOfBytesPerUnit() {
         return StorageUnit.BYTES_IN_A_ROBIBYTE;
     }
 
@@ -126,6 +128,11 @@ public final class Robibyte extends StorageUnit<Robibyte> {
     @CheckReturnValue
     protected @NotNull Function<@NotNull BigInteger, @NotNull StorageUnit<?>> converter() {
         return StorageUnits::binaryValueOf;
+    }
+
+    @Override
+    protected int conversionScale() {
+        return conversionScale;
     }
 
 }

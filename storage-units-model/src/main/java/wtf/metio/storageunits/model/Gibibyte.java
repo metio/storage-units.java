@@ -19,6 +19,8 @@ public final class Gibibyte extends StorageUnit<Gibibyte> {
     @Serial
     private static final long serialVersionUID = -1104749948510944566L;
 
+    private static final int conversionScale = computeFiniteConversionScale(StorageUnit.BYTES_IN_A_GIBIBYTE);
+
     Gibibyte(final @NotNull BigInteger numberOfBytes) {
         super(numberOfBytes);
     }
@@ -112,7 +114,7 @@ public final class Gibibyte extends StorageUnit<Gibibyte> {
 
     @Override
     @CheckReturnValue
-    protected @NotNull BigInteger getNumberOfBytesPerUnit() {
+    public @NotNull BigInteger getNumberOfBytesPerUnit() {
         return BYTES_IN_A_GIBIBYTE;
     }
 
@@ -126,6 +128,11 @@ public final class Gibibyte extends StorageUnit<Gibibyte> {
     @CheckReturnValue
     protected @NotNull Function<@NotNull BigInteger, @NotNull StorageUnit<?>> converter() {
         return StorageUnits::binaryValueOf;
+    }
+
+    @Override
+    protected int conversionScale() {
+        return conversionScale;
     }
 
 }

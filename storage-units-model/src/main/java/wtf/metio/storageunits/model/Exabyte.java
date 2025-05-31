@@ -19,6 +19,8 @@ public final class Exabyte extends StorageUnit<Exabyte> {
     @Serial
     private static final long serialVersionUID = 6846441733771841250L;
 
+    private static final int conversionScale = computeFiniteConversionScale(StorageUnit.BYTES_IN_A_EXABYTE);
+
     Exabyte(final @NotNull BigInteger numberOfBytes) {
         super(numberOfBytes);
     }
@@ -112,7 +114,7 @@ public final class Exabyte extends StorageUnit<Exabyte> {
 
     @Override
     @CheckReturnValue
-    protected @NotNull BigInteger getNumberOfBytesPerUnit() {
+    public @NotNull BigInteger getNumberOfBytesPerUnit() {
         return StorageUnit.BYTES_IN_A_EXABYTE;
     }
 
@@ -126,6 +128,11 @@ public final class Exabyte extends StorageUnit<Exabyte> {
     @CheckReturnValue
     protected @NotNull Function<@NotNull BigInteger, @NotNull StorageUnit<?>> converter() {
         return StorageUnits::decimalValueOf;
+    }
+
+    @Override
+    protected int conversionScale() {
+        return conversionScale;
     }
 
 }
