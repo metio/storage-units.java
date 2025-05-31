@@ -19,6 +19,8 @@ public final class Megabyte extends StorageUnit<Megabyte> {
     @Serial
     private static final long serialVersionUID = 5901923092058760111L;
 
+    private static final int conversionScale = computeFiniteConversionScale(StorageUnit.BYTES_IN_A_MEGABYTE);
+
     Megabyte(final @NotNull BigInteger numberOfBytes) {
         super(numberOfBytes);
     }
@@ -112,7 +114,7 @@ public final class Megabyte extends StorageUnit<Megabyte> {
 
     @Override
     @CheckReturnValue
-    protected @NotNull BigInteger getNumberOfBytesPerUnit() {
+    public @NotNull BigInteger getNumberOfBytesPerUnit() {
         return StorageUnit.BYTES_IN_A_MEGABYTE;
     }
 
@@ -126,6 +128,11 @@ public final class Megabyte extends StorageUnit<Megabyte> {
     @CheckReturnValue
     protected @NotNull Function<@NotNull BigInteger, @NotNull StorageUnit<?>> converter() {
         return StorageUnits::decimalValueOf;
+    }
+
+    @Override
+    protected int conversionScale() {
+        return conversionScale;
     }
 
 }

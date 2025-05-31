@@ -19,6 +19,8 @@ public final class Zettabyte extends StorageUnit<Zettabyte> {
     @Serial
     private static final long serialVersionUID = 8849006574018911826L;
 
+    private static final int conversionScale = computeFiniteConversionScale(StorageUnit.BYTES_IN_A_ZETTABYTE);
+
     Zettabyte(final @NotNull BigInteger numberOfBytes) {
         super(numberOfBytes);
     }
@@ -112,7 +114,7 @@ public final class Zettabyte extends StorageUnit<Zettabyte> {
 
     @Override
     @CheckReturnValue
-    protected @NotNull BigInteger getNumberOfBytesPerUnit() {
+    public @NotNull BigInteger getNumberOfBytesPerUnit() {
         return BYTES_IN_A_ZETTABYTE;
     }
 
@@ -126,6 +128,11 @@ public final class Zettabyte extends StorageUnit<Zettabyte> {
     @CheckReturnValue
     protected @NotNull Function<@NotNull BigInteger, @NotNull StorageUnit<?>> converter() {
         return StorageUnits::decimalValueOf;
+    }
+
+    @Override
+    protected int conversionScale() {
+        return conversionScale;
     }
 
 }

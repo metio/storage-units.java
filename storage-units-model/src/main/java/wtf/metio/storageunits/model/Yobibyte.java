@@ -19,6 +19,8 @@ public final class Yobibyte extends StorageUnit<Yobibyte> {
     @Serial
     private static final long serialVersionUID = -5606322878020884194L;
 
+    private static final int conversionScale = computeFiniteConversionScale(StorageUnit.BYTES_IN_A_YOBIBYTE);
+
     Yobibyte(final @NotNull BigInteger numberOfBytes) {
         super(numberOfBytes);
     }
@@ -112,7 +114,7 @@ public final class Yobibyte extends StorageUnit<Yobibyte> {
 
     @Override
     @CheckReturnValue
-    protected @NotNull BigInteger getNumberOfBytesPerUnit() {
+    public @NotNull BigInteger getNumberOfBytesPerUnit() {
         return StorageUnit.BYTES_IN_A_YOBIBYTE;
     }
 
@@ -126,6 +128,11 @@ public final class Yobibyte extends StorageUnit<Yobibyte> {
     @CheckReturnValue
     protected @NotNull Function<@NotNull BigInteger, @NotNull StorageUnit<?>> converter() {
         return StorageUnits::binaryValueOf;
+    }
+
+    @Override
+    protected int conversionScale() {
+        return conversionScale;
     }
 
 }

@@ -19,6 +19,8 @@ public final class Tebibyte extends StorageUnit<Tebibyte> {
     @Serial
     private static final long serialVersionUID = 3614537130129620881L;
 
+    private static final int conversionScale = computeFiniteConversionScale(StorageUnit.BYTES_IN_A_TEBIBYTE);
+
     Tebibyte(final @NotNull BigInteger numberOfBytes) {
         super(numberOfBytes);
     }
@@ -112,7 +114,7 @@ public final class Tebibyte extends StorageUnit<Tebibyte> {
 
     @Override
     @CheckReturnValue
-    protected @NotNull BigInteger getNumberOfBytesPerUnit() {
+    public @NotNull BigInteger getNumberOfBytesPerUnit() {
         return BYTES_IN_A_TEBIBYTE;
     }
 
@@ -126,6 +128,11 @@ public final class Tebibyte extends StorageUnit<Tebibyte> {
     @CheckReturnValue
     protected @NotNull Function<@NotNull BigInteger, @NotNull StorageUnit<?>> converter() {
         return StorageUnits::binaryValueOf;
+    }
+
+    @Override
+    protected int conversionScale() {
+        return conversionScale;
     }
 
 }

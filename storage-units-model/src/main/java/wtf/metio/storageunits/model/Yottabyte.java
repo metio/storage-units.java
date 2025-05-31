@@ -19,6 +19,8 @@ public final class Yottabyte extends StorageUnit<Yottabyte> {
     @Serial
     private static final long serialVersionUID = 2482152459842042316L;
 
+    private static final int conversionScale = computeFiniteConversionScale(StorageUnit.BYTES_IN_A_YOTTABYTE);
+
     Yottabyte(final @NotNull BigInteger numberOfBytes) {
         super(numberOfBytes);
     }
@@ -112,7 +114,7 @@ public final class Yottabyte extends StorageUnit<Yottabyte> {
 
     @Override
     @CheckReturnValue
-    protected @NotNull BigInteger getNumberOfBytesPerUnit() {
+    public @NotNull BigInteger getNumberOfBytesPerUnit() {
         return StorageUnit.BYTES_IN_A_YOTTABYTE;
     }
 
@@ -126,6 +128,11 @@ public final class Yottabyte extends StorageUnit<Yottabyte> {
     @CheckReturnValue
     protected @NotNull Function<@NotNull BigInteger, @NotNull StorageUnit<?>> converter() {
         return StorageUnits::decimalValueOf;
+    }
+
+    @Override
+    protected int conversionScale() {
+        return conversionScale;
     }
 
 }

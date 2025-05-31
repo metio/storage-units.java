@@ -19,6 +19,8 @@ public final class Exbibyte extends StorageUnit<Exbibyte> {
     @Serial
     private static final long serialVersionUID = 5993490571003918471L;
 
+    private static final int conversionScale = computeFiniteConversionScale(StorageUnit.BYTES_IN_A_EXBIBYTE);
+
     Exbibyte(final @NotNull BigInteger numberOfBytes) {
         super(numberOfBytes);
     }
@@ -38,7 +40,7 @@ public final class Exbibyte extends StorageUnit<Exbibyte> {
      */
     @CheckReturnValue
     public static @NotNull Exbibyte valueOf(final long numberOfBytes) {
-        return valueOf(BigInteger.valueOf(numberOfBytes));
+        return valueOf(java.math.BigInteger.valueOf(numberOfBytes));
     }
 
     /**
@@ -112,7 +114,7 @@ public final class Exbibyte extends StorageUnit<Exbibyte> {
 
     @Override
     @CheckReturnValue
-    protected @NotNull BigInteger getNumberOfBytesPerUnit() {
+    public @NotNull BigInteger getNumberOfBytesPerUnit() {
         return StorageUnit.BYTES_IN_A_EXBIBYTE;
     }
 
@@ -126,6 +128,11 @@ public final class Exbibyte extends StorageUnit<Exbibyte> {
     @CheckReturnValue
     protected @NotNull Function<@NotNull BigInteger, @NotNull StorageUnit<?>> converter() {
         return StorageUnits::binaryValueOf;
+    }
+
+    @Override
+    protected int conversionScale() {
+        return conversionScale;
     }
 
 }

@@ -564,6 +564,86 @@ public abstract class StorageUnit<T extends StorageUnit<T>> extends Number imple
     }
 
     /**
+     * Returns the value in this unit.
+     * @param roundingMode - the rounding mode for the division that divides the
+     *                     underlying byte value by number of bytes in a single measure of this unit.
+     *                     This parameter has no effect unless the unit has exuberant bytes per unit value.
+     * @return value in this unit.
+     */
+    @CheckReturnValue
+    public final BigDecimal unitValue(RoundingMode roundingMode) {
+        var divisor = new BigDecimal(getNumberOfBytesPerUnit());
+        var result = new BigDecimal(bytes).divide(divisor, conversionScale(), roundingMode).stripTrailingZeros();
+        if (result.scale() < 0) { result = result.setScale(0); }
+        return result;
+    }
+
+    protected abstract int conversionScale();
+
+    protected static int computeFiniteConversionScale(BigInteger bpu) {
+
+        // $TODO Use of static is ugly.
+        // But there is no lazy initialization in this library.
+        // One can stuff this into a final's field assignment, but
+        // assigning final fields from methods is evil. Moving to Kotlin,
+        // would be "better" alternatives.
+
+        // the default implementation is good for units provided by this library,
+        // because it either x1000 or x1024, where the division always yields a
+        // regular fraction. If any unit that has an exuberant BPU is introduced,
+        // they should override this method.
+        if (bpu.compareTo(BigInteger.ZERO) <= 0) {
+            throw new ArithmeticException("Bytes per unit must be positive");
+        }
+
+        BigInteger current = bpu.abs(); // we only care about factors
+        int p2 = current.getLowestSetBit(); // exponent of 2
+        current = current.shiftRight(p2); // divide by 2^p2
+
+        int p5 = 0; // exponent of 5
+        final BigInteger five = BigInteger.valueOf(5);
+        while (current.mod(five).signum() == 0) { // while divisible by 5
+            current = current.divide(five);
+            ++p5;
+        }
+
+        // anything left ≠ 1 ⇒ other prime
+        if (!current.equals(BigInteger.ONE)) {
+            throw new ArithmeticException("bytes per unit contains prime factor other than 2 or 5, you can't use this");
+        }
+
+        return Math.max(p2, p5);
+    }
+
+    /**
+     * Returns the nearest whole value in this  unit.
+     * @param roundingMode - the rounding mode for the division that divides the
+     *                     underlying byte value by number of bytes in a single measure of this unit,
+     *                     to come to an integer value.
+     * @return the nearest (according to the specified rounding mode) value in this unit.
+     */
+    public final BigInteger wholeUnitValue(RoundingMode roundingMode) {
+        return new BigDecimal(bytes).divide(new BigDecimal(getNumberOfBytesPerUnit()), 0, roundingMode).toBigInteger();
+    }
+
+    /**
+     * Returns the amount of bytes that didn't fit in the whole value of this unit.
+     * @return number of bytes that didn't fill a whole measure of this unit.
+     */
+    public final BigInteger remainder() {
+        return bytes.remainder(getNumberOfBytesPerUnit());
+    }
+
+    /**
+     * Returns the indication of whether this unit is a whole value, i.e., there is no fractional component,
+     * and the number of bytes stored fill this unit up to its byte per unit value.
+     * @return {@code true} if the unit value has no fractional component, {@code false} otherwise
+     */
+    public final boolean isWhole() {
+        return remainder().equals(BigInteger.ZERO);
+    }
+
+    /**
      * @param bytesToAdd The amount of bytes to add.
      * @return The new amount of storage in the appropriate type.
      */
@@ -623,7 +703,11 @@ public abstract class StorageUnit<T extends StorageUnit<T>> extends Number imple
      */
     public abstract @NotNull T subtract(@NotNull StorageUnit<?> storageAmount);
 
-    protected abstract @NotNull BigInteger getNumberOfBytesPerUnit();
+    /**
+     * Number of bytes in this unit.
+     * @return number of bytes in this unit.
+     */
+    public abstract @NotNull BigInteger getNumberOfBytesPerUnit();
 
     protected abstract @NotNull String getSymbol();
 

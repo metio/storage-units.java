@@ -19,6 +19,8 @@ public final class Quettabyte extends StorageUnit<Quettabyte> {
     @Serial
     private static final long serialVersionUID = -7866123408102424489L;
 
+    private static final int conversionScale = computeFiniteConversionScale(StorageUnit.BYTES_IN_A_QUETTABYTE);
+
     Quettabyte(final @NotNull BigInteger numberOfBytes) {
         super(numberOfBytes);
     }
@@ -112,7 +114,7 @@ public final class Quettabyte extends StorageUnit<Quettabyte> {
 
     @Override
     @CheckReturnValue
-    protected @NotNull BigInteger getNumberOfBytesPerUnit() {
+    public @NotNull BigInteger getNumberOfBytesPerUnit() {
         return StorageUnit.BYTES_IN_A_QUETTABYTE;
     }
 
@@ -126,6 +128,11 @@ public final class Quettabyte extends StorageUnit<Quettabyte> {
     @CheckReturnValue
     protected @NotNull Function<@NotNull BigInteger, @NotNull StorageUnit<?>> converter() {
         return StorageUnits::decimalValueOf;
+    }
+
+    @Override
+    protected int conversionScale() {
+        return conversionScale;
     }
 
 }

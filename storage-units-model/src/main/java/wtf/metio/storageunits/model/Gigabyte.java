@@ -19,6 +19,8 @@ public final class Gigabyte extends StorageUnit<Gigabyte> {
     @Serial
     private static final long serialVersionUID = 7581075190529125530L;
 
+    private static final int conversionScale = computeFiniteConversionScale(StorageUnit.BYTES_IN_A_GIGABYTE);
+
     Gigabyte(final @NotNull BigInteger numberOfBytes) {
         super(numberOfBytes);
     }
@@ -112,7 +114,7 @@ public final class Gigabyte extends StorageUnit<Gigabyte> {
 
     @Override
     @CheckReturnValue
-    protected @NotNull BigInteger getNumberOfBytesPerUnit() {
+    public @NotNull BigInteger getNumberOfBytesPerUnit() {
         return BYTES_IN_A_GIGABYTE;
     }
 
@@ -126,6 +128,11 @@ public final class Gigabyte extends StorageUnit<Gigabyte> {
     @CheckReturnValue
     protected @NotNull Function<@NotNull BigInteger, @NotNull StorageUnit<?>> converter() {
         return StorageUnits::decimalValueOf;
+    }
+
+    @Override
+    protected int conversionScale() {
+        return conversionScale;
     }
 
 }
