@@ -3,7 +3,7 @@ SPDX-FileCopyrightText: The Storage-Units Authors
 SPDX-License-Identifier: 0BSD
  -->
 
-# Storage-Units [![Chat](https://img.shields.io/badge/matrix-%23talk.metio:matrix.org-brightgreen.svg?style=social&label=Matrix)](https://matrix.to/#/#talk.metio:matrix.org)
+# Storage-Units [![Chat](https://img.shields.io/badge/irc.libera.chat-%23metio-blue.svg)](ircs://irc.libera.chat:6697/#metio)
 
 Storage units according to ISO IEC 80000-13:2008 implemented in Java.
 
