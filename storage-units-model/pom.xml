@@ -39,6 +39,7 @@
             <groupId>org.jetbrains</groupId>
             <artifactId>annotations</artifactId>
             <scope>provided</scope>
+            <version>26.0.2</version>
         </dependency>
         <dependency>
             <groupId>org.jspecify</groupId>
@@ -49,6 +50,7 @@
             <groupId>com.google.errorprone</groupId>
             <artifactId>error_prone_annotations</artifactId>
             <scope>provided</scope>
+            <version>2.38.0</version>
         </dependency>
     </dependencies>
 
