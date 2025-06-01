@@ -60,14 +60,13 @@ jobs:
           --batch-mode
           --activate-profiles release
           --define scmTag=${{ steps.sha.outputs.sha }}
-          --define pgp.secretkey=keyfile:${{ steps.gpg.outputs.filePath }}
-          --define pgp.passphrase=literal:${{ secrets.GPG_SECRET_KEY_PASSWORD }}
+          --define sign.keyFile=${{ github.workspace}}/signing.key.asc
+          --define sign.keyPass=${{ secrets.GPG_SECRET_KEY_PASSWORD }}
           --define project.build.outputTimestamp=${{ steps.timestamp.outputs.iso8601 }}
           deploy
         env:
           MAVEN_CENTRAL_USERNAME: ${{ secrets.MAVEN_CENTRAL_USERNAME }}
           MAVEN_CENTRAL_TOKEN: ${{ secrets.MAVEN_CENTRAL_TOKEN }}
-          MAVEN_OPTS: "--add-opens=java.base/java.util=ALL-UNNAMED --add-opens=java.base/java.lang.reflect=ALL-UNNAMED --add-opens=java.base/java.text=ALL-UNNAMED --add-opens=java.desktop/java.awt.font=ALL-UNNAMED"
       - id: create_release
         name: Create Release
         if: steps.commits.outputs.count > 0
@@ -82,7 +81,7 @@ jobs:
       - id: mail
         name: Send Mail
         if: steps.commits.outputs.count > 0
-        uses: dawidd6/action-send-mail@v3
+        uses: dawidd6/action-send-mail@v5
         with:
           server_address: ${{ secrets.MAIL_SERVER }}
           server_port: ${{ secrets.MAIL_PORT }}
