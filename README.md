@@ -1,9 +1,9 @@
 <!--
 SPDX-FileCopyrightText: The storage-units.java Authors
 SPDX-License-Identifier: 0BSD
- -->
+-->
 
-# Storage-Units [![Chat](https://img.shields.io/badge/irc.libera.chat-%23metio-blue.svg)](ircs://irc.libera.chat:6697/#metio)
+# Storage-Units
 
 Storage units according to ISO IEC 80000-13:2008 implemented in Java.
 
@@ -476,3 +476,7 @@ Originally inspired by [Twitters util](https://github.com/twitter/util#space) pa
 
 * [Byte Units](https://github.com/JakeWharton/byteunits)
 * [triava](https://github.com/trivago/triava)
+
+## License
+
+[0BSD](LICENSES/0BSD.txt).
