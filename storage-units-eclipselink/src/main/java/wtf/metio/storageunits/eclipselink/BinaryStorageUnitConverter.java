@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: The Storage-Units Authors
+ * SPDX-FileCopyrightText: The storage-units.java Authors
  * SPDX-License-Identifier: 0BSD
  */
 package wtf.metio.storageunits.eclipselink;
