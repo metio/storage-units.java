@@ -20,4 +20,8 @@ jobs:
     uses: metio/ci/.github/workflows/maven-central-release.yml@2c9b3ef3bf280e85541853d686e261dd7b92eac9 # 2026.11.2090039
     with:
       paths: pom.xml storage-units-dozer storage-units-eclipselink storage-units-gson storage-units-jackson storage-units-jakarta storage-units-mapstruct storage-units-model storage-units-modelmapper storage-units-mongodb storage-units-orika storage-units-simple
-    secrets: inherit
+    secrets:
+      MAVEN_CENTRAL_USERNAME: ${{ secrets.MAVEN_CENTRAL_USERNAME }}
+      MAVEN_CENTRAL_TOKEN: ${{ secrets.MAVEN_CENTRAL_TOKEN }}
+      GPG_SECRET_KEY_BASE64: ${{ secrets.GPG_SECRET_KEY_BASE64 }}
+      GPG_SECRET_KEY_PASSWORD: ${{ secrets.GPG_SECRET_KEY_PASSWORD }}
