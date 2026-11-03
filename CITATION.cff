@@ -9,7 +9,7 @@ authors:
 - family-names: Hoß
   given-names: Sebastian
   email: seb@hoß.de
-url: https://github.com/metio/storage-units.java
+url: https://github.com/metio/storage-units.java/
 license: 0BSD
 keywords:
   - converter
@@ -17,4 +17,5 @@ keywords:
   - make
   - maven
   - storage
+  - storage-unit-converter
   - units
