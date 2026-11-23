@@ -17,7 +17,7 @@ concurrency:
 jobs:
   release:
     name: Release
-    uses: metio/ci/.github/workflows/maven-central-release.yml@ee1344847682b2c1a1c5b5413da59be084662645 # 2026.11.16053738
+    uses: metio/ci/.github/workflows/maven-central-release.yml@4ffe6343c7dad75502de503165b853f1959afc8c # 2026.11.21090200
     with:
       paths: pom.xml storage-units-dozer storage-units-eclipselink storage-units-gson storage-units-jackson storage-units-jakarta storage-units-mapstruct storage-units-model storage-units-modelmapper storage-units-mongodb storage-units-orika storage-units-simple
     secrets:
